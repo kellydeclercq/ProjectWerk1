@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerBL", "ProjectB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUtils", "ProjectBeheerUtils\ProjectBeheerUtils.csproj", "{9A0192BC-FF5D-4DCB-9227-E5396275908D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUI", "ProjectBeheerUI\ProjectBeheerUI.csproj", "{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerWPF_UI", "ProjectBeheerWPF_UI\ProjectBeheerWPF_UI.csproj", "{7B9C68DC-0239-4DF4-830B-F1FE897C1379}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerDL_SQL", "ProjectBeheerDL_SQL\ProjectBeheerDL_SQL.csproj", "{030EBDDA-3308-498C-83CF-9AE790555D2C}"
@@ -33,10 +31,6 @@ Global
 		{9A0192BC-FF5D-4DCB-9227-E5396275908D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A0192BC-FF5D-4DCB-9227-E5396275908D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A0192BC-FF5D-4DCB-9227-E5396275908D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Release|Any CPU.ActiveCfg = Release|Any CPU
