@@ -9,8 +9,7 @@ namespace ProjectBeheerBL.Domein
 {
     public class InnovatiefWonenProject : Project
     {
-        public InnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, List<byte[]> fotos, List<byte[]> documenten) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, fotos, documenten)
+        public InnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten) : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
         }
 
