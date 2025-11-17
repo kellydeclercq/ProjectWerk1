@@ -14,6 +14,7 @@ namespace ProjectBeheerBL.Domein
         public string Beschrijving { get; set; }
         public DateTime StartDatum { get; set; }
         public ProjectStatus ProjectStatus { get; set; }
+        public String Wijk { get; set; }
         List<byte[]> Fotos { get; set; }
         List<byte[]> Documenten { get; set; }
     }
