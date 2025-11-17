@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerBL", "ProjectB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUtils", "ProjectBeheerUtils\ProjectBeheerUtils.csproj", "{9A0192BC-FF5D-4DCB-9227-E5396275908D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUI1", "ProjectBeheerUI\ProjectBeheerUI1.csproj", "{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUI", "ProjectBeheerUI\ProjectBeheerUI.csproj", "{62A2EEEA-A01A-45F5-82CD-4930BF2DAB90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
