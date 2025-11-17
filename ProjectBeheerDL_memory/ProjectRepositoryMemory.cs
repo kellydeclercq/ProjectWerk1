@@ -21,11 +21,13 @@ namespace ProjectBeheerDL_Memory
             fotos = new List<byte[]>();
             documenten = new List<byte[]>();
 
-            projecten.Add(projectId, new GroeneRuimteProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025,12,18), new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new InnovatiefWonenProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new StadsOntwikkelingsProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new Project(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new Project(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-        }
+            projecten.Add(projectId, new GroeneRuimteProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025,12,18), 
+                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
+            projecten.Add(projectId, new InnovatiefWonenProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), 
+                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
+            projecten.Add(projectId, new StadsOntwikkelingsProject(1, "Kloosterhof", "beschrijving", new DateTime(2025, 12, 18), 
+                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
+        
+                }
     }
 }

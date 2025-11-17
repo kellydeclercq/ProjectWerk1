@@ -12,5 +12,13 @@ namespace ProjectBeheerBL.Domein
         public string Huisnummer { get; set; }
         public int Postcode { get; set; }
         public string Gemeente { get; set; }
+
+        public Adres(string straat, string huisnummer, int postcode, string gemeente)
+        {
+            Straat = straat;
+            Huisnummer = huisnummer;
+            Postcode = postcode;
+            Gemeente = gemeente;
+        }
     }
 }

@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class GroeneRuimteProject
+    public class GroeneRuimteProject : Project
     {
+        public GroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, List<byte[]> fotos, List<byte[]> documenten) : base(id, projectTitel, beschrijving, startDatum, projectStatus, fotos, documenten)
+            :base(id, beschrijving, startDatum, projectStatus, fotos, documenten)
+        {
+        }
+
         public double OppervlakteInVierkanteMeter {  get; set; }
         public int BioDiversiteitsScore { get; set; } //TODO kijken hoe we dit gaan afdwingen
         public int AantalWandelpaden { get; set; }
@@ -16,14 +22,6 @@ namespace ProjectBeheerBL.Domein
         //opties in UI kunnen opgevraagd worden via de OptieLijsten (klasse), de gekozen strings + vrij invoerveld worden in deze lijst gestoken
         public List<string> Faciliteiten { get; set; }
 
-        public GroeneRuimteProject(double oppervlakteInVierkanteMeter, int bioDiversiteitsScore, int aantalWandelpaden, bool opgenomenInWandelRoute, int? bezoekersScore, List<string> faciliteiten)
-        {
-            OppervlakteInVierkanteMeter = oppervlakteInVierkanteMeter;
-            BioDiversiteitsScore = bioDiversiteitsScore;
-            AantalWandelpaden = aantalWandelpaden;
-            OpgenomenInWandelRoute = opgenomenInWandelRoute;
-            BezoekersScore = bezoekersScore;
-            Faciliteiten = faciliteiten;
-        }
+        
     }
 }
