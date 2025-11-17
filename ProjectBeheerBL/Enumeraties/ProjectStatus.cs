@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Enumeraties
 {
-    public class ProjectStatus
+    public enum ProjectStatus
     {
-
+        Planning,
+        Uitvoering,
+        Afgerond,
+        Geannuleerd
     }
 }

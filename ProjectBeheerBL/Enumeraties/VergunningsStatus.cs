@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Enumeraties
 {
-    internal class VergunningsStatus
+    public enum VergunningsStatus
     {
+        InAanvraag,
+            Goegekeurd,
+            Geweigerd
     }
 }

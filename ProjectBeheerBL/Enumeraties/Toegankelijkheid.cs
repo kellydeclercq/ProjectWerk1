@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Enumeraties
 {
-    internal class Toegankelijkheid
+    public enum Toegankelijkheid
     {
+        VolledigOpenbaar,
+        Gedeeltelijk,
+        Gesloten
+
     }
 }

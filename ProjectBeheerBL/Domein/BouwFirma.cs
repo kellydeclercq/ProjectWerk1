@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class OptieLijsten
+    public class BouwFirma
     {
-        List<string> Faciliteiten;
-        List<string> Woonvormen;
     }
 }
