@@ -14,8 +14,16 @@ namespace ProjectBeheerBL.Domein
         public bool OpgenomenInWandelRoute { get; set; }
         public int? BezoekersScore { get; set; } //TODO optioneel + hoe keuzes afdwingen? Weer lijst of in BL
         //opties in UI kunnen opgevraagd worden via de OptieLijsten (klasse), de gekozen strings + vrij invoerveld worden in deze lijst gestoken
-        public List<string> Faciliteiten { get; set; } 
+        public List<string> Faciliteiten { get; set; }
 
-
+        public GroeneRuimteProject(double oppervlakteInVierkanteMeter, int bioDiversiteitsScore, int aantalWandelpaden, bool opgenomenInWandelRoute, int? bezoekersScore, List<string> faciliteiten)
+        {
+            OppervlakteInVierkanteMeter = oppervlakteInVierkanteMeter;
+            BioDiversiteitsScore = bioDiversiteitsScore;
+            AantalWandelpaden = aantalWandelpaden;
+            OpgenomenInWandelRoute = opgenomenInWandelRoute;
+            BezoekersScore = bezoekersScore;
+            Faciliteiten = faciliteiten;
+        }
     }
 }

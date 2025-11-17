@@ -15,7 +15,16 @@ namespace ProjectBeheerBL.Domein
         public bool SamenwerkingErfgoed { get; set; }
         public bool SamenwerkingToerisme { get; set; }
         //opties in UI kunnen opgevraagd worden via de OptieLijsten (klasse), de gekozen strings + vrij invoerveld worden in deze lijst gestoken
-        public List<string> Woonvormen {  get; set; } 
+        public List<string> Woonvormen {  get; set; }
 
+        public InnovatiefWonenProject(int aantalWooneenheden, bool rondleidingMogelijk, int innovatieScore, bool samenwerkingErfgoed, bool samenwerkingToerisme, List<string> woonvormen)
+        {
+            AantalWooneenheden = aantalWooneenheden;
+            RondleidingMogelijk = rondleidingMogelijk;
+            InnovatieScore = innovatieScore;
+            SamenwerkingErfgoed = samenwerkingErfgoed;
+            SamenwerkingToerisme = samenwerkingToerisme;
+            Woonvormen = woonvormen;
+        }
     }
 }
