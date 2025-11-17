@@ -14,7 +14,7 @@ namespace ProjectBeheerDL_Memory
 
         public BouwfirmaRepositoryMemory()
         {
-            bouwfirmas = bouwfirmas.Add(bouwfirmaId, new BouwFirma()); bouwfirmaId++;
+             bouwfirmas.Add(bouwfirmaId, new BouwFirma(1, "")); bouwfirmaId++;
         }
     }
 }
