@@ -18,13 +18,14 @@ namespace ProjectBeheerBL.Domein
         List<byte[]> Fotos { get; set; }
         List<byte[]> Documenten { get; set; }
 
-        public Project(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, List<byte[]> fotos, List<byte[]> documenten)
+        public Project(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten)
         {
             Id = id;
             ProjectTitel = projectTitel;
             Beschrijving = beschrijving;
             StartDatum = startDatum;
             ProjectStatus = projectStatus;
+            Wijk = wijk;
             Fotos = fotos;
             Documenten = documenten;
         }

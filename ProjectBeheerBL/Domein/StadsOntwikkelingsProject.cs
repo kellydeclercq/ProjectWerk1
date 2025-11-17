@@ -7,9 +7,21 @@ using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class StadsOntwikkelingsProject
+    public class StadsOntwikkelingsProject : Project
     {
-        public VergunningsStatus vergunningsStatus { get; set; }
+        public StadsOntwikkelingsProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten,
+            VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen, bool infoBordenOfWandeling) : 
+            base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+        {
+            VergunningsStatus = vergunningsStatus;
+            ArchitecturaleWaarde = architecturaleWaarde;
+            Toegankelijkheid = toegankelijkheid;
+            BeziensWaardigheidVoorToeristen = beziensWaardigheidVoortoeristen;
+            InfobordenOfWandeling = infoBordenOfWandeling;
+
+        }
+
+        public VergunningsStatus VergunningsStatus { get; set; }
         public bool ArchitecturaleWaarde { get; set; }
         public Toegankelijkheid Toegankelijkheid { get; set; }
         public bool BeziensWaardigheidVoorToeristen { get; set; }
