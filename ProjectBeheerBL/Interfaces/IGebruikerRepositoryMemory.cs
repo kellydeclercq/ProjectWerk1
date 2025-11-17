@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Interfaces
 {
-    internal class IGebruikerRepositoryMemory
+    public class IGebruikerRepositoryMemory
     {
     }
 }
