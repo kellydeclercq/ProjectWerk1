@@ -15,5 +15,24 @@ namespace ProjectBeheerBL.Domein
         public string Website { get; set; }
         //TODO rolomschrijving aparte klasse of niet?
         public string RolOmschrijving { get; set; }
+
+        public Partner(int? id, string naam, string email, string telefoonNummer, string website, string rolOmschrijving)
+        {
+            Id = id;
+            Naam = naam;
+            Email = email;
+            TelefoonNummer = telefoonNummer;
+            Website = website;
+            RolOmschrijving = rolOmschrijving;
+        }
+
+        public Partner(string naam, string email, string telefoonNummer, string website, string rolOmschrijving)
+        {
+            Naam = naam;
+            Email = email;
+            TelefoonNummer = telefoonNummer;
+            Website = website;
+            RolOmschrijving = rolOmschrijving;
+        }
     }
 }
