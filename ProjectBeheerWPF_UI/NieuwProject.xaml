@@ -23,14 +23,27 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Margin="5" Name="TerugButton" Content="Terug"/>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Name="TitelInputTextBox">Titel project</TextBox>
         <StackPanel Grid.Column="1" Grid.Row="2" Margin="5" Orientation="Vertical">
             <CalendarButton Margin="5" Name="StartDatumCalendarButton"/>
             <ComboBox Margin="5"/>
             <ComboBox Margin="5"/>
         </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="center">
+            <CheckBox>Stadsontwikkeling</CheckBox>
+            <CheckBox>Groene Ruimte</CheckBox>
+            <CheckBox>Innovatief Wonen</CheckBox>
+        </StackPanel>
         <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3">
             <TextBox Margin="5" Name="BeschrijvingTextBox">Beschrijving</TextBox>
         </Grid>
+        <StackPanel Grid.Column="4" Grid.Row="3" Margin="5" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Button Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="100"/>
+            <Button Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100"/>
+        </StackPanel>
+        <TextBox Grid.Column="1" Grid.Row="4" Margin="5" Name="NaamPartnerTextBox">Naam partner</TextBox>
+        <TextBox Grid.Column="1" Grid.Row="5" Margin="5" Name="ContactgegevensPartnerTextBox">Contactgegevens</TextBox>
+        <TextBox Grid.Column="2" Grid.Row="4" Margin="5" Name="">Partnerrol</TextBox>
     </Grid>
 </Window>
