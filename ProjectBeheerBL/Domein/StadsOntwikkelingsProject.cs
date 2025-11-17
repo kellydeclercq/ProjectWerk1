@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Domein
 {
-    internal class StadsOntwikkelingsProject
+    public class StadsOntwikkelingsProject
     {
+
     }
 }
