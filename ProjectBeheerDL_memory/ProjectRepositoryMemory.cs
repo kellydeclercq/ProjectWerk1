@@ -18,15 +18,20 @@ namespace ProjectBeheerDL_Memory
 
         public ProjectRepositoryMemory()
         {
+            //foto's en documenten optioneel maken
+
             fotos = new List<byte[]>();
             documenten = new List<byte[]>();
 
             projecten.Add(projectId, new GroeneRuimteProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025,12,18), 
-                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new InnovatiefWonenProject(1, "Kloosterhof", "beschrijving1", new DateTime(2025, 12, 18), 
-                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
-            projecten.Add(projectId, new StadsOntwikkelingsProject(1, "Kloosterhof", "beschrijving", new DateTime(2025, 12, 18), 
-                new ProjectStatus(), fotos[0], documenten[0]); projectId++;
+                new ProjectStatus(), "Kolegem" ,fotos[0], documenten[0], 40.0, 2, 3, true, 10, new List<string>{"Speelplein"}; projectId++;
+
+            projecten.Add(projectId, new InnovatiefWonenProject(1, "Residentie Ter Leie", "beschrijving2", new DateTime(2026, 05, 02), 
+                new ProjectStatus(), "Malem" fotos[0], documenten[0]); projectId++;
+
+
+            projecten.Add(projectId, new StadsOntwikkelingsProject(1, "Zonnepanelen VIERNULVIER", "beschrijving3", new DateTime(2024, 10, 12), 
+                new ProjectStatus(), "zuid" fotos[0], documenten[0], VergunningsStatus.Goegekeurd, false, Toegankelijkheid.Gesloten, false, false); projectId++;
         
                 }
     }

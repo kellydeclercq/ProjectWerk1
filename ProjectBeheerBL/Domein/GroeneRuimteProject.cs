@@ -9,9 +9,16 @@ namespace ProjectBeheerBL.Domein
 {
     public class GroeneRuimteProject : Project
     {
-        public GroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, List<byte[]> fotos, List<byte[]> documenten) : base(id, projectTitel, beschrijving, startDatum, projectStatus, fotos, documenten)
-            :base(id, beschrijving, startDatum, projectStatus, fotos, documenten)
+        public GroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten,
+            double oppInVierkanteMeter, int biodiversiteitsScore, int aantalWandelpaden, bool opgenomenInWandelroute, int? bezoekersScore, List<string> faciliteiten) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
+            OppervlakteInVierkanteMeter = oppInVierkanteMeter;
+            BioDiversiteitsScore = biodiversiteitsScore;
+            AantalWandelpaden = aantalWandelpaden;
+            OpgenomenInWandelRoute = opgenomenInWandelroute;
+            BezoekersScore = bezoekersScore;
+            Faciliteiten = faciliteiten;
         }
 
         public double OppervlakteInVierkanteMeter {  get; set; }

@@ -9,12 +9,12 @@ namespace ProjectBeheerDL_Memory
 {
     public class BouwfirmaRepositoryMemory
     {
-        private Dictionary<int, Bouwfirma> bouwfirmas = new();
+        private Dictionary<int, BouwFirma> bouwfirmas = new();
         private int bouwfirmaId = 1;
 
         public BouwfirmaRepositoryMemory()
         {
-            bouwfirmas = bouwfirmas.Add(bouwfirmaId, new Bouwfirma()); bouwfirmaId++;
+            bouwfirmas = bouwfirmas.Add(bouwfirmaId, new BouwFirma()); bouwfirmaId++;
         }
     }
 }

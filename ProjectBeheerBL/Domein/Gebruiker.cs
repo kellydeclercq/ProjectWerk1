@@ -13,5 +13,11 @@ namespace ProjectBeheerBL.Domein
         public string Naam { get; set; }
         public GebruikersRol GebruikersRol { get; set; }
 
+        public Gebruiker(int id, string naam, GebruikersRol gebruikersRol)
+        {
+            Id = id;
+            Naam = naam;
+            GebruikersRol = gebruikersRol;
+        }
     }
 }
