@@ -15,11 +15,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Stad Gent Projectbeheer - Overzicht projecten</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Home - Stad Gent Projectbeheer</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" Name="GebruikersNaamTextBlock"/>
-        <ListBox Grid.Column="1" Grid.Row="2" Margin="5" Name="ProjectenOverzichtListBox"/>
+        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="MaakNieuwProjectButton" Content="Maak nieuw project"/>
+        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="OverzichtProjectenButton" Content="Bekijk jouw projecten"/>
     </Grid>
 </Window>
