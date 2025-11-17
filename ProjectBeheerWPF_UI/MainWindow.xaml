@@ -19,10 +19,8 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="10">Stad Gent Projectbeheer</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Stad Gent Projectbeheer</TextBlock>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="5"/>
         <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="LoginButton" Content="Login"/>
-        <Button Grid.Column="3" Grid.Row="1" Margin="5" Name="NieuweGebruikerButton" Content="Nieuwe gebruiker?"/>
-        <Button Grid.Column="3" Grid.Row="2" Margin="5" Name="LoginAlsBeheerderButton" Content="Login als beheerder"/>
     </Grid>
 </Window>
