@@ -12,7 +12,7 @@ namespace ProjectBeheerBL.Domein
         public int? Id { get; set; }
         public string ProjectTitel { get; set; }
         public string Beschrijving { get; set; }
-        public DateTime StartDatum { get; set; }
+        public DateTime? StartDatum { get; set; }
         public ProjectStatus ProjectStatus { get; set; }
         public String Wijk { get; set; }
         List<byte[]> Fotos { get; set; }
@@ -21,6 +21,17 @@ namespace ProjectBeheerBL.Domein
         public Project(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten)
         {
             Id = id;
+            ProjectTitel = projectTitel;
+            Beschrijving = beschrijving;
+            StartDatum = startDatum;
+            ProjectStatus = projectStatus;
+            Wijk = wijk;
+            Fotos = fotos;
+            Documenten = documenten;
+        }
+
+        public Project(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten)
+        {
             ProjectTitel = projectTitel;
             Beschrijving = beschrijving;
             StartDatum = startDatum;
