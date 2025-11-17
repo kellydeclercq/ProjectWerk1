@@ -14,7 +14,11 @@ namespace ProjectBeheerDL_Memory
 
         public AdresRepositoryMemory()
         {
-            adressen = adressen.Add(adresId, new Adres()); adresId++;
+            adressen.Add(adresId, new Adres("Rijksweg", "127", 9000, "Gent")); adresId++;
+            adressen.Add(adresId, new Adres("Floraliënlaan", "88", 9000, "Gent")); adresId++;
+            adressen.Add(adresId, new Adres("Kraanlei", "267B", 9000, "Gent")); adresId++;
+            adressen.Add(adresId, new Adres("R4", "/", 9000, "Gent")); adresId++;
+            adressen.Add(adresId, new Adres("Kastanjestraat", "67", 9000, "Gent")); adresId++;
         }
     }
 }
