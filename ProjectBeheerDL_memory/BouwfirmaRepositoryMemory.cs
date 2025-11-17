@@ -8,13 +8,13 @@ using ProjectBeheerBL.Domein;
 namespace ProjectBeheerDL_Memory
 {
     public class BouwfirmaRepositoryMemory
-    {
-        private Dictionary<int, BouwFirma> bouwfirmas = new();
-        private int bouwfirmaId = 1;
+    //{
+    //    private Dictionary<int, BouwFirma> bouwfirmas = new();
+    //    private int bouwfirmaId = 1;
 
-        public BouwfirmaRepositoryMemory()
-        {
-             bouwfirmas.Add(bouwfirmaId, new BouwFirma(1, "")); bouwfirmaId++;
-        }
+    //    public BouwfirmaRepositoryMemory()
+    //    {
+    //         bouwfirmas.Add(bouwfirmaId, new BouwFirma(1, "")); bouwfirmaId++;
+    //    }
     }
 }

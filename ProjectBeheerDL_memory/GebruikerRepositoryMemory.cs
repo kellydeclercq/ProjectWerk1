@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Interfaces;
 
 namespace ProjectBeheerDL_Memory
 {
-    public class GebruikerRepositoryMemory
+    public class GebruikerRepositoryMemory : IGebruikerRepositoryMemory
     {
         private Dictionary<int, Gebruiker> gebruikers = new();
         private int gebruikersId = 1;

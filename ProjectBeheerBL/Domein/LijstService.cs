@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerBL.Interfaces
+namespace ProjectBeheerBL.Domein
 {
-    public interface IPartnerRepositoryMemory
+    public class LijstService
     {
-
+        List<string> Faciliteiten;
+        List<string> Woonvormen;
     }
 }

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Enumeraties;
+using ProjectBeheerBL.Interfaces;
 
 namespace ProjectBeheerDL_Memory
 {
-    public class ProjectRepositoryMemory
+    public class ProjectRepositoryMemory : IProjectRepositoryMemory
     {
         private Dictionary<int, Project> projecten = new();
         private List<byte[]> fotos = new List<byte[]>();

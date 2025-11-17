@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerBL.Interfaces
+namespace ProjectBeheerBL.Beheerder
 {
-    public interface IBouwfirmaRepositoryMemory
+    public class ExportManager
     {
 
     }

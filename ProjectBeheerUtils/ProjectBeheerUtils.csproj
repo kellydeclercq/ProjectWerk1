@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjectBeheerBL\ProjectBeheerBL.csproj" />
     <ProjectReference Include="..\ProjectBeheerDL_memory\ProjectBeheerDL_Memory.csproj" />
+    <ProjectReference Include="..\ProjectBeheerDL_SQL\ProjectBeheerDL_SQL.csproj" />
   </ItemGroup>
 
 </Project>

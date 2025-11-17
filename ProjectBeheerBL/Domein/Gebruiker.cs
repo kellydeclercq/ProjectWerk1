@@ -8,14 +8,12 @@ using ProjectBeheerBL.Beheerder;
 namespace ProjectBeheerBL.Domein
 {
     public class Gebruiker
-    {
-        public int Id { get; set; }
+    {     
         public string Naam { get; set; }
         public GebruikersRol GebruikersRol { get; set; }
 
-        public Gebruiker(int id, string naam, GebruikersRol gebruikersRol)
-        {
-            Id = id;
+        public Gebruiker(string naam, GebruikersRol gebruikersRol)
+        {          
             Naam = naam;
             GebruikersRol = gebruikersRol;
         }

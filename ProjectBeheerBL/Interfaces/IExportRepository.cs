@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Interfaces
 {
-    internal interface Interface1
+    public interface IExportRepository
     {
     }
 }

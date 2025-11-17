@@ -7,11 +7,11 @@ using ProjectBeheerBL.Interfaces;
 
 namespace ProjectBeheerBL.Beheerder
 {
-    public class ProjectBeheerder
+    public class GebruikersManager
     {
-       private IProjectRepositoryMemory _repo;
+        IGebruikerRepositoryMemory _repo;
 
-        public ProjectBeheerder(IProjectRepositoryMemory repo)
+        public GebruikersManager(IGebruikerRepositoryMemory repo)
         {
             _repo = repo;
         }

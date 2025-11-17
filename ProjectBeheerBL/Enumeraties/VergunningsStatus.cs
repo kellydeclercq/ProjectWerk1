@@ -8,7 +8,7 @@ namespace ProjectBeheerBL.Enumeraties
 {
     public enum VergunningsStatus
     {
-        InAanvraag,
+            InAanvraag,
             Goegekeurd,
             Geweigerd
     }
