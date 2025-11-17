@@ -11,6 +11,7 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -28,5 +29,8 @@
             <ComboBox Margin="5"/>
             <ComboBox Margin="5"/>
         </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3">
+            <TextBox Margin="5" Name="BeschrijvingTextBox">Beschrijving</TextBox>
+        </Grid>
     </Grid>
 </Window>
