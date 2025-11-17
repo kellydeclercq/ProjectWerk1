@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerDL.Memory
 {
-    internal class AdresRepositoryMemory
+    public class AdresRepositoryMemory
     {
+       
     }
 }

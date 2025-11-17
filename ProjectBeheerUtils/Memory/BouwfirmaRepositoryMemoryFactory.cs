@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerUtils.Memory
 {
-    internal class BouwfirmaRepositoryMemoryFactory
+    public class BouwfirmaRepositoryMemoryFactory
     {
+        //public static IBouwfirmaRepositoryMemory GetBouwfirmaRepositoryMemory(string repoType)
+        //{
+        //    switch (repoType)
+        //    {
+        //        case "memory": return new BouwfirmaRepositoryMemory();
+        //        default: return null;
+        //    }
+        //}
     }
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectBeheerDL_memory\ProjectBeheerDL.csproj" />
+  </ItemGroup>
+
 </Project>
