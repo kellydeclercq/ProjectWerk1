@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerDL.Memory
+namespace ProjectBeheerDL_SQL
 {
-    internal class GebruikerRepositoryMemory
+    internal class PartnerRepository
     {
     }
 }
