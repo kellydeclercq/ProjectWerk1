@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerDL.Memory
+namespace ProjectBeheerUtils.Database
 {
-    public class AdresRepositoryMemory
+    internal class GebruikerRepositoryFactory
     {
-       
     }
 }
