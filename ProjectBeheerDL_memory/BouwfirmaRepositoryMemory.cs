@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
 
-namespace ProjectBeheerDL.Memory
+namespace ProjectBeheerDL_Memory
 {
     public class BouwfirmaRepositoryMemory
     {
@@ -14,7 +14,7 @@ namespace ProjectBeheerDL.Memory
 
         public BouwfirmaRepositoryMemory()
         {
-            this.bouwfirmas = bouwfirmas.Add(bouwfirmaId, new Bouwfirma()); bouwfirmaId++;
+            bouwfirmas = bouwfirmas.Add(bouwfirmaId, new Bouwfirma()); bouwfirmaId++;
         }
     }
 }

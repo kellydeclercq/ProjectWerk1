@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
 
-namespace ProjectBeheerDL.Memory
+namespace ProjectBeheerDL_Memory
 {
     public class GebruikerRepositoryMemory
     {
@@ -14,7 +14,7 @@ namespace ProjectBeheerDL.Memory
 
         public GebruikerRepositoryMemory()
         {
-            gebruikers = gebruikers.Add(gebruikersId, new Gebruiker()); gebruikersId++;
+            gebruikers.Add(gebruikersId, new Gebruiker()); gebruikersId++;
         }
     }
 }
