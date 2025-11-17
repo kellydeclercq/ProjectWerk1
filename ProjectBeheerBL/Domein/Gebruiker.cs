@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectBeheerBL.Beheerder;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class BouwFirma
+    public class Gebruiker
     {
         public int Id { get; set; }
         public string Naam { get; set; }
-        public string Email { get; set; }
-        public string TelefoonNummer { get; set; }
-        public string Website { get; set; }
+        public GebruikersRol GebruikersRol { get; set; }
+
     }
 }
