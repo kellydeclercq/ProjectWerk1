@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36705.20
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerDL", "ProjectBeheerDL_memory\ProjectBeheerDL.csproj", "{A26927A6-FE8D-4B57-B43D-4416D23E2099}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerDL_Memory", "ProjectBeheerDL_memory\ProjectBeheerDL_Memory.csproj", "{A26927A6-FE8D-4B57-B43D-4416D23E2099}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerBL", "ProjectBeheerBL\ProjectBeheerBL.csproj", "{9DE4C5F9-9090-426D-813E-E0EBF5917A10}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerUtils", "ProjectBeheerUtils\ProjectBeheerUtils.csproj", "{9A0192BC-FF5D-4DCB-9227-E5396275908D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerWPF_UI", "ProjectBeheerWPF_UI\ProjectBeheerWPF_UI.csproj", "{7B9C68DC-0239-4DF4-830B-F1FE897C1379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerDL_SQL", "ProjectBeheerDL_SQL\ProjectBeheerDL_SQL.csproj", "{030EBDDA-3308-498C-83CF-9AE790555D2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9C68DC-0239-4DF4-830B-F1FE897C1379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

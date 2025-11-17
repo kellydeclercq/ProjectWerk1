@@ -9,5 +9,6 @@ namespace ProjectBeheerBL.Domein
     public class OptieLijsten
     {
         List<string> Faciliteiten;
+        List<string> Woonvormen;
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerDL.Database
+namespace ProjectBeheerDL_SQL
 {
-    internal class AdresRepository
+    internal class BouwfirmaRepository
     {
     }
 }
