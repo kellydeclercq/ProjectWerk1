@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
 {
-    public class StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject : Project, IStadsontwikkeling, IGroeneRuimte, IInnovatiefWonen
+    public class StadsontwikkelingsGroeneRuimteInnovatiefWonenProject : Project, IStadsontwikkeling, IGroeneRuimte, IInnovatiefWonen
     {
 
-        public StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
+        public StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten,List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte, 
             InnovatiefWonen innovatiefWonen) 
             : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
@@ -22,7 +22,7 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        public StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
+        public StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte,
             InnovatiefWonen innovatiefWonen) 
             : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
