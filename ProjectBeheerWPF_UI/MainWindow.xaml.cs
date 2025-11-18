@@ -25,6 +25,7 @@ namespace ProjectBeheerWPF_UI
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
