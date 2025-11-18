@@ -23,7 +23,7 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
         }
 
 
-        public GroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
+        public GroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen)
             : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
         {
