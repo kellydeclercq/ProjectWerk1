@@ -32,11 +32,13 @@ namespace ProjectBeheerBL.Beheerder
         }
 
         public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling)
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas)
         {
 
             _repo.MaakStadsontwikkelingsProjectAan(id, projectTitel, beschrijving,  startDatum,  projectStatus,
-             wijk, fotos, documenten, partners, stadsOntwikkeling);
+             wijk, fotos, documenten, partners,  vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             infoBordenOfWandeling,  bouwfirmas);
         }
 
         public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
