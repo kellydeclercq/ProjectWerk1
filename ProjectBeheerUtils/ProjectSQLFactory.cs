@@ -11,14 +11,14 @@ namespace ProjectBeheerUtils
 {
     public class ProjectSQLFactory
     {
-        public IGebruikerRepository GeefGebruikerRepo()
-        {
-            return new GebruikerRepository();
-        }
+        //public IGebruikerRepository GeefGebruikerRepo()
+        //{
+        //    return new GebruikerRepository();
+        //}
 
-        public IProjectRepository GeefProjectRepo()
-        {
-            return new ProjectRepository();
-        }
+        //public IProjectRepository GeefProjectRepo()
+        //{
+        //    return new ProjectRepository();
+        //}
     }
 }
