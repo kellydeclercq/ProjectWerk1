@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
@@ -37,7 +38,15 @@ namespace ProjectBeheerBL.Domein
         }
 
         public int? Id { get; private set; }
-        public string ProjectTitel { get; set; }
+
+        private string _projectTitel;
+        public string ProjectTitel { 
+            get { return _projectTitel; } 
+            set{
+                if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Titel mag niet leeg zijn");
+                var trimmed = value.Trim();
+                if (trimmed.Length < 5 || trimmed.Length > 50) throw new ProjectException("Titel moet meer karakters hebben dan 5 en max 50.");
+            }
         public string Beschrijving { get; set; }
         public DateTime? StartDatum { get; set; }
         public ProjectStatus ProjectStatus { get; set; }
