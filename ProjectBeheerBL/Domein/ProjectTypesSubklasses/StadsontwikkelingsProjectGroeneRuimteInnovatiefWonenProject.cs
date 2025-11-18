@@ -13,8 +13,9 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten,List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte, 
+            InnovatiefWonen innovatiefWonen) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;
@@ -22,8 +23,9 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
         }
 
         public StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte,
+            InnovatiefWonen innovatiefWonen) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;

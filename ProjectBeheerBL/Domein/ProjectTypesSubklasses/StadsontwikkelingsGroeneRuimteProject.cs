@@ -13,16 +13,16 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingsGroeneRuimteProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;
         }
 
         public StadsontwikkelingsGroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;

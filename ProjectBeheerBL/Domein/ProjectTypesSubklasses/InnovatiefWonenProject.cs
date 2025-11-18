@@ -13,15 +13,15 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public InnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, InnovatiefWonen innovatiefWonen) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, InnovatiefWonen innovatiefWonen) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             InnovatiefWonen = innovatiefWonen;
         }
 
         public InnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, InnovatiefWonen innovatiefWonen) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, InnovatiefWonen innovatiefWonen) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
         {
             InnovatiefWonen = innovatiefWonen;
         }
