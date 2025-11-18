@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.Repo;
+using ProjectBeheerBL.typeSoorten;
 
 namespace ProjectBeheerBL.Beheerder
 {
@@ -30,10 +31,12 @@ namespace ProjectBeheerBL.Beheerder
                 faciliteiten);
         }
 
-        public void MaakStadsontwikkelingsProjectAan()
+        public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling)
         {
 
-            _repo.MaakStadsontwikkelingsProjectAan();
+            _repo.MaakStadsontwikkelingsProjectAan(id, projectTitel, beschrijving,  startDatum,  projectStatus,
+             wijk, fotos, documenten, partners, stadsOntwikkeling);
         }
 
         public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
