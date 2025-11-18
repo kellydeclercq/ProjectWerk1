@@ -13,19 +13,19 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public InnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, InnovatiefWonen innovatiefWonen) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, InnovatiefWonen innovatiefWonen) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
         {
             InnovatiefWonen = innovatiefWonen;
         }
 
-        public InnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, InnovatiefWonen innovatiefWonen) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
+        public InnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, InnovatiefWonen innovatiefWonen) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
         {
             InnovatiefWonen = innovatiefWonen;
         }
 
-        public InnovatiefWonen InnovatiefWonen { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public InnovatiefWonen InnovatiefWonen { get; set; }
     }
 }

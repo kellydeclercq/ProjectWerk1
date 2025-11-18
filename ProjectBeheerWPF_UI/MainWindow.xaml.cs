@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerUtils;
 using ProjectBeheerWPF_UI.BeheerderUI;
 
 namespace ProjectBeheerWPF_UI
@@ -38,20 +39,22 @@ namespace ProjectBeheerWPF_UI
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string email = LoginEmailTextBox.Text;
-            var gebruiker = _gebruikersManager.GeefGebruikeradhvEmail(email);
+            var gebruiker = gebruikersManager.GeefGebruikeradhvEmail(email);
             
             if (gebruiker != null)
             {
                 
                 if(gebruiker.GebruikersRol == GebruikersRol.Beheerder)
                 {
-                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new();
+                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new
+                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
                     beheerderHomeProjectBeheer.Show();
                 }
                     
                 else
                 {
-                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer();
+                    HomeProjectBeheer homeProjectBeheer = new 
+                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
                     homeProjectBeheer.Show();
                 }
                 Close();

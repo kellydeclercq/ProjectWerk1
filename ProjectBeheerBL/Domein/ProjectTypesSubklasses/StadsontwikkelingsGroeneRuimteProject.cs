@@ -13,22 +13,22 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingsGroeneRuimteProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;
         }
 
-        public StadsontwikkelingsGroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners)
+        public StadsontwikkelingsGroeneRuimteProject(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, GroeneRuimte groeneRuimte) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;
         }
 
-        public StadsOntwikkeling StadsOntwikkeling { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public GroeneRuimte GroeneRuimte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public StadsOntwikkeling StadsOntwikkeling { get; set; }
+        public GroeneRuimte GroeneRuimte { get; set; }
     }
 }
