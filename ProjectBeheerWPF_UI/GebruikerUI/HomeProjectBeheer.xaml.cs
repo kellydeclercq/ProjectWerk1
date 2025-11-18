@@ -21,10 +21,21 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class HomeProjectBeheer : Window
     {
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory = new();
+
         public HomeProjectBeheer(ExportManager exportManager, GebruikersManager gebruikersManager, 
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
+            exportManager = exportManager;
+        }
+
+        private void MaakNieuwProjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
         }
     }
 }
