@@ -3,27 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class GroeneRuimte : Project
+    public class GroeneRuimte
     {
-        public GroeneRuimte(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos, List<byte[]>? documenten,
-            double oppInVierkanteMeter, int biodiversiteitsScore, int aantalWandelpaden, bool opgenomenInWandelroute, int? bezoekersScore, List<string> faciliteiten) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+        public GroeneRuimte(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute, int? bezoekersScore, List<string> faciliteiten)
         {
-            OppervlakteInVierkanteMeter = oppInVierkanteMeter;
-            BioDiversiteitsScore = biodiversiteitsScore;
+            OppervlakteInVierkanteMeter = oppervlakteInVierkanteMeter;
+            BioDiversiteitsScore = bioDiversiteitsScore;
             AantalWandelpaden = aantalWandelpaden;
-            OpgenomenInWandelRoute = opgenomenInWandelroute;
+            OpgenomenInWandelRoute = opgenomenInWandelRoute;
             BezoekersScore = bezoekersScore;
             Faciliteiten = faciliteiten;
         }
 
-        public double OppervlakteInVierkanteMeter {  get; set; }
-        public int BioDiversiteitsScore { get; set; } //TODO kijken hoe we dit gaan afdwingen
-        public int AantalWandelpaden { get; set; }
+        private double _oppervlakteInVierkanteMeter;
+        public double OppervlakteInVierkanteMeter {
+            get { return _oppervlakteInVierkanteMeter; }
+            set {
+                if (value <= 0) throw new ProjectException($"Oppervlakte {value} incorrect.");
+                _oppervlakteInVierkanteMeter = value;
+            }
+        }
+
+        private int _bioDiversiteitsScore;
+        public int? BioDiversiteitsScore { 
+            get { return _bioDiversiteitsScore; }
+            set{
+                if (value < 0 )
+            }
+        public int? AantalWandelpaden { get; set; }
         public bool OpgenomenInWandelRoute { get; set; }
         public int? BezoekersScore { get; set; } //TODO optioneel + hoe keuzes afdwingen? Weer lijst of in BL
         //opties in UI kunnen opgevraagd worden via de OptieLijsten (klasse), de gekozen strings + vrij invoerveld worden in deze lijst gestoken
