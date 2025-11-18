@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Beheerder;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -19,6 +20,8 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
+        private GebruikersManager _gebruikersManager;
+        
         public NieuwProject()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace ProjectBeheerWPF_UI
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            _gebruikersManager.
         }
     }
 }
