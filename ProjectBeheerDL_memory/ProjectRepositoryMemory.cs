@@ -21,15 +21,16 @@ namespace ProjectBeheerDL_Memory
         private List<byte[]> documenten = new List<byte[]>();
         private List<string> woonvormen = new();
         private List<string> faciliteiten = new();  
-        List<BouwFirma> bouwFirmas = new();
-        List<Partner> partners = new();
-        List<Partner> partners2 = new();
-        List<Gebruiker> gebruikers = new();
+        private List<BouwFirma> bouwFirmas = new();
+        private List<Partner> partners = new();
+        private List<Partner> partners2 = new();
+      
         private int projectId = 1;
         string langeBeschrijving = "Dit bouwproject omvat de gefaseerde ontwikkeling van een multifunctioneel complex waarin duurzaamheid, efficiëntie en toekomstbestendigheid centraal staan. Tijdens de ontwerpfase worden verschillende constructieve opties onderzocht om zowel de esthetische als functionele doelstellingen te waarborgen. De uitvoering wordt gepland in nauw overleg met betrokken stakeholders, waarbij bijzondere aandacht wordt besteed aan logistieke routing en minimale verstoring van de omgeving.\r\n\r\nIn het hoofdgebouw wordt een modulaire structuur toegepast die flexibiliteit biedt voor toekomstige aanpassingen. De materialen worden geselecteerd op basis van energieprestatie, levensduur en circulaire toepassingsmogelijkheden. Daarnaast wordt een geavanceerd monitoringsysteem geïntegreerd om energieverbruik, veiligheidsparameters en klimaatbeheersing in realtime te optimaliseren.\r\n\r\nDe buitenruimte krijgt een groene invulling met onderhoudsarme beplanting, waterdoorlatende bestrating en strategische verlichting die zowel veiligheid als sfeer ondersteunt. Het bouwteam werkt volgens een strak kwaliteitsprotocol om consistentie te garanderen tijdens alle projectfasen. Eventuele afwijkingen worden tijdig gerapporteerd en beoordeeld, zodat de planning en begroting binnen de gestelde kaders blijven.";
 
         public ProjectRepositoryMemory()
         {
+            #region hard coded data
             lijstService.Faciliteiten.Add("speeltuin");
             lijstService.Faciliteiten.Add("picknickzone");
             lijstService.Faciliteiten.Add("inforborden");
@@ -90,15 +91,12 @@ namespace ProjectBeheerDL_Memory
             Adres a4 = new Adres("R4", "/", 9000, "Gent");
             Adres a5 = new Adres("Kastanjestraat", "67", 9000, "Gent");
 
-            //Gebruikers aanmaken
-            Gebruiker admin1 = new Gebruiker("Tom", "Tom@school.be", GebruikersRol.Beheerder);
-            Gebruiker gebruiker1 = new Gebruiker("Arno", "Arno@school.be", GebruikersRol.GewoneGebruiker);
-
-            gebruikers.Add(admin1);
-            gebruikers.Add(gebruiker1);
-
-        
+            #endregion
         }
+
+       
+      
+       
     }
 
 
