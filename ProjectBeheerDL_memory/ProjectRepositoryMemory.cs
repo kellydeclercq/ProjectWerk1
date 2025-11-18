@@ -120,8 +120,7 @@ namespace ProjectBeheerDL_Memory
 
             GroeneRuimteProject project = new(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
-
-
+            projectLijst.Add(project);
         }
 
         public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
@@ -131,7 +130,9 @@ namespace ProjectBeheerDL_Memory
             bool samenwerkingToerisme, List<string> woonvormen
             )
         {
-            throw new NotImplementedException();
+            InnovatiefWonenProject project =  new InnovatiefWonenProject(projectTitel,  beschrijving,  startDatum, projectStatus,
+             wijk, fotos,  documenten, partners, MaakInnovatiefWonenProjectaan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
+            samenwerkingToerisme, woonvormen));
         }
 
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan()
@@ -156,10 +157,17 @@ namespace ProjectBeheerDL_Memory
 
         //methode aanmaak types
 
-        public GroeneRuimte MaakGroeneRuimteAan(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+        private GroeneRuimte MaakGroeneRuimteAan(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten)
         {
             return new GroeneRuimte(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten);
+        }
+
+        private InnovatiefWonen MaakInnovatiefWonenProjectaan(int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen)
+        {
+            return new InnovatiefWonen(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
+            samenwerkingToerisme, woonvormen);
         }
 
     

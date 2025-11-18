@@ -7,7 +7,7 @@ using ProjectBeheerBL.Interfaces.Repo;
 
 namespace ProjectBeheerDL_SQL
 {
-    public class GebruikerRepository : IGebruikerRepository
+    public class GebruikerRepository 
     {
     }
 }
