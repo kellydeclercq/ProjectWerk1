@@ -46,6 +46,7 @@ namespace ProjectBeheerWPF_UI
                     HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer();
                     homeProjectBeheer.Show();
                 }
+                Close();
             }
             else
             {
