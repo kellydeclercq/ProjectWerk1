@@ -10,12 +10,22 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
 {
     public class GroeneRuimteInnovatiefWonenProject : Project, IGroeneRuimte, IInnovatiefWonen
     {
-        public GroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos, List<byte[]>? documenten) : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+
+
+        public GroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
+           string wijk, List<byte[]>? fotos, List<byte[]>? documenten, GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen )
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
+            GroeneRuimte = groeneRuimte;
+            InnovatiefWonen = innovatiefWonen;
         }
 
-        public GroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos, List<byte[]> documenten) : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+        public GroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
+            GroeneRuimte = groeneRuimte;
+            InnovatiefWonen = innovatiefWonen;
         }
 
         public GroeneRuimte GroeneRuimte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
