@@ -29,7 +29,7 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
                     <StackPanel Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Orientation="Vertical" Grid.ColumnSpan="2">
@@ -52,10 +52,15 @@
                         <Button x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100"/>
                     </StackPanel>
                     <TextBox Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" x:Name="NaamPartnerTextBox" Grid.ColumnSpan="2" Text="Naam partner"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" x:Name="PartnerRolTextBox" Grid.ColumnSpan="2" Text="Partnerrol"/>
                     <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox" Grid.ColumnSpan="2" Text="Contactgegevens"/>
-                    <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" Grid.ColumnSpan="2" Text="Partnerrol"/>
                     <Button Grid.Column="4" Grid.Row="6" Margin="5,5,5,5" x:Name="VoegExtraPartnerToeButton" Content="Voeg nog een partner toe"/>
                     <!-- deze partner moet nog negen keer hidden er bij staan zodat er kunnen bijgemaakt worden als je op die knop clickt-->
+                    <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
+                        <TextBox Margin="5,5,5,5" x:Name="NaamPartnerTextBox2" Grid.ColumnSpan="2" Text="Naam partner" Visibility="Hidden"/>
+                        <TextBox Margin="5,5,5,5" x:Name="ParnterRolTextBox2" Grid.ColumnSpan="2" Text="Partnerrol" Visibility="Hidden"/>
+                        <TextBox Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox2" Grid.ColumnSpan="2" Text="Contactgegevens" Visibility="Hidden"/>
+                     </StackPanel>
                     <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
                 </Grid>
             </TabItem>
