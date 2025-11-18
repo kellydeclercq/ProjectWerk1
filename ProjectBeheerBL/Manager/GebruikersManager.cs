@@ -33,5 +33,10 @@ namespace ProjectBeheerBL.Beheerder
             _repo.MaakNieuweGebruikerAan(naam, email, rol);
         }
 
+        public List<Gebruiker> GeefAlleGebruikers()
+        {
+            return _repo.GeefAlleGebruikers();
+        }
+
     }
 }
