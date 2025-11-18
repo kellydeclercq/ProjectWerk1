@@ -24,32 +24,32 @@ namespace ProjectBeheerBL.Beheerder
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             // parameters aanmaak groeneRuimte
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten)
+            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker)
         {
             _repo.MaakGroeneruimteProjectAan(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
                 oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, 
-                faciliteiten);
+                faciliteiten, gebruiker);
         }
 
         public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
-            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas)
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker)
         {
 
-            _repo.MaakStadsontwikkelingsProjectAan(id, projectTitel, beschrijving,  startDatum,  projectStatus,
+            _repo.MaakStadsontwikkelingsProjectAan(projectTitel, beschrijving,  startDatum,  projectStatus,
              wijk, fotos, documenten, partners,  vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
-             infoBordenOfWandeling,  bouwfirmas);
+             infoBordenOfWandeling,  bouwfirmas, gebruiker);
         }
 
         public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             //parameters innovatief wonen
             int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen)
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker)
         {
             _repo.MaakInnovatiefWonenProjectAan( projectTitel,  beschrijving, startDatum,  projectStatus,
              wijk,  fotos,  documenten,  partners, aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
-             samenwerkingToerisme, woonvormen);
+             samenwerkingToerisme, woonvormen, gebruiker);
         }
 
         public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
