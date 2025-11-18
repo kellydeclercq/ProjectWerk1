@@ -8,8 +8,8 @@ namespace ProjectBeheerBL.Domein
 {
     public class LijstService
     {
-        List<string> Faciliteiten;
-        List<string> Woonvormen;
+        public List<string> Faciliteiten;
+        public List<string> Woonvormen;
 
         public LijstService()
         {
