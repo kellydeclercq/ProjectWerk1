@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Domein;
 
 namespace ProjectBeheerWPF_UI.BeheerderUI
 {
@@ -26,17 +27,64 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om details te kunnen bekijken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+                if (project != null)
+                {
+                    //navigeer naar DetailsProject
+                    var detailsProject = new DetailsProject(project);
+                    detailsProject.Show();
+                }
+            }
         }
 
         private void Bewerk_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+                if (project != null)
+                {
+                    //navigeer naar BewerkProject
+                    var bewerkProject = new BewerkProject(project);
+                    bewerkProject.Show();
+                }
+            }
         }
 
         private void Exporteer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om te kunnen exporteren.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+                if (project != null)
+                {
+                    //navigeer naar DetailsProject
+                    var exporteerWindow = new ExportWindow(project);
+                    exporteerWindow.Show();
+                }
+            }
         }
     }
 }
