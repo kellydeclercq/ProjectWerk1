@@ -13,6 +13,8 @@ namespace ProjectBeheerBL.Domein
 
         public LijstService()
         {
+            Faciliteiten = new List<string>();
+            Woonvormen = new List<string>();
         }
     }
 }
