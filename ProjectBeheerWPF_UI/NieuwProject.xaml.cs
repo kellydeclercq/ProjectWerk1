@@ -20,16 +20,10 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
-        private GebruikersManager _gebruikersManager;
-        
         public NieuwProject()
         {
             InitializeComponent();
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            _gebruikersManager.
-        }
     }
 }

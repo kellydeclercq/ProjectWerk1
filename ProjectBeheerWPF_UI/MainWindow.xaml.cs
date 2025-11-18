@@ -11,8 +11,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
-using ProjectBeheerDL_SQL;
-using ProjectBeheerUtils;
+using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerWPF_UI.BeheerderUI;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -37,23 +37,28 @@ namespace ProjectBeheerWPF_UI
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            Gebruiker gebruiker = gebruikersManager.GeefGebruikeradhvEmail(EmailTextBox.Text);
-            if (beh)
+            string email = LoginEmailTextBox.Text;
+            var gebruiker = _gebruikersManager.GeefGebruikeradhvEmail(email);
+            
+            if (gebruiker != null)
             {
-
-                BeheerdersWindow beheerdersWindow = new BeheerdersWindow(lid, ledenManager, eventsManager, bestellingManager);
-                beheerdersWindow.Show();
-                this.Close();
-            }
-            else if (lid != null)
-            {
-                UserWindow userWindow = new UserWindow(lid);
-                userWindow.Show();
-                this.Close();
+                
+                if(gebruiker.GebruikersRol == GebruikersRol.Beheerder)
+                {
+                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new();
+                    beheerderHomeProjectBeheer.Show();
+                }
+                    
+                else
+                {
+                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer();
+                    homeProjectBeheer.Show();
+                }
+                Close();
             }
             else
             {
-                MessageBox.Show("Gebruiker bestaat niet");
+                MessageBox.Show("Dit e-mailadres is niet gekend", "E-mailadres niet gekend", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
