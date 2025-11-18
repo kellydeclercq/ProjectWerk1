@@ -9,8 +9,8 @@ namespace ProjectBeheerBL.Domein
 {
     public abstract class Project
     {
-        public Project(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos,
-            List<byte[]>? documenten, List<Partner> partners)
+        public Project(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
+            List<byte[]> documenten, List<Partner> partners)
         {
             Id = id;
             ProjectTitel = projectTitel;
@@ -20,11 +20,11 @@ namespace ProjectBeheerBL.Domein
             Wijk = wijk;
             Fotos = fotos;
             Documenten = documenten;
-            Partners = new List<Partner>();
+            Partners = partners;
         }
 
-        public Project(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos,
-            List<byte[]>? documenten, List<Partner> partners)
+        public Project(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
+            List<byte[]> documenten, List<Partner> partners)
         {
             ProjectTitel = projectTitel;
             Beschrijving = beschrijving;
@@ -33,7 +33,7 @@ namespace ProjectBeheerBL.Domein
             Wijk = wijk;
             Fotos = fotos;
             Documenten = documenten;
-            Partners = new List<Partner>();
+            Partners = partners;
         }
 
         public int? Id { get; private set; }
@@ -42,8 +42,8 @@ namespace ProjectBeheerBL.Domein
         public DateTime? StartDatum { get; set; }
         public ProjectStatus ProjectStatus { get; set; }
         public String Wijk { get; set; }
-        List<byte[]>? Fotos { get; set; }
-        List<byte[]>? Documenten { get; set; }
+        List<byte[]> Fotos { get; set; }
+        List<byte[]> Documenten { get; set; }
         public List<Partner> Partners { get; set; }
 
 
