@@ -12,14 +12,21 @@ namespace ProjectBeheerBL.Domein
         public string Naam { get; set; }
         public string Email { get; set; }
         public string TelefoonNummer { get; set; }
-        public string Website { get; set; }
+        public string? Website { get; set; }
 
-        public BouwFirma(string naam, string email, string telefoonNummer, string website)
+        public BouwFirma(string naam, string email, string telefoonNummer, string? website)
         {           
             Naam = naam;
             Email = email;
             TelefoonNummer = telefoonNummer;
             Website = website;
+        }
+
+        public BouwFirma(string naam, string email, string telefoonNummer)
+        {
+            Naam = naam;
+            Email = email;
+            TelefoonNummer = telefoonNummer;
         }
     }
 }
