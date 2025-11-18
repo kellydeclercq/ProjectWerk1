@@ -35,7 +35,7 @@ namespace ProjectBeheerBL.Beheerder
                     ((IStadsontwikkeling)p).StadsOntwikkeling : null;
                 InnovatiefWonen? innovatiefWonen = heeftIW ?
                     ((IInnovatiefWonen)p).InnovatiefWonen : null;
-                
+
                 var record = new {
 
                     ProjectId = p.Id,
@@ -44,8 +44,20 @@ namespace ProjectBeheerBL.Beheerder
                     StartDatum = p.StartDatum,
                     ProjectStatus = p.ProjectStatus,
                     Wijk = p.Wijk,
-                    Foto
+                    Fotos = p.Fotos.Count,
+                    Documenten = p.Documenten.Count,
+                    Partners = p.Partners,
+                    ProjectEignaar = p.ProjectEigenaar,
 
+                    IsStadOntwikkeling = heeftSO ? "ja" : "neen",
+                    IsGroeneRuimte = heeftGR ? "ja" : "neen",
+                    IsInnovatiefWonen = heeftIW ? "ja" : "neen",
+
+                    OppervlakteInVierkanteM = groeneRuimte.OppervlakteInVierkanteMeter,
+                    BiodiversiteitScore = groeneRuimte.BioDiversiteitsScore,
+                    AantalWandelpaden = groeneRuimte.AantalWandelpaden,
+                    OpgenomenInWandelRoute = groeneRuimte.OpgenomenInWandelRoute? "ja" : "neen",
+                    BezoekersScore = groeneRuimte.BezoekersScore,
                 }
 
 
