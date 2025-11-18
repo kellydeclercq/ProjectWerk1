@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI.BeheerderUI
@@ -29,17 +31,51 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
-
+            if (GebruikerOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om details te kunnen bekijken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (GebruikerOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Gebruiker gebruiker = GebruikerOverzichtDatagrid.SelectedItem as Gebruiker;
+                if (gebruiker != null)
+                {
+                    //navigeer naar DetailsProject
+                    var detailsGebruiker = new DetailsGebruiker(gebruiker);
+                    detailsGebruiker.Show();
+                }
+            }
         }
 
         private void Bewerk_Click(object sender, RoutedEventArgs e)
         {
-
+            if (GebruikerOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (GebruikerOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Gebruiker gebruiker = GebruikerOverzichtDatagrid.SelectedItem as Gebruiker;
+                if (gebruiker != null)
+                {
+                    //navigeer naar BewerkProject
+                    var bewerkGebruiker = new BewerkGebruiker(gebruiker);
+                    bewerkGebruiker.Show();
+                }
+            }
         }
 
         private void Verwijder_Click(object sender, RoutedEventArgs e)
         {
-
+            throw new NotImplementedException();
         }
     }
 }
