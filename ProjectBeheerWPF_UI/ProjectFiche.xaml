@@ -1,0 +1,29 @@
+﻿<Window x:Class="ProjectBeheerWPF_UI.ProjectFiche"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:ProjectBeheerWPF_UI"
+        mc:Ignorable="d"
+        Title="ProjectFiche" Height="1000" Width="1500">
+    <Grid Name="OverzichtGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <xctk:PropertyGrid Grid.Column="1" Grid.Row="1" x:Name="ProductFichePropertyGrid"
+           SelectedObject="{Binding SelectedItem}" />
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="ExportProjectFicheButton" Width="150" Height="50" Content="Exporteren"/>
+            <Button Name="BewerkProjectFicheButton" Width="150" Height="50" Content="Bewerken"/>
+        </StackPanel>
+    </Grid>
+</Window>
