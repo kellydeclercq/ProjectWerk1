@@ -29,18 +29,37 @@ namespace ProjectBeheerBL.Domein
             }
         }
 
-        private int _bioDiversiteitsScore;
+        private int? _bioDiversiteitsScore;
         public int? BioDiversiteitsScore {
             get { return _bioDiversiteitsScore; }
-            set {
+            set { if (value == null)
+                {
+                    _bioDiversiteitsScore = null;
+                    return;
+                }
+            
                 if (value < 0 || value > 10) throw new ProjectException("Score moet tussen 0-10 zijn.");
-                _bioDiversiteitsScore = value;
+                _bioDiversiteitsScore = (int)value;
             }
         }
         public int? AantalWandelpaden { get; set; }
         public bool OpgenomenInWandelRoute { get; set; }
-        public int? BezoekersScore { get; set; } //TODO optioneel + hoe keuzes afdwingen? Weer lijst of in BL
-        //opties in UI kunnen opgevraagd worden via de OptieLijsten (klasse), de gekozen strings + vrij invoerveld worden in deze lijst gestoken
+
+
+        private int? _bezoekersScore;
+        public int? BezoekersScore {
+            get { return _bezoekersScore; }
+            set {
+                if (value == null)
+                {
+                    _bezoekersScore = null;
+                    return;
+                }
+
+                if (value < 0 || value > 5) throw new ProjectException("Score moet tussen 0-5 zijn.");
+                _bezoekersScore = (int)value;
+            }
+        }
         public List<string> Faciliteiten { get; set; }
 
         
