@@ -16,35 +16,20 @@ using ProjectBeheerBL.Domein;
 namespace ProjectBeheerWPF_UI
 {
     /// <summary>
-    /// Interaction logic for ExportWindow.xaml
+    /// Interaction logic for BewerkProject.xaml
     /// </summary>
-    public partial class ExportWindow : Window
+    public partial class BewerkProject : Window
     {
         private Project project;
 
-        public ExportWindow()
+        public BewerkProject()
         {
             InitializeComponent();
         }
 
-        public ExportWindow(Project project)
+        public BewerkProject(Project project)
         {
             this.project = project;
-        }
-
-        private void BladerenButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ExporteerAlsCSVButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ExporteerAlsPDFButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

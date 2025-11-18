@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerWPF_UI.BeheerderUI;
 
@@ -19,32 +21,40 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private GebruikersManager _gebruikersManager;
-
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory = new();
         public MainWindow()
         {
             InitializeComponent();
+
+            //nieuwe managers aanmaken
+            exportManager = new ExportManager();
+            gebruikersManager = new GebruikersManager(beheerMemoryFactory.GeefGebruikerRepo());
+            projectManager = new ProjectManager(beheerMemoryFactory.GeefProjectRepo());
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string email = LoginEmailTextBox.Text;
             var gebruiker = _gebruikersManager.GeefGebruikeradhvEmail(email);
-            bool IsAdmin = false;
+            
             if (gebruiker != null)
             {
                 
-                if(!IsAdmin)
-                {
-                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer(); 
-                    homeProjectBeheer.Show();
-                }
-                    
-                else
+                if(gebruiker.GebruikersRol == GebruikersRol.Beheerder)
                 {
                     BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new();
                     beheerderHomeProjectBeheer.Show();
                 }
+                    
+                else
+                {
+                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer();
+                    homeProjectBeheer.Show();
+                }
+                Close();
             }
             else
             {
