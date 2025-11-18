@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Domein;
 
 namespace ProjectBeheerWPF_UI.GebruikerUI
 {
@@ -19,6 +20,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
     /// </summary>
     public partial class OverzichtEigenProjecten : Window
     {
+        private List<Project> projecten = new(); 
         public OverzichtEigenProjecten()
         {
             InitializeComponent();
@@ -26,17 +28,35 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
-
+            Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+            if (project != null) 
+            { 
+                //navigeer naar DetailsProject
+                var detailsProject = new DetailsProject(project);
+                detailsProject.Show();
+            }
         }
 
         private void Bewerk_Click(object sender, RoutedEventArgs e)
         {
-
+            Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+            if (project != null)
+            {
+                //navigeer naar BewerkProject
+                var bewerkProject = new BewerkProject(project);
+                bewerkProject.Show();
+            }
         }
 
         private void Exporteer_Click(object sender, RoutedEventArgs e)
         {
-
+            Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+            if (project != null)
+            {
+                //navigeer naar DetailsProject
+                var exporteerWindow = new ExportWindow(project);
+                exporteerWindow.Show();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,12 +21,18 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private GebruikersManager _gebruikersManager;
-
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory = new();
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            //nieuwe managers aanmaken
+            exportManager = new ExportManager();
+            gebruikersManager = new GebruikersManager(beheerMemoryFactory.GeefGebruikerRepo());
+            projectManager = new ProjectManager(beheerMemoryFactory.GeefProjectRepo());
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
