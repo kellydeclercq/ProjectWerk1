@@ -82,7 +82,8 @@ namespace ProjectBeheerBL.Domein
 
         public override string? ToString()
         {
-            return $"{ProjectTitel}, {Type}, {GebruikersRol}";
+            throw new NotImplementedException();
+            /*return $"{ProjectTitel}, {Type}, {GebruikersRol}";*/
         }
     }
 }
