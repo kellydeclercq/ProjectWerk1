@@ -10,5 +10,11 @@ namespace ProjectBeheerBL.Domein
     {
         List<string> Faciliteiten;
         List<string> Woonvormen;
+
+        public LijstService()
+        {
+            Faciliteiten = new List<string>();
+            Woonvormen = new List<string>();
+        }
     }
 }

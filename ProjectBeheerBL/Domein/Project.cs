@@ -7,9 +7,9 @@ using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
 {
-    public class Project
+    public abstract class Project
     {
-        public int? Id { get; set; }
+        public int? Id { get; private set }
         public string ProjectTitel { get; set; }
         public string Beschrijving { get; set; }
         public DateTime? StartDatum { get; set; }
