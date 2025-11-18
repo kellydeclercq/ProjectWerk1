@@ -74,8 +74,8 @@ namespace ProjectBeheerBL.Domein
                 _wijk = trimmed;
             }
         }
-        List<byte[]> Fotos { get; set; }
-        List<byte[]> Documenten { get; set; }
+        public List<byte[]> Fotos { get; set; }
+        public List<byte[]> Documenten { get; set; }
         public List<Partner> Partners { get; set; }
 
         public Gebruiker ProjectEigenaar { get; set; }

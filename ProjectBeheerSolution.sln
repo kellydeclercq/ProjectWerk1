@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerWPF_UI", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerDL_SQL", "ProjectBeheerDL_SQL\ProjectBeheerDL_SQL.csproj", "{030EBDDA-3308-498C-83CF-9AE790555D2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectBeheerTESTS", "ProjectBeheerTESTS\ProjectBeheerTESTS.csproj", "{8E1B9864-0ABF-4232-B0D8-B9C9390CFC53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{030EBDDA-3308-498C-83CF-9AE790555D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1B9864-0ABF-4232-B0D8-B9C9390CFC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1B9864-0ABF-4232-B0D8-B9C9390CFC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1B9864-0ABF-4232-B0D8-B9C9390CFC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1B9864-0ABF-4232-B0D8-B9C9390CFC53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
