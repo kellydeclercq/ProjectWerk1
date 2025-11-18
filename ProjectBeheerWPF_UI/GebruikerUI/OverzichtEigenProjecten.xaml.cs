@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI.GebruikerUI
 {
@@ -21,7 +23,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
     public partial class OverzichtEigenProjecten : Window
     {
         private List<Project> projecten = new(); 
-        public OverzichtEigenProjecten()
+        public OverzichtEigenProjecten(ExportManager exportManager, GebruikersManager gebruikersManager,
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
         }

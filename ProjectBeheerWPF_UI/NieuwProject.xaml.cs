@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -20,7 +21,8 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
-        public NieuwProject()
+        public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
         }
