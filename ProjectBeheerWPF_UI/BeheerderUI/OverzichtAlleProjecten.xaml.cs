@@ -23,5 +23,20 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             InitializeComponent();
         }
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Bewerk_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exporteer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
