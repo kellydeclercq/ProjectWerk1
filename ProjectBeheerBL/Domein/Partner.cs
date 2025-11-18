@@ -44,18 +44,47 @@ namespace ProjectBeheerBL.Domein
                 else throw new ProjectException($"email {value} niet ok");
             }
         }
-        public string TelefoonNummer { get; set; }
+        private string telefoonNummer;
+        public string TelefoonNummer {
+            get { return telefoonNummer; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Telefoonnummer mag niet leeg zijn.");
+                var trimmed = value.Trim();
+
+                if (trimmed.Contains('+') && !trimmed.StartsWith('+')) throw new ProjectException("+ mag enkel vooraan staan.");
+                bool heeftPlus = trimmed.StartsWith("+");
+                trimmed = trimmed
+                    .Replace(" ", "")
+                    .Replace("/", "")
+                    .Replace(".", "")
+                    .Replace("-", "");
+
+                string digits = heeftPlus ? trimmed.Substring(1) : trimmed;
+                if (!digits.All(char.IsDigit))
+                    throw new ProjectException("Telefoonnummer bevat ongeldige tekens.");
+
+                if (digits.Length < 9 || digits.Length > 15)
+                    throw new ProjectException("telefoonnummer heeft geen geldige lengte.");
+
+                telefoonNummer = trimmed;
+            }
+        }
         public string? Website { get; set; }
 
         private string rolOmschrijving;
-        public string RolOmschrijving { 
+        public string RolOmschrijving {
             get { return rolOmschrijving; }
-            set{
+            set {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Rolomschrijving mag niet leeg zijn.");
                 var trimmed = value.Trim();
                 if (trimmed.Length < 2) throw new ProjectException("Naam moet langer dan 2 karakters zijn.");
                 rolOmschrijving = trimmed;
-            }       
+            }
+        }
+        public override string? ToString()
+        {
+            return $"{Naam}, {Email}, {TelefoonNummer}, rol: {RolOmschrijving}";
+        }
 
 
     }

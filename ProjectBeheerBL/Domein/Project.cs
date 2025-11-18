@@ -11,7 +11,7 @@ namespace ProjectBeheerBL.Domein
     public abstract class Project
     {
         public Project(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
-            List<byte[]> documenten, List<Partner> partners)
+            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar)
         {
             Id = id;
             ProjectTitel = projectTitel;
@@ -22,10 +22,11 @@ namespace ProjectBeheerBL.Domein
             Fotos = fotos;
             Documenten = documenten;
             Partners = partners;
+            ProjectEigenaar = projectEigenaar;
         }
 
         public Project(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
-            List<byte[]> documenten, List<Partner> partners)
+            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar)
         {
             ProjectTitel = projectTitel;
             Beschrijving = beschrijving;
@@ -35,6 +36,7 @@ namespace ProjectBeheerBL.Domein
             Fotos = fotos;
             Documenten = documenten;
             Partners = partners;
+            ProjectEigenaar = projectEigenaar;
         }
 
         public int? Id { get; private set; }
@@ -76,6 +78,11 @@ namespace ProjectBeheerBL.Domein
         List<byte[]> Documenten { get; set; }
         public List<Partner> Partners { get; set; }
 
+        public Gebruiker ProjectEigenaar { get; set; }
 
+        public override string? ToString()
+        {
+            return $"{ProjectTitel}, {Type}, {GebruikersRol}";
+        }
     }
 }
