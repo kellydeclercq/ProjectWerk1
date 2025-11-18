@@ -7,6 +7,7 @@ using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.ProjectTypesSubklasses;
 using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.Repo;
+using ProjectBeheerBL.typeSoorten;
 
 namespace ProjectBeheerDL_Memory
 {
@@ -62,14 +63,14 @@ namespace ProjectBeheerDL_Memory
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, innovatiefWonen);
             StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(6, "fully robotic co-woningen in het park", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, groeneRuimte, innovatiefWonen);
-            StadsontwikkelinProject sop = new StadsontwikkelinProject(7, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
+            StadsontwikkelingProject sop = new StadsontwikkelingProject(7, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling);
 
 
             //Partners aanmaken
-            Partner p1 = new Partner("AOC group", "jos@aoc.com", "0471 22 44 66", "www.aoc.be", "Ruwbouw"));
-            Partner p2 = new Partner("StromendWater group", "ann.@stromendwater.com", "0499 23 11 02", "www.stromendwater.be", "Sanitair"));
-            Partner p3 = new Partner("Volts group", "John@volts.com", "0486 25 36 66", "www.voltsElectric.be", "Electra")); 
+            Partner p1 = new Partner("AOC group", "jos@aoc.com", "0471 22 44 66", "www.aoc.be", "Ruwbouw");
+            Partner p2 = new Partner("StromendWater group", "ann.@stromendwater.com", "0499 23 11 02", "www.stromendwater.be", "Sanitair");
+            Partner p3 = new Partner("Volts group", "John@volts.com", "0486 25 36 66", "www.voltsElectric.be", "Electra"); 
         
 
             // Bouwfirma aanmaken
