@@ -76,7 +76,7 @@ namespace ProjectBeheerDL_Memory
 
             StadsontwikkelingsInnovatiefWonenProject soiwp = new StadsontwikkelingsInnovatiefWonenProject(5, "Kangoeroe woningen in apartementen", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, innovatiefWonen, partners);
-            StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(6, "fully robotic co-woningen in het park", langeBeschrijving,
+            StadsontwikkelingsGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(6, "fully robotic co-woningen in het park", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, groeneRuimte, innovatiefWonen, partners2);
 
             StadsontwikkelingProject sop = new StadsontwikkelingProject(7, "Kangoeroe woningen in Mariakerke", langeBeschrijving,

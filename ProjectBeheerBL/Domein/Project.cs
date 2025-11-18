@@ -40,17 +40,38 @@ namespace ProjectBeheerBL.Domein
         public int? Id { get; private set; }
 
         private string _projectTitel;
-        public string ProjectTitel { 
-            get { return _projectTitel; } 
-            set{
+        public string ProjectTitel {
+            get { return _projectTitel; }
+            set {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Titel mag niet leeg zijn");
                 var trimmed = value.Trim();
                 if (trimmed.Length < 5 || trimmed.Length > 50) throw new ProjectException("Titel moet meer karakters hebben dan 5 en max 50.");
+                _projectTitel = trimmed;
             }
-        public string Beschrijving { get; set; }
+        }
+        private string _beschrijving;
+        public string Beschrijving {
+            get { return _beschrijving; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Beschrijving mag niet leeg zijn");
+                var trimmed = value.Trim();
+                if (trimmed.Length < 20 || trimmed.Length > 1000) throw new ProjectException("Titel moet meer karakters hebben dan 20 en max 1000.");
+                _beschrijving = trimmed;
+            }
+        }
         public DateTime? StartDatum { get; set; }
         public ProjectStatus ProjectStatus { get; set; }
-        public String Wijk { get; set; }
+
+        private string _wijk;
+        public string Wijk {
+            get { return _wijk; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Wijk mag niet leeg zijn");
+                var trimmed = value.Trim();
+                if (trimmed.Length < 2) throw new ProjectException("Wijk moet meer dan 2 karakters zijn");
+                _wijk = trimmed;
+            }
+        }
         List<byte[]> Fotos { get; set; }
         List<byte[]> Documenten { get; set; }
         public List<Partner> Partners { get; set; }
