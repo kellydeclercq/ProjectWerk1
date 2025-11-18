@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectBeheerBL.Interfaces;
+using ProjectBeheerBL.Interfaces.Repo;
 using ProjectBeheerDL_Memory;
 using ProjectBeheerDL_SQL;
 
@@ -11,12 +11,12 @@ namespace ProjectBeheerUtils
 {
     public class ProjectSQLFactory
     {
-        public IGebruikerRepositoryMemory GeefGebruikerRepo()
+        public IGebruikerRepository GeefGebruikerRepo()
         {
             return new GebruikerRepository();
         }
 
-        public IProjectRepositoryMemory GeefProjectRepo()
+        public IProjectRepository GeefProjectRepo()
         {
             return new ProjectRepository();
         }

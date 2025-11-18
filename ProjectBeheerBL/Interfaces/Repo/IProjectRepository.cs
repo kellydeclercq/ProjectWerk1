@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerBL.Interfaces
+namespace ProjectBeheerBL.Interfaces.Repo
 {
-    public class IGebruikerRepositoryMemory
+    public class IProjectRepository
     {
+
     }
 }

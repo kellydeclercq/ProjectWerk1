@@ -10,6 +10,7 @@ namespace ProjectBeheerBL.Domein
     public class Gebruiker
     {     
         public string Naam { get; set; }
+        public string Email { get; set; }
         public GebruikersRol GebruikersRol { get; set; }
 
         public Gebruiker(string naam, GebruikersRol gebruikersRol)
