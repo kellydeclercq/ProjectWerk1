@@ -25,6 +25,6 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             GroeneRuimte = groeneRuimte;
         }
 
-        public GroeneRuimte GroeneRuimte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public GroeneRuimte GroeneRuimte { get; set; }
     }
 }

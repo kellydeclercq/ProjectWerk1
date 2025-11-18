@@ -26,6 +26,6 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             StadsOntwikkeling = stadsOntwikkeling;
         }
 
-        public StadsOntwikkeling StadsOntwikkeling { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public StadsOntwikkeling StadsOntwikkeling { get; set; }
     }
 }

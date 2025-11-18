@@ -32,8 +32,8 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        public StadsOntwikkeling StadsOntwikkeling { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public GroeneRuimte GroeneRuimte { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public InnovatiefWonen InnovatiefWonen { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public StadsOntwikkeling StadsOntwikkeling { get; set; }
+        public GroeneRuimte GroeneRuimte { get; set; }
+        public InnovatiefWonen InnovatiefWonen { get; set; }
     }
 }
