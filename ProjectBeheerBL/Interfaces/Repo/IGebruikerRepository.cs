@@ -14,7 +14,6 @@ namespace ProjectBeheerBL.Interfaces.Repo
         public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol);
 
         public bool BestaatGebruikerAl(string email);
-        
-
+        List<Gebruiker> GeefAlleGebruikers();
     }
 }
