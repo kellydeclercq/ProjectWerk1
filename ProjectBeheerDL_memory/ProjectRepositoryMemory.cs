@@ -94,10 +94,57 @@ namespace ProjectBeheerDL_Memory
             #endregion
         }
 
-        public void MaakGroeneruimteProjectAan()
+        //TODO methode uitwerken --kelly--
+        public void MaakGroeneRuimteInnovatiefWonenProjectAan()
         {
             throw new NotImplementedException();
         }
+
+        public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
+            List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, 
+            // parameters aanmaak groeneRuimte
+            double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten)
+        {
+
+            GroeneRuimteProject project = new(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
+                MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
+        }
+
+        public void MaakInnovatiefWonenProjectAan()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MaakStadsOntwikkelingGroeneRuimteProjectAan()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MaakStadsontwikkelingsProjectAan()
+        {
+            throw new NotImplementedException();
+        }
+
+        //methode aanmaak types
+
+        public GroeneRuimte MaakGroeneRuimteAan(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten)
+        {
+            return new GroeneRuimte(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten);
+        }
+
+    
     }
 
 
