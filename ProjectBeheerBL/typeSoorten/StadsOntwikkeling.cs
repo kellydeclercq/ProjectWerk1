@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Enumeraties;
 
-namespace ProjectBeheerBL.Domein
+namespace ProjectBeheerBL.typeSoorten
 {
-    public class StadsOntwikkeling : Project
+    public class StadsOntwikkeling 
     {
-        public StadsOntwikkeling(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos, List<byte[]>? documenten,
-            VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen, bool infoBordenOfWandeling, List<BouwFirma> bouwFirmas) : 
-            base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+        public StadsOntwikkeling(VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen, bool infoBordenOfWandeling)            
         {
             VergunningsStatus = vergunningsStatus;
             ArchitecturaleWaarde = architecturaleWaarde;
