@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectBeheerBL.Interfaces;
+using ProjectBeheerBL.Interfaces.Repo;
 
 namespace ProjectBeheerBL.Beheerder
 {
     public class GebruikersManager
     {
-        IGebruikerRepositoryMemory _repo;
+        IGebruikerRepository _repo;
 
-        public GebruikersManager(IGebruikerRepositoryMemory repo)
+        public GebruikersManager(IGebruikerRepository repo)
         {
             _repo = repo;
         }

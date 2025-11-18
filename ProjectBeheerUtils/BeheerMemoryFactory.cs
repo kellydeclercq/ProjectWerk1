@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectBeheerBL.Interfaces;
+using ProjectBeheerBL.Interfaces.Repo;
 using ProjectBeheerDL_Memory;
 
 namespace ProjectBeheerUtils
 {
     public class BeheerMemoryFactory
     {
-        public IGebruikerRepositoryMemory GeefGebruikerRepo()
+        public IGebruikerRepository GeefGebruikerRepo()
         {
             return new GebruikerRepositoryMemory();
         }
 
-        public IProjectRepositoryMemory GeefProjectRepo()
+        public IProjectRepository GeefProjectRepo()
         {
             return new ProjectRepositoryMemory();
         }

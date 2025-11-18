@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerBL.Interfaces
+namespace ProjectBeheerBL.Interfaces.Repo
 {
-    public interface IExportRepository
+    public class IGebruikerRepository
     {
     }
 }
