@@ -25,7 +25,7 @@ namespace ProjectBeheerBL.typeSoorten
         public bool ArchitecturaleWaarde { get; set; }
         public Toegankelijkheid Toegankelijkheid { get; set; }
         public bool BeziensWaardigheidVoorToeristen { get; set; }
-        public bool InfobordenOfWandeling { get; set; } //TODO checken of dit niet beter opgesplitst wordt
+        public bool InfobordenOfWandeling { get; set; }
 
         public List<BouwFirma> BouwFirmas { get; set; }
     }
