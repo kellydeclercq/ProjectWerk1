@@ -30,11 +30,13 @@ namespace ProjectBeheerBL.Domein
         }
 
         private int _bioDiversiteitsScore;
-        public int? BioDiversiteitsScore { 
+        public int? BioDiversiteitsScore {
             get { return _bioDiversiteitsScore; }
-            set{
-                if (value < 0 )
+            set {
+                if (value < 0 || value > 10) throw new ProjectException("Score moet tussen 0-10 zijn.");
+                _bioDiversiteitsScore = value;
             }
+        }
         public int? AantalWandelpaden { get; set; }
         public bool OpgenomenInWandelRoute { get; set; }
         public int? BezoekersScore { get; set; } //TODO optioneel + hoe keuzes afdwingen? Weer lijst of in BL

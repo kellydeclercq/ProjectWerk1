@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
 {
-    public class StadsontwikkelinProject : Project, IStadsontwikkeling
+    public class StadsontwikkelingProject : Project, IStadsontwikkeling
     {
 
-        public StadsontwikkelinProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
+        public StadsontwikkelingProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, StadsOntwikkeling stadsOntwikkeling) 
             : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
             StadsOntwikkeling = stadsOntwikkeling;
         }
 
-        public StadsontwikkelinProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
+        public StadsontwikkelingProject(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, 
             string wijk, List<byte[]> fotos, List<byte[]> documenten, StadsOntwikkeling stadsOntwikkeling) 
             : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
         {
