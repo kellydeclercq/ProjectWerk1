@@ -10,7 +10,8 @@ namespace ProjectBeheerBL.typeSoorten
 {
     public class GroeneRuimte
     {
-        public GroeneRuimte(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute, int? bezoekersScore, List<string> faciliteiten)
+        public GroeneRuimte(double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute, 
+            int? bezoekersScore, List<string> faciliteiten)
         {
             OppervlakteInVierkanteMeter = oppervlakteInVierkanteMeter;
             BioDiversiteitsScore = bioDiversiteitsScore;

@@ -9,7 +9,8 @@ namespace ProjectBeheerBL.typeSoorten
 {
     public class InnovatiefWonen 
     {
-        public InnovatiefWonen(int aantalWooneenheden, bool rondleidingMogelijk, int innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed, bool samenwerkingToerisme, List<string> woonvormen)
+        public InnovatiefWonen(int aantalWooneenheden, bool rondleidingMogelijk, int innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed, 
+            bool samenwerkingToerisme, List<string> woonvormen)
         {
             AantalWooneenheden = aantalWooneenheden;
             RondleidingMogelijk = rondleidingMogelijk;
