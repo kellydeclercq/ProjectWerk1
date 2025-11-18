@@ -94,9 +94,10 @@ namespace ProjectBeheerDL_Memory
             #endregion
         }
 
-       
-      
-       
+        public void MaakGroeneruimteProjectAan()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

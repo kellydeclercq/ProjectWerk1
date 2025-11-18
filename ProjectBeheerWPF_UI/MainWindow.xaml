@@ -20,7 +20,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Stad Gent Projectbeheer</TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="5"/>
-        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="LoginButton" Content="Login"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Name="LoginEmailTextBox"/>
+        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="LoginButton" Content="Login" Click="LoginButton_Click"/>
     </Grid>
 </Window>

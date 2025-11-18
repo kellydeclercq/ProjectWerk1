@@ -11,19 +11,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ProjectBeheerBL.Beheerder;
 
 namespace ProjectBeheerWPF_UI
 {
     /// <summary>
-    /// Interaction logic for NieuwProject.xaml
+    /// Interaction logic for ExportWindow.xaml
     /// </summary>
-    public partial class NieuwProject : Window
+    public partial class ExportWindow : Window
     {
-        public NieuwProject()
+        public ExportWindow()
         {
             InitializeComponent();
         }
 
+        private void BladerenButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExporteerAlsCSVButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExporteerAlsPDFButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

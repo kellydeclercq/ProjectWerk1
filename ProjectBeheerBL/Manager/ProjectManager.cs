@@ -18,8 +18,41 @@ namespace ProjectBeheerBL.Beheerder
             _repo = repo;
         }
 
-       
+        public void MaakGroeneruimteProjectAan()
+        {
+            _repo.MaakGroeneruimteProjectAan();
+        }
 
+        public void MaakStadsontwikkelingsProjectAan()
+        {
+
+            _repo.MaakStadsontwikkelingsProjectAan();
+        }
+
+        public void MaakInnovatiefWonenProjectAan()
+        {
+            _repo.MaakInnovatiefWonenProjectAan();
+        }
+
+        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
+        {
+            _repo.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+        }
+
+        public void MaakStadsOntwikkelingGroeneRuimteProjectAan()
+        {
+            _repo.MaakStadsOntwikkelingGroeneRuimteProjectAan();
+        }
+
+        public void MaakGroeneRuimteInnovatiefWonenProjectAan()
+        {
+            _repo.MaakGroeneRuimteInnovatiefWonenProjectAan();
+        }
+
+        public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject()
+        {
+            _repo.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+        }
 
 
     }
