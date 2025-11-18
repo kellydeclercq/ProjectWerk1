@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -22,7 +24,8 @@ namespace ProjectBeheerWPF_UI
     {
         private Project project;
 
-        public BewerkProject()
+        public BewerkProject(ExportManager exportManager, GebruikersManager gebruikersManager,
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
         }

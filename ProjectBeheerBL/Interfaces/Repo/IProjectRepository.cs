@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Enumeraties;
+using ProjectBeheerBL.typeSoorten;
 
 namespace ProjectBeheerBL.Interfaces.Repo
 {
@@ -28,7 +29,8 @@ namespace ProjectBeheerBL.Interfaces.Repo
 
         void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
 
-        void MaakStadsontwikkelingsProjectAan();
+        void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, StadsOntwikkeling stadsOntwikkeling);
 
     }
 }
