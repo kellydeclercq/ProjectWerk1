@@ -66,7 +66,7 @@ namespace ProjectBeheerDL_Memory
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, groeneRuimte, innovatiefWonen, partners);
 
             GroeneRuimteProject grp = new GroeneRuimteProject(2, "Groene bibilitoheek in oostakker", langeBeschrijving,
-                new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, groeneRuimte, partners2);
+                new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, groeneRuimte);
 
             InnovatiefWonenProject iwp = new InnovatiefWonenProject(3, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, innovatiefWonen, partners);
@@ -109,6 +109,7 @@ namespace ProjectBeheerDL_Memory
 
             GroeneRuimteProject project = new(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
+
         }
 
         public void MaakInnovatiefWonenProjectAan()
