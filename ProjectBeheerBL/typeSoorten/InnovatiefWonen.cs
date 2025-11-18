@@ -5,22 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Enumeraties;
 
-namespace ProjectBeheerBL.Domein
+namespace ProjectBeheerBL.typeSoorten
 {
-    public class InnovatiefWonen : Project
+    public class InnovatiefWonen 
     {
-        public InnovatiefWonen(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus, string wijk, List<byte[]>? fotos, List<byte[]>? documenten,
-            int aantalWooneenheden, bool rondleidingmogelijk, int innovatieScore, bool showwoningbeschikbaar, bool samenwerkingErfgoed, bool samenwerkingToerisme, List<string> woonvormen) : 
-            base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten)
+        public InnovatiefWonen(int aantalWooneenheden, bool rondleidingMogelijk, int innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed, bool samenwerkingToerisme, List<string> woonvormen)
         {
             AantalWooneenheden = aantalWooneenheden;
-            RondleidingMogelijk = rondleidingmogelijk;
+            RondleidingMogelijk = rondleidingMogelijk;
             InnovatieScore = innovatieScore;
-            ShowwoningBeschikbaar = showwoningbeschikbaar;
+            ShowwoningBeschikbaar = showwoningBeschikbaar;
             SamenwerkingErfgoed = samenwerkingErfgoed;
             SamenwerkingToerisme = samenwerkingToerisme;
             Woonvormen = woonvormen;
-
         }
 
         public int AantalWooneenheden { get; set; }

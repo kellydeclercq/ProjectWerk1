@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Enumeraties;
 
-namespace ProjectBeheerBL.Domein
+namespace ProjectBeheerBL.typeSoorten
 {
     public class StadsOntwikkeling 
     {

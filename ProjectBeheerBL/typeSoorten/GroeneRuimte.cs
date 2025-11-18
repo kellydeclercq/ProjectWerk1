@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerBL.Enumeraties;
 
-namespace ProjectBeheerBL.Domein
+namespace ProjectBeheerBL.typeSoorten
 {
     public class GroeneRuimte
     {
