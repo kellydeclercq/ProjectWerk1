@@ -13,6 +13,7 @@ namespace ProjectBeheerDL_Memory
 {
     public class ProjectRepositoryMemory : IProjectRepository
     {
+        private List<Project> projectLijst = new List<Project>();
         
         //foto's en documenten optioneel maken
         private LijstService lijstService = new LijstService();
@@ -63,24 +64,34 @@ namespace ProjectBeheerDL_Memory
             // 7 projecten aanmaken (elke soort)
 
             GroeneRuimteInnovatiefWonenProject griwp = new GroeneRuimteInnovatiefWonenProject(1, "Modern Wonen aan de Bijloke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, groeneRuimte, innovatiefWonen, partners);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, partners, groeneRuimte, innovatiefWonen);
 
             GroeneRuimteProject grp = new GroeneRuimteProject(2, "Groene bibilitoheek in oostakker", langeBeschrijving,
                 new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, groeneRuimte);
 
             InnovatiefWonenProject iwp = new InnovatiefWonenProject(3, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, innovatiefWonen, partners);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, innovatiefWonen);
 
             StadsontwikkelingsGroeneRuimteProject sogrp = new StadsontwikkelingsGroeneRuimteProject(4, "ontwikkelings woningen in het groen", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Klein marakesh", fotos, documenten, stadsontwikkeling, groeneRuimte, partners2);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Klein marakesh", fotos, documenten, partners2, stadsontwikkeling, groeneRuimte);
 
             StadsontwikkelingsInnovatiefWonenProject soiwp = new StadsontwikkelingsInnovatiefWonenProject(5, "Kangoeroe woningen in apartementen", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, innovatiefWonen, partners);
-            StadsontwikkelingsGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsProjectGroeneRuimteInnovatiefWonenProject(6, "fully robotic co-woningen in het park", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, groeneRuimte, innovatiefWonen, partners2);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, stadsontwikkeling, innovatiefWonen);
+
+            StadsontwikkelingsGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(6, "fully robotic co-woningen in het park", langeBeschrijving,
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners2, stadsontwikkeling, groeneRuimte, innovatiefWonen);
 
             StadsontwikkelingProject sop = new StadsontwikkelingProject(7, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, stadsontwikkeling, partners);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, stadsontwikkeling);
+
+            projectLijst.Add(griwp);
+            projectLijst.Add(grp);
+            projectLijst.Add(iwp);
+            projectLijst.Add(sogrp);
+            projectLijst.Add(soiwp);
+            projectLijst.Add(sopgriwp);
+            projectLijst.Add(sop);
+
 
             //TODO constructors checken
 
@@ -94,7 +105,7 @@ namespace ProjectBeheerDL_Memory
             #endregion
         }
 
-        //TODO methode uitwerken --kelly--
+        //TODO methoden uitwerken --kelly--
         public void MaakGroeneRuimteInnovatiefWonenProjectAan()
         {
             throw new NotImplementedException();
@@ -110,9 +121,15 @@ namespace ProjectBeheerDL_Memory
             GroeneRuimteProject project = new(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
 
+
         }
 
-        public void MaakInnovatiefWonenProjectAan()
+        public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
+            //parameters innovatief wonen
+            int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen
+            )
         {
             throw new NotImplementedException();
         }
