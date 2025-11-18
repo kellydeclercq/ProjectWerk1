@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerWPF_UI.BeheerderUI;
 
@@ -30,20 +31,20 @@ namespace ProjectBeheerWPF_UI
         {
             string email = LoginEmailTextBox.Text;
             var gebruiker = _gebruikersManager.GeefGebruikeradhvEmail(email);
-            bool IsAdmin = false;
+            
             if (gebruiker != null)
             {
                 
-                if(!IsAdmin)
+                if(gebruiker.GebruikersRol == GebruikersRol.Beheerder)
                 {
-                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer(); 
-                    homeProjectBeheer.Show();
+                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new();
+                    beheerderHomeProjectBeheer.Show();
                 }
                     
                 else
                 {
-                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new();
-                    beheerderHomeProjectBeheer.Show();
+                    HomeProjectBeheer homeProjectBeheer = new HomeProjectBeheer();
+                    homeProjectBeheer.Show();
                 }
             }
             else

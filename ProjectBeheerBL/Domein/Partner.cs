@@ -48,15 +48,16 @@ namespace ProjectBeheerBL.Domein
         public string? Website { get; set; }
 
         private string rolOmschrijving;
-        public string RolOmschrijving { 
+        public string RolOmschrijving
+        {
             get { return rolOmschrijving; }
-            set{
+            set
+            {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Rolomschrijving mag niet leeg zijn.");
                 var trimmed = value.Trim();
                 if (trimmed.Length < 2) throw new ProjectException("Naam moet langer dan 2 karakters zijn.");
                 rolOmschrijving = trimmed;
-            }       
-
-
+            }
+        }
     }
 }
