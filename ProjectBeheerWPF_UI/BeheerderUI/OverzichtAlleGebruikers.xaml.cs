@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProjectBeheerWPF_UI.GebruikerUI
+namespace ProjectBeheerWPF_UI.BeheerderUI
 {
     /// <summary>
-    /// Interaction logic for OverzichtEigenProjecten.xaml
+    /// Interaction logic for OverzichtAlleGebruikers.xaml
     /// </summary>
-    public partial class OverzichtEigenProjecten : Window
+    public partial class OverzichtAlleGebruikers : Window
     {
-        public OverzichtEigenProjecten()
+        public OverzichtAlleGebruikers()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
 
         }
 
-        private void Exporteer_Click(object sender, RoutedEventArgs e)
+        private void Verwijder_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -32,6 +32,7 @@
         </ComboBox>
 
         <!--if i want to filter on date => show the datepickers to slect start and end date-->
+        <!--set visibility on collapse-->
         <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal" Margin="5" Visibility="Visible">
             <TextBlock Text="Startdatum" Margin="5"/>
             <DatePicker Name="StartDatePicker" Width="120"/>
@@ -69,9 +70,9 @@
         </UniformGrid>-->
 
         <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="BekijkProjectButton" Content="Bekijk geselecteerd project" Margin="5"></Button>
-            <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"></Button>
-            <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"></Button>
+            <Button Name="DetailsProjectButton" Content="Bekijk geselecteerd project" Margin="5"  Click="Details_Click"></Button>
+            <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"  Click="Bewerk_Click"></Button>
+            <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"  Click="Exporteer_Click"></Button>
         </StackPanel>
 
     </Grid>
