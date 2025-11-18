@@ -9,8 +9,12 @@ namespace ProjectBeheerBL.Interfaces.Repo
 {
     public interface IProjectRepository
     {
-       
-        
-      
+        void MaakGroeneRuimteInnovatiefWonenProjectAan();
+        public void MaakGroeneruimteProjectAan();
+        void MaakInnovatiefWonenProjectAan();
+        void MaakStadsOntwikkelingGroeneRuimteProjectAan();
+        void MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+        void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+        void MaakStadsontwikkelingsProjectAan();
     }
 }
