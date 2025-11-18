@@ -10,12 +10,35 @@ namespace ProjectBeheerDL_Memory
 {
     public class GebruikerRepositoryMemory : IGebruikerRepository
     {
-        private Dictionary<int, Gebruiker> gebruikers = new();
-        private int gebruikersId = 1;
+        private Dictionary<string, Gebruiker> gebruikers = new();       // email is de key 
 
         public GebruikerRepositoryMemory()
         {
-            gebruikers.Add(gebruikersId, new Gebruiker()); gebruikersId++;
+            //Gebruikers aanmaken
+            Gebruiker admin1 = new Gebruiker("Tom", "Tom@school.be", GebruikersRol.Beheerder);
+            Gebruiker gebruiker1 = new Gebruiker("Arno", "Arno@school.be", GebruikersRol.GewoneGebruiker);
+
+            gebruikers.Add(admin1.Email, admin1);
+            gebruikers.Add(gebruiker1.Email, gebruiker1);
+        }
+
+        public bool BestaatGebruikerAl(string email)
+        {
+            //true: ja
+            //false: neen
+            return gebruikers.ContainsKey(email);
+        }
+
+        public Gebruiker GeefGebruikeradhvEmail(string email)
+        {
+            if (gebruikers.ContainsKey(email)) return gebruikers[email];
+            return null;
+
+        }
+
+        public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol)
+        { 
+            if(!gebruikers.ContainsKey(email)) gebruikers.Add(email, new Gebruiker(naam, email, rol));
         }
     }
 }
