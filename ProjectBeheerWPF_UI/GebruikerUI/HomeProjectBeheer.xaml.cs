@@ -26,5 +26,15 @@ namespace ProjectBeheerWPF_UI
         {
             InitializeComponent();
         }
+
+        private void MaakNieuwProjectButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
