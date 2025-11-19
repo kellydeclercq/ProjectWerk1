@@ -5,23 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectBeheerWPF_UI.GebruikerUI"
         mc:Ignorable="d"
-        Title="OverzichtEigenProjecten" Height="450" Width="800">
+        Title="OverzichtEigenProjecten" Height="1000" Width="1500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        
-        
-        <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Name="FilterCombobox">
+
+        <TextBlock Grid.Column="2" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht projecten"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
             <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
@@ -33,14 +34,14 @@
 
         <!--if i want to filter on date => show the datepickers to slect start and end date-->
         <!--set visibility on collapse-->
-        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal" Margin="5" Visibility="Visible">
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Visible">
             <TextBlock Text="Startdatum" Margin="5"/>
             <DatePicker Name="StartDatePicker" Width="120"/>
             <TextBlock Text="Einddatum" Margin="5"/>
             <DatePicker Name="EndDatePicker" Width="120"/>
         </StackPanel>
 
-        <ComboBox Grid.Column="3" Grid.Row="0" Margin="5" Name="SortComboBox">
+        <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
             <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
@@ -51,7 +52,7 @@
             <ComboBoxItem Content="Type project" Tag="TypeProject"/>
         </ComboBox>
 
-        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
+        <DataGrid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" />
                 <DataGridTextColumn Header="Status"/>
@@ -69,10 +70,10 @@
             <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"></Button>
         </UniformGrid>-->
 
-        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="DetailsProjectButton" Content="Bekijk geselecteerd project" Margin="5"  Click="Details_Click"></Button>
-            <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"  Click="Bewerk_Click"></Button>
-            <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"  Click="Exporteer_Click"></Button>
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="50" Width="150" Name="DetailsProjectButton" Content="Bekijk geselecteerd project" Margin="5"  Click="Details_Click"></Button>
+            <Button Height="50" Width="150" Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"  Click="Bewerk_Click"></Button>
+            <Button Height="50" Width="150" Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"  Click="Exporteer_Click"></Button>
         </StackPanel>
 
     </Grid>
