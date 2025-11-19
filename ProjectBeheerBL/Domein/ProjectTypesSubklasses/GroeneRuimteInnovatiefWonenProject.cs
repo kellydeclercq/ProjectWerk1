@@ -32,22 +32,22 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        private GroeneRuimte groeneRuimte;
+        private GroeneRuimte _groeneRuimte;
         public GroeneRuimte GroeneRuimte {
-            get { return groeneRuimte; }
+            get { return _groeneRuimte; }
             set {
                 if (value == null) throw new ProjectException("GroeneRuimteInnovatiefWonenProject moet groeneRuimte hebben.");
-                groeneRuimte = value;
+                _groeneRuimte = value;
             }
      }
 
-        private InnovatiefWonen innovatiefWonen;
+        private InnovatiefWonen _innovatiefWonen;
 
         public InnovatiefWonen InnovatiefWonen {
-            get { return innovatiefWonen; }
+            get { return _innovatiefWonen; }
             set {
                 if (value == null) throw new ProjectException("GroeneRuimteInnovatiefWonenProject moet innovatiefWonen hebben.");
-                innovatiefWonen = value;
+                _innovatiefWonen = value;
             }
         }
     }

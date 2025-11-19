@@ -27,12 +27,12 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        private InnovatiefWonen innovatiefWonen;
+        private InnovatiefWonen _innovatiefWonen;
         public InnovatiefWonen InnovatiefWonen {
-            get { return innovatiefWonen; }
+            get { return _innovatiefWonen; }
             set {
-                if (value == null) throw new ProjectException("InnovatiefWonenProject moet innovatiefWonen hebben.");
-                innovatiefWonen = value;
+                if (value == null) throw new ProjectException("InnovatiefWonenProject mag niet NULL zijn.");
+                _innovatiefWonen = value;
             }
         }
     }

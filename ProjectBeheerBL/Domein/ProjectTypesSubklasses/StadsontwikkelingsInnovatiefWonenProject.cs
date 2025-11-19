@@ -30,21 +30,21 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
         }
 
 
-        private StadsOntwikkeling stadsOntwikkeling;
+        private StadsOntwikkeling _stadsOntwikkeling;
         public StadsOntwikkeling StadsOntwikkeling {
-            get { return stadsOntwikkeling; }
+            get { return _stadsOntwikkeling; }
             set {
                 if (value == null) throw new ProjectException("StadsontwikkelingsInnovatiefWonenProject moet stadsOntwikkeling hebben.");
-                stadsOntwikkeling = value;
+                _stadsOntwikkeling = value;
             }
         }
 
-        private InnovatiefWonen innovatiefWonen;
+        private InnovatiefWonen _innovatiefWonen;
         public InnovatiefWonen InnovatiefWonen {
-            get { return innovatiefWonen; }
+            get { return _innovatiefWonen; }
             set {
                 if (value == null) throw new ProjectException("StadsontwikkelingsInnovatiefWonenProject moet innovatiefWonen hebben.");
-                innovatiefWonen = value;
+                _innovatiefWonen = value;
             }
         }
         
