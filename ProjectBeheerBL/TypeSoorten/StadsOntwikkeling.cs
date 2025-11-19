@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.typeSoorten
@@ -13,20 +14,28 @@ namespace ProjectBeheerBL.typeSoorten
         public StadsOntwikkeling(VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen, 
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas)            
         {
+            if (bouwFirmas == null) throw new ProjectException("Bouwfirma's mag niet NULL zijn.");
             VergunningsStatus = vergunningsStatus;
             ArchitecturaleWaarde = architecturaleWaarde;
             Toegankelijkheid = toegankelijkheid;
             BeziensWaardigheidVoorToeristen = beziensWaardigheidVoortoeristen;
-            InfobordenOfWandeling = infoBordenOfWandeling;
+            InfobordenOfWandeling = infoBordenOfWandeling;           
             BouwFirmas = bouwfirmas;
         }
 
-        public VergunningsStatus VergunningsStatus { get; set; }
-        public bool ArchitecturaleWaarde { get; set; }
+        public VergunningsStatus VergunningsStatus { get; set; } 
+        public bool ArchitecturaleWaarde { get; set; } 
         public Toegankelijkheid Toegankelijkheid { get; set; }
         public bool BeziensWaardigheidVoorToeristen { get; set; }
         public bool InfobordenOfWandeling { get; set; }
-
-        public List<BouwFirma> BouwFirmas { get; set; }
+        private List<BouwFirma> bouwFirmas;
+        public List<BouwFirma> BouwFirmas { 
+            get => bouwFirmas;
+            set
+            {
+                if (bouwFirmas == null) throw new ProjectException("Bouwfirma's mag niet NULL zijn.");
+                bouwFirmas = value;
+            }
+        }
     }
 }

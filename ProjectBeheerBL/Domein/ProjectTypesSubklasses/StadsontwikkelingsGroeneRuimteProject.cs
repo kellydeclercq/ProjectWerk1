@@ -1,4 +1,5 @@
-﻿using ProjectBeheerBL.Enumeraties;
+﻿using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.projectType;
 using ProjectBeheerBL.typeSoorten;
 using System;
@@ -28,7 +29,21 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             GroeneRuimte = groeneRuimte;
         }
 
-        public StadsOntwikkeling StadsOntwikkeling { get; set; }
-        public GroeneRuimte GroeneRuimte { get; set; }
+        private StadsOntwikkeling stadsOntwikkeling;
+        public StadsOntwikkeling StadsOntwikkeling {
+            get { return stadsOntwikkeling; }
+            set {
+                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteProject moet stadsOntwikkeling hebben.");
+                stadsOntwikkeling = value;
+            }
+        }
+        private GroeneRuimte groeneRuimte;
+        public GroeneRuimte GroeneRuimte {
+            get { return groeneRuimte; }
+            set {
+                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteProject moet groeneRuimte hebben.");
+                groeneRuimte = value;
+            }
+        }
     }
 }

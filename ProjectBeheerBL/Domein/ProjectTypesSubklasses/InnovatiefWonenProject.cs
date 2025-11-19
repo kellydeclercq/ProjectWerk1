@@ -1,4 +1,5 @@
-﻿using ProjectBeheerBL.Enumeraties;
+﻿using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.projectType;
 using ProjectBeheerBL.typeSoorten;
 using System;
@@ -26,6 +27,13 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        public InnovatiefWonen InnovatiefWonen { get; set; }
+        private InnovatiefWonen innovatiefWonen;
+        public InnovatiefWonen InnovatiefWonen {
+            get { return innovatiefWonen; }
+            set {
+                if (value == null) throw new ProjectException("InnovatiefWonenProject moet innovatiefWonen hebben.");
+                innovatiefWonen = value;
+            }
+        }
     }
 }

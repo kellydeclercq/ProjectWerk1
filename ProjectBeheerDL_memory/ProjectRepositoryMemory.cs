@@ -91,6 +91,150 @@ namespace ProjectBeheerDL_Memory
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], stadsontwikkeling);
             projectId++;
 
+            // 1: Enkel Groene Ruimte, andere wijk en status
+            var gr2 = new GroeneRuimte(250.0, 8, 3, true, 5, new List<string> { "speeltuin", "hondenweide" });
+            var grp2 = new GroeneRuimteProject(
+                projectId, "Park De Sterre heraanleg", langeBeschrijving,
+                new DateTime(2023, 10, 10), ProjectStatus.Uitvoering, "De Sterre",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[1], gr2);
+            projectLijst.Add(projectId, grp2);
+            projectId++;
+
+            // 2: Enkel Innovatief Wonen, andere gebruiker en status
+            var iw2 = new InnovatiefWonen(16, true, 7, false, true, false, new List<string> { "co-housing", "studentenstudio's" });
+            var iwp2 = new InnovatiefWonenProject(
+                projectId, "Studentenhuisvesting Rooigem", langeBeschrijving,
+                new DateTime(2024, 02, 15), ProjectStatus.Uitvoering, "Rooigem",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[2], iw2);
+            projectLijst.Add(projectId, iwp2);
+            projectId++;
+
+            // 3: Enkel Stadsontwikkeling, Afgerond
+            var so2 = new StadsOntwikkeling(
+                VergunningsStatus.Goegekeurd, true, Toegankelijkheid.VolledigOpenbaar, true, true, bouwFirmas);
+            var sop2 = new StadsontwikkelingProject(
+                projectId, "Herontwikkeling Oude Dokken", langeBeschrijving,
+                new DateTime(2020, 05, 12), ProjectStatus.Afgerond, "Oude Dokken",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3], so2);
+            projectLijst.Add(projectId, sop2);
+            projectId++;
+
+            // 4: GroeneRuimte + InnovatiefWonen, Afgerond
+            var gr3 = new GroeneRuimte(180, 6, 1, false, 4, new List<string> { "picknickzone" });
+            var iw3 = new InnovatiefWonen(8, false, null, false, false, false, new List<string> { "tiny houses" });
+            var griwp2 = new GroeneRuimteInnovatiefWonenProject(
+                projectId, "Tiny house cluster in natuurzone", langeBeschrijving,
+                new DateTime(2022, 09, 01), ProjectStatus.Afgerond, "Bourgoyen",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], gr3, iw3);
+            projectLijst.Add(projectId, griwp2);
+            projectId++;
+
+            // 5: Stadsontwikkeling + GroeneRuimte, Uitvoering
+            var gr4 = new GroeneRuimte(520, 9, 4, true, 5, new List<string> { "speeltuin", "sportveld" });
+            var so3 = new StadsOntwikkeling(
+                VergunningsStatus.Goegekeurd, true, Toegankelijkheid.Gedeeltelijk, true, false, bouwFirmas);
+            var sogrp2 = new StadsontwikkelingsGroeneRuimteProject(
+                projectId, "Groene boulevard aan de Schelde", langeBeschrijving,
+                new DateTime(2024, 11, 01), ProjectStatus.Uitvoering, "Scheldekaai",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5], so3, gr4);
+            projectLijst.Add(projectId, sogrp2);
+            projectId++;
+
+            // 6: Stadsontwikkeling + InnovatiefWonen, Geannuleerd
+            var iw4 = new InnovatiefWonen(20, true, 5, false, true, true, new List<string> { "seniorenflats" });
+            var so4 = new StadsOntwikkeling(
+                VergunningsStatus.InAanvraag, false, Toegankelijkheid.Gesloten, false, false, bouwFirmas);
+            var soiwp2 = new StadsontwikkelingsInnovatiefWonenProject(
+                projectId, "Seniorencomplex aan Watersportbaan", langeBeschrijving,
+                new DateTime(2021, 03, 20), ProjectStatus.Geannuleerd, "Watersportbaan",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[6], so4, iw4);
+            projectLijst.Add(projectId, soiwp2);
+            projectId++;
+
+            // 7: Alle drie types, Uitvoering
+            var gr5 = new GroeneRuimte(650, 10, 5, true, 5, new List<string> { "speeltuin", "waterpartij", "moestuin" });
+            var iw5 = new InnovatiefWonen(30, true, 9, true, true, true, new List<string> { "co-housing", "zorgwonen" });
+            var so5 = new StadsOntwikkeling(
+                VergunningsStatus.Goegekeurd, true, Toegankelijkheid.VolledigOpenbaar, true, true, bouwFirmas);
+            var sopgriwp2 = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(
+                projectId, "Groen woonpark Ledeberg", langeBeschrijving,
+                new DateTime(2024, 06, 10), ProjectStatus.Uitvoering, "Ledeberg",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[7], so5, gr5, iw5);
+            projectLijst.Add(projectId, sopgriwp2);
+            projectId++;
+
+            // 8: Enkel Groene Ruimte, klein en eenvoudig
+            var gr6 = new GroeneRuimte(90, 3, 1, false, 3, new List<string> { "bankjes" });
+            var grp3 = new GroeneRuimteProject(
+                projectId, "Buurtparkje Brugse Poort", langeBeschrijving,
+                new DateTime(2023, 04, 05), ProjectStatus.Planning, "Brugse Poort",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[8], gr6);
+            projectLijst.Add(projectId, grp3);
+            projectId++;
+
+            // 9: Enkel Innovatief Wonen, groot
+            var iw6 = new InnovatiefWonen(60, true, 8, true, false, true, new List<string> { "huurunits", "co-working" });
+            var iwp3 = new InnovatiefWonenProject(
+                projectId, "Stadscampus voor starters", langeBeschrijving,
+                new DateTime(2025, 01, 15), ProjectStatus.Planning, "Dampoort",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[9], iw6);
+            projectLijst.Add(projectId, iwp3);
+            projectId++;
+
+            // 10: Enkel Stadsontwikkeling, in uitvoering
+            var so6 = new StadsOntwikkeling(
+                VergunningsStatus.InAanvraag, true, Toegankelijkheid.Gedeeltelijk, true, true, bouwFirmas);
+            var sop3 = new StadsontwikkelingProject(
+                projectId, "Herinrichting Sint-Pietersplein", langeBeschrijving,
+                new DateTime(2023, 09, 01), ProjectStatus.Uitvoering, "Sint-Pietersplein",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[10], so6);
+            projectLijst.Add(projectId, sop3);
+            projectId++;
+
+            // 11: Groene Ruimte + Innovatief Wonen, Planning
+            var gr7 = new GroeneRuimte(320, 7, 2, true, 4, new List<string> { "speeltuin", "natuurzone" });
+            var iw7 = new InnovatiefWonen(18, false, 6, false, false, false, new List<string> { "modulaire woningen" });
+            var griwp3 = new GroeneRuimteInnovatiefWonenProject(
+                projectId, "Natuurvriendelijke woonwijk Drongen", langeBeschrijving,
+                new DateTime(2025, 02, 01), ProjectStatus.Planning, "Drongen",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[2], gr7, iw7);
+            projectLijst.Add(projectId, griwp3);
+            projectId++;
+
+            // 12: Stadsontwikkeling + Groene Ruimte, Afgerond
+            var gr8 = new GroeneRuimte(500, 9, 3, true, 5, new List<string> { "speeltuin", "skatepark" });
+            var so7 = new StadsOntwikkeling(
+                VergunningsStatus.Goegekeurd, true, Toegankelijkheid.VolledigOpenbaar, true, true, bouwFirmas);
+            var sogrp3 = new StadsontwikkelingsGroeneRuimteProject(
+                projectId, "Jeugd- en sportpark Nieuw Gent", langeBeschrijving,
+                new DateTime(2021, 06, 01), ProjectStatus.Afgerond, "Nieuw Gent",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3], so7, gr8);
+            projectLijst.Add(projectId, sogrp3);
+            projectId++;
+
+            // 13: Stadsontwikkeling + Innovatief Wonen, Uitvoering
+            var iw8 = new InnovatiefWonen(40, true, 7, true, false, true, new List<string> { "lofts", "co-living" });
+            var so8 = new StadsOntwikkeling(
+                VergunningsStatus.InAanvraag, true, Toegankelijkheid.Gedeeltelijk, true, false, bouwFirmas);
+            var soiwp3 = new StadsontwikkelingsInnovatiefWonenProject(
+                projectId, "Loftproject Oude Fabriek", langeBeschrijving,
+                new DateTime(2024, 08, 20), ProjectStatus.Uitvoering, "Muide",
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], so8, iw8);
+            projectLijst.Add(projectId, soiwp3);
+            projectId++;
+
+            // 14: Alle drie types, Planning
+            var gr9 = new GroeneRuimte(700, 10, 6, true, 5, new List<string> { "speeltuin", "stadsmoestuin", "hondenweide" });
+            var iw9 = new InnovatiefWonen(50, true, 10, true, true, true, new List<string> { "co-housing", "zorgwonen", "ateliers" });
+            var so9 = new StadsOntwikkeling(
+                VergunningsStatus.InAanvraag, true, Toegankelijkheid.Gedeeltelijk, true, true, bouwFirmas);
+            var sopgriwp3 = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(
+                projectId, "Stadslabo Rabot", langeBeschrijving,
+                new DateTime(2025, 11, 01), ProjectStatus.Planning, "Rabot",
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5], so9, gr9, iw9);
+            projectLijst.Add(projectId, sopgriwp3);
+            projectId++;
+
             projectLijst.Add((int)griwp.Id, griwp);
             projectLijst.Add((int)grp.Id,grp);
             projectLijst.Add((int)iwp.Id,iwp);
