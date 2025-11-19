@@ -109,6 +109,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Wijk":
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
+                        //TODO: checkboxes; exacte lijst van de namen van de klasses ""
                         Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
                     }
                     else
@@ -221,7 +222,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     if (result == true && !string.IsNullOrWhiteSpace(folderDialog.FolderName))
                     {
                         //TODO: sla de exportfile hier op 
-                        exportManager.ExportNaarCsv(projecten);
+                        exportManager.ExporteerProjectenNaarCsv(projecten, folderDialog.FolderName);
                     }
 
 
