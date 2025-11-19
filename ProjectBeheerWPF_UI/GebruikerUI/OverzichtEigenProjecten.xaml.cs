@@ -36,6 +36,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             initFolderExport = "@C:\\Downloads";
         }
 
+        //Gebruiker kiest een optie in de combobox
         private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = FilterCombobox.SelectedItem as ComboBoxItem;
