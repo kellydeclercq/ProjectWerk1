@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI
@@ -62,6 +63,7 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegDocumentenToeButton_Click(object sender, RoutedEventArgs e)
         {
+            
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Selecteer een bestand";
             dialog.Filter = "Alle bestanden (*.*)|*.*";
@@ -101,6 +103,7 @@ namespace ProjectBeheerWPF_UI
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
         {
             GaVerderButtonTab_Click(sender, e);
+            
         }
 
 
@@ -137,9 +140,24 @@ namespace ProjectBeheerWPF_UI
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
-            StatusComboBox.ItemsSource = projectManager.
-            throw new NotImplementedException();
+            //alle invoer + logica projectTypes adhv checkboxen types
+            bool IsStadsontwikkeling = false;
+            bool IsGroeneRuimte = false;
+            bool IsInnovatiefWonen = false;
+
+            string typeProject = BepaalTypeProject(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+            
+            //StatusComboBox.ItemsSource = ProjectStatus;
+            
         }
 
+        private string BepaalTypeProject(bool isStadsontwikkeling, bool isGroeneRuimte, bool isInnovatiefWonen)
+        {
+            string typeProject;
+            return typeProject switch
+                {
+
+            }
+        }
     }
 }
