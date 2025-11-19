@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerUtils;
 using ProjectBeheerWPF_UI.BeheerderUI;
+using ProjectBeheerWPF_UI.GebruikerUI;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -45,8 +46,8 @@ namespace ProjectBeheerWPF_UI
 
         private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
         {
-            OverzichtAlleProjecten overzichtAlleProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
-            overzichtAlleProjectenWindow.ShowDialog();
+            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            overzichtEigenProjectenWindow.ShowDialog();
         }
     }
 }

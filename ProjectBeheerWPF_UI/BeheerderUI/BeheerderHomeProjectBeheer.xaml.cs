@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerUtils;
+using ProjectBeheerWPF_UI.GebruikerUI;
 
 namespace ProjectBeheerWPF_UI.BeheerderUI
 {
@@ -21,10 +22,43 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
     /// </summary>
     public partial class BeheerderHomeProjectBeheer : Window
     {
+
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory = new();
         public BeheerderHomeProjectBeheer(ExportManager exportManager, GebruikersManager gebruikersManager, 
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
+            this.beheerMemoryFactory = beheerMemoryFactory;
+        }
+
+        private void MaakNieuwProject_CLick(object sender, RoutedEventArgs e)
+        {
+            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            nieuwProjectWindow.ShowDialog();
+        }
+
+        private void BekijkJouwProjecten_Click(object sender, RoutedEventArgs e)
+        {
+            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            overzichtEigenProjectenWindow.ShowDialog();
+        }
+
+        private void BekijkAlleProjecten_Click(object sender, RoutedEventArgs e)
+        {
+            OverzichtAlleProjecten overzichtAlleProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            overzichtAlleProjectenWindow.ShowDialog();
+        }
+
+        private void BekijkAlleGebruikers_Click(object sender, RoutedEventArgs e)
+        {
+            OverzichtAlleGebruikers overzichtAlleGebruikersWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            overzichtAlleGebruikersWindow.ShowDialog();
         }
     }
 }
