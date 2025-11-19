@@ -1,5 +1,5 @@
-﻿using ProjectBeheerBL.Enumeraties;
-using ProjectBeheerBL.Interfaces.projectType;
+﻿using ProjectBeheerBL.Domein.projectType;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.typeSoorten;
 using System;
 using System.Collections.Generic;

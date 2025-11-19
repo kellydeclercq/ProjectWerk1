@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using CsvHelper;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Domein.projectType;
 using ProjectBeheerBL.Enumeraties;
-using ProjectBeheerBL.Interfaces.projectType;
 using ProjectBeheerBL.typeSoorten;
 
 namespace ProjectBeheerBL.Beheerder
