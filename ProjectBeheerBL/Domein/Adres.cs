@@ -9,6 +9,8 @@ namespace ProjectBeheerBL.Domein
 {
     public class Adres
     {
+        const int MinLengteStraat = 2;
+        const int MinLengteGemeente = 2;
         public Adres(string straat, string huisnummer, int postcode, string gemeente)
         {
             Straat = straat;
@@ -17,18 +19,18 @@ namespace ProjectBeheerBL.Domein
             Gemeente = gemeente;
         }
 
-        private string straat;
+        private string _straat;
         public string Straat {
-            get { return straat; }
+            get { return _straat; }
             set {
-                if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Straatnaam mag niet leeg zijn");
+                if (string.IsNullOrWhiteSpace(value) || value.Length < MinLengteStraat) throw new ProjectException("Straatnaam mag niet leeg of minder dan 2 tekens bevatten");
                 var trimmed = value.Trim();
-                straat = trimmed;
+                _straat = trimmed;
             }
         }
-        private string huisnummer;
+        private string _huisnummer;
         public string Huisnummer {
-            get { return huisnummer; }
+            get { return _huisnummer; }
             set {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ProjectException("Huisnummer mag niet leeg zijn");
@@ -36,28 +38,28 @@ namespace ProjectBeheerBL.Domein
                 var trimmed = value.Trim();
                 var first = trimmed.FirstOrDefault();
                 if (!char.IsDigit(first))
-                    throw new ProjectException($"Huisnummer '{value}' moet met een cijfer beginnen");
+                    throw new ProjectException($"Huisnummer moet met een cijfer beginnen");
 
-                huisnummer = trimmed;
+                _huisnummer = trimmed;
             }
         }
-        private int postcode;
+        private int _postcode;
         public int Postcode {
-            get { return postcode; }
+            get { return _postcode; }
             set {
-                if (value >= 1000 && value <= 9999) postcode = value;
-                else throw new ProjectException($"Postcode {value} niet ok");
+                if (value >= 1000 && value <= 9999) _postcode = value;
+                else throw new ProjectException($"Postcode niet ok");
             }
         }
-        private string gemeente;
+        private string _gemeente;
         public string Gemeente {
-            get { return gemeente; }
+            get { return _gemeente; }
             set {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Woonplaats mag niet leeg zijn");
                 var trimmed = value.Trim();
-                if (trimmed.Length < 2) throw new ProjectException($"Woonplaats '{value}' moet minstens 2 karakters hebben");
-                if (trimmed.Length != value.Length) throw new ProjectException("Woonplaats mag niet met spatie beginnen/eindigen");
-                gemeente = trimmed;
+                if (trimmed.Length < MinLengteGemeente) throw new ProjectException($"Woonplaats moet minstens {MinLengteGemeente} karakters hebben");
+       
+                _gemeente = trimmed;
             }
         }
 
