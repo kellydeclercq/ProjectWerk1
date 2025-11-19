@@ -31,6 +31,7 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
+
         public GroeneRuimte GroeneRuimte { get; set; }
         public InnovatiefWonen InnovatiefWonen { get; set; }
     }
