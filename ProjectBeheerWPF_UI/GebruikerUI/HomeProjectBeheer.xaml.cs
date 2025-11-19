@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerUtils;
+using ProjectBeheerWPF_UI.BeheerderUI;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -30,22 +31,22 @@ namespace ProjectBeheerWPF_UI
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
-            exportManager = exportManager;
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
+            this.beheerMemoryFactory = beheerMemoryFactory;
         }
 
         private void MaakNieuwProjectButton_Click(object sender, RoutedEventArgs e)
         {
             NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
-        }
-
-        private void MaakNieuwProjectButton(object sender, RoutedEventArgs e)
-        {
-
+            nieuwProjectWindow.ShowDialog();
         }
 
         private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
         {
-
+            OverzichtAlleProjecten overzichtAlleProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            overzichtAlleProjectenWindow.ShowDialog();
         }
     }
 }
