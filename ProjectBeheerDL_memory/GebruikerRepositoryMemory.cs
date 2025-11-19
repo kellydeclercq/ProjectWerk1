@@ -66,7 +66,7 @@ namespace ProjectBeheerDL_Memory
 
         public List<Project> GeefProjectenGefilterdOpPartners()
         {
-            throw new NotImplementedException();
+            var x = proje
         }
 
         public List<Project> GeefProjectenGefilterdOpStatus(string status)
