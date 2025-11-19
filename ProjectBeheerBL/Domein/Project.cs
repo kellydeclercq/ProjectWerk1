@@ -39,7 +39,7 @@ namespace ProjectBeheerBL.Domein
             ProjectEigenaar = projectEigenaar;
         }
 
-        public int? Id { get; private set; }
+        public int? Id { get; set; }
 
         private string _projectTitel;
         public string ProjectTitel {
