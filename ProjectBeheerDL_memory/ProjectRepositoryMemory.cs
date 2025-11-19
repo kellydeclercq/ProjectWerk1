@@ -114,8 +114,14 @@ namespace ProjectBeheerDL_Memory
             int? bezoekersScore, List<string> faciliteiten, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
             bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)
         {
-            GroeneRuimteInnovatiefWonenProject project = new GroeneRuimteInnovatiefWonenProject(projectId, projectTitel, beschrijving, DateTime ? startDatum, ProjectStatus projectStatus, string wijk,
-            fotos, documenten, partners, eigenaar,  
+            GroeneRuimteInnovatiefWonenProject project = new GroeneRuimteInnovatiefWonenProject(projectId, projectTitel, beschrijving, startDatum,
+                projectStatus, wijk, fotos, documenten, partners, eigenaar,
+                MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten),
+                MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed, samenwerkingToerisme, woonvormen));
+            
+            projectLijst.Add(projectId, project);
+            projectId++;
+
         }
 
         public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
@@ -139,16 +145,19 @@ namespace ProjectBeheerDL_Memory
             bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker)
         {
             InnovatiefWonenProject project =  new InnovatiefWonenProject(projectId, projectTitel,  beschrijving,  startDatum, projectStatus,
-             wijk, fotos,  documenten, partners, gebruiker , MaakInnovatiefWonenProjectaan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
+             wijk, fotos,  documenten, partners, gebruiker , MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
             samenwerkingToerisme, woonvormen));
 
             projectLijst.Add(projectId, project);
             projectId++;
         }
 
-        public void MaakStadsOntwikkelingGroeneRuimteProjectAan()
+        public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
@@ -181,7 +190,7 @@ namespace ProjectBeheerDL_Memory
             return new GroeneRuimte(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten);
         }
 
-        private InnovatiefWonen MaakInnovatiefWonenProjectaan(int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+        private InnovatiefWonen MaakInnovatiefWonenAan(int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
             bool samenwerkingToerisme, List<string> woonvormen)
         {
             return new InnovatiefWonen(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
