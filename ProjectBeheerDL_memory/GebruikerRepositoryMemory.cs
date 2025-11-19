@@ -66,7 +66,7 @@ namespace ProjectBeheerDL_Memory
 
         public List<Project> GeefProjectenGefilterdOpPartners()
         {
-            var x = proje
+            var x = project
         }
 
         public List<Project> GeefProjectenGefilterdOpStatus(string status)
