@@ -64,25 +64,6 @@ namespace ProjectBeheerDL_Memory
 
         }
 
-        public List<Project> GeefProjectenGefilterdOpPartners()
-        {
-            var x = project
-        }
-
-        public List<Project> GeefProjectenGefilterdOpStatus(string status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Project> GeefProjectenGefilterdOpTitel(string titel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Project> GeefProjectenGefilterdOpType(string type)
-        {
-            throw new NotImplementedException();
-        }
 
         public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol)
         { 
