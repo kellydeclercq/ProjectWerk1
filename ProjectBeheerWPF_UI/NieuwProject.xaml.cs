@@ -24,7 +24,6 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
-        private GebruikersManager _gebruikersManager;
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
