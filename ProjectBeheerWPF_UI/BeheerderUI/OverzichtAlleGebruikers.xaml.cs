@@ -23,10 +23,23 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
     /// </summary>
     public partial class OverzichtAlleGebruikers : Window
     {
+
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+
+        private List<Gebruiker> gebruikers = new List<Gebruiker>();
         public OverzichtAlleGebruikers(ExportManager exportManager, GebruikersManager gebruikersManager,
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
+            
+            gebruikers = gebruikersManager.GeefAlleGebruikers();
+            GebruikerOverzichtDatagrid.ItemsSource = gebruikers;
+
         }
 
         private void Details_Click(object sender, RoutedEventArgs e)
