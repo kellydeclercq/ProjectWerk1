@@ -56,37 +56,69 @@ namespace ProjectBeheerBL.Beheerder
                     IsStadOntwikkeling = heeftSO ? "ja" : "neen",
                     IsGroeneRuimte = heeftGR ? "ja" : "neen",
                     IsInnovatiefWonen = heeftIW ? "ja" : "neen",
+
                     //SOP specificaties
-                    VergunningsStatus = stadsOntwikkeling?.VergunningsStatus.ToString(),
-                    ArchitecturaleWaarde =
-                        stadsOntwikkeling?.ArchitecturaleWaarde == true ? "ja" : "neen",
-                    Toegankelijkheid = stadsOntwikkeling?.Toegankelijkheid.ToString(),
-                    BeziensWaardigheidVoorToeristen =
-                        stadsOntwikkeling?.BeziensWaardigheidVoorToeristen == true ? "ja" : "neen",
-                    InfobordenOfWandeling =
-                        stadsOntwikkeling?.InfobordenOfWandeling == true ? "ja" : "neen",
-                    Bouwfirmas = stadsOntwikkeling?.BouwFirmas != null && stadsOntwikkeling.BouwFirmas.Any()
-                    ? string.Join(" | ", stadsOntwikkeling.BouwFirmas.Select(bf => bf.Naam))
-                    : string.Empty,
+                    VergunningsStatus = heeftSO
+                    ? stadsOntwikkeling!.VergunningsStatus.ToString() : string.Empty,
+
+                    ArchitecturaleWaarde = heeftSO
+                    ? (stadsOntwikkeling!.ArchitecturaleWaarde ? "ja" : "neen") : string.Empty,
+
+                    Toegankelijkheid = heeftSO
+                    ? stadsOntwikkeling!.Toegankelijkheid.ToString() : string.Empty,
+
+                    BeziensWaardigheidVoorToeristen = heeftSO
+                    ? (stadsOntwikkeling!.BeziensWaardigheidVoorToeristen ? "ja" : "neen") : string.Empty,
+
+                    InfobordenOfWandeling = heeftSO
+                    ? (stadsOntwikkeling!.InfobordenOfWandeling ? "ja" : "neen") : string.Empty,
+
+                    Bouwfirmas = heeftSO && stadsOntwikkeling!.BouwFirmas != null && stadsOntwikkeling.BouwFirmas.Any()
+                    ? string.Join(" | ", stadsOntwikkeling.BouwFirmas.Select(bf => bf.Naam)) : string.Empty,
+
                     //GRP specificaties
-                    OppervlakteInVierkanteM = groeneRuimte?.OppervlakteInVierkanteMeter,
-                    BiodiversiteitScore = groeneRuimte?.BioDiversiteitsScore,
-                    AantalWandelpaden = groeneRuimte?.AantalWandelpaden,
-                    OpgenomenInWandelRoute = groeneRuimte?.OpgenomenInWandelRoute == true ? "ja" : "neen",
-                    BezoekersScore = groeneRuimte?.BezoekersScore,
-                    Faciliteiten = groeneRuimte?.Faciliteiten != null && groeneRuimte.Faciliteiten.Any()
+                    OppervlakteInVierkanteM = heeftGR
+                    ? groeneRuimte!.OppervlakteInVierkanteMeter: (double?)null,
+
+                    BiodiversiteitScore = heeftGR
+                    ? groeneRuimte!.BioDiversiteitsScore: (int?)null,
+
+                    AantalWandelpaden = heeftGR
+                    ? groeneRuimte!.AantalWandelpaden: (int?)null,
+
+                    OpgenomenInWandelRoute = heeftGR
+                    ? (groeneRuimte!.OpgenomenInWandelRoute ? "ja" : "neen") : string.Empty,
+
+                    BezoekersScore = heeftGR
+                    ? groeneRuimte!.BezoekersScore : (int?)null,
+
+                    Faciliteiten = heeftGR && groeneRuimte!.Faciliteiten != null && groeneRuimte.Faciliteiten.Any()
                     ? string.Join(" | ", groeneRuimte.Faciliteiten) : string.Empty,
+
                     //IWP specificaties
-                    AantalWooneenheden = innovatiefWonen?.AantalWooneenheden,
-                    Rondleidingmogelijk = innovatiefWonen?.RondleidingMogelijk == true ? "ja" : "neen",
-                    InnovatieScore = innovatiefWonen?.InnovatieScore,
-                    ShowwoningBeschikbaar = innovatiefWonen?.ShowwoningBeschikbaar == true ? "ja" : "neen",
-                    SamenwerkingErfgoed = innovatiefWonen?.SamenwerkingErfgoed == true ? "ja" : "neen",
-                    SamenwerkingToerisme = innovatiefWonen?.SamenwerkingToerisme == true ? "ja" : "neen",
-                    Woonvormen = innovatiefWonen?.Woonvormen != null && innovatiefWonen.Woonvormen.Any()
-                    ? string.Join(" | ", innovatiefWonen.Woonvormen) : string.Empty,
+                    AantalWooneenheden = heeftIW
+                    ? innovatiefWonen!.AantalWooneenheden : (int?)null,
+
+                    Rondleidingmogelijk = heeftIW
+                    ? (innovatiefWonen!.RondleidingMogelijk ? "ja" : "neen") : string.Empty,
+
+                    InnovatieScore = heeftIW
+                    ? innovatiefWonen!.InnovatieScore : (int?)null,
+
+                    ShowwoningBeschikbaar = heeftIW
+                    ? (innovatiefWonen!.ShowwoningBeschikbaar ? "ja" : "neen") : string.Empty,
+
+                    SamenwerkingErfgoed = heeftIW
+                    ? (innovatiefWonen!.SamenwerkingErfgoed ? "ja" : "neen") : string.Empty,
+
+                    SamenwerkingToerisme = heeftIW
+                    ? (innovatiefWonen!.SamenwerkingToerisme ? "ja" : "neen") : string.Empty,
+
+                    Woonvormen = heeftIW && innovatiefWonen!.Woonvormen != null && innovatiefWonen.Woonvormen.Any()
+                    ? string.Join(" | ", innovatiefWonen.Woonvormen) : string.Empty
 
                 };
+
 
                 records.Add(record);
 
