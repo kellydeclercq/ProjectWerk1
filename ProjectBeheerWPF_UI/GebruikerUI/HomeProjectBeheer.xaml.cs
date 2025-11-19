@@ -37,5 +37,15 @@ namespace ProjectBeheerWPF_UI
         {
             NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
         }
+
+        private void MaakNieuwProjectButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
