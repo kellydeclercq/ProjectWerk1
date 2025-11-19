@@ -34,7 +34,9 @@ namespace ProjectBeheerWPF_UI
 
         private void BladerenButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //als de gebruiker een admin is ga naar alle porjecten
+            //als een gebruiker geen admin is ga naar al de gebruiker zijn projecten
+            
         }
 
         private void ExporteerAlsCSVButton_Click(object sender, RoutedEventArgs e)
