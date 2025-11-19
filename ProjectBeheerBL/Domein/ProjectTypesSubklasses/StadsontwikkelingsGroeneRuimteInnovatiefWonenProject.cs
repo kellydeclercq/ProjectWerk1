@@ -33,28 +33,28 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             InnovatiefWonen = innovatiefWonen;
         }
 
-        private StadsOntwikkeling stadsOntwikkeling;
+        private StadsOntwikkeling _stadsOntwikkeling;
         public StadsOntwikkeling StadsOntwikkeling {
-            get { return stadsOntwikkeling; }
+            get { return _stadsOntwikkeling; }
             set {
-                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject moet stadsOntwikkeling hebben.");
-                stadsOntwikkeling = value;
+                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject: stadsOntwikkeling mag niet null zijn.");
+                _stadsOntwikkeling = value;
             }
         }
-        private GroeneRuimte groeneRuimte;
+        private GroeneRuimte _groeneRuimte;
         public GroeneRuimte GroeneRuimte {
-            get { return groeneRuimte; }
+            get { return _groeneRuimte; }
             set {
-                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject moet groeneRuimte hebben.");
-                groeneRuimte = value;
+                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject: groeneRuimte mag niet null zijn.");
+                _groeneRuimte = value;
             }
         }
-        private InnovatiefWonen innovatiefWonen;
+        private InnovatiefWonen _innovatiefWonen;
         public InnovatiefWonen InnovatiefWonen {
-            get { return innovatiefWonen; }
+            get { return _innovatiefWonen; }
             set {
-                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject moet innovatiefWonen hebben.");
-                innovatiefWonen = value;
+                if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteInnovatiefWonenProject: innovatiefWonen mag niet null zijn.");
+                _innovatiefWonen = value;
             }
         }
     }
