@@ -14,16 +14,18 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingsInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, InnovatiefWonen innovatiefWonen) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres,
+            StadsOntwikkeling stadsOntwikkeling, InnovatiefWonen innovatiefWonen) 
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar, adres)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             InnovatiefWonen = innovatiefWonen;
         }
 
         public StadsontwikkelingsInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, InnovatiefWonen innovatiefWonen) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres, 
+            StadsOntwikkeling stadsOntwikkeling, InnovatiefWonen innovatiefWonen) 
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar, adres)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             InnovatiefWonen = innovatiefWonen;
