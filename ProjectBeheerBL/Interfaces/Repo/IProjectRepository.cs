@@ -49,6 +49,9 @@ namespace ProjectBeheerBL.Interfaces.Repo
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker);
 
         List<Project> GeefAlleProjecten();
-
+        List<Project> GeefProjectenGefilterdOpType(string type);
+        List<Project> GeefProjectenGefilterdOpPartners();
+        List<Project> GeefProjectenGefilterdOpStatus(string status);
+        List<Project> GeefProjectenGefilterdOpTitel(string titel);
     }
 }

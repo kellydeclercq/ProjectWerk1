@@ -10,8 +10,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
-using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerUtils;
 using ProjectBeheerWPF_UI.BeheerderUI;
 

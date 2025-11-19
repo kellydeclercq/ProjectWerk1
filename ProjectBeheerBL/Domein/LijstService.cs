@@ -8,6 +8,8 @@ namespace ProjectBeheerBL.Domein
 {
     public class LijstService
     {
+        //wordt ingevuld door de databank
+
         public List<string> Faciliteiten;
         public List<string> Woonvormen;
 

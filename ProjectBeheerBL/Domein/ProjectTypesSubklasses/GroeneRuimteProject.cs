@@ -27,12 +27,12 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
         }
 
 
-        private GroeneRuimte groeneRuimte;
+        private GroeneRuimte _groeneRuimte;
         public GroeneRuimte GroeneRuimte {
-            get { return groeneRuimte; }
+            get { return _groeneRuimte; }
             set {
-                if (value == null) throw new ProjectException("GroeneRuimteProject moet groeneRuimte hebben.");
-                groeneRuimte = value;
+                if (value == null) throw new ProjectException("GroeneRuimteProject moet GroeneRuimte hebben.");
+                _groeneRuimte = value;
             }
         }
     }

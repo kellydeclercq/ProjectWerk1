@@ -256,10 +256,7 @@ namespace ProjectBeheerDL_Memory
             #endregion
         }
 
-        public List<Project> GeefAlleProjecten()
-        {
-            return projectLijst.Values.ToList();
-        }
+      
 
         //TODO methoden uitwerken --kelly--
         public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
@@ -401,7 +398,34 @@ namespace ProjectBeheerDL_Memory
             return new StadsOntwikkeling(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen,
              infoBordenOfWandeling, bouwfirmas);
         }
-    
+
+
+        // FILTEREN en SORTEREN en OPVRAGEN
+        public List<Project> GeefAlleProjecten()
+        {
+            return projectLijst.Values.ToList();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpPartners()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpStatus(string status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpTitel(string titel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpType(string type)
+        {
+            throw new NotImplementedException();
+        }
+
     }
  
 }

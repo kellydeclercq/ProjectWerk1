@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.Repo;
 
 namespace ProjectBeheerDL_Memory
@@ -61,6 +62,26 @@ namespace ProjectBeheerDL_Memory
             if (gebruikers.ContainsKey(email)) return gebruikers[email];
             return null;
 
+        }
+
+        public List<Project> GeefProjectenGefilterdOpPartners()
+        {
+            var x = proje
+        }
+
+        public List<Project> GeefProjectenGefilterdOpStatus(string status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpTitel(string titel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpType(string type)
+        {
+            throw new NotImplementedException();
         }
 
         public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol)

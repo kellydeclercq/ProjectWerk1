@@ -108,5 +108,24 @@ namespace ProjectBeheerBL.Beheerder
             return _repo.GeefAlleProjecten();
         }
 
+        public List<Project> GeefProjectenGefilterdOpType(string type)
+        {
+            return _repo.GeefProjectenGefilterdOpType(type);
+        }
+
+        public List<Project> GeefProjectenGefilterdOpPartners(string partners)
+        {
+            return _repo.GeefProjectenGefilterdOpPartners();
+        }
+
+        public List<Project> GeefProjectenGefilterdOpStatus(string status)
+        {
+            return _repo.GeefProjectenGefilterdOpStatus(status);
+        }
+
+        public List<Project> GeefProjectenGefilterdOpTitel(string titel)
+        {
+            return _repo.GeefProjectenGefilterdOpTitel(titel);
+        }
     }
 }

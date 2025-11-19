@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.Repo;
 
 namespace ProjectBeheerBL.Beheerder
@@ -38,5 +39,6 @@ namespace ProjectBeheerBL.Beheerder
             return _repo.GeefAlleGebruikers();
         }
 
+       
     }
 }

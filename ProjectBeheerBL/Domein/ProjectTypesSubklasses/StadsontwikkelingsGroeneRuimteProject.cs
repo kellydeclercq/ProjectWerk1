@@ -29,20 +29,20 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             GroeneRuimte = groeneRuimte;
         }
 
-        private StadsOntwikkeling stadsOntwikkeling;
+        private StadsOntwikkeling _stadsOntwikkeling;
         public StadsOntwikkeling StadsOntwikkeling {
-            get { return stadsOntwikkeling; }
+            get { return _stadsOntwikkeling; }
             set {
                 if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteProject moet stadsOntwikkeling hebben.");
-                stadsOntwikkeling = value;
+                _stadsOntwikkeling = value;
             }
         }
-        private GroeneRuimte groeneRuimte;
+        private GroeneRuimte _groeneRuimte;
         public GroeneRuimte GroeneRuimte {
-            get { return groeneRuimte; }
+            get { return _groeneRuimte; }
             set {
                 if (value == null) throw new ProjectException("StadsontwikkelingsGroeneRuimteProject moet groeneRuimte hebben.");
-                groeneRuimte = value;
+                _groeneRuimte = value;
             }
         }
     }
