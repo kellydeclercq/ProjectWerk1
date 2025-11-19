@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectBeheerBL.Domein.projectType
+namespace ProjectBeheerBL.Interfaces.projectType
 {
-    public interface IStadsontwikkeling
+    public interface IInnovatiefWonen
     {
-        public StadsOntwikkeling StadsOntwikkeling { get; set; }
+        public InnovatiefWonen InnovatiefWonen { get; set; }
     }
 }
