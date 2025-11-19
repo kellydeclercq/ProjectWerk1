@@ -408,22 +408,46 @@ namespace ProjectBeheerDL_Memory
             return projectLijst.Values.ToList();
         }
 
-        public List<Project> GeefProjectenGefilterdOpPartners()
+        public List<Project> GeefProjectenGefilterdOpPartners(string partner)
         {
-            throw new NotImplementedException();
+            var lijst = projectLijst
+                .Select(x => x.Value)
+                .Where(p => p.Partners
+                .Any(p => p.Naam.Equals(partner, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+
+            return lijst;
         }
 
         public List<Project> GeefProjectenGefilterdOpStatus(string status)
         {
-            throw new NotImplementedException();
+            var lijst = projectLijst.Select(x => x.Value)
+                .Where(x => x.ProjectStatus.ToString().Equals(status, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            return lijst;
         }
 
         public List<Project> GeefProjectenGefilterdOpTitel(string titel)
         {
+            var lijst = projectLijst.Select(x => x.Value)
+                .Where(x => x.ProjectTitel.Equals(titel, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            return lijst;
+        }
+
+        public List<Project> GeefProjectenGefilterdOpType(List<bool> types)
+        {
+            //groen: 0
+            //innov: 1
+            //stadsont: 2
+
+            //TODO nog uitwerken met booleans
             throw new NotImplementedException();
         }
 
-        public List<Project> GeefProjectenGefilterdOpType(string type)
+        public List<Project> GeefProjectenGefilterdOpWijk(string wijk)
         {
             throw new NotImplementedException();
         }

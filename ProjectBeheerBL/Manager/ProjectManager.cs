@@ -108,14 +108,14 @@ namespace ProjectBeheerBL.Beheerder
             return _repo.GeefAlleProjecten();
         }
 
-        public List<Project> GeefProjectenGefilterdOpType(string type)
+        public List<Project> GeefProjectenGefilterdOpType(List<bool> types)
         {
-            return _repo.GeefProjectenGefilterdOpType(type);
+            return _repo.GeefProjectenGefilterdOpType(types);
         }
 
         public List<Project> GeefProjectenGefilterdOpPartners(string partners)
         {
-            return _repo.GeefProjectenGefilterdOpPartners();
+            return _repo.GeefProjectenGefilterdOpPartners(partners);
         }
 
         public List<Project> GeefProjectenGefilterdOpStatus(string status)
