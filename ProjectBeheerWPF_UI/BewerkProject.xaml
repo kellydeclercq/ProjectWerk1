@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectBeheerWPF_UI"
-        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ProjectBeheerWPF_UI.NieuwProject"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ProjectBeheerWPF_UI.BewerkProject"
         mc:Ignorable="d"
         Title="BewerkProject" Height="1000" Width="1500">
     <StackPanel Orientation="Horizontal">
