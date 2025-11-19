@@ -89,7 +89,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Titel":
                     if (!string.IsNullOrWhiteSpace(TitelTextBox.Text))
                     {
-                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
                     }
                     else
                     {
@@ -99,7 +99,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Type":
                     if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
                     {
-                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpType(TypeTextBox.Text);
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType(TypeTextBox.Text);
                     }
                     else
                     {
@@ -109,7 +109,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Wijk":
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
-                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                        //TODO: checkboxes; exacte lijst van de namen van de klasses ""
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
                     }
                     else
                     {
@@ -119,7 +120,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Status":
                     if (!string.IsNullOrWhiteSpace(StatusTextBox.Text))
                     {
-                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
                     }
                     else
                     {
@@ -129,7 +130,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Partners":
                     if (!string.IsNullOrWhiteSpace(PartnersTextBox.Text))
                     {
-                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
                     }
                     else
                     {
@@ -221,7 +222,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     if (result == true && !string.IsNullOrWhiteSpace(folderDialog.FolderName))
                     {
                         //TODO: sla de exportfile hier op 
-                        exportManager.ExportNaarCsv(projecten);
+                        exportManager.ExporteerProjectenNaarCsv(projecten, folderDialog.FolderName);
                     }
 
 

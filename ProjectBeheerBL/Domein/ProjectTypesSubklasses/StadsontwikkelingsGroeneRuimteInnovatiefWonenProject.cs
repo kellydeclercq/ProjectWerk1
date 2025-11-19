@@ -14,9 +14,9 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten,List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, 
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten,List<Partner> partners, Gebruiker projectEigenaar, Adres adres, StadsOntwikkeling stadsOntwikkeling, 
             GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen) 
-            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
+            : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar, adres)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;
@@ -24,9 +24,9 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
         }
 
         public StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, StadsOntwikkeling stadsOntwikkeling, 
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres, StadsOntwikkeling stadsOntwikkeling, 
             GroeneRuimte groeneRuimte, InnovatiefWonen innovatiefWonen) 
-            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar)
+            : base(id, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar, adres)
         {
             StadsOntwikkeling = stadsOntwikkeling;
             GroeneRuimte = groeneRuimte;

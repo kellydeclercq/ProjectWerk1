@@ -14,20 +14,20 @@ namespace ProjectBeheerBL.Interfaces.Repo
         void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar);
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar, Adres Adres);
 
         public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker);
+            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker, Adres Adres);
 
         void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             //parameters innovatief wonen
             int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker);
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker, Adres Adres);
 
         void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres Adres, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten);
 
@@ -35,18 +35,18 @@ namespace ProjectBeheerBL.Interfaces.Repo
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar);
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar, Adres Adres);
 
         void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker Eigenaar);
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker Eigenaar, Adres Adres);
 
         void MaakStadsontwikkelingsProjectAan(string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
-            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker);
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker, Adres Adres);
 
         List<Project> GeefAlleProjecten();
         List<Project> GeefProjectenGefilterdOpType(string type);
