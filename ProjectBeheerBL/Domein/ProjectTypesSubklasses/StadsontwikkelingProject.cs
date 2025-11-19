@@ -27,12 +27,12 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
             StadsOntwikkeling = stadsOntwikkeling;
         }
 
-        private StadsOntwikkeling stadsOntwikkeling;
+        private StadsOntwikkeling _stadsOntwikkeling;
         public StadsOntwikkeling StadsOntwikkeling {
-            get { return stadsOntwikkeling; }
+            get { return _stadsOntwikkeling; }
             set {
                 if (value == null) throw new ProjectException("StadsontwikkelingProject moet stadsOntwikkeling hebben.");
-                stadsOntwikkeling = value;
+                _stadsOntwikkeling = value;
             }
         }
 

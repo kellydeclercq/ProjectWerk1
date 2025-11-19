@@ -31,6 +31,8 @@ namespace ProjectBeheerWPF_UI
         private BeheerMemoryFactory beheerMemoryFactory;
         private FileDialog fileDialog;
 
+        
+
         public List<Partner> partners;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
@@ -41,6 +43,11 @@ namespace ProjectBeheerWPF_UI
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+
+            StatusPlanningComboBoxItem.Content = ProjectStatus.Planning;
+            StatusUitvoeringComboBoxItem.Content = ProjectStatus.Uitvoering;
+            StatusAfgerondComboBoxItem.Content = ProjectStatus.Afgerond;
+            StatusGeannuleerdComboBoxItem.Content= ProjectStatus.Geannuleerd;
         }
 
         //hier staan algemene methodes voor nieuwProject window
@@ -103,7 +110,6 @@ namespace ProjectBeheerWPF_UI
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
         {
             GaVerderButtonTab_Click(sender, e);
-            
         }
 
 
@@ -138,24 +144,57 @@ namespace ProjectBeheerWPF_UI
         }
 
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
+
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
+            
+
+            //alle inputvariabelen:
+            string titel = TitelInputTextBox.Text;
+            DateTime startDatum = StartDatumCalendarButton.SelectedDate.Value;
+            ProjectStatus projectStatus = StatusComboBox.SelectedItem;
+
             //alle invoer + logica projectTypes adhv checkboxen types
             bool IsStadsontwikkeling = false;
             bool IsGroeneRuimte = false;
             bool IsInnovatiefWonen = false;
 
-            string typeProject = BepaalTypeProject(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
-            
-            //StatusComboBox.ItemsSource = ProjectStatus;
-            
+
+
+            BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
         }
 
-        private string BepaalTypeProject(bool isStadsontwikkeling, bool isGroeneRuimte, bool isInnovatiefWonen)
+        private void BepaalTypeProjectEnMaakAan(bool isStadsontwikkeling, bool isGroeneRuimte, bool isInnovatiefWonen)
         {
-            string typeProject;
-            return typeProject switch
-                {
+            switch((isStadsontwikkeling, isGroeneRuimte, isInnovatiefWonen))
+            {
+                case (true, false, false):
+                    projectManager.MaakStadsontwikkelingsProjectAan();
+                    break;
+                
+                case (false, true, false):
+                    projectManager.MaakGroeneruimteProjectAan();
+                    break;
+
+                case (false, false, true):
+                    projectManager.MaakInnovatiefWonenProjectAan();
+                    break;
+
+                case(true, true, false):
+                    projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan();
+                    break;
+
+                case(true, false, true):
+                    projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+                    break;
+
+                case(false, true, true):
+                    projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan();
+                    break;
+
+                case (true, true, true):
+                    projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+                    break;
 
             }
         }

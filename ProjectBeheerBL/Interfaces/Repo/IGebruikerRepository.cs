@@ -16,5 +16,6 @@ namespace ProjectBeheerBL.Interfaces.Repo
 
         public bool BestaatGebruikerAl(string email);
         List<Gebruiker> GeefAlleGebruikers();
+      
     }
 }
