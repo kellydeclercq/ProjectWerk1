@@ -169,9 +169,19 @@ namespace ProjectBeheerDL_Memory
             projectId++;
         }
 
-        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
+        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
+            VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)           
         {
-            throw new NotImplementedException();
+            StadsontwikkelingsInnovatiefWonenProject project = new StadsontwikkelingsInnovatiefWonenProject(projectId, projectTitel, beschrijving, startDatum,
+                projectStatus, wijk, fotos, documenten, partners, eigenaar,
+                MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen, infoBordenOfWandeling, bouwfirmas),
+                MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed, samenwerkingToerisme, woonvormen));
+
+            projectLijst.Add(projectId, project);
+            projectId++;
         }
 
         public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject()

@@ -53,9 +53,17 @@ namespace ProjectBeheerBL.Beheerder
              samenwerkingToerisme, woonvormen, gebruiker);
         }
 
-        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
+        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
+            VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)
         {
-            _repo.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+            _repo.MaakStadsOntwikkelingInnovatiefWonenProjectAan( projectTitel,  beschrijving,  startDatum,  projectStatus,
+             wijk, fotos,  documenten, partners,
+             vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             infoBordenOfWandeling,  bouwfirmas,  aantalWooneenheden,  rondleidingMogelijk,  innovatieScore,  showwoningBeschikbaar,  samenwerkingErfgoed,
+             samenwerkingToerisme,  woonvormen,  eigenaar);
         }
 
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
