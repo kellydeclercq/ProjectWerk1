@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Domein
 {
@@ -18,23 +19,24 @@ namespace ProjectBeheerBL.Domein
         }
 
 
-        private string naam;
+        private string _naam;
         public string Naam {
-            get { return naam; }
+            get { return _naam; }
             set {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Naam mag niet leeg zijn");
                 var trimmed = value.Trim();
-                naam = trimmed;
+                _naam = trimmed;
             }
         }
-        private string email;
+        private string _email;
         public string Email {
-            get { return email; }
+            get { return _email; }
             set {
-                if (!string.IsNullOrWhiteSpace(value) && value.Contains('@')) email = value;
-                else throw new ProjectException ($"email {value} niet ok");
+                if (!string.IsNullOrWhiteSpace(value) && value.Contains('@')) _email = value;
+                else throw new ProjectException ($"email gebruiker niet ok");
             }
         }
+
         public GebruikersRol GebruikersRol { get; set; }
 
         public override string? ToString()

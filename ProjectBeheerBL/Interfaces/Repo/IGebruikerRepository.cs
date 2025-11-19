@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Enumeraties;
 
 namespace ProjectBeheerBL.Interfaces.Repo
 {

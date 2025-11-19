@@ -1,4 +1,4 @@
-﻿namespace ProjectBeheerBL.Domein
+﻿namespace ProjectBeheerBL.Enumeraties
 {
     public enum GebruikersRol
     {
