@@ -1,12 +1,219 @@
-﻿<Window x:Class="ProjectBeheerWPF_UI.BewerkProject"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectBeheerWPF_UI"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ProjectBeheerWPF_UI.NieuwProject"
         mc:Ignorable="d"
-        Title="BewerkProject" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="BewerkProject" Height="1000" Width="1500">
+    <StackPanel Orientation="Horizontal">
+        <Button Height="50" Width="100" Margin="5" VerticalAlignment="Top" x:Name="TerugButton" Content="Terug"/>
+        <TabControl Grid.Column="1" Grid.Row="0" Margin="5" x:Name="NieuwProjectTabs">
+            <TabItem Header="Algemene Info" IsSelected="True">
+                <Grid x:Name="AlgemeneInfoGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="500"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!-- titel is hier vast, kan niet worden aangepast!-->
+                    <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
+                        <TextBlock>Startdatum</TextBlock>
+                        <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker>
+                        <ComboBox Margin="5">
+                            <System:String>Status</System:String>
+                        </ComboBox>
+                        <ComboBox Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <CheckBox Content="Stadsontwikkeling"/>
+                        <CheckBox Content="Groene Ruimte"/>
+                        <CheckBox Content="Innovatief Wonen"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,0,50" Grid.RowSpan="2">
+                        <TextBox Margin="5" x:Name="BeschrijvingTextBox" Text="Beschrijving"/>
+                    </Grid>
+                    <StackPanel Grid.Column="5" Grid.Row="3" Margin="0,455,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Button x:Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="100"/>
+                        <Button x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100"/>
+                    </StackPanel>
+                    <TextBox Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" x:Name="NaamPartnerTextBox" Grid.ColumnSpan="2" Text="Naam partner"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" x:Name="PartnerRolTextBox" Grid.ColumnSpan="2" Text="Partnerrol"/>
+                    <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox" Grid.ColumnSpan="2" Text="Contactgegevens"/>
+                    <Button Grid.Column="1" Grid.Row="7" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe"/>
+                    <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
+                    <TextBlock Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Overzicht partners</TextBlock>
+                    <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox"></ListBox>
+                    <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Specifieke Info Stadsontwikkeling">
+                <Grid x:Name="infoStadsontwikkelingGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Betrokken bouwfirma"/></TextBlock>
+                    <TextBox Grid.Column="2" Grid.Row="1" Margin="5" x:Name="BouwfirmaTextBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Contactgegevens bouwfirma"/></TextBlock>
+                    <TextBox Grid.Column="2" Grid.Row="2" Margin="5" x:Name="GegevensBouwfirmaTextBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Vergunningsstatus"/></TextBlock>
+                    <ComboBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="VergunningsStatusComboBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Architecturale Waarde"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="4"  Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Publieke toegankelijkheid"/></TextBlock>
+                    <ComboBox Grid.Column="2" Grid.Row="5" Margin="5" x:Name="ToegankelijkheidComboBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="6" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Toeristische bezienswaardigheid"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToeristischeBezienswaardigheidJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToeristischeBezienswaardigheidNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <!-- de opties hieronder hangen NIET af van of ToeristischeBezienswaardigheidJaRadioButton "ja" is aangeduid -->
+                    <StackPanel Grid.Column="2" Grid.Row="7" Orientation="Vertical">
+                        <CheckBox Content="Uitlegbord"/>
+                        <CheckBox Content="Infowandeling"/>
+                    </StackPanel>
+                    <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab2" Content="Verder"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Specifieke Info Groene ruimte">
+                <Grid x:Name="InfoGroeneRuimteGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Oppervlakte in m²"/></TextBlock>
+                    <TextBox Grid.Column="2" Grid.Row="1" Margin="5" x:Name="OppervlakteTextBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Biodiversiteitscore"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="1"/></TextBlock>
+                        <Slider x:Name="BiodiversiteitSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="1" Minimum="1" Maximum="10" TickFrequency="10" 
+                            IsSnapToTickEnabled="True"/>
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="10"/></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Aantal wandelpaden"/></TextBlock>
+                    <TextBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="AantalWandelpadenTextBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="10" HorizontalAlignment="Right" VerticalAlignment="top"><Run Text="Beschikbare faciliteiten"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="4" Margin="5" Orientation="Vertical">
+                        <CheckBox Margin="5" x:Name="SpeeltuinFaciliteitCheckBox" Content="Speeltuin"/>
+                        <CheckBox Margin="5" x:Name="PicknickZoneFaciliteitCheckBox" Content="Picknickzone"/>
+                        <CheckBox Margin="5" x:Name="InfobordenFaciliteitCheckBox" Content="Infoborden"/>
+                        <CheckBox Margin="5" x:Name="AndereFaciliteitCheckBox" Content="Andere :"/>
+                        <TextBox Margin="5" x:Name="AndereFaciliteitTextBox"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center"><Run Text="Wordt het project opgenomen in toeristische wandelroutes?"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToeristischeWandelroutesJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToeristischeWandelroutesNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="6" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center"><Run Text="Beoordeling door bezoekers"/></TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal">
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="0"/></TextBlock>
+                        <Slider x:Name="BezoekersBeoordelingSlider" Margin="5" Width="150" VerticalAlignment="Center" 
+                            Value="0" Minimum="0" Maximum="5" TickFrequency="5" IsSnapToTickEnabled="True"/>
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="5"/></TextBlock>
+                    </StackPanel>
+                    <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab3" Content="Verder"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Specifieke Info Innovatief Wonen">
+                <Grid Name="InnovatiefWonenGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Aantal wooneenheden</TextBlock>
+                    <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Name="AantalWooneenhedenTextBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Types woonvormen</TextBlock>
+                    <ComboBox Grid.Column="2" Grid.Row="2" Margin="5" Name="TypesWoonvormenComboBox"/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Rondleidingen mogelijk</TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="RondleidingJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="RondeleidingNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Showwoning beschikbaar</TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ShowwoningJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ShowwoningNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Architecturale innovatiescore</TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Horizontal">
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="1"/></TextBlock>
+                        <Slider x:Name="ArchitecturaleInnoScoreSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="1" Minimum="1" Maximum="10" TickFrequency="10" 
+                        IsSnapToTickEnabled="True"/>
+                        <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="10"/></TextBlock>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="6" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Samenwerking met Erfgoed Vlaanderen</TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ErfgoedVlaanderenJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ErfgoedVlaanderenNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.Row="7" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Samenwerking met Toerisme Gent</TextBlock>
+                    <StackPanel Grid.Column="2" Grid.Row="7" Orientation="Horizontal">
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentJaRadioButton" Content="ja"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentNeeRadioButton" Content="nee"/>
+                    </StackPanel>
+                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="150" Height="50" x:Name="MaakProjectAanButton" Content="Bevestigen"/>
+                    <!-- hierop kan eventueel een informatiescherm volgen: Bent u zeker dat u dit project wil aanmaken? weer bevestigen, dat leidt dan naar de projecfiche-->
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </StackPanel>
 </Window>
