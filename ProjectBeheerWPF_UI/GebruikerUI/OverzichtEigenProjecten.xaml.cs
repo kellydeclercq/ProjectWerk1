@@ -30,6 +30,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
+            projecten = projectManager.GeefAlleProjecten();
+            ProjectOverzichtDatagrid.ItemsSource = projecten;
             initFolderExport = "@C:\\Downloads";
         }
 
