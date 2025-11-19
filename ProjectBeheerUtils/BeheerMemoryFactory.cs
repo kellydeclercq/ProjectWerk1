@@ -17,7 +17,7 @@ namespace ProjectBeheerUtils
 
         public IProjectRepository GeefProjectRepo()
         {
-            return new ProjectRepositoryMemory();
+            return new ProjectRepositoryMemory(GeefGebruikerRepo());
         }
     }
 }

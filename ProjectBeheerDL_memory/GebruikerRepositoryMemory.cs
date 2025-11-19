@@ -29,6 +29,11 @@ namespace ProjectBeheerDL_Memory
             return gebruikers.ContainsKey(email);
         }
 
+        public List<Gebruiker> GeefAlleGebruikers()
+        {
+            throw new NotImplementedException();
+        }
+
         public Gebruiker GeefGebruikeradhvEmail(string email)
         {
             if (gebruikers.ContainsKey(email)) return gebruikers[email];
@@ -40,5 +45,7 @@ namespace ProjectBeheerDL_Memory
         { 
             if(!gebruikers.ContainsKey(email)) gebruikers.Add(email, new Gebruiker(naam, email, rol));
         }
+
+
     }
 }

@@ -32,7 +32,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
-                    <StackPanel Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" Orientation="Vertical" Grid.ColumnSpan="2">
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
                         <TextBlock>Startdatum</TextBlock> 
                         <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker> 
                         <ComboBox Margin="5">
@@ -55,13 +55,10 @@
                     <TextBox Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" x:Name="NaamPartnerTextBox" Grid.ColumnSpan="2" Text="Naam partner"/>
                     <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" x:Name="PartnerRolTextBox" Grid.ColumnSpan="2" Text="Partnerrol"/>
                     <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox" Grid.ColumnSpan="2" Text="Contactgegevens"/>
-                    <Button Grid.Column="4" Grid.Row="6" Margin="5,5,5,5" x:Name="VoegExtraPartnerToeButton" Content="Voeg nog een partner toe"/>
-                    <!-- deze partner moet nog negen keer hidden er bij staan zodat er kunnen bijgemaakt worden als je op die knop clickt-->
-                    <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Vertical">
-                        <TextBox Margin="5,5,5,5" x:Name="NaamPartnerTextBox2" Grid.ColumnSpan="2" Text="Naam partner" Visibility="Hidden"/>
-                        <TextBox Margin="5,5,5,5" x:Name="ParnterRolTextBox2" Grid.ColumnSpan="2" Text="Partnerrol" Visibility="Hidden"/>
-                        <TextBox Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox2" Grid.ColumnSpan="2" Text="Contactgegevens" Visibility="Hidden"/>
-                     </StackPanel>
+                    <Button Grid.Column="1" Grid.Row="7" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe"/>
+                    <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
+                    <TextBlock Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Overzicht partners</TextBlock>
+                    <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox"></ListBox>
                     <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
                 </Grid>
             </TabItem>
