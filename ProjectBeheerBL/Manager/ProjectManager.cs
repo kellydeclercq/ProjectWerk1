@@ -73,6 +73,10 @@ namespace ProjectBeheerBL.Beheerder
             _repo.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
         }
 
+        public List<Project> GeefAlleProjecten()
+        {
+            return null;
+        }
 
     }
 }

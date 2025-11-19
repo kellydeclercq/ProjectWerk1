@@ -33,5 +33,7 @@ namespace ProjectBeheerBL.Interfaces.Repo
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker);
 
+        List<Project> GeefAlleProjecten();
+
     }
 }

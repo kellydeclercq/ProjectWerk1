@@ -31,7 +31,7 @@ namespace ProjectBeheerDL_Memory
 
         public List<Gebruiker> GeefAlleGebruikers()
         {
-            throw new NotImplementedException();
+            return gebruikers.Values.ToList();
         }
 
         public Gebruiker GeefGebruikeradhvEmail(string email)
