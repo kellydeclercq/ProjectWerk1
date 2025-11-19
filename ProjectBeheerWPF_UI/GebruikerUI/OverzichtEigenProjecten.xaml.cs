@@ -132,11 +132,25 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     break;
             }
 
-            ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+
+            //als er gefilterd is kunnen we direct gaan sorteren
+            //als er geen sorteeroptie is aangeduid tonen we gewoon de gefilterde objecten
+            ComboBoxItem selectedSorteerItem = SortComboBox.SelectedItem as ComboBoxItem;
+            string sorteerTag = selectedSorteerItem.Tag.ToString();
+
+            if (!string.IsNullOrWhiteSpace(sorteerTag) && sorteerTag != "None")
+            {
+                SorteerProjecten(sorteerTag);
+            }
+            else 
+            {
+                ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+            }
         }
 
         private void SorteerProjecten(string tag)
         {
+            //als er 
             List <Project> gesorteerdeProjecten = Gefilterdeprojecten ?? projecten;
             //case moet tag naam zijn
             switch (tag)
