@@ -150,7 +150,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
 
         private void SorteerProjecten(string tag)
         {
-            //als er 
+            //als er een Gefilterdeprojecten bestaat => gesorteerdeprojecten krijgt die lijst binnen
+            //als gefilterdeprojecten null is => gesorteerdeprojecten krijgt projecten binnen
             List <Project> gesorteerdeProjecten = Gefilterdeprojecten ?? projecten;
             //case moet tag naam zijn
             switch (tag)
