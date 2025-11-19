@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Domein;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -19,9 +20,18 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class ProjectFiche : Window
     {
-        public ProjectFiche()
+
+
+        public ProjectFiche(Project selectedproject)
         {
             InitializeComponent();
+
+            //de datacontext is het source object voor alle data bindings binnen een control (button/listbox/datagrid...)
+            //hier ken i khet geselecteerde project toe aan de datacontext van het propertygrid
+            ProductFichePropertyGrid.DataContext = selectedproject;
+
         }
+
+
     }
 }
