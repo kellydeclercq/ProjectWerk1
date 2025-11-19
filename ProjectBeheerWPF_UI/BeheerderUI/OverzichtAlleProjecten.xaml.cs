@@ -26,6 +26,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
+        private Gebruiker ingelogdeGebruiker;
         private List<Project>projecten = new List<Project>();
 
         public OverzichtAlleProjecten()
@@ -35,12 +36,14 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             ProjectOverzichtDatagrid.ItemsSource = projecten;
         }
 
-        public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager, ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+        public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager, 
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
         }
 
         private void Details_Click(object sender, RoutedEventArgs e)

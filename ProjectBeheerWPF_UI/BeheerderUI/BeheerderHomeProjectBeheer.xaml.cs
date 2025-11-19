@@ -38,6 +38,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
         }
 
         private void MaakNieuwProject_CLick(object sender, RoutedEventArgs e)

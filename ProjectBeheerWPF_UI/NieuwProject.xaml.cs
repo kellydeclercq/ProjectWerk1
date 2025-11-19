@@ -29,6 +29,7 @@ namespace ProjectBeheerWPF_UI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
+        private Gebruiker ingelogdeGebruiker;
         private FileDialog fileDialog;
         private List<string> projectStatussen = Enum.GetNames(typeof(ProjectStatus)).ToList();
         private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
@@ -38,13 +39,14 @@ namespace ProjectBeheerWPF_UI
         public List<string> bijlages;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
 
             StatusComboBox.ItemsSource = projectStatussen;
             VergunningsStatusComboBox.ItemsSource = vergunningsStatussen;

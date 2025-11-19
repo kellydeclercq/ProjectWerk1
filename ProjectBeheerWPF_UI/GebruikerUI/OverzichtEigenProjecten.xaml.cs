@@ -31,8 +31,10 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
+        private Gebruiker ingelogdeGebruiker;
+
         public OverzichtEigenProjecten(ExportManager exportManager, GebruikersManager gebruikersManager,
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             projecten = projectManager.GeefAlleProjecten();
@@ -42,6 +44,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;   
         }
 
         //Gebruiker kiest een optie in de combobox
