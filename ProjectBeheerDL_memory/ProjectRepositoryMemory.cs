@@ -155,9 +155,9 @@ namespace ProjectBeheerDL_Memory
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten)
+            int? bezoekersScore, List<string> faciliteiten, Gebruiker Eigenaar)
         {
-            
+            StadsontwikkelingsGroeneRuimteProject project = new StadsontwikkelingsGroeneRuimteProject(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, Eigenaar, )
         }
 
         public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
