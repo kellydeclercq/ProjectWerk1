@@ -103,17 +103,13 @@ namespace ProjectBeheerWPF_UI
             GaVerderButtonTab_Click(sender, e);
         }
 
+
+        //hieronder alles ivm tab2: Stadsontwikkeling
+
         private void GaVerderButtonTab2_Click(object sender, RoutedEventArgs e)
         {
             GaVerderButtonTab_Click(sender, e);
         }
-
-        private void GaVerderButtonTab3_Click(object sender, RoutedEventArgs e)
-        {
-            GaVerderButtonTab_Click(sender, e);
-        }
-
-        //hieronder alles ivm tab2: Stadsontwikkeling
 
         //hieronder alles ivm tab3: Groene Ruimte
 
@@ -122,9 +118,14 @@ namespace ProjectBeheerWPF_UI
             int waardeBioDiv = (int)BiodiversiteitSlider.Value;
         }
 
+        private void GaVerderButtonTab3_Click(object sender, RoutedEventArgs e)
+        {
+            GaVerderButtonTab_Click(sender, e);
+        }
+
         private void BezoekersBeoordelingSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
-
+            int waardeBezoekersOordeel = (int)BezoekersBeoordelingSlider.Value;
         }
         //hieronder alles ivm tab4: Innovatief Wonen
 
