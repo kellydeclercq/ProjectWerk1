@@ -22,44 +22,56 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="2" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht projecten"/>
-        <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox">
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox" SelectionChanged="FilterCombobox_SelectionChanged">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
-            <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Datum" Tag="Datum"/>
-            <ComboBoxItem Content="ProjectNaam" Tag="Projectnaam"/>
+            <ComboBoxItem Content="Filteren op:" Tag="None" IsSelected="True"/>
+            <ComboBoxItem Content="Titel" Tag="Titel"/>
+            <ComboBoxItem Content="Type" Tag="Type"/>
             <ComboBoxItem Content="Wijk" Tag="Wijk"/>
             <ComboBoxItem Content="Status" Tag="Status"/>
+            <ComboBoxItem Content="Datum" Tag="Datum"/>
+            <ComboBoxItem Content="Partners" Tag="Partners"/>
         </ComboBox>
 
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TitelTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TypeTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="WijkTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="StatusTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="PartnersTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <!--if i want to filter on date => show the datepickers to slect start and end date-->
         <!--set visibility on collapse-->
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Visible">
-            <TextBlock Text="Startdatum" Margin="5"/>
-            <DatePicker Name="StartDatePicker" Width="120"/>
-            <TextBlock Text="Einddatum" Margin="5"/>
-            <DatePicker Name="EndDatePicker" Width="120"/>
+        <StackPanel x:Name="DatumsFilterPanel" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Collapsed">
+            <TextBlock Margin="5" Text="Startdatum" />
+            <DatePicker Margin="5" Name="StartDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+            <TextBlock Margin="5" Text="Einddatum"/>
+            <DatePicker Margin="5" Name="EndDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+            <!--<Button Margin="5" Width="100" Name="FilterButton" Content="Filter" Click="Filter_Click"/>-->
         </StackPanel>
+        
+        
 
         <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
-            <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Van oud naar nieuw" Tag="DatumOudnaarNieuw"/>
-            <ComboBoxItem Content="Van nieuw naar oud" Tag="DatumNieuwnaarOud"/>
+            <ComboBoxItem Content="Sorteren op:" Tag="None" IsSelected="True"/>
+            <ComboBoxItem Content="Titel" Tag="Titel"/>
+            <ComboBoxItem Content="Type" Tag="Type"/>
             <ComboBoxItem Content="Wijk" Tag="Wijk"/>
             <ComboBoxItem Content="Status" Tag="Status"/>
+            <ComboBoxItem Content="Datum" Tag="Datum"/>
+            <ComboBoxItem Content="Partners" Tag="Partners"/>
             <!--<ComboBoxItem Content="Type project" Tag="TypeProject"/>-->
         </ComboBox>
 
         <DataGrid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Titel" Binding="{Binding ProjectTitel}"/>
+                <DataGridTextColumn Header="Type"/>
+                <DataGridTextColumn Header="Wijk" Binding="{Binding Wijk}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding ProjectStatus}"/>
                 <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDatum}"/>
-                <DataGridTextColumn Header="Titel" Binding="{Binding ProjectTitel}"/>
-                <!--<DataGridTextColumn Header="Type"/> voorlopig tonen we dit niet-->
-                <DataGridTextColumn Header="Wijk" Binding="{Binding Wijk}"/>
+                <DataGridTextColumn Header="Partners" Binding="{Binding Partners}"/>
             </DataGrid.Columns>
         </DataGrid>
 

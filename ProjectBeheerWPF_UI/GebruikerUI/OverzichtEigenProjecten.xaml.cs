@@ -24,6 +24,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
     public partial class OverzichtEigenProjecten : Window
     {
         private List<Project> projecten = new();
+        private List<Project> Gefilterdeprojecten = new();
         private OpenFolderDialog folderDialog = new OpenFolderDialog();
         private string initFolderExport;
         public OverzichtEigenProjecten(ExportManager exportManager, GebruikersManager gebruikersManager,
@@ -35,51 +36,134 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             initFolderExport = "@C:\\Downloads";
         }
 
-        private void Details_Click(object sender, RoutedEventArgs e)
+        private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            var selectedItem = FilterCombobox.SelectedItem as ComboBoxItem;
+            string tag = selectedItem.Tag.ToString();
+            //als de optie datum geselecteerd is toon de datumvakjes, anders verberg ze
+            if(tag == "Datum")
             {
-                MessageBox.Show("Selecteer eerst een project om details te kunnen bekijken.","Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DatumsFilterPanel.Visibility = Visibility.Visible;
             }
-            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
+            else 
             {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DatumsFilterPanel.Visibility= Visibility.Collapsed;
+                FilterToepassen(tag);
             }
-            else
-            {
-                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
-                if (project != null)
-                {
-                    //navigeer naar DetailsProject
-                    var detailsProject = new DetailsProject(project);
-                    detailsProject.Show();
-                }
-            }
-            
         }
 
-        private void Bewerk_Click(object sender, RoutedEventArgs e)
+        private void Datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (StartDatePicker.SelectedDate.HasValue && EndDatePicker.SelectedDate.HasValue) 
+            {
+                DateTime start = StartDatePicker.SelectedDate.Value;
+                DateTime end = EndDatePicker.SelectedDate.Value;
 
-            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Selecteer eerst een project om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
-            {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
-                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
-                if (project != null)
+                if (start <= end)
                 {
-                    //navigeer naar BewerkProject
-                    var bewerkProject = new BewerkProject(project);
-                    bewerkProject.Show();
+                    //filter de projecten waar de start en einddatum van tussen of op de grenzen liggen
+                    Gefilterdeprojecten = projecten
+                                                    .Where(p => p.StartDatum >= start && p.StartDatum <= end)
+                                                    .ToList();
+
+                    ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
                 }
             }
-            
+        }
+
+
+        private void FilterToepassen(string tag) 
+        {
+            //case moet tag naam zijn
+            switch (tag)
+            {
+                case "Titel":
+                    if (!string.IsNullOrWhiteSpace(TitelTextBox.Text))
+                    {
+                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten; //als de textbox leeg is toon altijd alle projecten
+                    }
+                    break;
+                case "Type":
+                    if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
+                    {
+                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpType(TypeTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Wijk":
+                    if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
+                    {
+                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Status":
+                    if (!string.IsNullOrWhiteSpace(StatusTextBox.Text))
+                    {
+                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Partners":
+                    if (!string.IsNullOrWhiteSpace(PartnersTextBox.Text))
+                    {
+                        Gefilterdeprojecten = ProjectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "None":
+                    default: Gefilterdeprojecten = projecten;
+                    break;
+            }
+
+            ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+        }
+
+        private void SorteerProjecten(string tag)
+        {
+            List <Project> gesorteerdeProjecten = Gefilterdeprojecten ?? projecten;
+            //case moet tag naam zijn
+            switch (tag)
+            {
+                case "Titel":
+                    gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.ProjectTitel).ToList();
+                    break;
+                case "Type":
+                    //TODO: sorteren op type project
+                    //gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.).ToList();
+                    break;
+                case "Wijk":
+                    gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.Wijk).ToList();
+                    break;
+                case "Status":
+                    gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.ProjectStatus).ToList();
+                    break;
+                case "Partners":
+                    gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.Partners).ToList();
+                    break;
+                case "None":
+                default:
+                    gesorteerdeProjecten = projecten;
+                    break;
+            }
+
+            ProjectOverzichtDatagrid.ItemsSource = gesorteerdeProjecten;
         }
 
         //voor het exporteren:
@@ -101,7 +185,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 {
                     List<Project> projecten = ProjectOverzichtDatagrid.SelectedItems.Cast<Project>().ToList();
                 }
-                catch (InvalidCastException) 
+                catch (InvalidCastException)
                 {
                     Console.WriteLine("Invalidcast in ExporteerAlsCsv_CLick");
                 }
@@ -112,8 +196,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     //wordt venster gesloten en heb ik Folder geselecteerd?
                     if (result == true && !string.IsNullOrWhiteSpace(folderDialog.FolderName))
                     {
-                        //sla de exportfile hier op 
-                        
+                        //TODO: sla de exportfile hier op 
+
                     }
 
 
@@ -157,5 +241,55 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
 
                 }
             }
+        }
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om details te kunnen bekijken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+                if (project != null)
+                {
+                    //navigeer naar DetailsProject
+                    var detailsProject = new DetailsProject(project);
+                    detailsProject.Show();
+                }
+            }
+
+        }
+
+        private void Bewerk_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Project project = ProjectOverzichtDatagrid.SelectedItem as Project;
+                if (project != null)
+                {
+                    //navigeer naar BewerkProject
+                    var bewerkProject = new BewerkProject(project);
+                    bewerkProject.Show();
+                }
+            }
+
+        }
+
+        
     }
 }
