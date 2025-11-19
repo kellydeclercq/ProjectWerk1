@@ -57,6 +57,13 @@ namespace ProjectBeheerDL_Memory
             bouwFirmas.Add(b);
             bouwFirmas.Add(b2);
 
+            //Adres aanmaken
+            Adres a1 = new Adres("Rijksweg", "127", 9000, "Gent");
+            Adres a2 = new Adres("Floraliënlaan", "88", 9000, "Gent");
+            Adres a3 = new Adres("Kraanlei", "267B", 9000, "Gent");
+            Adres a4 = new Adres("R4", "20", 9000, "Gent");
+            Adres a5 = new Adres("Kastanjestraat", "67", 9000, "Gent");
+
 
             // Drie typen project aanmaken (twee opties voor diversiteit)
             StadsOntwikkeling stadsontwikkeling  =  new StadsOntwikkeling(VergunningsStatus.Goegekeurd, false, Toegankelijkheid.Gedeeltelijk, false, true, bouwFirmas);
@@ -70,25 +77,25 @@ namespace ProjectBeheerDL_Memory
             // 7 projecten aanmaken (elke soort)
 
             GroeneRuimteInnovatiefWonenProject griwp = new GroeneRuimteInnovatiefWonenProject(projectId, "Modern Wonen aan de Bijloke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], adres, groeneRuimte, innovatiefWonen);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], a1, groeneRuimte, innovatiefWonen);
             projectId++;
             GroeneRuimteProject grp = new GroeneRuimteProject(projectId, "Groene bibilitoheek in oostakker", langeBeschrijving,
-                new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], groeneRuimte);
+                new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], a2, groeneRuimte);
             projectId++;
             InnovatiefWonenProject iwp = new InnovatiefWonenProject(projectId, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], innovatiefWonen);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], a3, innovatiefWonen);
             projectId++;
             StadsontwikkelingsGroeneRuimteProject sogrp = new StadsontwikkelingsGroeneRuimteProject(projectId, "ontwikkelings woningen in het groen", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Klein marakesh", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], stadsontwikkeling, groeneRuimte);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Klein marakesh", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], a4, stadsontwikkeling, groeneRuimte);
             projectId++;
             StadsontwikkelingsInnovatiefWonenProject soiwp = new StadsontwikkelingsInnovatiefWonenProject(projectId, "Kangoeroe woningen in apartementen", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], stadsontwikkeling, innovatiefWonen);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], a5, stadsontwikkeling, innovatiefWonen);
             projectId++;
             StadsontwikkelingsGroeneRuimteInnovatiefWonenProject sopgriwp = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(projectId, "fully robotic co-woningen in het park", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], stadsontwikkeling, groeneRuimte, innovatiefWonen);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], a1, stadsontwikkeling, groeneRuimte, innovatiefWonen);
             projectId++;
             StadsontwikkelingProject sop = new StadsontwikkelingProject(projectId, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], stadsontwikkeling);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], a2, stadsontwikkeling);
             projectId++;
 
             // 1: Enkel Groene Ruimte, andere wijk en status
@@ -96,7 +103,7 @@ namespace ProjectBeheerDL_Memory
             var grp2 = new GroeneRuimteProject(
                 projectId, "Park De Sterre heraanleg", langeBeschrijving,
                 new DateTime(2023, 10, 10), ProjectStatus.Uitvoering, "De Sterre",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[1], gr2);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[1], a3, gr2);
             projectLijst.Add(projectId, grp2);
             projectId++;
 
@@ -105,7 +112,7 @@ namespace ProjectBeheerDL_Memory
             var iwp2 = new InnovatiefWonenProject(
                 projectId, "Studentenhuisvesting Rooigem", langeBeschrijving,
                 new DateTime(2024, 02, 15), ProjectStatus.Uitvoering, "Rooigem",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[2], iw2);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[2], a4, iw2);
             projectLijst.Add(projectId, iwp2);
             projectId++;
 
@@ -115,7 +122,7 @@ namespace ProjectBeheerDL_Memory
             var sop2 = new StadsontwikkelingProject(
                 projectId, "Herontwikkeling Oude Dokken", langeBeschrijving,
                 new DateTime(2020, 05, 12), ProjectStatus.Afgerond, "Oude Dokken",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3], so2);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3],a5, so2);
             projectLijst.Add(projectId, sop2);
             projectId++;
 
@@ -125,7 +132,7 @@ namespace ProjectBeheerDL_Memory
             var griwp2 = new GroeneRuimteInnovatiefWonenProject(
                 projectId, "Tiny house cluster in natuurzone", langeBeschrijving,
                 new DateTime(2022, 09, 01), ProjectStatus.Afgerond, "Bourgoyen",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], gr3, iw3);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], a1, gr3, iw3);
             projectLijst.Add(projectId, griwp2);
             projectId++;
 
@@ -136,7 +143,7 @@ namespace ProjectBeheerDL_Memory
             var sogrp2 = new StadsontwikkelingsGroeneRuimteProject(
                 projectId, "Groene boulevard aan de Schelde", langeBeschrijving,
                 new DateTime(2024, 11, 01), ProjectStatus.Uitvoering, "Scheldekaai",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5], so3, gr4);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5],a2, so3, gr4);
             projectLijst.Add(projectId, sogrp2);
             projectId++;
 
@@ -147,7 +154,7 @@ namespace ProjectBeheerDL_Memory
             var soiwp2 = new StadsontwikkelingsInnovatiefWonenProject(
                 projectId, "Seniorencomplex aan Watersportbaan", langeBeschrijving,
                 new DateTime(2021, 03, 20), ProjectStatus.Geannuleerd, "Watersportbaan",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[6], so4, iw4);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[6],a3, so4, iw4);
             projectLijst.Add(projectId, soiwp2);
             projectId++;
 
@@ -159,7 +166,7 @@ namespace ProjectBeheerDL_Memory
             var sopgriwp2 = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(
                 projectId, "Groen woonpark Ledeberg", langeBeschrijving,
                 new DateTime(2024, 06, 10), ProjectStatus.Uitvoering, "Ledeberg",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[7], so5, gr5, iw5);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[7],a4, so5, gr5, iw5);
             projectLijst.Add(projectId, sopgriwp2);
             projectId++;
 
@@ -168,7 +175,7 @@ namespace ProjectBeheerDL_Memory
             var grp3 = new GroeneRuimteProject(
                 projectId, "Buurtparkje Brugse Poort", langeBeschrijving,
                 new DateTime(2023, 04, 05), ProjectStatus.Planning, "Brugse Poort",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[8], gr6);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[8],a5, gr6);
             projectLijst.Add(projectId, grp3);
             projectId++;
 
@@ -177,7 +184,7 @@ namespace ProjectBeheerDL_Memory
             var iwp3 = new InnovatiefWonenProject(
                 projectId, "Stadscampus voor starters", langeBeschrijving,
                 new DateTime(2025, 01, 15), ProjectStatus.Planning, "Dampoort",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[9], iw6);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[9],a1, iw6);
             projectLijst.Add(projectId, iwp3);
             projectId++;
 
@@ -187,7 +194,7 @@ namespace ProjectBeheerDL_Memory
             var sop3 = new StadsontwikkelingProject(
                 projectId, "Herinrichting Sint-Pietersplein", langeBeschrijving,
                 new DateTime(2023, 09, 01), ProjectStatus.Uitvoering, "Sint-Pietersplein",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[10], so6);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[10],a2, so6);
             projectLijst.Add(projectId, sop3);
             projectId++;
 
@@ -197,7 +204,7 @@ namespace ProjectBeheerDL_Memory
             var griwp3 = new GroeneRuimteInnovatiefWonenProject(
                 projectId, "Natuurvriendelijke woonwijk Drongen", langeBeschrijving,
                 new DateTime(2025, 02, 01), ProjectStatus.Planning, "Drongen",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[2], gr7, iw7);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[2], a3, gr7, iw7);
             projectLijst.Add(projectId, griwp3);
             projectId++;
 
@@ -208,7 +215,7 @@ namespace ProjectBeheerDL_Memory
             var sogrp3 = new StadsontwikkelingsGroeneRuimteProject(
                 projectId, "Jeugd- en sportpark Nieuw Gent", langeBeschrijving,
                 new DateTime(2021, 06, 01), ProjectStatus.Afgerond, "Nieuw Gent",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3], so7, gr8);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[3],a4, so7, gr8);
             projectLijst.Add(projectId, sogrp3);
             projectId++;
 
@@ -219,7 +226,7 @@ namespace ProjectBeheerDL_Memory
             var soiwp3 = new StadsontwikkelingsInnovatiefWonenProject(
                 projectId, "Loftproject Oude Fabriek", langeBeschrijving,
                 new DateTime(2024, 08, 20), ProjectStatus.Uitvoering, "Muide",
-                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], so8, iw8);
+                fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[4], a5, so8, iw8);
             projectLijst.Add(projectId, soiwp3);
             projectId++;
 
@@ -231,7 +238,7 @@ namespace ProjectBeheerDL_Memory
             var sopgriwp3 = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(
                 projectId, "Stadslabo Rabot", langeBeschrijving,
                 new DateTime(2025, 11, 01), ProjectStatus.Planning, "Rabot",
-                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5], so9, gr9, iw9);
+                fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[5],a1, so9, gr9, iw9);
             projectLijst.Add(projectId, sopgriwp3);
             projectId++;
 
@@ -246,12 +253,7 @@ namespace ProjectBeheerDL_Memory
 
             //TODO constructors checken
 
-            //Adres aanmaken
-            Adres a1 = new Adres("Rijksweg", "127", 9000, "Gent");
-            Adres a2 = new Adres("Floraliënlaan", "88", 9000, "Gent");
-            Adres a3 = new Adres("Kraanlei", "267B", 9000, "Gent");
-            Adres a4 = new Adres("R4", "20", 9000, "Gent");
-            Adres a5 = new Adres("Kastanjestraat", "67", 9000, "Gent");
+
 
             #endregion
         }
@@ -262,10 +264,10 @@ namespace ProjectBeheerDL_Memory
         public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar, Adres adres)
         {
             GroeneRuimteInnovatiefWonenProject project = new GroeneRuimteInnovatiefWonenProject(projectId, projectTitel, beschrijving, startDatum,
-                projectStatus, wijk, fotos, documenten, partners, eigenaar,
+                projectStatus, wijk, fotos, documenten, partners, eigenaar, adres,
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten),
                 MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed, samenwerkingToerisme, woonvormen));
             
@@ -277,13 +279,13 @@ namespace ProjectBeheerDL_Memory
 
 
         public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
-            List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, 
+            List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,  
             // parameters aanmaak groeneRuimte
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker)
+            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker, Adres adres)
         {
 
-            GroeneRuimteProject project = new GroeneRuimteProject(projectId, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, gebruiker,
+            GroeneRuimteProject project = new GroeneRuimteProject(projectId, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, gebruiker, adres,
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
 
             projectLijst.Add(projectId ,project);
@@ -296,10 +298,10 @@ namespace ProjectBeheerDL_Memory
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             //parameters innovatief wonen
             int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker)
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker, Adres adres)
         {
             InnovatiefWonenProject project =  new InnovatiefWonenProject(projectId, projectTitel,  beschrijving,  startDatum, projectStatus,
-             wijk, fotos,  documenten, partners, gebruiker , MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
+             wijk, fotos,  documenten, partners, gebruiker, adres, MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
             samenwerkingToerisme, woonvormen));
 
             projectLijst.Add(projectId, project);
@@ -309,11 +311,11 @@ namespace ProjectBeheerDL_Memory
 
 
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten)
         {
-            StadsontwikkelingsGroeneRuimteProject project = new StadsontwikkelingsGroeneRuimteProject(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar,
+            StadsontwikkelingsGroeneRuimteProject project = new StadsontwikkelingsGroeneRuimteProject(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar,adres,
                 MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen, infoBordenOfWandeling, bouwfirmas),
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
             projectLijst.Add(projectId, project);
@@ -326,10 +328,10 @@ namespace ProjectBeheerDL_Memory
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)           
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar, Adres adres)           
         {
             StadsontwikkelingsInnovatiefWonenProject project = new StadsontwikkelingsInnovatiefWonenProject(projectId, projectTitel, beschrijving, startDatum,
-                projectStatus, wijk, fotos, documenten, partners, eigenaar,
+                projectStatus, wijk, fotos, documenten, partners, eigenaar, adres,
                 MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen, infoBordenOfWandeling, bouwfirmas),
                 MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed, samenwerkingToerisme, woonvormen));
 
@@ -344,11 +346,11 @@ namespace ProjectBeheerDL_Memory
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker Eigenaar
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker Eigenaar, Adres adres
             )
         {
             StadsontwikkelingsGroeneRuimteInnovatiefWonenProject project = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(projectId, projectTitel, beschrijving,
-                startDatum, projectStatus, wijk, fotos, documenten, partners, Eigenaar,
+                startDatum, projectStatus, wijk, fotos, documenten, partners, Eigenaar, adres,
                 MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen, infoBordenOfWandeling, bouwfirmas),
                 MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten),
                 MaakInnovatiefWonenAan(aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed, samenwerkingToerisme, woonvormen));
@@ -365,10 +367,10 @@ namespace ProjectBeheerDL_Memory
 
         public void MaakStadsontwikkelingsProjectAan(string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
-            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker)
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker, Adres adres)
         {
             StadsontwikkelingProject project = new StadsontwikkelingProject(projectId, projectTitel, beschrijving, startDatum, projectStatus,
-             wijk, fotos, documenten, partners, gebruiker, MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen,
+             wijk, fotos, documenten, partners, gebruiker, adres, MaakStadsOntwikkelingAan(vergunningsStatus, architecturaleWaarde, toegankelijkheid, beziensWaardigheidVoortoeristen,
              infoBordenOfWandeling, bouwfirmas));
             projectLijst.Add(projectId, project);
             projectId++;
