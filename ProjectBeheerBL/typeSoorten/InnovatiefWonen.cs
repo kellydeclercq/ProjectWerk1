@@ -13,6 +13,7 @@ namespace ProjectBeheerBL.typeSoorten
         public InnovatiefWonen(int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed, 
             bool samenwerkingToerisme, List<string> woonvormen)
         {
+            if (woonvormen == null) throw new ProjectException("Woonvormen mag geen NULL zijn.");
             AantalWooneenheden = aantalWooneenheden;
             RondleidingMogelijk = rondleidingMogelijk;
             InnovatieScore = innovatieScore;
@@ -32,12 +33,12 @@ namespace ProjectBeheerBL.typeSoorten
             }
         public bool RondleidingMogelijk { get; set; }
 
-        private int? _innovatieScore;
+        private int? _innovatieScore;      
         public int? InnovatieScore {
             get { return _innovatieScore; }
             set {
                 if (value == null)
-                {
+                { 
                     _innovatieScore = null;
                     return;
                 }
@@ -49,7 +50,16 @@ namespace ProjectBeheerBL.typeSoorten
         public bool ShowwoningBeschikbaar { get; set; }
         public bool SamenwerkingErfgoed { get; set; }
         public bool SamenwerkingToerisme { get; set; }
-        public List<string> Woonvormen {  get; set; }
+
+        private List<string> woonvormen;
+        public List<string> Woonvormen { 
+            get => woonvormen;
+            set
+            {
+                if (value == null) throw new ProjectException("Woonvormen mag geen NULL zijn.");
+                woonvormen = value;
+            }
+        }
 
 
     }
