@@ -29,7 +29,7 @@ namespace ProjectBeheerWPF_UI
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
         private FileDialog fileDialog;
-        //lijst met partners bijhouden hier, gewone strings die je kan weergeven in de listbox
+
         public List<Partner> partners;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
@@ -42,10 +42,23 @@ namespace ProjectBeheerWPF_UI
             this.beheerMemoryFactory = beheerMemoryFactory;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        //hier staan algemene methodes voor nieuwProject window
+
+        private void TerugButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Close();
         }
+
+        private void GaVerderButtonTab_Click(object sender, RoutedEventArgs e)
+        {
+            //per tab wordt hier individueel naar verwezen
+            if (NieuwProjectTabs.SelectedIndex > NieuwProjectTabs.Items.Count - 1)
+            {
+                NieuwProjectTabs.SelectedIndex += 1;
+            }
+        }
+
+        //hieronder alles ivm tab1: algemene info
 
         private void VoegDocumentenToeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,11 +84,6 @@ namespace ProjectBeheerWPF_UI
                 string bestandsPad = dialog.FileName;
                 MessageBox.Show("Geselecteerde afbeelding: " + bestandsPad);
             }
-        }
-
-        private void TerugButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
 
         private void VoegPartnerToeButton_Click(object sender, RoutedEventArgs e)
@@ -105,17 +113,31 @@ namespace ProjectBeheerWPF_UI
             GaVerderButtonTab_Click(sender, e);
         }
 
-        private void GaVerderButtonTab_Click(object sender, RoutedEventArgs e)
+        //hieronder alles ivm tab2: Stadsontwikkeling
+
+        //hieronder alles ivm tab3: Groene Ruimte
+
+        private void BiodiversiteitSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
-            if (NieuwProjectTabs.SelectedIndex > NieuwProjectTabs.Items.Count - 1)
-            {
-                NieuwProjectTabs.SelectedIndex += 1;
-            }
+            int waardeBioDiv = (int)BiodiversiteitSlider.Value;
         }
 
+        private void BezoekersBeoordelingSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+
+        }
+        //hieronder alles ivm tab4: Innovatief Wonen
+
+        private void ArchitecturaleInnoScoreSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            int waardeArchInno = (int)ArchitecturaleInnoScoreSlider.Value;
+        }
+
+        //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
+
     }
 }
