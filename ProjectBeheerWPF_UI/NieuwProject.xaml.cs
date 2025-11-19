@@ -30,10 +30,12 @@ namespace ProjectBeheerWPF_UI
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
         private FileDialog fileDialog;
-
-        
+        private List<string> projectStatussen = Enum.GetNames(typeof(ProjectStatus)).ToList();
+        private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
+        private List<string> toegankelijkheden = Enum.GetNames(typeof(Toegankelijkheid)).ToList();
 
         public List<Partner> partners;
+        public List<string> bijlages;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
@@ -44,10 +46,11 @@ namespace ProjectBeheerWPF_UI
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
 
-            StatusPlanningComboBoxItem.Content = ProjectStatus.Planning;
-            StatusUitvoeringComboBoxItem.Content = ProjectStatus.Uitvoering;
-            StatusAfgerondComboBoxItem.Content = ProjectStatus.Afgerond;
-            StatusGeannuleerdComboBoxItem.Content= ProjectStatus.Geannuleerd;
+            StatusComboBox.ItemsSource = projectStatussen;
+            VergunningsStatusComboBox.ItemsSource = vergunningsStatussen;
+            ToegankelijkheidComboBox.ItemsSource = toegankelijkheden;
+            
+            
         }
 
         //hier staan algemene methodes voor nieuwProject window
@@ -97,14 +100,20 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegPartnerToeButton_Click(object sender, RoutedEventArgs e)
         {
-            Partner partner = new(NaamPartnerTextBox.Text, EmailPartnerTextBox.Text, 
-                TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
-            partners.Add(partner);
-            PartnersListBox.Items.Add(partner.Naam);
+            VoegPartnerToeAanLijst();
+            
             NaamPartnerTextBox.Clear();
             EmailPartnerTextBox.Clear();
             TelefoonPartnerTextBox.Clear();
             PartnerRolTextBox.Clear();
+        }
+
+        private void VoegPartnerToeAanLijst()
+        {
+            Partner partner = new(NaamPartnerTextBox.Text, EmailPartnerTextBox.Text,
+                TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
+            partners.Add(partner);
+            PartnersListBox.Items.Add(partner.Naam);
         }
 
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
@@ -152,21 +161,40 @@ namespace ProjectBeheerWPF_UI
             //alle inputvariabelen:
             string titel = TitelInputTextBox.Text;
             DateTime startDatum = StartDatumCalendarButton.SelectedDate.Value;
-            ProjectStatus projectStatus = StatusComboBox.SelectedItem;
+            ProjectStatus projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
 
-            //alle invoer + logica projectTypes adhv checkboxen types
-            bool IsStadsontwikkeling = false;
-            bool IsGroeneRuimte = false;
-            bool IsInnovatiefWonen = false;
+            bool IsStadsontwikkeling = (bool)StadsontwikkelingCheckBox.IsChecked;
+            bool IsGroeneRuimte = (bool)GroeneRuimteCheckBox.IsChecked;
+            bool IsInnovatiefWonen = (bool)InnovatiefWonenCheckBox.IsChecked;
+
+            string beschrijving = BeschrijvingTextBox.Text;
+
+            foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
+
+            //voegpartner uit de velden ook toe aan de lijst van partners en geef die lijst hier dan mee
+            VoegPartnerToeAanLijst();
+
+            string bouwfirma = BouwfirmaTextBox.Text;
+            string bouwfirmaGegevens = GegevensBouwfirmaTextBox.Text;
+            VergunningsStatus vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+
+            bool IsArchitecturaleWaarde = false;
+            if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
+            else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+
+
+                //alle invoer + logica projectTypes adhv checkboxen types
 
 
 
-            BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+
+
+                BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
         }
 
-        private void BepaalTypeProjectEnMaakAan(bool isStadsontwikkeling, bool isGroeneRuimte, bool isInnovatiefWonen)
+        private void BepaalTypeProjectEnMaakAan(bool IsStadsontwikkeling, bool IsGroeneRuimte, bool IsInnovatiefWonen)
         {
-            switch((isStadsontwikkeling, isGroeneRuimte, isInnovatiefWonen))
+            switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
             {
                 case (true, false, false):
                     projectManager.MaakStadsontwikkelingsProjectAan();

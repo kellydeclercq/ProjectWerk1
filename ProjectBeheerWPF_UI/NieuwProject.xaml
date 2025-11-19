@@ -45,9 +45,9 @@
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <CheckBox Content="Stadsontwikkeling"/>
-                        <CheckBox Content="Groene Ruimte"/>
-                        <CheckBox Content="Innovatief Wonen"/>
+                        <CheckBox Content="Stadsontwikkeling" Name="StadsontwikkelingCheckBox"/>
+                        <CheckBox Content="Groene Ruimte" Name="GroeneRuimteCheckBox"/>
+                        <CheckBox Content="Innovatief Wonen" Name="InnovatiefWonenCheckBox"/>
                     </StackPanel>
                     <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,0,50" Grid.RowSpan="2">
                         <TextBox Margin="5" x:Name="BeschrijvingTextBox" Text="Beschrijving"/>
@@ -91,11 +91,15 @@
                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Contactgegevens bouwfirma"/></TextBlock>
                     <TextBox Grid.Column="2" Grid.Row="2" Margin="5" x:Name="GegevensBouwfirmaTextBox"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Vergunningsstatus"/></TextBlock>
-                    <ComboBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="VergunningsStatusComboBox"/>
+                    <ComboBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="VergunningsStatusComboBox">
+                        <ComboBoxItem Name="VergunningsStatusInAanvraag"/>
+                        <ComboBoxItem Name="VergunningsStatusGoegekeurd"/>
+                        <ComboBoxItem Name="VergunningsStatusGeweigerd"/>
+                    </ComboBox>
                     <TextBlock Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Architecturale Waarde"/></TextBlock>
                     <StackPanel Grid.Column="2" Grid.Row="4"  Orientation="Horizontal">
-                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeJaRadioButton" Content="ja"/>
-                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeNeeRadioButton" Content="nee"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeJaRadioButton" Content="ja" GroupName="ArchitecturaleWaardeRB"/>
+                        <RadioButton Margin="10" VerticalAlignment="center" x:Name="ArchitecturaleWaardeNeeRadioButton" Content="nee" GroupName="ArchitecturaleWaardeRB"/>
                     </StackPanel>
                     <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Publieke toegankelijkheid"/></TextBlock>
                     <ComboBox Grid.Column="2" Grid.Row="5" Margin="5" x:Name="ToegankelijkheidComboBox"/>
