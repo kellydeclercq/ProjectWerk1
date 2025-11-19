@@ -137,6 +137,7 @@ namespace ProjectBeheerWPF_UI
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
+            StatusComboBox.ItemsSource = projectManager.
             throw new NotImplementedException();
         }
 
