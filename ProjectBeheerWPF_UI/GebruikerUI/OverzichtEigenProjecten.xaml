@@ -73,8 +73,10 @@
         <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Height="50" Width="150" Name="DetailsProjectButton" Content="Bekijk geselecteerd project" Margin="5"  Click="Details_Click"></Button>
             <Button Height="50" Width="150" Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"  Click="Bewerk_Click"></Button>
-            <Button Height="50" Width="150" Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"  Click="Exporteer_Click"></Button>
+            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsCSV" Content="Exporteer als CSV" Click="ExporteerAlsCsv_Click"/>
+            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
         </StackPanel>
+
 
     </Grid>
 </Window>
