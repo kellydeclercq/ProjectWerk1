@@ -34,12 +34,10 @@
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
-                        <TextBlock>Startdatum</TextBlock> 
-                        <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker> 
-                        <ComboBox Margin="5">
-                            <System:String>Status</System:String>
-                        </ComboBox>
-                    <ComboBox Margin="5"/>
+                        <TextBlock Margin="5">Startdatum</TextBlock> 
+                        <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker>
+                        <TextBlock Margin="5">Status</TextBlock>
+                        <ComboBox Margin="5" Name="StatusComboBox" SelectedIndex="-1"/>
                     </StackPanel>
                     <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <CheckBox Content="Stadsontwikkeling"/>
