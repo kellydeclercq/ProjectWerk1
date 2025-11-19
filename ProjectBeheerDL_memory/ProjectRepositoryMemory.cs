@@ -70,7 +70,7 @@ namespace ProjectBeheerDL_Memory
             projectId++;
             GroeneRuimteProject grp = new GroeneRuimteProject(projectId, "Groene bibilitoheek in oostakker", langeBeschrijving,
                 new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], groeneRuimte);
-
+            projectId++;
             InnovatiefWonenProject iwp = new InnovatiefWonenProject(projectId, "Kangoeroe woningen in Mariakerke", langeBeschrijving,
                 new DateTime(2025, 07, 26), ProjectStatus.Planning, "De Kreek", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], innovatiefWonen);
             projectId++;
@@ -102,7 +102,7 @@ namespace ProjectBeheerDL_Memory
             Adres a1 = new Adres("Rijksweg", "127", 9000, "Gent");
             Adres a2 = new Adres("Floraliënlaan", "88", 9000, "Gent");
             Adres a3 = new Adres("Kraanlei", "267B", 9000, "Gent");
-            Adres a4 = new Adres("R4", "/", 9000, "Gent");
+            Adres a4 = new Adres("R4", "20", 9000, "Gent");
             Adres a5 = new Adres("Kastanjestraat", "67", 9000, "Gent");
 
             #endregion
