@@ -25,11 +25,12 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="500"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
@@ -48,18 +49,20 @@
                     <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="0,0,0,50" Grid.RowSpan="2">
                         <TextBox Margin="5" x:Name="BeschrijvingTextBox" Text="Beschrijving"/>
                     </Grid>
-                    <StackPanel Grid.Column="5" Grid.Row="3" Margin="0,455,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <Button x:Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="100"/>
-                        <Button x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100"/>
+                    <StackPanel Grid.Column="5" Grid.Row="3" Margin="5" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Button Margin="5" x:Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="100" Click="VoegDocumentenToeButton_Click"/>
+                        <Button Margin="5" x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100" Click="VoegFotosToeButton_Click"/>
+                        <ListBox Height="100" Width="200" Margin="10" Name="BijlagesListBox">Lijst bijlages</ListBox>
                     </StackPanel>
                     <TextBox Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" x:Name="NaamPartnerTextBox" Grid.ColumnSpan="2" Text="Naam partner"/>
                     <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" x:Name="PartnerRolTextBox" Grid.ColumnSpan="2" Text="Partnerrol"/>
-                    <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="ContactgegevensPartnerTextBox" Grid.ColumnSpan="2" Text="Contactgegevens"/>
-                    <Button Grid.Column="1" Grid.Row="7" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe"/>
+                    <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="EmailPartnerTextBox" Grid.ColumnSpan="2" Text="Email"/>
+                    <TextBox Grid.Column="1" Grid.Row="7" Margin="5" Grid.ColumnSpan="2" Name="TelefoonPartnerTextBox" Text="Telefoon"/>
+                    <Button Grid.Column="1" Grid.Row="8" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe" Click="VoegPartnerToeButton_Click"/>
                     <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
                     <TextBlock Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Overzicht partners</TextBlock>
                     <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox"></ListBox>
-                    <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
+                    <Button Grid.Column="5" Grid.Row="8" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Specifieke Info Stadsontwikkeling">
