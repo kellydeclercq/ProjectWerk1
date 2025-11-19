@@ -70,7 +70,7 @@ namespace ProjectBeheerDL_Memory
             // 7 projecten aanmaken (elke soort)
 
             GroeneRuimteInnovatiefWonenProject griwp = new GroeneRuimteInnovatiefWonenProject(projectId, "Modern Wonen aan de Bijloke", langeBeschrijving,
-                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], groeneRuimte, innovatiefWonen);
+                new DateTime(2025, 07, 26), ProjectStatus.Planning, "Bijloke", fotos, documenten, partners, gebruikersRepo.GeefAlleGebruikers()[0], adres, groeneRuimte, innovatiefWonen);
             projectId++;
             GroeneRuimteProject grp = new GroeneRuimteProject(projectId, "Groene bibilitoheek in oostakker", langeBeschrijving,
                 new DateTime(2024, 07 - 4, 24), ProjectStatus.Planning, "Overpoort", fotos, documenten, partners2, gebruikersRepo.GeefAlleGebruikers()[0], groeneRuimte);

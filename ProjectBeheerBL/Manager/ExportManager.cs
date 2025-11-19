@@ -45,6 +45,7 @@ namespace ProjectBeheerBL.Beheerder
                     Beschrijving = p.Beschrijving, //TODO wat hiermee doen??
                     StartDatum = p.StartDatum,
                     ProjectStatus = p.ProjectStatus.ToString(),
+                    Adres = p.Adres.ToString(),
                     Wijk = p.Wijk,
                     Fotos = p.Fotos.Count,
                     Documenten = p.Documenten.Count,
