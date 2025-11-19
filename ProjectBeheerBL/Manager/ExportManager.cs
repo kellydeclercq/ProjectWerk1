@@ -91,10 +91,19 @@ namespace ProjectBeheerBL.Beheerder
                 records.Add(record);
 
             }
+            var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture) {
+                Delimiter = ";",
+                ShouldQuote = args => true
+            };
 
             using var writer = new StreamWriter(pad);
-            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            using var csv = new CsvWriter(writer, config);
+
+            csv.Context.TypeConverterOptionsCache.GetOptions<double>().Formats = new[] { "0.##" };
+            csv.Context.TypeConverterOptionsCache.GetOptions<double?>().Formats = new[] { "0.##" };
+
             csv.WriteRecords(records);
+
 
         }
     }

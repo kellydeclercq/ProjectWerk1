@@ -31,12 +31,12 @@ namespace ProjectBeheerDL_Memory
         
         string langeBeschrijving = "Dit bouwproject omvat de gefaseerde ontwikkeling van een multifunctioneel complex waarin duurzaamheid, efficiëntie en toekomstbestendigheid centraal staan. Tijdens de ontwerpfase worden verschillende constructieve opties onderzocht om zowel de esthetische als functionele doelstellingen te waarborgen. De uitvoering wordt gepland in nauw overleg met betrokken stakeholders, waarbij bijzondere aandacht wordt besteed aan logistieke routing en minimale verstoring van de omgeving.\r\n\r\nIn het hoofdgebouw wordt een modulaire structuur toegepast die flexibiliteit biedt voor toekomstige aanpassingen. De materialen worden geselecteerd op basis van energieprestatie, levensduur en circulaire toepassingsmogelijkheden. Daarnaast wordt een geavanceerd monitoringsysteem geïntegreerd om energieverbruik, veiligheidsparameters en klimaatbeheersing in realtime te optimaliseren.\r\n\r\nDe buitenruimte krijgt een groene invulling met onderhoudsarme beplanting, waterdoorlatende bestrating en strategische verlichting die zowel veiligheid als sfeer ondersteunt. Het bouwteam werkt volgens een strak kwaliteitsprotocol om consistentie te garanderen tijdens alle projectfasen. Eventuele afwijkingen worden tijdig gerapporteerd en beoordeeld, zodat de planning en begroting binnen de gestelde kaders blijven.";
 
-        public ProjectRepositoryMemory(IGebruikerRepository gebruikersRepo)
+        public ProjectRepositoryMemory(IGebruikerRepository? gebruikersRepo)
         {
             #region hard coded data
             lijstService.Faciliteiten.Add("speeltuin");
             lijstService.Faciliteiten.Add("picknickzone");
-            lijstService.Faciliteiten.Add("inforborden");
+            lijstService.Faciliteiten.Add("infoborden");
 
             lijstService.Woonvormen.Add("co-housing");
             lijstService.Woonvormen.Add("modulaire woningen");
@@ -62,6 +62,8 @@ namespace ProjectBeheerDL_Memory
             StadsOntwikkeling stadsontwikkeling  =  new StadsOntwikkeling(VergunningsStatus.Goegekeurd, false, Toegankelijkheid.Gedeeltelijk, false, true, bouwFirmas);
             GroeneRuimte groeneRuimte = new GroeneRuimte(400.50, 4, 2, true,  null, faciliteiten);           
             InnovatiefWonen innovatiefWonen = new InnovatiefWonen( 4, true, 9, true, false, false, woonvormen);
+
+            
             
             //TODO gebruiker toevoegen
 
@@ -131,6 +133,8 @@ namespace ProjectBeheerDL_Memory
 
         }
 
+
+
         public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, 
             // parameters aanmaak groeneRuimte
@@ -144,6 +148,8 @@ namespace ProjectBeheerDL_Memory
             projectLijst.Add(projectId ,project);
             projectId++;
         }
+
+
 
         public void MaakInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
@@ -159,6 +165,8 @@ namespace ProjectBeheerDL_Memory
             projectId++;
         }
 
+
+
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
@@ -170,6 +178,8 @@ namespace ProjectBeheerDL_Memory
             projectLijst.Add(projectId, project);
             projectId++;
         }
+
+
 
         public void MaakStadsOntwikkelingInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
@@ -185,6 +195,8 @@ namespace ProjectBeheerDL_Memory
             projectLijst.Add(projectId, project);
             projectId++;
         }
+
+
 
         public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
@@ -208,6 +220,8 @@ namespace ProjectBeheerDL_Memory
 
         }
 
+
+
         public void MaakStadsontwikkelingsProjectAan(string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker)
@@ -219,6 +233,8 @@ namespace ProjectBeheerDL_Memory
             projectId++;
 
         }
+
+
 
         //methode aanmaak types
 
