@@ -21,11 +21,28 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
-        public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+        private GebruikersManager _gebruikersManager;
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory;
+
+        public NieuwProject()
         {
             InitializeComponent();
         }
 
+        public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+        {
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
+            this.beheerMemoryFactory = beheerMemoryFactory;
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            _gebruikersManager.
+        }
     }
 }
