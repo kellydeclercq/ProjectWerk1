@@ -25,39 +25,29 @@
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
             <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Datum" Tag="Datum"/>
-            <ComboBoxItem Content="ProjectNaam" Tag="Projectnaam"/>
-            <ComboBoxItem Content="Wijk" Tag="Wijk"/>
-            <ComboBoxItem Content="Status" Tag="Status"/>
-            <ComboBoxItem Content="Eigenaar" Tag="Eigenaar"/>
+            <ComboBoxItem Content="Naam" Tag="Naam"/>
+            <ComboBoxItem Content="Email" Tag="Email"/>
+            <ComboBoxItem Content="Rol" Tag="Rol"/>
         </ComboBox>
 
-        <!--if i want to filter on date => show the datepickers to slect start and end date-->
-        <!--set visibility on collapse-->
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Visible">
-            <TextBlock Text="Startdatum" Margin="5"/>
-            <DatePicker Name="StartDatePicker" Width="120"/>
-            <TextBlock Text="Einddatum" Margin="5"/>
-            <DatePicker Name="EndDatePicker" Width="120"/>
-        </StackPanel>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="NaamTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="EmailTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="RolTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
 
         <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
-            <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Van oud naar nieuw" Tag="DatumOudnaarNieuw"/>
-            <ComboBoxItem Content="Van nieuw naar oud" Tag="DatumNieuwnaarOud"/>
-            <ComboBoxItem Content="Wijk" Tag="wijk"/>
-            <ComboBoxItem Content="Status" Tag="status"/>
-            <ComboBoxItem Content="Type project" Tag="TypeProject"/>
+            <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
+            <ComboBoxItem Content="Naam" Tag="Naam"/>
+            <ComboBoxItem Content="Email" Tag="Email"/>
+            <ComboBoxItem Content="Rol" Tag="Rol"/>
         </ComboBox>
 
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="GebruikerOverzichtDatagrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" />
-                <DataGridTextColumn Header="Admin/Gebruiker"/>
-                <DataGridTextColumn Header="Naam"/>
-                <DataGridTextColumn Header="Email"/>
+                <DataGridTextColumn Header="Naam" />
+                <DataGridTextColumn Header="Admin/Email"/>
+                <DataGridTextColumn Header="Rol"/>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>

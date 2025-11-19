@@ -27,6 +27,10 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
         private List<Project> Gefilterdeprojecten = new();
         private OpenFolderDialog folderDialog = new OpenFolderDialog();
         private string initFolderExport;
+
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
         public OverzichtEigenProjecten(ExportManager exportManager, GebruikersManager gebruikersManager,
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
@@ -34,6 +38,10 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             projecten = projectManager.GeefAlleProjecten();
             ProjectOverzichtDatagrid.ItemsSource = projecten;
             initFolderExport = "@C:\\Downloads";
+
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
         }
 
         //Gebruiker kiest een optie in de combobox
@@ -213,7 +221,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     if (result == true && !string.IsNullOrWhiteSpace(folderDialog.FolderName))
                     {
                         //TODO: sla de exportfile hier op 
-
+                        exportManager.ExportNaarCsv(projecten);
                     }
 
 
@@ -251,7 +259,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     if (result == true && !string.IsNullOrWhiteSpace(folderDialog.FolderName))
                     {
                         //sla de exportfile hier op 
-
+                        //exportManager.ExportNaarPdf(projecten);
                     }
 
 
