@@ -21,8 +21,21 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Projectfiche"/>
-        <xctk:PropertyGrid Grid.Column="1" Grid.Row="1" x:Name="ProductFichePropertyGrid"
-           SelectedObject="{Binding SelectedItem}" />
+
+        <xctk:PropertyGrid
+            Grid.Column="1"
+            Grid.Row="1"
+            Name="ProductFichePropertyGrid"
+            SelectedObject="{Binding}"
+            IsReadOnly="True"
+            AutoGenerateProperties="True"
+            ShowSearchBox="False"
+            /> <!--enkel Binding is voldoende omdat we het geselecteerd project aan de Datacontext gehangen hebben-->
+
+        
+        
+        
+        
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="ExportProjectFicheButton" Width="150" Height="50" Content="Exporteren"/>
             <Button Name="BewerkProjectFicheButton" Width="150" Height="50" Content="Bewerken"/>

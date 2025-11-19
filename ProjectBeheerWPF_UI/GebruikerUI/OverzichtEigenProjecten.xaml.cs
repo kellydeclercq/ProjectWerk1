@@ -283,8 +283,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 if (project != null)
                 {
                     //navigeer naar DetailsProject
-                    var detailsProject = new DetailsProject(project);
-                    detailsProject.Show();
+                    var projectFicheWindow = new ProjectFiche(project);
+                    projectFicheWindow.Show();
                 }
             }
 
