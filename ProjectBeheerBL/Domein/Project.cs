@@ -19,7 +19,7 @@ namespace ProjectBeheerBL.Domein
         const int MinWijkLengte = 2;
 
         public Project(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
-            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar)
+            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres)
         {
             Id = id;
             ProjectTitel = projectTitel;
@@ -31,10 +31,11 @@ namespace ProjectBeheerBL.Domein
             Documenten = documenten;
             Partners = partners;
             ProjectEigenaar = projectEigenaar;
+            this.Adres = adres;
         }
 
         public Project(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
-            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar)
+            List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres)
         {
             ProjectTitel = projectTitel;
             Beschrijving = beschrijving;
@@ -45,6 +46,7 @@ namespace ProjectBeheerBL.Domein
             Documenten = documenten;
             Partners = partners;
             ProjectEigenaar = projectEigenaar;
+            this.Adres = adres;
         }
 
         private int? _id;
@@ -145,6 +147,15 @@ namespace ProjectBeheerBL.Domein
                 _projectEigenaar = value;
             }
         }
+        private Adres _adres;
+        public Adres Adres {
+            get => _adres;
+            set {
+                if (_adres == null) throw new ProjectException("Adres mag niet NULL zijn.");
+                _adres = value;
+            }
+        }
+
         public override string? ToString()
         {
             throw new NotImplementedException();
