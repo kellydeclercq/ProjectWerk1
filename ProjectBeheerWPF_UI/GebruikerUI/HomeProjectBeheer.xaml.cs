@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerUtils;
 using ProjectBeheerWPF_UI.BeheerderUI;
 using ProjectBeheerWPF_UI.GebruikerUI;
@@ -27,9 +28,10 @@ namespace ProjectBeheerWPF_UI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory = new();
+        private Gebruiker ingelogdeGebruiker;
 
         public HomeProjectBeheer(ExportManager exportManager, GebruikersManager gebruikersManager, 
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             this.exportManager = exportManager;

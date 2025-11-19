@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.Exceptions;
 using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerUtils;
@@ -26,6 +27,8 @@ namespace ProjectBeheerWPF_UI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory = new();
+        private Gebruiker ingelogdeGebruiker;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,21 +43,22 @@ namespace ProjectBeheerWPF_UI
         {
             string email = LoginEmailTextBox.Text;
             var gebruiker = gebruikersManager.GeefGebruikeradhvEmail(email);
-            
-            if (gebruiker != null)
+            ingelogdeGebruiker = gebruiker;
+
+            if (ingelogdeGebruiker != null)
             {
                 
-                if(gebruiker.GebruikersRol == GebruikersRol.Beheerder)
+                if(ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder)
                 {
                     BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new
-                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
                     beheerderHomeProjectBeheer.Show();
                 }
                     
                 else
                 {
                     HomeProjectBeheer homeProjectBeheer = new 
-                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
                     homeProjectBeheer.Show();
                 }
                 Close();

@@ -158,34 +158,55 @@ namespace ProjectBeheerWPF_UI
         {
             
 
-            //alle inputvariabelen:
+            //alle inputvariabelen algemene info
+
             string titel = TitelInputTextBox.Text;
             DateTime startDatum = StartDatumCalendarButton.SelectedDate.Value;
             ProjectStatus projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
-
-            bool IsStadsontwikkeling = (bool)StadsontwikkelingCheckBox.IsChecked;
-            bool IsGroeneRuimte = (bool)GroeneRuimteCheckBox.IsChecked;
-            bool IsInnovatiefWonen = (bool)InnovatiefWonenCheckBox.IsChecked;
-
+            bool IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
+            bool IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
+            bool IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
+            int postcode = int.Parse(PostcodeTextBox.Text);
+            Adres adres = new(StraatTextBox.Text, HuisnummerTextBox.Text, postcode, GemeenteTextBox.Text);
             string beschrijving = BeschrijvingTextBox.Text;
-
             foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
+            VoegPartnerToeAanLijst();   //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
-            //voegpartner uit de velden ook toe aan de lijst van partners en geef die lijst hier dan mee
-            VoegPartnerToeAanLijst();
-
+            //variabelen stadsontwikkeling
+            
             string bouwfirma = BouwfirmaTextBox.Text;
             string bouwfirmaGegevens = GegevensBouwfirmaTextBox.Text;
             VergunningsStatus vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
-
-            bool IsArchitecturaleWaarde = false;
+            bool IsArchitecturaleWaarde;
             if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
             else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+            Toegankelijkheid toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+            bool IsToeristischeBezienswaardigheid;
+            if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
+            else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
+            bool IsUitlegbord = UitlegbordCheckBox.IsChecked == true;
+            bool IsInfowandeling = UitlegbordCheckBox.IsChecked == true;
 
+            //variabelen groene ruimte
+
+            double oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
+            int bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
+            int aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text); 
+            List<string> faciliteiten = new List<string>();
+            bool IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
+            if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
+            bool IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
+            if (IsPicknickZone) faciliteiten.Add("Picknickzone");
+            bool IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
+            if (IsInfoborden) faciliteiten.Add("Infoborden");
+            bool IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
+            if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
+            bool opgenomenInWandelroute;
+            if(ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
+            else if(ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
+            int bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
 
                 //alle invoer + logica projectTypes adhv checkboxen types
-
-
 
 
 
