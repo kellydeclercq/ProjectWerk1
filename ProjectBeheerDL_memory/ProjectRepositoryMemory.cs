@@ -54,6 +54,8 @@ namespace ProjectBeheerDL_Memory
             //Bouwfirma aanmaken
             BouwFirma b = new BouwFirma("ElectricienJos", "jos@electricien.be", "0498751245", "www.ElectricienJos.com");
             BouwFirma b2 = new BouwFirma("Giproc Werken Gent", "Maarten@gmail.be", "0497845245", "www.giprocGent.com");
+            bouwFirmas.Add(b);
+            bouwFirmas.Add(b2);
 
 
             // Drie typen project aanmaken (twee opties voor diversiteit)
