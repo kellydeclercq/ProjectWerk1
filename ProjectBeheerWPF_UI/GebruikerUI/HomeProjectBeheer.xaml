@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Home - Stad Gent Projectbeheer</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" Name="GebruikersNaamTextBlock"/>
-        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="MaakNieuwProjectButton" Content="Maak nieuw project" Click="MaakNieuwProjectButton"/>
-        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="OverzichtJouwProjectenButton" Content="Bekijk jouw projecten" Click="OverzichtJouwProjectenButton"/>
+        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="MaakNieuwProjectButton" Content="Maak nieuw project" Click="MaakNieuwProjectButton_Click"/>
+        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="OverzichtJouwProjectenButton" Content="Bekijk jouw projecten" Click="OverzichtJouwProjectenButton_Click"/>
     </Grid>
 </Window>

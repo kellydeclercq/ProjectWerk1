@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
+using ProjectBeheerUtils;
 
 namespace ProjectBeheerWPF_UI.BeheerderUI
 {
@@ -20,9 +22,22 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
     /// </summary>
     public partial class OverzichtAlleProjecten : Window
     {
+        private ExportManager exportManager;
+        private GebruikersManager gebruikersManager;
+        private ProjectManager projectManager;
+        private BeheerMemoryFactory beheerMemoryFactory;
+
         public OverzichtAlleProjecten()
         {
             InitializeComponent();
+        }
+
+        public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager, ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+        {
+            this.exportManager = exportManager;
+            this.gebruikersManager = gebruikersManager;
+            this.projectManager = projectManager;
+            this.beheerMemoryFactory = beheerMemoryFactory;
         }
 
         private void Details_Click(object sender, RoutedEventArgs e)

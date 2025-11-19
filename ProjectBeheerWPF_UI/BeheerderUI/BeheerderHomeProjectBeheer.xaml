@@ -22,9 +22,9 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" FontSize="20">Home - Stad Gent Projectbeheer</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" Name="GebruikersNaamTextBlock"/>
-        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="MaakNieuwProjectButton" Content="Maak nieuw project"/>
-        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="OverzichtProjectenButton" Content="Bekijk jouw projecten"/>
-        <Button Grid.Column="1" Grid.Row="4" Margin="5" Name="OverzichtAlleProjectenButton" Content="Bekijk alle projecten"/>
-        <Button Grid.Column="1" Grid.Row="5" Margin="5" Name="OverzichtGebruikersButton" Content="Bekijk alle gebruikers"/>
+        <Button Grid.Column="1" Grid.Row="2" Margin="5" Name="MaakNieuwProjectButton" Content="Maak nieuw project" Click="MaakNieuwProject_CLick"/>
+        <Button Grid.Column="1" Grid.Row="3" Margin="5" Name="OverzichtProjectenButton" Content="Bekijk jouw projecten" Click="BekijkJouwProjecten_Click"/>
+        <Button Grid.Column="1" Grid.Row="4" Margin="5" Name="OverzichtAlleProjectenButton" Content="Bekijk alle projecten" Click="BekijkAlleProjecten_Click"/>
+        <Button Grid.Column="1" Grid.Row="5" Margin="5" Name="OverzichtGebruikersButton" Content="Bekijk alle gebruikers" Click="BekijkAlleGebruikers_Click"/>
     </Grid>
 </Window>

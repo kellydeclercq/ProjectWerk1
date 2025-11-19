@@ -32,7 +32,8 @@ namespace ProjectBeheerBL.Beheerder
         }
 
         public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, 
+             VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker)
         {
 
@@ -72,6 +73,10 @@ namespace ProjectBeheerBL.Beheerder
             _repo.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
         }
 
+        public List<Project> GeefAlleProjecten()
+        {
+            return null;
+        }
 
     }
 }
