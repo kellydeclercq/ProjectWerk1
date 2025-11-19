@@ -15,13 +15,15 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Projectfiche"/>
         <xctk:PropertyGrid Grid.Column="1" Grid.Row="1" x:Name="ProductFichePropertyGrid"
            SelectedObject="{Binding SelectedItem}" />
-        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="ExportProjectFicheButton" Width="150" Height="50" Content="Exporteren"/>
             <Button Name="BewerkProjectFicheButton" Width="150" Height="50" Content="Bewerken"/>
         </StackPanel>

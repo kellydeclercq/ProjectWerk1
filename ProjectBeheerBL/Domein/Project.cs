@@ -57,7 +57,7 @@ namespace ProjectBeheerBL.Domein
             set {
                 if (string.IsNullOrWhiteSpace(value)) throw new ProjectException("Beschrijving mag niet leeg zijn");
                 var trimmed = value.Trim();
-                if (trimmed.Length < 20 || trimmed.Length > 1000) throw new ProjectException("Titel moet meer karakters hebben dan 20 en max 1000.");
+                if (trimmed.Length < 4 || trimmed.Length > 10000) throw new ProjectException("Beschrijving moet meer karakters hebben dan 4 en max 10000.");
                 _beschrijving = trimmed;
             }
         }

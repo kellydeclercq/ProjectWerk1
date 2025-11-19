@@ -32,7 +32,8 @@ namespace ProjectBeheerBL.Beheerder
         }
 
         public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, 
+             VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker)
         {
 
@@ -52,26 +53,60 @@ namespace ProjectBeheerBL.Beheerder
              samenwerkingToerisme, woonvormen, gebruiker);
         }
 
-        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan()
+        public void MaakStadsOntwikkelingInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
+            VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)
         {
-            _repo.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+            _repo.MaakStadsOntwikkelingInnovatiefWonenProjectAan( projectTitel,  beschrijving,  startDatum,  projectStatus,
+             wijk, fotos,  documenten, partners,
+             vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             infoBordenOfWandeling,  bouwfirmas,  aantalWooneenheden,  rondleidingMogelijk,  innovatieScore,  showwoningBeschikbaar,  samenwerkingErfgoed,
+             samenwerkingToerisme,  woonvormen,  eigenaar);
         }
 
-        public void MaakStadsOntwikkelingGroeneRuimteProjectAan()
+        public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten)
         {
-            _repo.MaakStadsOntwikkelingGroeneRuimteProjectAan();
+            _repo.MaakStadsOntwikkelingGroeneRuimteProjectAan(projectTitel,  beschrijving,  startDatum,  projectStatus,
+             wijk,  fotos,  documenten,  partners,  projectEigenaar,  vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             infoBordenOfWandeling, bouwfirmas,  oppervlakteInVierkanteMeter,  bioDiversiteitsScore,  aantalWandelpaden,  opgenomenInWandelRoute,
+             bezoekersScore, faciliteiten);
         }
 
-        public void MaakGroeneRuimteInnovatiefWonenProjectAan()
+        public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
+            List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker eigenaar)
         {
-            _repo.MaakGroeneRuimteInnovatiefWonenProjectAan();
+            _repo.MaakGroeneRuimteInnovatiefWonenProjectAan(projectTitel, beschrijving, startDatum,  projectStatus,  wijk,
+             fotos,  documenten,  partners,  oppervlakteInVierkanteMeter,  bioDiversiteitsScore, aantalWandelpaden,  opgenomenInWandelRoute,
+             bezoekersScore,  faciliteiten,  aantalWooneenheden,  rondleidingMogelijk, innovatieScore,  showwoningBeschikbaar,  samenwerkingErfgoed,
+             samenwerkingToerisme,  woonvormen,  eigenaar);
         }
 
-        public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject()
+        public void MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
+            double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
+            int? bezoekersScore, List<string> faciliteiten, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker Eigenaar)
         {
-            _repo.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+            _repo.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject( projectTitel,  beschrijving,  startDatum,  projectStatus,
+             wijk, fotos,  documenten, partners,
+             oppervlakteInVierkanteMeter,  bioDiversiteitsScore,  aantalWandelpaden,  opgenomenInWandelRoute,
+            bezoekersScore, faciliteiten,  vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             infoBordenOfWandeling,  bouwfirmas,  aantalWooneenheden,  rondleidingMogelijk,  innovatieScore,  showwoningBeschikbaar,  samenwerkingErfgoed,
+             samenwerkingToerisme,  woonvormen, Eigenaar);
         }
 
+        public List<Project> GeefAlleProjecten()
+        {
+            return _repo.GeefAlleProjecten();
+        }
 
     }
 }

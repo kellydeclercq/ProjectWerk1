@@ -27,13 +27,10 @@ namespace ProjectBeheerWPF_UI
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
 
-        public NieuwProject()
+        public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
         {
             InitializeComponent();
-        }
-
-        public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
-        {
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
@@ -42,7 +39,7 @@ namespace ProjectBeheerWPF_UI
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            _gebruikersManager.
+            throw new NotImplementedException();
         }
     }
 }
