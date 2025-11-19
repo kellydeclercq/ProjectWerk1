@@ -26,10 +26,13 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
+        private List<Project>projecten = new List<Project>();
 
         public OverzichtAlleProjecten()
         {
             InitializeComponent();
+            projecten = projectManager.GeefAlleProjecten();
+            ProjectOverzichtDatagrid.ItemsSource = projecten;
         }
 
         public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager, ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
@@ -100,6 +103,18 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     exporteerWindow.Show();
                 }
             }
+        }
+
+        private void ExporteerAlsCsv_Click(object sender, RoutedEventArgs e)
+        {
+            //zelfde als overzichtEigenProjecten
+            //kopieer deze eens afgewerkt naar hier
+        }
+
+        private void ExporteerAlsPdf_Click(object sender, RoutedEventArgs e)
+        {
+            //zelfde als overzichtEigenProjecten
+            //kopieer deze eens afgewerkt naar hier
         }
     }
 }

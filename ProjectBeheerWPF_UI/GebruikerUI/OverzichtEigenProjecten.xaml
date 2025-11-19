@@ -49,20 +49,20 @@
             <ComboBoxItem Content="Van nieuw naar oud" Tag="DatumNieuwnaarOud"/>
             <ComboBoxItem Content="Wijk" Tag="Wijk"/>
             <ComboBoxItem Content="Status" Tag="Status"/>
-            <ComboBoxItem Content="Type project" Tag="TypeProject"/>
+            <!--<ComboBoxItem Content="Type project" Tag="TypeProject"/>-->
         </ComboBox>
 
         <DataGrid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" />
-                <DataGridTextColumn Header="Status"/>
-                <DataGridTextColumn Header="Startdatum"/>
-                <DataGridTextColumn Header="Titel"/>
-                <DataGridTextColumn Header="Type"/>
-                <DataGridTextColumn Header="Wijk"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding ProjectStatus}"/>
+                <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDatum}"/>
+                <DataGridTextColumn Header="Titel" Binding="{Binding ProjectTitel}"/>
+                <!--<DataGridTextColumn Header="Type"/> voorlopig tonen we dit niet-->
+                <DataGridTextColumn Header="Wijk" Binding="{Binding Wijk}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <!--uniformgrid makes a grid where each child has the same amount of space-->
         <!--<UniformGrid Grid.Column="1" Grid.Row="3" Columns="3" Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Stretch">
             <Button Name="BekijkProjectButton" Content="Bekijk geselecteerd project" Margin="5"></Button>

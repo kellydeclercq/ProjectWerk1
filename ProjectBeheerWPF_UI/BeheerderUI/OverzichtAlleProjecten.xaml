@@ -55,13 +55,14 @@
 
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" />
-                <DataGridTextColumn Header="Status"/>
-                <DataGridTextColumn Header="Startdatum"/>
-                <DataGridTextColumn Header="Titel"/>
-                <DataGridTextColumn Header="Type"/>
-                <DataGridTextColumn Header="Wijk"/>
-                <DataGridTextColumn Header="Eigenaar"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <!--Binding="Binding PropertyName" => tells wpf which property of project to display in each column-->
+                <DataGridTextColumn Header="Status" Binding="{Binding ProjectStatus}"/>
+                <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDatum}"/>
+                <DataGridTextColumn Header="Titel" Binding="{Binding ProjectTitel}"/>
+                <!--<DataGridTextColumn Header="Type" Binding="Binding Id"/> voorlopig geven we het type niet weer-->
+                <DataGridTextColumn Header="Wijk" Binding="{Binding Wijk}"/>
+                <DataGridTextColumn Header="Eigenaar" Binding="{Binding ProjectEigenaar}"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -75,7 +76,8 @@
         <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="DetailsProjectButton" Content="Details geselecteerd project" Margin="5" Click="Details_Click"></Button>
             <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5" Click="Bewerk_Click"></Button>
-            <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5" Click="Exporteer_Click"></Button>
+            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsCSV" Content="Exporteer als CSV" Click="ExporteerAlsCsv_Click"/>
+            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
         </StackPanel>
     </Grid>
 </Window>
