@@ -110,7 +110,7 @@ namespace ProjectBeheerBL.Domein
 
             set
             {
-                if (_fotos == null) throw new ProjectException("Fotos mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("Fotos mag niet NULL zijn.");
                 _fotos = value;
             }
         }
@@ -121,7 +121,7 @@ namespace ProjectBeheerBL.Domein
             get => _documenten;
             set
             {
-                if (_documenten == null) throw new ProjectException("Documenten mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("Documenten mag niet NULL zijn.");
                 _documenten = value;
             }
         }
@@ -132,7 +132,7 @@ namespace ProjectBeheerBL.Domein
             get => _partners;
             set
             {
-                if (_partners == null) throw new ProjectException("Partners mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("Partners mag niet NULL zijn.");
                 _partners = value;
             }
         }
@@ -143,7 +143,7 @@ namespace ProjectBeheerBL.Domein
             get => _projectEigenaar;
             set
             {
-                if (_projectEigenaar == null) throw new ProjectException("ProjectEigenaar mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("ProjectEigenaar mag niet NULL zijn.");
                 _projectEigenaar = value;
             }
         }
@@ -151,7 +151,7 @@ namespace ProjectBeheerBL.Domein
         public Adres Adres {
             get => _adres;
             set {
-                if (_adres == null) throw new ProjectException("Adres mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("Adres mag niet NULL zijn.");
                 _adres = value;
             }
         }
