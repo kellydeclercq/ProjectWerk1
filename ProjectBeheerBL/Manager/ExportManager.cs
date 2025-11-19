@@ -56,7 +56,7 @@ namespace ProjectBeheerBL.Beheerder
                     IsStadOntwikkeling = heeftSO ? "ja" : "neen",
                     IsGroeneRuimte = heeftGR ? "ja" : "neen",
                     IsInnovatiefWonen = heeftIW ? "ja" : "neen",
-
+                    //SOP specificaties
                     VergunningsStatus = stadsOntwikkeling?.VergunningsStatus.ToString(),
                     ArchitecturaleWaarde =
                         stadsOntwikkeling?.ArchitecturaleWaarde == true ? "ja" : "neen",
@@ -68,7 +68,7 @@ namespace ProjectBeheerBL.Beheerder
                     Bouwfirmas = stadsOntwikkeling?.BouwFirmas != null && stadsOntwikkeling.BouwFirmas.Any()
                     ? string.Join(" | ", stadsOntwikkeling.BouwFirmas.Select(bf => bf.Naam))
                     : string.Empty,
-
+                    //GRP specificaties
                     OppervlakteInVierkanteM = groeneRuimte?.OppervlakteInVierkanteMeter,
                     BiodiversiteitScore = groeneRuimte?.BioDiversiteitsScore,
                     AantalWandelpaden = groeneRuimte?.AantalWandelpaden,
@@ -76,7 +76,7 @@ namespace ProjectBeheerBL.Beheerder
                     BezoekersScore = groeneRuimte?.BezoekersScore,
                     Faciliteiten = groeneRuimte?.Faciliteiten != null && groeneRuimte.Faciliteiten.Any()
                     ? string.Join(" | ", groeneRuimte.Faciliteiten) : string.Empty,
-
+                    //IWP specificaties
                     AantalWooneenheden = innovatiefWonen?.AantalWooneenheden,
                     Rondleidingmogelijk = innovatiefWonen?.RondleidingMogelijk == true ? "ja" : "neen",
                     InnovatieScore = innovatiefWonen?.InnovatieScore,
