@@ -15,6 +15,8 @@ namespace ProjectBeheerDL_Memory
     {
         private IGebruikerRepository gebruikersRepo;
         private int projectId = 1;
+        private int partnerId = 1;
+        private int bouwfirmaId = 1;
         private Dictionary<int, Project> projectLijst = new Dictionary<int, Project>();
         
         //foto's en documenten optioneel maken
@@ -46,14 +48,14 @@ namespace ProjectBeheerDL_Memory
             faciliteiten.Add(lijstService.Faciliteiten[1]);
 
             //Partners aanmaken
-            partners.Add(new Partner("AOC group", "jos@aoc.com", "0471 22 44 66", "www.aoc.be", "Ruwbouw"));
-            partners.Add(new Partner("StromendWater group", "ann.@stromendwater.com", "0499 23 11 02", "www.stromendwater.be", "Sanitair"));
-            partners.Add(new Partner("Volts group", "John@volts.com", "0486 25 36 66", "www.voltsElectric.be", "Electra"));
-            partners2.Add (new Partner("kunstschool", "kunst@academie.com", "0492 22 88 66", "www.academie.be", "muurschilders"));
+            partners.Add(new Partner(partnerId, "AOC group", "jos@aoc.com", "0471 22 44 66", "www.aoc.be", "Ruwbouw")); partnerId++;
+            partners.Add(new Partner(partnerId, "StromendWater group", "ann.@stromendwater.com", "0499 23 11 02", "www.stromendwater.be", "Sanitair")); partnerId++;
+            partners.Add(new Partner(partnerId, "Volts group", "John@volts.com", "0486 25 36 66", "www.voltsElectric.be", "Electra")); partnerId++;
+            partners2.Add (new Partner(partnerId, "kunstschool", "kunst@academie.com", "0492 22 88 66", "www.academie.be", "muurschilders")); partnerId++;
 
             //Bouwfirma aanmaken
-            BouwFirma b = new BouwFirma("ElectricienJos", "jos@electricien.be", "0498751245", "www.ElectricienJos.com");
-            BouwFirma b2 = new BouwFirma("Giproc Werken Gent", "Maarten@gmail.be", "0497845245", "www.giprocGent.com");
+            BouwFirma b = new BouwFirma(bouwfirmaId, "ElectricienJos", "jos@electricien.be", "0498751245", "www.ElectricienJos.com"); bouwfirmaId++;
+            BouwFirma b2 = new BouwFirma(bouwfirmaId, "Giproc Werken Gent", "Maarten@gmail.be", "0497845245", "www.giprocGent.com"); bouwfirmaId++;
             bouwFirmas.Add(b);
             bouwFirmas.Add(b2);
 

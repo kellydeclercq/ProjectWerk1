@@ -178,7 +178,7 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegPartnerToeAanLijst()
         {
-            Partner partner = new(NaamPartnerTextBox.Text, EmailPartnerTextBox.Text,
+            Partner partner = new(null, NaamPartnerTextBox.Text, EmailPartnerTextBox.Text,
                 TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
             partners.Add(partner);
             PartnersListBox.Items.Add(partner.Naam);
@@ -205,7 +205,7 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegBouwfirmaToeAanLijst()
         {
-            BouwFirma bouwfirma = new(BouwfirmaTextBox.Text, EmailBouwfirmaTextBox.Text, 
+            BouwFirma bouwfirma = new(null ,BouwfirmaTextBox.Text, EmailBouwfirmaTextBox.Text, 
                 TelefoonBouwfirmaTextBox.Text, WebsiteBouwfirmaTextBox.Text);
             bouwFirmas.Add(bouwfirma);
             BouwfirmasListBox.Items.Add(bouwfirma.Naam);
@@ -388,5 +388,16 @@ namespace ProjectBeheerWPF_UI
 
             }
         }
+
+        private void BiodiversiteitSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void ArchitecturaleInnoScoreSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
+    
 }
