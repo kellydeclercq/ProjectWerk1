@@ -44,12 +44,16 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
-            this.ingelogdeGebruiker = ingelogdeGebruiker;   
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
+            FilterCombobox.SelectedIndex = 0; //zet de default value van de combobox nadat de window is aangemaakt
         }
 
         //Gebruiker kiest een optie in de combobox
         private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //veiligheidscheck voo mocht de datumsfilterpanel nog niet bestaan.
+            if (DatumsFilterPanel == null) return;
+
             var selectedItem = FilterCombobox.SelectedItem as ComboBoxItem;
             if (selectedItem is not null)
             {
