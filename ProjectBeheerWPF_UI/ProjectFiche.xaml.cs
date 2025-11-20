@@ -28,7 +28,8 @@ namespace ProjectBeheerWPF_UI
 
             //de datacontext is het source object voor alle data bindings binnen een control (button/listbox/datagrid...)
             //hier ken i khet geselecteerde project toe aan de datacontext van het propertygrid
-            ProductFichePropertyGrid.DataContext = selectedproject;
+            //ProductFichePropertyGrid.DataContext = selectedproject;
+            this.DataContext = selectedproject;
 
         }
 

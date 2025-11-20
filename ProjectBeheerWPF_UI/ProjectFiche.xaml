@@ -24,12 +24,14 @@
 
         <xctk:PropertyGrid
             Grid.Column="1"
-            Grid.Row="1"
+            Grid.Row="2"
             Name="ProductFichePropertyGrid"
             SelectedObject="{Binding}"
             IsReadOnly="True"
             AutoGenerateProperties="True"
             ShowSearchBox="False"
+            ShowSortOptions="false"
+            ShowTitle="False"
             /> <!--enkel Binding is voldoende omdat we het geselecteerd project aan de Datacontext gehangen hebben-->
 
         

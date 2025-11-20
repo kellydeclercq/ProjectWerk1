@@ -30,7 +30,7 @@
             <ComboBoxItem Content="Titel" Tag="Titel"/>
             <ComboBoxItem Content="Type" Tag="Type"/>
             <ComboBoxItem Content="Wijk" Tag="Wijk"/>
-            <ComboBoxItem Content="Status" Tag="Status"/>
+            <ComboBoxItem Content="Status" Tag="Status"/>d
             <ComboBoxItem Content="Datum" Tag="Datum"/>
             <ComboBoxItem Content="Partners" Tag="Partners"/>
         </ComboBox>
