@@ -13,7 +13,7 @@ namespace ProjectBeheerBL.Domein
         const int MinLengteTel = 9;
         const int MaxLengteTel = 13;
         const int MinRolChar = 2;
-        public Partner(int id, string naam, string email, string telefoonNummer, string rolOmschrijving)
+        public Partner(int? id, string naam, string email, string telefoonNummer, string rolOmschrijving)
         {
             Id = id;
             Naam = naam;
@@ -22,7 +22,7 @@ namespace ProjectBeheerBL.Domein
             RolOmschrijving = rolOmschrijving;
         }
 
-        public Partner(int id, string naam, string email, string telefoonNummer, string? website, string rolOmschrijving)
+        public Partner(int? id, string naam, string email, string telefoonNummer, string? website, string rolOmschrijving)
         {
             Id = id;
             Naam = naam;
@@ -32,8 +32,8 @@ namespace ProjectBeheerBL.Domein
             RolOmschrijving = rolOmschrijving;
         }
 
-        private int _id;
-        public int Id { get; private set; }
+        private int? _id;
+        public int? Id { get; private set; }
 
         private string _naam;
         public string Naam {

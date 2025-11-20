@@ -348,11 +348,26 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.ProjectTitel).ToList();
                     break;
                 case "Type":
-                    //TODO: sorteren op type project
-                    //gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.).ToList();
+                    if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
+                    {
+                        //Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
+                        //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
                     break;
                 case "Wijk":
-                    gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.Wijk).ToList();
+                    if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
+                    {
+
+                        //Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
                     break;
                 case "Status":
                     gesorteerdeProjecten = gesorteerdeProjecten.OrderBy(p => p.ProjectStatus).ToList();

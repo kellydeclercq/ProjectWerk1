@@ -11,27 +11,28 @@ namespace ProjectBeheerDL_Memory
 {
     public class GebruikerRepositoryMemory : IGebruikerRepository
     {
-        private Dictionary<string, Gebruiker> gebruikers = new();       // email is de key 
-
+        private Dictionary<string, Gebruiker> gebruikers = new();
+        // email is de key 
+        private int gebruikerId = 1;
         public GebruikerRepositoryMemory()
         {
             //Gebruikers aanmaken
-            Gebruiker admin1 = new Gebruiker("Tom", "Tom@school.be", GebruikersRol.Beheerder);
-            Gebruiker gebruiker1 = new Gebruiker("Arno", "Arno@school.be", GebruikersRol.GewoneGebruiker);
+            Gebruiker admin1 = new Gebruiker(gebruikerId, "Tom", "Tom@school.be", GebruikersRol.Beheerder); gebruikerId++;
+            Gebruiker gebruiker1 = new Gebruiker(gebruikerId, "Arno", "Arno@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
 
             gebruikers.Add(admin1.Email, admin1);
             gebruikers.Add(gebruiker1.Email, gebruiker1);
 
-            Gebruiker admin2 = new Gebruiker("Kelly", "kelly@school.be", GebruikersRol.Beheerder);
-            Gebruiker gebruiker2 = new Gebruiker("Carmen", "carmen@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker3 = new Gebruiker("Loic", "loic@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker4 = new Gebruiker("Adel", "adel@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker5 = new Gebruiker("Lisa", "lisa@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker6 = new Gebruiker("Eva", "eva@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker7 = new Gebruiker("Billie", "billie@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker8 = new Gebruiker("Matthias", "matthias@school.be", GebruikersRol.GewoneGebruiker);
-            Gebruiker gebruiker9 = new Gebruiker("Sarah", "sarah@school.be", GebruikersRol.Beheerder);
-            Gebruiker gebruiker10 = new Gebruiker("Jonas", "jonas@school.be", GebruikersRol.GewoneGebruiker);
+            Gebruiker admin2 = new Gebruiker(gebruikerId, "Kelly", "kelly@school.be", GebruikersRol.Beheerder); gebruikerId++;
+            Gebruiker gebruiker2 = new Gebruiker(gebruikerId, "Carmen", "carmen@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker3 = new Gebruiker(gebruikerId, "Loic", "loic@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker4 = new Gebruiker(gebruikerId, "Adel", "adel@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker5 = new Gebruiker(gebruikerId, "Lisa", "lisa@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker6 = new Gebruiker(gebruikerId, "Eva", "eva@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker7 = new Gebruiker(gebruikerId, "Billie", "billie@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker8 = new Gebruiker(gebruikerId, "Matthias", "matthias@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
+            Gebruiker gebruiker9 = new Gebruiker(gebruikerId, "Sarah", "sarah@school.be", GebruikersRol.Beheerder); gebruikerId++;
+            Gebruiker gebruiker10 = new Gebruiker(gebruikerId, "Jonas", "jonas@school.be", GebruikersRol.GewoneGebruiker); gebruikerId++;
 
             gebruikers.Add(admin2.Email, admin2);
             gebruikers.Add(gebruiker2.Email, gebruiker2);
@@ -67,7 +68,11 @@ namespace ProjectBeheerDL_Memory
 
         public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol)
         { 
-            if(!gebruikers.ContainsKey(email)) gebruikers.Add(email, new Gebruiker(naam, email, rol));
+            if(!gebruikers.ContainsKey(email)) 
+            {
+                gebruikers.Add(email, new Gebruiker(gebruikerId, naam, email, rol));
+                gebruikerId++;
+            }
         }
 
 

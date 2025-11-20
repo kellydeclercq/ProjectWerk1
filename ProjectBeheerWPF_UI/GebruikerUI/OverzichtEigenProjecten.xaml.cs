@@ -108,7 +108,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Type":
                     if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
                     {
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
+                        //Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
                         //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
                     }
                     else
