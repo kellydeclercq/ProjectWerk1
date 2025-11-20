@@ -107,15 +107,25 @@ namespace ProjectBeheerWPF_UI
             StatusComboBox.ItemsSource = projectStatussen;
             VergunningsStatusComboBox.ItemsSource = vergunningsStatussen;
             ToegankelijkheidComboBox.ItemsSource = toegankelijkheden;
-
-
         }
 
         //hier staan algemene methodes voor nieuwProject window
 
-        private void TerugButton_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Close();
+            // Vraag bevestiging aan de gebruiker
+            MessageBoxResult result = MessageBox.Show(
+                "De ingevulde gegevens zullen verloren gaan. Wilt u sluiten?",
+                "Bevestig sluiten",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning
+            );
+
+            // Als gebruiker op Nee klikt → sluiten annuleren
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void GaVerderButtonTab_Click(object sender, RoutedEventArgs e)
