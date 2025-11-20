@@ -11,6 +11,8 @@ using ProjectBeheerBL.typeSoorten;
 
 namespace ProjectBeheerDL_Memory
 {
+
+
     public class ProjectRepositoryMemory : IProjectRepository
     {
         private IGebruikerRepository gebruikersRepo;
@@ -454,6 +456,10 @@ namespace ProjectBeheerDL_Memory
             throw new NotImplementedException();
         }
 
+        public List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind)
+        {
+            throw new NotImplementedException();
+        }
     }
  
 }

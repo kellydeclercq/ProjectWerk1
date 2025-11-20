@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,6 +44,15 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             InitializeComponent();
 
             projecten = projectManager.GeefAlleProjecten();
+
+            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten.Where(x => x.ProjectEigenaar.GebruikersRol == GebruikersRol.GewoneGebruiker).ToList();
+
+            // TODO onderscheidt tussen admin en beheerder actief zetten eens methode
+            // projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder?  projectManager.GeefAlleProjecten() : projectManager.GeefProjectenGefilterdOpGebruiker(ingelogdeGebruiker);
+
+
+
+
             ProjectOverzichtDatagrid.ItemsSource = projecten;
             initFolderExport = "@C:\\Downloads";
 
@@ -51,6 +61,9 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
             this.ingelogdeGebruiker = ingelogdeGebruiker;
+
+
+            Status.ItemsSource = Enum.GetNames(typeof(ProjectStatus));
         }
 
         //KNOPPEN ONDERAAN
@@ -73,7 +86,6 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     //navigeer naar DetailsProject
                     ProjectFiche fiche = new ProjectFiche(project);
                     fiche.Show();
-
                 }
             }
         }
@@ -104,7 +116,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Selecteer eerst een project om te kunnen exporteren.",
+                MessageBox.Show("Selecteer eerst minstens 1 project om te kunnen exporteren.",
                     "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -215,123 +227,124 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         //}
         #endregion
 
-        private void Datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Controleer of beide datums geselecteerd zijn
-            if (!StartDatePicker.SelectedDate.HasValue || !EndDatePicker.SelectedDate.HasValue)
-                return;
-
-            DateTime start = StartDatePicker.SelectedDate.Value;
-            DateTime end = EndDatePicker.SelectedDate.Value;
-
-            // Zorg dat start <= end
-            if (start > end)
-            {
-                MessageBox.Show("De startdatum mag niet na de einddatum liggen.",
-                    "Ongeldige datum", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            // Filter projecten waarvan de StartDatum tussen start en end ligt (inclusief grenzen)
-            Gefilterdeprojecten = projecten
-                .Where(p => p.StartDatum >= start && p.StartDatum <= end)
-                .ToList();
-
-            // Update de DataGrid
-            ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
-
-        }
-
-        private void FilterToepassen(string tag)
-        {
-            string projectnaam;
-            string wijk;
-            ProjectStatus status;
-            string eigenaar;
-
-
-
-        }
+       
 
         #region vorige versie FILTER apart
-        //{
-        //    //case moet tag naam zijn
-        //    switch (tag)
-        //    {
-        //        case "Titel":
-        //            if (!string.IsNullOrWhiteSpace(TitelTextBox.Text))
-        //            {
-        //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
-        //            }
-        //            else
-        //            {
-        //                Gefilterdeprojecten = projecten; //als de textbox leeg is toon altijd alle projecten
-        //            }
-        //            break;
-        //        case "Type":
-        //            if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
-        //            {
-        //                //Als de checkbox aangevinkt is → true
-        //                //Als de checkbox niet aangevinkt is → false
-        //                //Als de checkbox indeterminate(null) → false
+        private void FilterToepassen(string tag)
+        {
+           
+            //{
+            //    //case moet tag naam zijn
+            //    switch (tag)
+            //    {
+            //        case "Titel":
+            //            if (!string.IsNullOrWhiteSpace(TitelTextBox.Text))
+            //            {
+            //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
+            //            }
+            //            else
+            //            {
+            //                Gefilterdeprojecten = projecten; //als de textbox leeg is toon altijd alle projecten
+            //            }
+            //            break;
+            //        case "Type":
+            //            if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
+            //            {
+            //                //Als de checkbox aangevinkt is → true
+            //                //Als de checkbox niet aangevinkt is → false
+            //                //Als de checkbox indeterminate(null) → false
 
-        //                List<bool> checkedboxes = new List<bool>()
-        //                {
-        //                    //Deze notatie kan ook: IsStad.IsChecked.GetValueOrDefault(false);
-        //                    IsStad.IsChecked ?? false,
-        //                    IsGroeneRuimte.IsChecked ?? false,
-        //                    IsInnovatief.IsChecked ?? false
-        //                };
+            //                List<bool> checkedboxes = new List<bool>()
+            //                {
+            //                    //Deze notatie kan ook: IsStad.IsChecked.GetValueOrDefault(false);
+            //                    IsStad.IsChecked ?? false,
+            //                    IsGroeneRuimte.IsChecked ?? false,
+            //                    IsInnovatief.IsChecked ?? false
+            //                };
 
-        //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType(checkedboxes);
-        //                //lijst:  1: IsStad 2: IsGroen 3: IsInnovatief
-        //            }
-        //            else
-        //            {
-        //                Gefilterdeprojecten = projecten;
-        //            }
-        //            break;
-        //        case "Wijk":
-        //            if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
-        //            {
+            //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType(checkedboxes);
+            //                //lijst:  1: IsStad 2: IsGroen 3: IsInnovatief
+            //            }
+            //            else
+            //            {
+            //                Gefilterdeprojecten = projecten;
+            //            }
+            //            break;
+            //        case "Wijk":
+            //            if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
+            //            {
 
-        //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
-        //            }
-        //            else
-        //            {
-        //                Gefilterdeprojecten = projecten;
-        //            }
-        //            break;
-        //        case "Status":
-        //            if (!string.IsNullOrWhiteSpace(StatusTextBox.Text))
-        //            {
-        //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
-        //            }
-        //            else
-        //            {
-        //                Gefilterdeprojecten = projecten;
-        //            }
-        //            break;
-        //        case "Partners":
-        //            if (!string.IsNullOrWhiteSpace(PartnersTextBox.Text))
-        //            {
-        //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
-        //            }
-        //            else
-        //            {
-        //                Gefilterdeprojecten = projecten;
-        //            }
-        //            break;
-        //        case "None":
-        //        default:
-        //            Gefilterdeprojecten = projecten;
-        //            break;
-        //    }
+            //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+            //            }
+            //            else
+            //            {
+            //                Gefilterdeprojecten = projecten;
+            //            }
+            //            break;
+            //        case "Status":
+            //            if (!string.IsNullOrWhiteSpace(StatusTextBox.Text))
+            //            {
+            //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
+            //            }
+            //            else
+            //            {
+            //                Gefilterdeprojecten = projecten;
+            //            }
+            //            break;
+            //        case "Partners":
+            //            if (!string.IsNullOrWhiteSpace(PartnersTextBox.Text))
+            //            {
+            //                Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
+            //            }
+            //            else
+            //            {
+            //                Gefilterdeprojecten = projecten;
+            //            }
+            //            break;
+            //        case "None":
+            //        default:
+            //            Gefilterdeprojecten = projecten;
+            //            break;
+            //    }
 
-        //    ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+            //    ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+       
+
+        }
+
         #endregion
 
+        #region FILTER APART
+        //private void Datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    // Controleer of beide datums geselecteerd zijn
+        //    if (!StartDatePicker.SelectedDate.HasValue || !EndDatePicker.SelectedDate.HasValue)
+        //        return;
 
+        //    DateTime start = StartDatePicker.SelectedDate.Value;
+        //    DateTime end = EndDatePicker.SelectedDate.Value;
+
+        //    // Zorg dat start <= end
+        //    if (start > end)
+        //    {
+        //        MessageBox.Show("De startdatum mag niet na de einddatum liggen.",
+        //            "Ongeldige datum", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+
+        //    
+        //    //// Filter projecten waarvan de StartDatum tussen start en end ligt (inclusief grenzen)
+        //    //Gefilterdeprojecten = projecten
+        //    //    .Where(p => p.StartDatum >= start && p.StartDatum <= end)
+        //    //    .ToList();
+
+        //    //// Update de DataGrid
+        //    //ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+        //   
+        //}
+        #endregion
+       
+        
         private void SorteerProjecten(string tag)
         {
             //als er een Gefilterdeprojecten bestaat => gesorteerdeprojecten krijgt die lijst binnen
@@ -380,9 +393,31 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             ProjectOverzichtDatagrid.ItemsSource = gesorteerdeProjecten;
         }
 
-        private void Eigenaar_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void Button_clickFilter(object sender, RoutedEventArgs e)
+        {
+            string projectnaam = Projectnaam.Text;
+            string wijk = Wijk.Text;
+            ProjectStatus status = Enum.Parse<ProjectStatus>(Status.Text);
+            string eigenaar = Eigenaar.Text;
+            List<bool> typeChecks = new List<bool>
+            {
+                stadsontwikkeling.IsChecked ?? false,
+                groeneRuimte.IsChecked ?? false,
+                innovatiefWonen.IsChecked ?? false
+            };
+
+            DateTime start = StartDatePicker.SelectedDate.Value;
+            DateTime eind = EndDatePicker.SelectedDate.Value;
+
+            if (start > eind && start != default && eind != default)
+            {
+                MessageBox.Show("De startdatum mag niet na de einddatum liggen.",
+                    "Ongeldige datum", MessageBoxButton.OK, MessageBoxImage.Warning);              
+            }
+
+            //TODO methoden aanroepen die filters toepast
+            ProjectOverzichtDatagrid.ItemsSource = projectManager.GeefProjectenGefilterd(projectnaam, wijk, status, eigenaar, typeChecks, start, eind);
         }
     }
 }
