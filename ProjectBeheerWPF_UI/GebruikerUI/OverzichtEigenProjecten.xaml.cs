@@ -109,7 +109,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Wijk":
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
-                        //TODO: checkboxes; exacte lijst van de namen van de klasses ""
+                        //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
                         Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
                     }
                     else
