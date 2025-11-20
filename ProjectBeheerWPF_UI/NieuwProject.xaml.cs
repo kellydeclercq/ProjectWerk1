@@ -205,7 +205,7 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegBouwfirmaToeAanLijst()
         {
-            BouwFirma bouwfirma = new(BouwfirmaTextBox.Text, EmailBouwfirmaTextBox.Text, 
+            BouwFirma bouwfirma = new(null ,BouwfirmaTextBox.Text, EmailBouwfirmaTextBox.Text, 
                 TelefoonBouwfirmaTextBox.Text, WebsiteBouwfirmaTextBox.Text);
             bouwFirmas.Add(bouwfirma);
             BouwfirmasListBox.Items.Add(bouwfirma.Naam);
@@ -334,27 +334,27 @@ namespace ProjectBeheerWPF_UI
                     break;
 
                 case (false, true, false):
-                    projectManager.MaakGroeneruimteProjectAan();
+                    //projectManager.MaakGroeneruimteProjectAan();
                     break;
 
                 case (false, false, true):
-                    projectManager.MaakInnovatiefWonenProjectAan();
+                    //projectManager.MaakInnovatiefWonenProjectAan();
                     break;
 
                 case (true, true, false):
-                    projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan();
+                    //projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan();
                     break;
 
                 case (true, false, true):
-                    projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+                    //projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
                     break;
 
                 case (false, true, true):
-                    projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan();
+                    //projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan();
                     break;
 
                 case (true, true, true):
-                    projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+                    //projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
                     break;
 
             }
