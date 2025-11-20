@@ -98,6 +98,7 @@ namespace ProjectBeheerWPF_UI
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized; //window standaard op fullscreen
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;

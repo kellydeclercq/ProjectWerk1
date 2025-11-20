@@ -237,7 +237,7 @@
                         <CheckBox Margin="5" Name="ModulairWonenCheckBox" Content="Modulair Wonen"/>
                         <CheckBox Margin="5" Name="AndereWoonvormCheckBox" Content="Andere"/>
                         <TextBox Margin="5" Height="25" Name="AndereWoonvormTextBox"/>
-                        <Button Margin="5" Height="25" Width="200" Content="Voeg andere woonvorm toe" Name="VoegAndereWoonvormToeButton" Click="VoegAndereWoonvormToeButton_Click"/>
+                        <Button Margin="5" Height="25" Width="200" HorizontalAlignment="Left" Content="Voeg andere woonvorm toe" Name="VoegAndereWoonvormToeButton" Click="VoegAndereWoonvormToeButton_Click"/>
                         <ListBox Margin="5" Height="100" Name="AndereWoonvormenListBox"/>
                     </StackPanel>
                     
