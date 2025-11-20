@@ -62,8 +62,9 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 if (project != null)
                 {
                     //navigeer naar DetailsProject
-                    var detailsProject = new DetailsProject(project);
-                    detailsProject.Show();
+                    ProjectFiche fiche = new ProjectFiche(project);
+                    fiche.Show();
+                   
                 }
             }
         }
