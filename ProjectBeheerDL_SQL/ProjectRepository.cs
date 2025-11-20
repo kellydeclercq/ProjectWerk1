@@ -95,9 +95,23 @@ namespace ProjectBeheerDL_SQL
                         List<byte[]> docs = new();
                         List<Partner> partners = new();
 
-                        GroeneRuimte? groeneRuimte = null;
                         StadsOntwikkeling? stadsOntwikkeling = null;
+                        GroeneRuimte? groeneRuimte = null;
                         InnovatiefWonen? innovatiefWonen = null;
+
+                        if (SOP)
+                        {
+                            string vergunningSTatusString = (string)reader["vergunningsstatus"];
+                            VergunningsStatus vergStatus = Enum.Parse<VergunningsStatus>(vergunningSTatusString);
+
+                            bool architecturaleWaarde = (bool)reader["architecturale_waarde"];
+
+                            string toegankelijkheidString = (string)reader["toegankelijkheid"];
+                            Toegankelijkheid toegankelijkheid = Enum.Parse<Toegankelijkheid>(toegankelijkheidString);
+
+                            bool bezienswaardigheidVoorToeristen = (bool)reader["bezienswaardigheid_voor_toeristen"];
+                            bool infobordenOfWandeling = (bool)reader["infoborden_of_wandeling"];
+                        }
                     }
 
         public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
