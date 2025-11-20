@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -133,7 +134,9 @@ namespace ProjectBeheerBL.Beheerder
             return _repo.GeefProjectenGefilterdOpWijk(wijk);
         }
 
-
-
+        public List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind)
+        {
+            return _repo.GeefProjectenGefilterd(projectnaam, wijk, status, eigenaar, typeChecks, start, eind);
+        }
     }
 }

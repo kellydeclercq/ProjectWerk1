@@ -54,5 +54,6 @@ namespace ProjectBeheerBL.Interfaces.Repo
         List<Project> GeefProjectenGefilterdOpStatus(string status);
         List<Project> GeefProjectenGefilterdOpTitel(string titel);
         List<Project> GeefProjectenGefilterdOpWijk(string wijk);
+        List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind);
     }
 }

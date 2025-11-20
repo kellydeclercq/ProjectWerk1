@@ -295,6 +295,9 @@ namespace ProjectBeheerDL_SQL
         //}
 
         public List<Project> GeefProjectenGefilterdOpWijk(string wijk) => throw new NotImplementedException();
+
+        public List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind)
+         => throw new NotImplementedException();
         //{
 
         //}
