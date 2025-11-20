@@ -18,7 +18,8 @@ namespace ProjectBeheerUtils
 
         public static IProjectRepository GeefProjectRepo(string connectionString)
         {
-            return new ProjectRepository(connectionString);
+            return null;
+            //return new ProjectRepository(connectionString);
         }
     }
 }
