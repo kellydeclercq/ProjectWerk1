@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
@@ -28,7 +29,7 @@ namespace ProjectBeheerBL.Beheerder
             foreach (var p in projecten)
             {
                 bool heeftGR = p is IGroeneRuimte;
-                bool heeftSO = p is IStadsontwikkeling;
+                bool heeftSO = p is IStadsontwikkeling; 
                 bool heeftIW = p is IInnovatiefWonen;
 
                 GroeneRuimte? groeneRuimte = heeftGR ?
@@ -129,7 +130,21 @@ namespace ProjectBeheerBL.Beheerder
                 ShouldQuote = args => true
             };
 
-            using var writer = new StreamWriter(pad);
+
+            string basisNaam = "MyProjectExport";
+            string extension = ".csv";
+            string volledigPad = Path.Combine(pad, basisNaam + extension);
+
+            //als het bestand al bestaat voeg een nummertje toe op het einde van de naam
+            int counter = 1;
+            while(File.Exists(volledigPad))
+            {
+                volledigPad = Path.Combine(pad, basisNaam + counter.ToString() + extension);
+                counter++;
+            }
+
+            
+            using var writer = new StreamWriter(volledigPad);
             using var csv = new CsvWriter(writer, config);
 
             csv.Context.TypeConverterOptionsCache.GetOptions<double>().Formats = new[] { "0.##" };
