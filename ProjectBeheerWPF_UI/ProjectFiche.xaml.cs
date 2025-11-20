@@ -25,6 +25,7 @@ namespace ProjectBeheerWPF_UI
         public ProjectFiche(Project selectedproject)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
 
             //de datacontext is het source object voor alle data bindings binnen een control (button/listbox/datagrid...)
             //hier ken i khet geselecteerde project toe aan de datacontext van het propertygrid

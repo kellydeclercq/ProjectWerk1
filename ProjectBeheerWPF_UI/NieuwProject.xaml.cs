@@ -98,6 +98,7 @@ namespace ProjectBeheerWPF_UI
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized; //window standaard op fullscreen
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
@@ -276,11 +277,13 @@ namespace ProjectBeheerWPF_UI
         private void BiodiversiteitSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             int waardeBioDiv = (int)BiodiversiteitSlider.Value;
+            BiodiversiteitsSlidervalueTextBlock.Text = BiodiversiteitSlider.Value.ToString();
         }
 
         private void BezoekersBeoordelingSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             int waardeBezoekersOordeel = (int)BezoekersBeoordelingSlider.Value;
+            BezoekersBeoordelingTextBlock.Text = BezoekersBeoordelingSlider.Value.ToString();
         }
 
         //hieronder alles ivm tab4: Innovatief Wonen
@@ -293,10 +296,10 @@ namespace ProjectBeheerWPF_UI
             AndereWoonvormTextBox.Clear();
         }
 
-
         private void ArchitecturaleInnoScoreSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             int waardeArchInno = (int)ArchitecturaleInnoScoreSlider.Value;
+            ArchInnoScoreSliderValueTextBlock.Text = ArchitecturaleInnoScoreSlider.Value.ToString();
         }
 
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken

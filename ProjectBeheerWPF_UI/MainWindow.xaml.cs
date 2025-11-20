@@ -47,21 +47,12 @@ namespace ProjectBeheerWPF_UI
 
             if (ingelogdeGebruiker != null)
             {
-                //TODO niet twee projectbeheer windows, maar 1, twee extra knoppen hidden zetten
-                if(ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder)
-                {
-                    BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new
-                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
-                    beheerderHomeProjectBeheer.Show();
-                }
-                    
-                else
-                {
-                    HomeProjectBeheer homeProjectBeheer = new 
-                        (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
-                    homeProjectBeheer.Show();
-                }
-                Close();
+
+                BeheerderHomeProjectBeheer beheerderHomeProjectBeheer = new
+                    (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
+                beheerderHomeProjectBeheer.ShowDialog();
+
+              
             }
             else
             {
