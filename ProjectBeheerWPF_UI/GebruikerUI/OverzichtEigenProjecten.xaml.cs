@@ -51,17 +51,21 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
         private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = FilterCombobox.SelectedItem as ComboBoxItem;
-            string tag = selectedItem.Tag.ToString();
+            if (selectedItem is not null)
+            {
+                string tag = selectedItem.Tag.ToString();
+                if (tag == "Datum")
+                {
+                    DatumsFilterPanel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    DatumsFilterPanel.Visibility = Visibility.Collapsed;
+                    FilterToepassen(tag);
+                }
+            }
             //als de optie datum geselecteerd is toon de datumvakjes, anders verberg ze
-            if(tag == "Datum")
-            {
-                DatumsFilterPanel.Visibility = Visibility.Visible;
-            }
-            else 
-            {
-                DatumsFilterPanel.Visibility= Visibility.Collapsed;
-                FilterToepassen(tag);
-            }
+            
         }
 
         private void Datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -102,7 +106,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Type":
                     if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
                     {
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType(TypeTextBox.Text);
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
+                        //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
                     }
                     else
                     {
@@ -112,8 +117,8 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 case "Wijk":
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
-                        //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                        
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk();
                     }
                     else
                     {

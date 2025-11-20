@@ -39,6 +39,13 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
             this.ingelogdeGebruiker = ingelogdeGebruiker;
+
+            if( ingelogdeGebruiker.GebruikersRol == ProjectBeheerBL.Enumeraties.GebruikersRol.GewoneGebruiker)
+            {
+                //knoppen specifiek admin verborgen zetten
+                OverzichtAlleProjectenButton.Visibility = Visibility.Hidden;
+                OverzichtGebruikersButton.Visibility = Visibility.Hidden;
+            }
         }
 
         private void MaakNieuwProject_CLick(object sender, RoutedEventArgs e)
@@ -49,7 +56,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         private void BekijkJouwProjecten_Click(object sender, RoutedEventArgs e)
         {
-            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
+            OverzichtAlleProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             overzichtEigenProjectenWindow.ShowDialog();
         }
 
