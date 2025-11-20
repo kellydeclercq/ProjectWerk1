@@ -26,6 +26,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         public DetailsGebruiker(Gebruiker selectedGebruiker, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             this.DataContext = selectedGebruiker;
 
             this.selectedGebruiker = selectedGebruiker;

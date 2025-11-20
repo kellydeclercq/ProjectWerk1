@@ -34,6 +34,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
