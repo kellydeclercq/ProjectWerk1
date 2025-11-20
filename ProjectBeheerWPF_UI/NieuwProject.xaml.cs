@@ -293,10 +293,10 @@ namespace ProjectBeheerWPF_UI
             AndereWoonvormTextBox.Clear();
         }
 
-
         private void ArchitecturaleInnoScoreSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             int waardeArchInno = (int)ArchitecturaleInnoScoreSlider.Value;
+            ArchInnoScoreSliderValueTextBlock.Text = ArchitecturaleInnoScoreSlider.Value.ToString();
         }
 
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
