@@ -79,7 +79,7 @@
             <ComboBoxItem Content="Type project" Tag="TypeProject"/>
         </ComboBox>
 
-        <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
+        <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <!--Binding="Binding PropertyName" => tells wpf which property of project to display in each column-->
