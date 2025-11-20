@@ -45,13 +45,9 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
             projecten = projectManager.GeefAlleProjecten();
 
-            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten.Where(x => x.ProjectEigenaar.GebruikersRol == GebruikersRol.GewoneGebruiker).ToList();
+            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projectManager.GeefProjectenGefilterd(null, null, default, ingelogdeGebruiker.Naam, null, default, default);
 
-            // TODO onderscheidt tussen admin en beheerder actief zetten eens methode
-            // projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder?  projectManager.GeefAlleProjecten() : projectManager.GeefProjectenGefilterdOpGebruiker(ingelogdeGebruiker);
-
-
-
+        
 
             ProjectOverzichtDatagrid.ItemsSource = projecten;
             initFolderExport = "@C:\\Downloads";
@@ -398,7 +394,12 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             string projectnaam = Projectnaam.Text;
             string wijk = Wijk.Text;
-            ProjectStatus status = Enum.Parse<ProjectStatus>(Status.Text);
+
+            ProjectStatus status = default;                  
+            if (!string.IsNullOrWhiteSpace(Status.Text))
+            {status = Enum.Parse<ProjectStatus>(Status.Text); }
+
+
             string eigenaar = Eigenaar.Text;
             List<bool> typeChecks = new List<bool>
             {
@@ -407,8 +408,8 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 innovatiefWonen.IsChecked ?? false
             };
 
-            DateTime start = StartDatePicker.SelectedDate.Value;
-            DateTime eind = EndDatePicker.SelectedDate.Value;
+            DateTime start = (StartDatePicker.SelectedDate.HasValue)? StartDatePicker.SelectedDate.Value : default;
+            DateTime eind = (EndDatePicker.SelectedDate.HasValue) ? EndDatePicker.SelectedDate.Value : default;
 
             if (start > eind && start != default && eind != default)
             {

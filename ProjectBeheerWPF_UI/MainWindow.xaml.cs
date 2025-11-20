@@ -57,7 +57,7 @@ namespace ProjectBeheerWPF_UI
                     
                 else
                 {
-                    HomeProjectBeheer homeProjectBeheer = new 
+                    BeheerderHomeProjectBeheer homeProjectBeheer = new 
                         (exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
                     homeProjectBeheer.Show();
                 }
