@@ -257,7 +257,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 case "Type":
                     if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
                     {
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
+                        //Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
                         //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
                     }
                     else
@@ -269,7 +269,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
 
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                        //Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
                     }
                     else
                     {
@@ -302,4 +302,5 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     break;
             }
         }
+    }
 }
