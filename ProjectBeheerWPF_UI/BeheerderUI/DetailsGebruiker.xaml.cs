@@ -20,18 +20,22 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
     /// </summary>
     public partial class DetailsGebruiker : Window
     {
-        private Gebruiker gebruiker;
+        private Gebruiker selectedGebruiker;
         private Gebruiker ingelogdeGebruiker;
 
-        public DetailsGebruiker()
+        public DetailsGebruiker(Gebruiker selectedGebruiker, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
-        }
+            this.DataContext = selectedGebruiker;
 
-        public DetailsGebruiker(Gebruiker gebruiker, Gebruiker ingelogdeGebruiker)
-        {
-            this.gebruiker = gebruiker;
+            this.selectedGebruiker = selectedGebruiker;
             this.ingelogdeGebruiker = ingelogdeGebruiker;
         }
+
+        //public DetailsGebruiker(Gebruiker gebruiker, Gebruiker ingelogdeGebruiker)
+        //{
+        //    this.gebruiker = gebruiker;
+        //    this.ingelogdeGebruiker = ingelogdeGebruiker;
+        //}
     }
 }

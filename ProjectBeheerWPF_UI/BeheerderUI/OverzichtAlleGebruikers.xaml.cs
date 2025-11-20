@@ -96,19 +96,21 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 MessageBox.Show("Selecteer eerst een project om te verwijderen.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            var x = GebruikerOverzichtDatagrid.SelectedItems;
+            var selectedItems = GebruikerOverzichtDatagrid.SelectedItems;
 
-            foreach (var item in x)
+            foreach (var item in selectedItems)
             {
-                Gebruiker g = item as Gebruiker;
-                if (g != null)
+                Gebruiker gebruiker = item as Gebruiker;
+                if (gebruiker != null)
                 {
                     //navigeer naar BewerkProject
                  var result = MessageBox.Show("Bent u zeker dat u deze wilt verwijderen?.", "Waarschuwing",  MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                     if (result == MessageBoxResult.Yes)
                     {
-                        gebruikers.Remove(g);
+                        //gebruikers.Remove(gebruiker);
+                        //TODO: bij verwijderen gebruiker moet er een flag 'inactive' komen in de DB
+                        MessageBox.Show("Gebruiker is verwijdert.");
                     }                   
                 }
 
