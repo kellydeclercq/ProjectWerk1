@@ -43,25 +43,25 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         private void MaakNieuwProject_CLick(object sender, RoutedEventArgs e)
         {
-            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             nieuwProjectWindow.ShowDialog();
         }
 
         private void BekijkJouwProjecten_Click(object sender, RoutedEventArgs e)
         {
-            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             overzichtEigenProjectenWindow.ShowDialog();
         }
 
         private void BekijkAlleProjecten_Click(object sender, RoutedEventArgs e)
         {
-            OverzichtAlleProjecten overzichtAlleProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            OverzichtAlleProjecten overzichtAlleProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             overzichtAlleProjectenWindow.ShowDialog();
         }
 
         private void BekijkAlleGebruikers_Click(object sender, RoutedEventArgs e)
         {
-            OverzichtAlleGebruikers overzichtAlleGebruikersWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            OverzichtAlleGebruikers overzichtAlleGebruikersWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             overzichtAlleGebruikersWindow.ShowDialog();
         }
     }
