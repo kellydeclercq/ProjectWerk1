@@ -25,7 +25,8 @@
         <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox" SelectionChanged="FilterCombobox_SelectionChanged">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
-            <ComboBoxItem Content="Filteren op:" Tag="None" <!--IsSelected="True"-->/>
+            <!--IsSelected="True"-->
+            <ComboBoxItem Content="Filteren op:" Tag="None"/>
             <ComboBoxItem Content="Titel" Tag="Titel"/>
             <ComboBoxItem Content="Type" Tag="Type"/>
             <ComboBoxItem Content="Wijk" Tag="Wijk"/>
