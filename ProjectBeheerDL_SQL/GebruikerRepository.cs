@@ -39,7 +39,7 @@ namespace ProjectBeheerDL_SQL
 
         public List<Gebruiker> GeefAlleGebruikers()
         {
-            const string sql = @"SELECT id, naam, email, gebruikersrol FROM gebruiekr;";
+            const string sql = @"SELECT id, naam, email, gebruikersrol FROM gebruiker;";
 
             var lijst = new List<Gebruiker>();
 
@@ -47,9 +47,9 @@ namespace ProjectBeheerDL_SQL
             using (var cmd = new SqlCommand(sql, conn))
             {
                 conn.Open();
-                using(var reader = cmd.ExecuteReader()) 
+                using (var reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
                         int id = reader.GetInt32(0);
                         string naam = reader.GetString(1);
@@ -58,8 +58,12 @@ namespace ProjectBeheerDL_SQL
 
                         GebruikersRol rol = Enum.Parse<GebruikersRol>(rolString);
 
-                        lijst.Add(id, naam, email, rol);
+                        var gebruiker = new Gebruiker(id, naam, email, rol);
+                        lijst.Add(gebruiker);
+                    }
+                }
             }
+            return lijst;
         }
 
 
