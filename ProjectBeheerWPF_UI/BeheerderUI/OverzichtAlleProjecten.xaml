@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:ProjectBeheerWPF_UI.BeheerderUI"
         mc:Ignorable="d"
         Title="OverzichtAlleProjecten" Height="1000" Width="1500">
+  
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
@@ -22,36 +24,48 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht alle projecten"/>
-        <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox">
-            <!--using tags to use in code-behind to decide what filters to apply-->
-            <!--default option combobox-->
-            <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Datum" Tag="Datum"/>
-            <ComboBoxItem Content="ProjectNaam" Tag="Projectnaam"/>
-            <ComboBoxItem Content="Wijk" Tag="Wijk"/>
-            <ComboBoxItem Content="Status" Tag="Status"/>
-            <ComboBoxItem Content="Eigenaar" Tag="Eigenaar"/>
-        </ComboBox>
-        
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Filters" TextDecorations="Underline"/>
+        <StackPanel Grid.Column="0" Grid.Row="2" Margin="5">
+               
+            <TextBlock Text="Projectnaam" ></TextBlock>
+            <TextBox  x:Name="Projectnaam"/>
+            
+            <TextBlock Text="Wijk" ></TextBlock>
+            <TextBox  x:Name="Wijk"/>
+            
+            <TextBlock Text="Status" ></TextBlock>
+            <ComboBox x:Name="Status"></ComboBox>
+            
+            <TextBlock Text="Eigenaar" ></TextBlock>
+            <TextBox  x:Name="Eigenaar"/>
+
+            <TextBlock Text="Type" ></TextBlock>
+            <StackPanel Margin="2">
+                <CheckBox Content="Stadsontwikkeling" x:Name="stadsontwikkeling" ></CheckBox>
+                <CheckBox Content="Groene ruimte" x:Name="groeneRuimte" ></CheckBox>
+                <CheckBox Content="Innovatief wonen" x:Name="innovatiefWonen"></CheckBox>
+            </StackPanel>
+
+            <TextBlock Margin="0 10 0 0"  Text="Datum" ></TextBlock>
+            <TextBlock Text="Van" VerticalAlignment="Center" />
+            <DatePicker Margin="2" Name="StartDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+            <TextBlock Text="Tot" VerticalAlignment="Center"/>
+            <DatePicker Margin="2" Name="EndDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+
+            <Button Margin="1" Content="Filter" Click="Button_clickFilter"></Button>
+        </StackPanel>
+
         <!--FILTER-->
         <!--if i want to filter on date => show the datepickers to select start and end date-->
         <!--set visibility on collapse-->
-        <StackPanel x:Name="DatumsFilterPanel" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Collapsed">
-            <TextBlock Margin="5" Text="Van" VerticalAlignment="Center" />
-            <DatePicker Margin="5" Name="StartDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
-            <TextBlock Margin="5" Text="Tot" VerticalAlignment="Center"/>
-            <DatePicker Margin="5" Name="EndDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
-        </StackPanel>
+       
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TitelTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TypeTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="WijkTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="StatusTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="PartnersTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-            <CheckBox Margin="2" Content="Stadsontwikkeling"></CheckBox>
-            <CheckBox Margin="2" Content="Groene ruimte"></CheckBox>
-            <CheckBox Margin="2" Content="Innovatief wonen"></CheckBox>
-        </StackPanel>
+        
 
 
         <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
@@ -92,4 +106,108 @@
             <Button Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
         </StackPanel>
     </Grid>
+    
+    
+    <!--OUDE VERSIE-->
+       
+
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht alle projecten"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox">
+            -->
+    <!--using tags to use in code-behind to decide what filters to apply-->
+    <!--default option combobox-->
+    <!--
+            <ComboBoxItem Content="Filter:" Tag="None" IsSelected="True"/>
+            <ComboBoxItem Content="Datum" Tag="Datum"/>
+            <ComboBoxItem Content="ProjectNaam" Tag="Projectnaam"/>
+            <ComboBoxItem Content="Wijk" Tag="Wijk"/>
+            <ComboBoxItem Content="Status" Tag="Status"/>
+            <ComboBoxItem Content="Eigenaar" Tag="Eigenaar"/>
+        </ComboBox>
+        
+        -->
+    <!--FILTER-->
+    <!--if i want to filter on date => show the datepickers to select start and end date-->
+    <!--set visibility on collapse-->
+    <!--
+        <StackPanel x:Name="DatumsFilterPanel" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Margin="5" Visibility="Collapsed">
+            <TextBlock Margin="5" Text="Van" VerticalAlignment="Center" />
+            <DatePicker Margin="5" Name="StartDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+            <TextBlock Margin="5" Text="Tot" VerticalAlignment="Center"/>
+            <DatePicker Margin="5" Name="EndDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
+        </StackPanel>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TitelTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="TypeTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="WijkTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="StatusTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="PartnersTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox Margin="2" Content="Stadsontwikkeling" x:Name="IsStad"></CheckBox>
+            <CheckBox Margin="2" Content="Groene ruimte" x:Name="IsGroeneRuimte"></CheckBox>
+            <CheckBox Margin="2" Content="Innovatief wonen" x:Name="IsInnovatief"></CheckBox>
+        </StackPanel>
+
+
+        <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
+            -->
+    <!--using tags to use in code-behind to decide what filters to apply-->
+    <!--default option combobox-->
+    <!--
+            <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
+            <ComboBoxItem Content="Van oud naar nieuw" Tag="DatumOudnaarNieuw"/>
+            <ComboBoxItem Content="Van nieuw naar oud" Tag="DatumNieuwnaarOud"/>
+            <ComboBoxItem Content="Wijk" Tag="wijk"/>
+            <ComboBoxItem Content="Status" Tag="status"/>
+            <ComboBoxItem Content="Type project" Tag="TypeProject"/>
+        </ComboBox>
+
+        <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                -->
+    <!--Binding="Binding PropertyName" => tells wpf which property of project to display in each column-->
+    <!--
+                <DataGridTextColumn Header="Status" Binding="{Binding ProjectStatus}"/>
+                <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDatum}"/>
+                <DataGridTextColumn Header="Titel" Binding="{Binding ProjectTitel}"/>
+                -->
+    <!--<DataGridTextColumn Header="Type" Binding="Binding Id"/> voorlopig geven we het type niet weer-->
+    <!--
+                <DataGridTextColumn Header="Wijk" Binding="{Binding Wijk}"/>
+                <DataGridTextColumn Header="Eigenaar" Binding="{Binding ProjectEigenaar}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        -->
+    <!--uniformgrid makes a grid where each child has the same amount of space-->
+    <!--<UniformGrid Grid.Column="1" Grid.Row="3" Columns="3" Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Stretch">
+    <Button Name="BekijkProjectButton" Content="Bekijk geselecteerd project" Margin="5"></Button>
+    <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5"></Button>
+    <Button Name="ExporteerProjectButton" Content="Exporteer geselecteerd project" Margin="5"></Button>
+</UniformGrid>-->
+    <!--
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="150" Name="DetailsProjectButton" Content="Details project" Margin="5" Click="Details_Click"></Button>
+            <Button Width="150" Name="BewerkProjectButton" Content="Bewerk project" Margin="5" Click="Bewerk_Click"></Button>
+            <Button Width="150"  Margin="5" Name="ExporteerAlsCSV" Content="Exporteer als CSV" Click="ExporteerAlsCsv_Click"/>
+            <Button Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
+        </StackPanel>
+    </Grid>-->
+
 </Window>

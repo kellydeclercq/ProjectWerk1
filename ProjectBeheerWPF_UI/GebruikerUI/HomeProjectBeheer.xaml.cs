@@ -47,7 +47,7 @@ namespace ProjectBeheerWPF_UI
             nieuwProjectWindow.ShowDialog();
         }
 
-        private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
+        private void OverzichtJouwProjectenButton_Click(object sender, RoutedEventArgs e)
         {
             OverzichtEigenProjecten overzichtEigenProjectenWindow 
                 = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
