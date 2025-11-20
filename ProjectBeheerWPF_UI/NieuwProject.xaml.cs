@@ -37,8 +37,8 @@ namespace ProjectBeheerWPF_UI
         private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
         private List<string> toegankelijkheden = Enum.GetNames(typeof(Toegankelijkheid)).ToList();
 
-        private List<Partner> partners;
-        private List<string> bijlages;
+        private List<Partner> partners = new();
+        private List<string> bijlages = new();
         private List<byte[]> documenten = new();
         private List<byte[]> fotos = new();
         private List<BouwFirma> bouwFirmas = new();
