@@ -18,6 +18,8 @@ namespace ProjectBeheerDL_SQL
             _connectionString = connectionString;
         }
 
+        public void UploadToDatabase()
+
         public bool BestaatGebruikerAl(string email) => throw new NotImplementedException();
         //{
             
