@@ -45,7 +45,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
             projecten = projectManager.GeefAlleProjecten();
 
-            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projectManager.GeefProjectenGefilterd(null, null, default, ingelogdeGebruiker.Naam, null, default, default);
+            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten.Where(x => x.ProjectEigenaar.Email == ingelogdeGebruiker.Email).ToList();
 
         
 
