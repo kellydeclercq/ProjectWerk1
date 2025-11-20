@@ -90,7 +90,33 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         private void Verwijder_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
+            if (GebruikerOverzichtDatagrid.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecteer eerst een project om te verwijderen.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            var x = GebruikerOverzichtDatagrid.SelectedItems;
+
+            foreach (var item in x)
+            {
+                Gebruiker g = item as Gebruiker;
+                if (g != null)
+                {
+                    //navigeer naar BewerkProject
+                 var result = MessageBox.Show("Bent u zeker dat u deze wilt verwijderen?.", "Waarschuwing",  MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        gebruikers.Remove(g);
+                    }                   
+                }
+
+            }
+
+
+           
+
         }
     }
 }
