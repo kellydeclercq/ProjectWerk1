@@ -33,6 +33,7 @@ namespace ProjectBeheerWPF_UI
         private List<string> projectStatussen = Enum.GetNames(typeof(ProjectStatus)).ToList();
         private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
         private List<string> toegankelijkheden = Enum.GetNames(typeof(Toegankelijkheid)).ToList();
+        private List<string> typeWooneenheden = new List<string>() { "Co-housing", "Modulair", "Andere" };
 
         public List<Partner> partners;
         public List<string> bijlages;
@@ -75,7 +76,13 @@ namespace ProjectBeheerWPF_UI
 
         //variabelen innovatief wonen
 
-
+        private int aantalWooneenheden = 0;
+        private List<string> geselecteerdeWooneenheden;
+        private bool isRondleidingenMogelijk;
+        private bool isShowWoningBeschikbaar;
+        private int architecturalInnoscore;
+        private bool isErfgoedSamenwerking;
+        private bool isToerismeSamenwerking;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
@@ -177,6 +184,8 @@ namespace ProjectBeheerWPF_UI
             int waardeBioDiv = (int)BiodiversiteitSlider.Value;
         }
 
+        //voeg andere wooneenheid toe aan listbox
+
         private void GaVerderButtonTab3_Click(object sender, RoutedEventArgs e)
         {
             GaVerderButtonTab_Click(sender, e);
@@ -243,18 +252,28 @@ namespace ProjectBeheerWPF_UI
 
             //variabelen innovatief wonen
 
+            /*private int aantalWooneenheden = 0;
+        private List<string> typeWooneenheden;
+        private bool isRondleidingenMogelijk;
+        private bool isShowWoningBeschikbaar;
+        private int architecturalInnoscore;
+        private bool isErfgoedSamenwerking;
+        private bool isToerismeSamenwerking;*/
+            aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
+            geselecteerdeWooneenheden = TypesWoonvormenComboBox.Sel;
+            
+
+            //alle invoer + logica projectTypes adhv checkboxen types
 
 
-                //alle invoer + logica projectTypes adhv checkboxen types
 
-
-
-                BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+            BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
         }
 
         private void BepaalTypeProjectEnMaakAan(bool IsStadsontwikkeling, bool IsGroeneRuimte, bool IsInnovatiefWonen)
         {
-            switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
+            throw new NotImplementedException();
+            /*switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
             {
                 case (true, false, false):
                     projectManager.MaakStadsontwikkelingsProjectAan();
@@ -283,8 +302,8 @@ namespace ProjectBeheerWPF_UI
                 case (true, true, true):
                     projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
                     break;
-
-            }
+            */
         }
+    }
     }
 }
