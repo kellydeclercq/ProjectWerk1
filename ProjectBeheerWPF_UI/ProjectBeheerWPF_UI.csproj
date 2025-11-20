@@ -17,4 +17,10 @@
     <ProjectReference Include="..\ProjectBeheerUtils\ProjectBeheerUtils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AppSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
