@@ -27,9 +27,7 @@
 
         <TextBlock Grid.Column="0" Grid.Row="1" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Filters" TextDecorations="Underline"/>
         <StackPanel Grid.Column="0" Grid.Row="2" Margin="5">
-            <TextBlock Text="Datum" ></TextBlock>
-            <TextBox  x:Name="Datum"/>
-            
+               
             <TextBlock Text="Projectnaam" ></TextBlock>
             <TextBox  x:Name="Projectnaam"/>
             
@@ -37,17 +35,25 @@
             <TextBox  x:Name="Wijk"/>
             
             <TextBlock Text="Status" ></TextBlock>
-            <TextBox  x:Name="Status"/>
+            <ComboBox x:Name="Status"></ComboBox>
             
             <TextBlock Text="Eigenaar" ></TextBlock>
             <TextBox  x:Name="Eigenaar"/>
-            
-            <TextBlock Margin="5" Text="Van" VerticalAlignment="Center" />
+
+            <TextBlock Text="Type" ></TextBlock>
+            <StackPanel Margin="2">
+                <CheckBox Content="Stadsontwikkeling" x:Name="stadsontwikkeling" ></CheckBox>
+                <CheckBox Content="Groene ruimte" x:Name="groeneRuimte" ></CheckBox>
+                <CheckBox Content="Innovatief wonen" x:Name="innovatiefWonen"></CheckBox>
+            </StackPanel>
+
+            <TextBlock Margin="0 10 0 0"  Text="Datum" ></TextBlock>
+            <TextBlock Text="Van" VerticalAlignment="Center" />
             <DatePicker Margin="2" Name="StartDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
-            <TextBlock Margin="5" Text="Tot" VerticalAlignment="Center"/>
+            <TextBlock Text="Tot" VerticalAlignment="Center"/>
             <DatePicker Margin="2" Name="EndDatePicker" Width="120" SelectedDateChanged="Datepicker_SelectedDateChanged"/>
 
-            <Button Margin="1" Content="Filter"></Button>
+            <Button Margin="1" Content="Filter" Click="Button_clickFilter"></Button>
         </StackPanel>
 
         <!--FILTER-->
