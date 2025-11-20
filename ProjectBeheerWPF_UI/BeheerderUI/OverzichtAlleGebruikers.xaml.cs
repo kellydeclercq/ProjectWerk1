@@ -82,7 +82,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 if (gebruiker != null)
                 {
                     //navigeer naar BewerkProject
-                    var bewerkGebruiker = new BewerkGebruiker(gebruiker);
+                    var bewerkGebruiker = new BewerkGebruiker(gebruiker, ingelogdeGebruiker);
                     bewerkGebruiker.Show();
                 }
             }
