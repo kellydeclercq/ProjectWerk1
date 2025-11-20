@@ -128,23 +128,6 @@ namespace ProjectBeheerWPF_UI
             }
         }
 
-        /*private void GaVerderButtonTab_Click(object sender, RoutedEventArgs e)
-        {
-            per tab wordt hier individueel naar verwezen
-            if (NieuwProjectTabs.SelectedIndex > NieuwProjectTabs.Items.Count - 1)
-            {
-                NieuwProjectTabs.SelectedIndex += 1;
-            }
-        var tab2 = new TabItem
-            {
-                Header = "Stap 2",
-                Content = new Stap2UserControl()  // indien je met UserControls werkt
-            };
-
-            MijnTabs.Items.Add(tab2);
-            MijnTabs.SelectedItem = tab2;
-        }*/
-
         //hieronder alles ivm tab1: algemene info
 
         private void VoegDocumentenToeButton_Click(object sender, RoutedEventArgs e)
@@ -204,6 +187,14 @@ namespace ProjectBeheerWPF_UI
 
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
         {
+            //elke keer je op verder klikt bij algemene info checkt hij welke tabs er open moeten staan,
+            //dus als er al open staan die toch niet nodig zijn, moeten die dicht
+
+            StadsontwikkelingTab.Visibility = Visibility.Collapsed;
+            GroeneRuimteTab.Visibility = Visibility.Collapsed;
+            InnovatiefWonenTab.Visibility = Visibility.Collapsed;
+            BevestigenTab.Visibility = Visibility.Collapsed;
+
             //adhv checkboxen wordt hier bepaald welke tabs opengaan
             IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true;
             IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
