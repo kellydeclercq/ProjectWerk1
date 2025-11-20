@@ -51,24 +51,51 @@ namespace ProjectBeheerDL_SQL
                 {
                     while (reader.Read())
                     {
-                        int id = reader.GetInt32(0);
-                        string naam = reader.GetString(1);
-                        string email = reader.GetString(2);
-                        string rolString = reader.GetString(3);
+                        int id = (int)reader["id"];
+                        string naam = (string)reader["naam"];
+                        string email = (string)reader["email"];
+                        string rolString = (string)reader["gebruikersrol"];
 
                         GebruikersRol rol = Enum.Parse<GebruikersRol>(rolString);
 
-                        var gebruiker = new Gebruiker(id, naam, email, rol);
-                        lijst.Add(gebruiker);
+                        lijst.Add(new Gebruiker(id, naam, email, rol));
                     }
                 }
             }
-            return lijst;
+                return lijst;
         }
 
 
-        public Gebruiker GeefGebruikeradhvEmail(string email) => throw new NotImplementedException();
+        public Gebruiker GeefGebruikeradhvEmail(string email)
+        {
+            const string sql = @"SELECT id, naam, email, gebruikersrol FROM gebruiker WHERE email = @Email;";
 
+            using (var conn = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                conn.Open();
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int id = (int)reader["id"];
+                        string naam = (string)reader["naam"];
+                        string mail = (string)reader["email"];
+                        string rolString = (string)reader["gebruikersrol"];
+
+                        GebruikersRol rol = Enum.Parse<GebruikersRol>(rolString);
+
+                        return new Gebruiker(id, naam, mail, rol);
+                    }
+                }
+            }
+
+
+            return null;
+        }
 
         public void MaakNieuweGebruikerAan(string naam, string email, GebruikersRol rol)
         {
