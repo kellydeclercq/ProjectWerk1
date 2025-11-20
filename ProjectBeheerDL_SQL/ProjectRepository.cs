@@ -1,4 +1,5 @@
-﻿using ProjectBeheerBL.Domein;
+﻿using Microsoft.Data.SqlClient;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.ProjectTypesSubklasses;
 using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerBL.Interfaces.Repo;
@@ -19,6 +20,99 @@ namespace ProjectBeheerDL_SQL
         {
             _connectionString = connectionString;
         }
+
+        public List<Project> GeefAlleProjecten()
+        {
+            #region sql code voor project
+            const string sql = @"SELECT
+                                id,
+                                project_titel,
+                                beschrijving,
+                                startdatum,
+                                project_status,
+                                straat,
+                                huisnummer,
+                                postcode,
+                                gemeente,
+                                wijk,
+                                project_eigenaar_id,
+                                is_stadsontwikkeling,
+                                is_groene_ruimte,
+                                is_innovatief_wonen,
+                                vergunningsstatus,
+                                architecturale_waarde,
+                                toegankelijkheid,
+                                bezienswaardigheid_voor_toeristen,
+                                infoborden_of_wandeling,
+                                oppervlakte_in_vierkante_meter,
+                                biodiversiteitsscore,
+                                aantal_wandelpaden,
+                                opgenomen_in_wandelroute,
+                                bezoekersscore,
+                                faciliteiten,
+                                aantal_wooneenheden,
+                                rondleiding_mogelijk,
+                                innovatie_score,
+                                showwoning_beschikbaar,
+                                samenwerking_erfgoed,
+                                samenwerking_toerisme,
+                                woonvormen
+                                FROM project;";
+            #endregion
+
+            var projecten = new List<Project>();
+
+            using (var conn = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = (int)reader["id"];
+                        string projectTitel = (string)reader["project_titel"];
+                        string beschrijving = (string)reader["beschrijving"];
+                        DateTime? startdatum = reader["startdatum"] == DBNull.Value ?
+                            (DateTime?)null : (DateTime)reader["startdatum"];
+                        
+                        ProjectStatus status = Enum.Parse<ProjectStatus>((string)reader["project_status"]);
+                        string wijk = (string)reader["wijk"];
+
+                        var adres = new Adres(
+                         (string)reader["straat"],
+                         (string)reader["huisnummer"],
+                         (int)reader["postcode"],
+                         (string)reader["gemeente"]);
+                        
+                        int eigenaarId = (int)reader["project_eigenaar_id"];
+
+                        bool SOP = (bool)reader["is_stadsontwikkeling"];
+                        bool GRP = (bool)reader["is_groene_ruimte"];
+                        bool IWP = (bool)reader["is_innovatief_wonen"];
+
+                        List<byte[]> fotos = new();
+                        List<byte[]> docs = new();
+                        List<Partner> partners = new();
+
+                        StadsOntwikkeling? stadsOntwikkeling = null;
+                        GroeneRuimte? groeneRuimte = null;
+                        InnovatiefWonen? innovatiefWonen = null;
+
+                        if (SOP)
+                        {
+                            string vergunningSTatusString = (string)reader["vergunningsstatus"];
+                            VergunningsStatus vergStatus = Enum.Parse<VergunningsStatus>(vergunningSTatusString);
+
+                            bool architecturaleWaarde = (bool)reader["architecturale_waarde"];
+
+                            string toegankelijkheidString = (string)reader["toegankelijkheid"];
+                            Toegankelijkheid toegankelijkheid = Enum.Parse<Toegankelijkheid>(toegankelijkheidString);
+
+                            bool bezienswaardigheidVoorToeristen = (bool)reader["bezienswaardigheid_voor_toeristen"];
+                            bool infobordenOfWandeling = (bool)reader["infoborden_of_wandeling"];
+                        }
+                    }
 
         public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
