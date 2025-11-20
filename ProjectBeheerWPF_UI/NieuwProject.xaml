@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ProjectBeheerWPF_UI"
         xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="ProjectBeheerWPF_UI.NieuwProject"
         mc:Ignorable="d"
-        Title="Nieuw project aanmaken" Height="1000" Width="1500">
+        Title="Nieuw project aanmaken" Height="1000" Width="1500"
+        Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
