@@ -127,5 +127,13 @@ namespace ProjectBeheerBL.Beheerder
         {
             return _repo.GeefProjectenGefilterdOpTitel(titel);
         }
+
+        public List<Project> GeefProjectenGefilterdOpWijk(string wijk)
+        {
+            return _repo.GeefProjectenGefilterdOpWijk(wijk);
+        }
+
+
+
     }
 }

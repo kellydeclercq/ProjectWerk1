@@ -21,7 +21,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="2" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht alle projecten - admin"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" FontSize="20" Text="Overzicht alle projecten"/>
         <ComboBox Grid.Column="1" Grid.Row="1" Margin="5" Name="FilterCombobox">
             <!--using tags to use in code-behind to decide what filters to apply-->
             <!--default option combobox-->
@@ -74,10 +74,10 @@
 </UniformGrid>-->
 
         <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="DetailsProjectButton" Content="Details geselecteerd project" Margin="5" Click="Details_Click"></Button>
-            <Button Name="BewerkProjectButton" Content="Bewerk geselecteerd project" Margin="5" Click="Bewerk_Click"></Button>
-            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsCSV" Content="Exporteer als CSV" Click="ExporteerAlsCsv_Click"/>
-            <Button Height="50" Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
+            <Button Width="150" Name="DetailsProjectButton" Content="Details project" Margin="5" Click="Details_Click"></Button>
+            <Button Width="150" Name="BewerkProjectButton" Content="Bewerk project" Margin="5" Click="Bewerk_Click"></Button>
+            <Button Width="150"  Margin="5" Name="ExporteerAlsCSV" Content="Exporteer als CSV" Click="ExporteerAlsCsv_Click"/>
+            <Button Width="150"  Margin="5" Name="ExporteerAlsPDF" Content="Exporteer als PDF" Click="ExporteerAlsPdf_Click"/>
         </StackPanel>
     </Grid>
 </Window>
