@@ -13,7 +13,7 @@ namespace ProjectBeheerBL.Beheerder
     public class ProjectManager
     {
        private IProjectRepository _repo;
-       public LijstService LijstService;
+       //public LijstService LijstService; niet nodig ?
 
         public ProjectManager(IProjectRepository repo)
         {
@@ -31,7 +31,7 @@ namespace ProjectBeheerBL.Beheerder
                 faciliteiten, gebruiker, adres);
         }
 
-        public void MaakStadsontwikkelingsProjectAan(int? id, string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
+        public void MaakStadsontwikkelingsProjectAan(string projectTitel, string beschrijving, DateTime startDatum, ProjectStatus projectStatus,
             string wijk, List<byte[]> fotos, List<byte[]> documenten, List<Partner> partners, 
              VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, Gebruiker gebruiker, Adres adres)
