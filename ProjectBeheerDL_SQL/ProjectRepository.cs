@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProjectBeheerDL_SQL
 {
-    public class ProjectRepository : IProjectRepository
+    public class ProjectRepository
     {
         private readonly string _connectionString;
 
@@ -237,7 +237,7 @@ namespace ProjectBeheerDL_SQL
 
             return MaakProjectSubtype(id, titel, beschrijving, startDatum, status,  wijk, fotos, docs, partners, eigenaar, adres, groeneRuimte, stadsOntwikkeling, innovatiefWonen);
         }
-        public Project MaakProjectSubtype( int id, string titel, string beschrijving, DateTime? startDatum, ProjectStatus status, string wijk, List<byte[]> fotos, List<byte[]> docs,
+        private Project MaakProjectSubtype( int id, string titel, string beschrijving, DateTime? startDatum, ProjectStatus status, string wijk, List<byte[]> fotos, List<byte[]> docs,
             List<Partner> partners, Gebruiker eigenaar, Adres adres, GroeneRuimte? GRP, StadsOntwikkeling? SOP, InnovatiefWonen? IWP)
         {
             if (GRP != null && IWP == null && SOP == null)
@@ -430,50 +430,13 @@ namespace ProjectBeheerDL_SQL
 
         // FILTEREN en SORTEREN en OPVRAGEN
        
-        public List<Project> GeefProjectenGefilterdOpPartners(string partner) => throw new NotImplementedException();
-        //{
-        //    var lijst = projectLijst
-        //        .Select(x => x.Value)
-        //        .Where(p => p.Partners
-        //        .Any(p => p.Naam.Equals(partner, StringComparison.OrdinalIgnoreCase)))
-        //        .ToList();
 
-        //    return lijst;
-        //}
 
-        public List<Project> GeefProjectenGefilterdOpStatus(string status) => throw new NotImplementedException();
-        //{
-        //    var lijst = projectLijst.Select(x => x.Value)
-        //        .Where(x => x.ProjectStatus.ToString().Equals(status, StringComparison.OrdinalIgnoreCase))
-        //        .ToList();
-
-        //    return lijst;
-        //}
-
-        public List<Project> GeefProjectenGefilterdOpTitel(string titel) => throw new NotImplementedException();
-        //{
-        //    var lijst = projectLijst.Select(x => x.Value)
-        //        .Where(x => x.ProjectTitel.Equals(titel, StringComparison.OrdinalIgnoreCase))
-        //        .ToList();
-
-        //    return lijst;
-        //}
-
-        public List<Project> GeefProjectenGefilterdOpType(List<bool> types) => throw new NotImplementedException();
-        //{
-        //    //groen: 0
-        //    //innov: 1
-        //    //stadsont: 2
-
-        //    //TODO nog uitwerken met booleans
-  
-        //}
-
-        public List<Project> GeefProjectenGefilterdOpWijk(string wijk) => throw new NotImplementedException();
 
         public List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind)
          => throw new NotImplementedException();
-        //{
+
+       
 
         //}
 
