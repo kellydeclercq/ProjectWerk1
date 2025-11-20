@@ -128,15 +128,6 @@ namespace ProjectBeheerWPF_UI
             }
         }
 
-        private void GaVerderButtonTab_Click(object sender, RoutedEventArgs e)
-        {
-            //per tab wordt hier individueel naar verwezen
-            if (NieuwProjectTabs.SelectedIndex > NieuwProjectTabs.Items.Count - 1)
-            {
-                NieuwProjectTabs.SelectedIndex += 1;
-            }
-        }
-
         //hieronder alles ivm tab1: algemene info
 
         private void VoegDocumentenToeButton_Click(object sender, RoutedEventArgs e)
@@ -196,9 +187,69 @@ namespace ProjectBeheerWPF_UI
 
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
         {
-            GaVerderButtonTab_Click(sender, e);
-        }
+            //elke keer je op verder klikt bij algemene info checkt hij welke tabs er open moeten staan,
+            //dus als er al open staan die toch niet nodig zijn, moeten die dicht
 
+            StadsontwikkelingTab.Visibility = Visibility.Collapsed;
+            GroeneRuimteTab.Visibility = Visibility.Collapsed;
+            InnovatiefWonenTab.Visibility = Visibility.Collapsed;
+            BevestigenTab.Visibility = Visibility.Collapsed;
+
+            //adhv checkboxen wordt hier bepaald welke tabs opengaan
+            IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true;
+            IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
+            IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
+
+            switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
+            {
+                case (true, false, false):
+                    StadsontwikkelingTab.Visibility = Visibility.Visible;
+                    StadsontwikkelingTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+                 
+                case (false, true, false):
+                    GroeneRuimteTab.Visibility = Visibility.Visible;
+                    GroeneRuimteTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+
+                case (false, false, true):
+                    InnovatiefWonenTab.Visibility = Visibility.Visible;
+                    InnovatiefWonenTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+
+                case (true, true, false):
+                    StadsontwikkelingTab.Visibility = Visibility.Visible;
+                    GroeneRuimteTab.Visibility = Visibility.Visible;
+                    StadsontwikkelingTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+
+                case (true, false, true):
+                    StadsontwikkelingTab.Visibility = Visibility.Visible;
+                    InnovatiefWonenTab.Visibility = Visibility.Visible;
+                    StadsontwikkelingTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+
+                case (false, true, true):
+                    GroeneRuimteTab.Visibility = Visibility.Visible;
+                    InnovatiefWonenTab.Visibility = Visibility.Visible;
+                    GroeneRuimteTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+
+                case (true, true, true):
+                    StadsontwikkelingTab.Visibility = Visibility.Visible;
+                    GroeneRuimteTab.Visibility = Visibility.Visible;
+                    InnovatiefWonenTab.Visibility = Visibility.Visible;
+                    StadsontwikkelingTab.IsSelected = true;
+                    BevestigenTab.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
 
         //hieronder alles ivm tab2: Stadsontwikkeling
 
@@ -220,23 +271,11 @@ namespace ProjectBeheerWPF_UI
             bouwFirmas.Add(bouwfirma);
             BouwfirmasListBox.Items.Add(bouwfirma.Naam);
         }
-
-        private void GaVerderButtonTab2_Click(object sender, RoutedEventArgs e)
-        {
-            GaVerderButtonTab_Click(sender, e);
-        }
-
-
         //hieronder alles ivm tab3: Groene Ruimte
 
         private void BiodiversiteitSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             int waardeBioDiv = (int)BiodiversiteitSlider.Value;
-        }
-
-        private void GaVerderButtonTab3_Click(object sender, RoutedEventArgs e)
-        {
-            GaVerderButtonTab_Click(sender, e);
         }
 
         private void BezoekersBeoordelingSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
@@ -398,5 +437,7 @@ namespace ProjectBeheerWPF_UI
 
             }
         }
+
+        
     }
 }

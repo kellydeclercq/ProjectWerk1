@@ -95,12 +95,12 @@
                     <TextBox Grid.Column="1" Grid.Row="7" Margin="5" Grid.ColumnSpan="2" Name="TelefoonPartnerTextBox" Text="Telefoon"/>
                     <Button Grid.Column="1" Grid.Row="8" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe" Click="VoegPartnerToeButton_Click"/>
                     <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
-                    <TextBlock Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Overzicht partners</TextBlock>
-                    <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox"></ListBox>
-                    <Button Grid.Column="5" Grid.Row="8" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
+                    
+                    <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox">Toegevoegde partners</ListBox>
+                    <Button Grid.Column="4" Grid.Row="8" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder" Click="GaVerderButtonTab1_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Stadsontwikkeling">
+            <TabItem Header="Specifieke Info Stadsontwikkeling" Name="StadsontwikkelingTab" Visibility="Collapsed" >
                 <Grid x:Name="infoStadsontwikkelingGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -130,8 +130,8 @@
                         <TextBox Height="50" Margin="5" x:Name="EmailBouwfirmaTextBox"/>
                         <TextBox Height="50" Margin="5" x:Name="TelefoonBouwfirmaTextBox"/>
                         <TextBox Height="50" Margin="5" x:Name="WebsiteBouwfirmaTextBox"/>
-                        <Button Margin="5" Content="Voeg toe" Name="VoegBouwfirmaToeButton" Click="VoegBouwfirmaToeButton_Click"/>
-                        <ListBox Name="BouwfirmasListBox" Height="100" Margin="5"/>
+                        <Button Margin="5" Height="30" Width="150" HorizontalAlignment="Left" Content="Voeg toe" Name="VoegBouwfirmaToeButton" Click="VoegBouwfirmaToeButton_Click"/>
+                        <ListBox Name="BouwfirmasListBox" Height="100" Margin="5" />
                     </StackPanel>
                     
                     <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Vergunningsstatus"/></TextBlock>
@@ -157,10 +157,9 @@
                         <CheckBox Margin="5" Name="UitlegbordCheckBox" Content="Uitlegbord"/>
                         <CheckBox Margin="5" Name="InfowandelingCheckBox" Content="Infowandeling"/>
                     </StackPanel>
-                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="100" Height="50" HorizontalAlignment="Right" x:Name="GaVerderButtonTab2" Content="Verder"/>
-                </Grid>
+                    </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Groene ruimte">
+            <TabItem Header="Specifieke Info Groene ruimte" Name="GroeneRuimteTab" Visibility="Collapsed">
                 <Grid x:Name="InfoGroeneRuimteGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -183,7 +182,7 @@
                     <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Biodiversiteitscore"/></TextBlock>
                     <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="1"/></TextBlock>
-                        <Slider x:Name="BiodiversiteitSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="1" Minimum="1" Maximum="10" TickFrequency="10" 
+                        <Slider x:Name="BiodiversiteitSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="1" Minimum="0" Maximum="10" TickFrequency="1" 
                                 IsSnapToTickEnabled="True" Thumb.DragCompleted="BiodiversiteitSlider_DragCompleted"/>
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="10"/></TextBlock>
                     </StackPanel>
@@ -206,13 +205,12 @@
                     <StackPanel Grid.Column="2" Grid.Row="6" Orientation="Horizontal">
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="0"/></TextBlock>
                         <Slider x:Name="BezoekersBeoordelingSlider" Margin="5" Width="150" VerticalAlignment="Center" 
-                                Value="0" Minimum="0" Maximum="5" TickFrequency="5" IsSnapToTickEnabled="True" Thumb.DragCompleted="BezoekersBeoordelingSlider_DragCompleted"/>
+                                Value="0" Minimum="0" Maximum="5" TickFrequency="1" IsSnapToTickEnabled="True" Thumb.DragCompleted="BezoekersBeoordelingSlider_DragCompleted"/>
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="5"/></TextBlock>
                     </StackPanel>
-                    <Button Grid.Column="5" Grid.Row="7" Width="100" Height="50" x:Name="GaVerderButtonTab3" Content="Verder" Click="GaVerderButtonTab3_Click"/>
-                </Grid>
+                    </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Innovatief Wonen">
+            <TabItem Header="Specifieke Info Innovatief Wonen" Name="InnovatiefWonenTab" Visibility="Collapsed">
                 <Grid Name="InnovatiefWonenGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -256,7 +254,7 @@
                     <TextBlock Grid.Column="1" Grid.Row="5" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">Architecturale innovatiescore</TextBlock>
                     <StackPanel Grid.Column="2" Grid.Row="5" Orientation="Horizontal">
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="0"/></TextBlock>
-                        <Slider x:Name="ArchitecturaleInnoScoreSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="0" Minimum="1" Maximum="10" TickFrequency="10" 
+                        <Slider x:Name="ArchitecturaleInnoScoreSlider" Margin="5" Width="150" VerticalAlignment="Center" Value="0" Minimum="1" Maximum="10" TickFrequency="1" 
                             IsSnapToTickEnabled="True" Thumb.DragCompleted="ArchitecturaleInnoScoreSlider_DragCompleted"/>
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="10"/></TextBlock>
                     </StackPanel>
@@ -270,11 +268,11 @@
                         <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentJaRadioButton" Content="ja"/>
                         <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentNeeRadioButton" Content="nee"/>
                     </StackPanel>
-                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="150" Height="50" x:Name="VerderTab4Button" Content="Verder"/>
+                    <!-- <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="150" Height="50" x:Name="VerderTab4Button" Content="Verder"/>-->
                     <!-- hierop kan eventueel een informatiescherm volgen: Bent u zeker dat u dit project wil aanmaken? weer bevestigen, dat leidt dan naar de projecfiche-->
                 </Grid>
             </TabItem>
-            <TabItem Header="Bevestigen">
+            <TabItem Header="Bevestigen" Name="BevestigenTab" Visibility="Collapsed">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
