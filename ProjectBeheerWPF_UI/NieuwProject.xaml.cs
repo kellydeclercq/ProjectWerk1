@@ -33,10 +33,10 @@ namespace ProjectBeheerWPF_UI
         private List<string> projectStatussen = Enum.GetNames(typeof(ProjectStatus)).ToList();
         private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
         private List<string> toegankelijkheden = Enum.GetNames(typeof(Toegankelijkheid)).ToList();
-        private List<string> typeWooneenheden = new List<string>() { "Co-housing", "Modulair", "Andere" };
-
+        
         public List<Partner> partners;
         public List<string> bijlages;
+        private List<string> geselecteerdeWoonvormen = new List<string>();
 
         //alle inputvariabelen algemene info
 
@@ -77,10 +77,12 @@ namespace ProjectBeheerWPF_UI
         //variabelen innovatief wonen
 
         private int aantalWooneenheden = 0;
+        private bool isCohousing;
+        private bool isModulairWonen;
         private List<string> geselecteerdeWooneenheden;
         private bool isRondleidingenMogelijk;
         private bool isShowWoningBeschikbaar;
-        private int architecturalInnoscore;
+        private int architecturaleInnoscore;
         private bool isErfgoedSamenwerking;
         private bool isToerismeSamenwerking;
 
@@ -184,8 +186,6 @@ namespace ProjectBeheerWPF_UI
             int waardeBioDiv = (int)BiodiversiteitSlider.Value;
         }
 
-        //voeg andere wooneenheid toe aan listbox
-
         private void GaVerderButtonTab3_Click(object sender, RoutedEventArgs e)
         {
             GaVerderButtonTab_Click(sender, e);
@@ -195,7 +195,17 @@ namespace ProjectBeheerWPF_UI
         {
             int waardeBezoekersOordeel = (int)BezoekersBeoordelingSlider.Value;
         }
+        
         //hieronder alles ivm tab4: Innovatief Wonen
+
+        private void VoegAndereWoonvormToeButton_Click(object sender, RoutedEventArgs e)
+        {
+            geselecteerdeWoonvormen.Add(AndereWoonvormTextBox.Text);
+            AndereWoonvormenListBox.Items.Add(AndereWoonvormTextBox.Text);
+
+            AndereWoonvormTextBox.Clear();
+        }
+
 
         private void ArchitecturaleInnoScoreSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
@@ -252,20 +262,23 @@ namespace ProjectBeheerWPF_UI
 
             //variabelen innovatief wonen
 
-            /*private int aantalWooneenheden = 0;
-        private List<string> typeWooneenheden;
-        private bool isRondleidingenMogelijk;
-        private bool isShowWoningBeschikbaar;
-        private int architecturalInnoscore;
-        private bool isErfgoedSamenwerking;
-        private bool isToerismeSamenwerking;*/
             aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
-            geselecteerdeWooneenheden = TypesWoonvormenComboBox.Sel;
-            
+            isCohousing = CohousingCheckBox.IsChecked == true;
+            if (isCohousing) geselecteerdeWooneenheden.Add("Co-housing");
+            isModulairWonen = ModulairWonenCheckBox.IsChecked == true;
+            if (isModulairWonen) geselecteerdeWooneenheden.Add("Modulair wonen");
+            //de andere staan al in de lijst vanuit de methode VoegAndereWoonvormToeButton_Click onder innovatief wonen
+            if (RondleidingJaRadioButton.IsChecked == true) isRondleidingenMogelijk = true;
+            else if(RondeleidingNeeRadioButton.IsChecked == true) isRondleidingenMogelijk = false;
+            if(ShowwoningJaRadioButton.IsChecked == true) isShowWoningBeschikbaar = true;
+            else if(ShowwoningNeeRadioButton.IsChecked == true) isShowWoningBeschikbaar = false;
+            architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
+            if(ErfgoedJaRadioButton.IsChecked == true) isErfgoedSamenwerking = true;
+            else if(ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
+            if(ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
+            else if(ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
 
             //alle invoer + logica projectTypes adhv checkboxen types
-
-
 
             BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
         }
@@ -304,6 +317,8 @@ namespace ProjectBeheerWPF_UI
                     break;
             */
         }
+
+        
     }
-    }
+    
 }
