@@ -35,8 +35,8 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         private OpenFolderDialog folderDialog = new OpenFolderDialog();
         private string initFolderExport;
 
-       
-        public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager, 
+
+        public OverzichtAlleProjecten(ExportManager exportManager, GebruikersManager gebruikersManager,
             ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
@@ -72,7 +72,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     //navigeer naar DetailsProject
                     ProjectFiche fiche = new ProjectFiche(project);
                     fiche.Show();
-                   
+
                 }
             }
         }
@@ -146,7 +146,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     geselecteerdeProjecten,
                     folderDialog.FolderName
                 );
-            }                 
+            }
         }
 
         private void ExporteerAlsPdf_Click(object sender, RoutedEventArgs e)
@@ -195,6 +195,111 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
         //FILTERS
 
+        private void FilterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FilterCombobox.SelectedItem is ComboBoxItem item && item.Tag is not null)
+            {
+                string tag = item.Tag.ToString();
 
-    }
+                bool isDatum = tag == "Datum";
+
+                // Toon/verberg het datumpaneel
+                DatumsFilterPanel.Visibility = isDatum ? Visibility.Visible : Visibility.Collapsed;
+
+                // Pas filter alleen toe wanneer het geen datumselectie is
+                if (!isDatum)
+                    FilterToepassen(tag);
+            }
+        }
+
+        private void Datepicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Controleer of beide datums geselecteerd zijn
+            if (!StartDatePicker.SelectedDate.HasValue || !EndDatePicker.SelectedDate.HasValue)
+                return;
+
+            DateTime start = StartDatePicker.SelectedDate.Value;
+            DateTime end = EndDatePicker.SelectedDate.Value;
+
+            // Zorg dat start <= end
+            if (start > end)
+            {
+                MessageBox.Show("De startdatum mag niet na de einddatum liggen.",
+                    "Ongeldige datum", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Filter projecten waarvan de StartDatum tussen start en end ligt (inclusief grenzen)
+            Gefilterdeprojecten = projecten
+                .Where(p => p.StartDatum >= start && p.StartDatum <= end)
+                .ToList();
+
+            // Update de DataGrid
+            ProjectOverzichtDatagrid.ItemsSource = Gefilterdeprojecten;
+
+        }
+
+        private void FilterToepassen(string tag)
+        {
+            //case moet tag naam zijn
+            switch (tag)
+            {
+                case "Titel":
+                    if (!string.IsNullOrWhiteSpace(TitelTextBox.Text))
+                    {
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpTitel(TitelTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten; //als de textbox leeg is toon altijd alle projecten
+                    }
+                    break;
+                case "Type":
+                    if (!string.IsNullOrWhiteSpace(TypeTextBox.Text))
+                    {
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpType();
+                        //TODO: checkboxes; bools doorgeven1: Isgroen 2: Isinnovatief 3: Isstad
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Wijk":
+                    if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
+                    {
+
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Status":
+                    if (!string.IsNullOrWhiteSpace(StatusTextBox.Text))
+                    {
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpStatus(StatusTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "Partners":
+                    if (!string.IsNullOrWhiteSpace(PartnersTextBox.Text))
+                    {
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpPartners(PartnersTextBox.Text);
+                    }
+                    else
+                    {
+                        Gefilterdeprojecten = projecten;
+                    }
+                    break;
+                case "None":
+                default:
+                    Gefilterdeprojecten = projecten;
+                    break;
+            }
+        }
 }

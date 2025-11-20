@@ -60,11 +60,13 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                 }
                 else
                 {
+                    //als de optie datum geselecteerd is toon de datumvakjes, anders verberg ze
+                    //filter toepassen adhv de tag die wel geselecteerd is
                     DatumsFilterPanel.Visibility = Visibility.Collapsed;
                     FilterToepassen(tag);
                 }
             }
-            //als de optie datum geselecteerd is toon de datumvakjes, anders verberg ze
+            
             
         }
 
@@ -118,7 +120,7 @@ namespace ProjectBeheerWPF_UI.GebruikerUI
                     if (!string.IsNullOrWhiteSpace(WijkTextBox.Text))
                     {
                         
-                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk();
+                        Gefilterdeprojecten = projectManager.GeefProjectenGefilterdOpWijk(WijkTextBox.Text);
                     }
                     else
                     {
