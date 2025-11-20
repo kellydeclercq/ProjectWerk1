@@ -60,7 +60,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 if (gebruiker != null)
                 {
                     //navigeer naar DetailsProject
-                    var detailsGebruiker = new DetailsGebruiker(gebruiker);
+                    var detailsGebruiker = new DetailsGebruiker(gebruiker, ingelogdeGebruiker);
                     detailsGebruiker.Show();
                 }
             }
