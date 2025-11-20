@@ -329,32 +329,61 @@ namespace ProjectBeheerWPF_UI
             {
                 case (true, false, false):
                     projectManager.MaakStadsontwikkelingsProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus, IsArchitecturaleWaarde,
-                        toegankelijkheid, IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, bouwFirmas, ingelogdeGebruiker, adres);
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus, 
+                        IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, 
+                        bouwFirmas, ingelogdeGebruiker, adres);
                     break;
 
                 case (false, true, false):
-                    //projectManager.MaakGroeneruimteProjectAan();
+                    projectManager.MaakGroeneruimteProjectAan
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
+                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                        bezoekersScore, faciliteiten, ingelogdeGebruiker, adres);
                     break;
 
                 case (false, false, true):
-                    //projectManager.MaakInnovatiefWonenProjectAan();
+                    projectManager.MaakInnovatiefWonenProjectAan
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
+                        aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar, 
+                        isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker, 
+                        adres);
                     break;
 
                 case (true, true, false):
-                    //projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan();
+                    projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, ingelogdeGebruiker,
+                        adres, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid, 
+                        IsUitlegbordOfWandeling, bouwFirmas, oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, 
+                        opgenomenInWandelroute, bezoekersScore, faciliteiten);
                     break;
 
                 case (true, false, true):
-                    //projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan();
+                    projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus, 
+                        IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid,
+                        IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore, 
+                        isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, 
+                        ingelogdeGebruiker,
+                        adres);
                     break;
 
                 case (false, true, true):
-                    //projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan();
+                    projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
+                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                        bezoekersScore, faciliteiten, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore,
+                        isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, 
+                        ingelogdeGebruiker, adres);
                     break;
 
                 case (true, true, true):
-                    //projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject();
+                    projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject
+                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
+                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                        bezoekersScore, faciliteiten, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid, 
+                        IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden, 
+                        isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar, isErfgoedSamenwerking, 
+                        isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker, adres);
                     break;
 
             }
