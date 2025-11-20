@@ -38,10 +38,10 @@
                         <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker>
                         <TextBlock Margin="5">Status</TextBlock>
                         <ComboBox Margin="5" Name="StatusComboBox" SelectedIndex="-1">
-                            <ComboBoxItem Name="StatusPlanningComboBoxItem" Content="Planning"/>
+                            <!--<ComboBoxItem Name="StatusPlanningComboBoxItem"/>
                             <ComboBoxItem Name="StatusUitvoeringComboBoxItem"/>
                             <ComboBoxItem Name="StatusAfgerondComboBoxItem"/>
-                            <ComboBoxItem Name="StatusGeannuleerdComboBoxItem"/>
+                            <ComboBoxItem Name="StatusGeannuleerdComboBoxItem"/>-->
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -130,9 +130,9 @@
                     
                     <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Vergunningsstatus"/></TextBlock>
                     <ComboBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="VergunningsStatusComboBox">
-                        <ComboBoxItem Name="VergunningsStatusInAanvraag"/>
+                        <!--<ComboBoxItem Name="VergunningsStatusInAanvraag"/>
                         <ComboBoxItem Name="VergunningsStatusGoegekeurd"/>
-                        <ComboBoxItem Name="VergunningsStatusGeweigerd"/>
+                        <ComboBoxItem Name="VergunningsStatusGeweigerd"/>-->
                     </ComboBox>
                     <TextBlock Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Architecturale Waarde"/></TextBlock>
                     <StackPanel Grid.Column="2" Grid.Row="4"  Orientation="Horizontal">
