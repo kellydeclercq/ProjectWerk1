@@ -12,15 +12,16 @@ namespace ProjectBeheerBL.typeSoorten
     public class StadsOntwikkeling 
     {
         public StadsOntwikkeling(VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen, 
-            bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas)            
+            bool infoBordenOfWandeling, List<BouwFirma> bouwFirmas)            
         {
             if (bouwFirmas == null) throw new ProjectException("Bouwfirma's mag niet NULL zijn.");
             VergunningsStatus = vergunningsStatus;
             ArchitecturaleWaarde = architecturaleWaarde;
             Toegankelijkheid = toegankelijkheid;
             BeziensWaardigheidVoorToeristen = beziensWaardigheidVoortoeristen;
-            InfobordenOfWandeling = infoBordenOfWandeling;           
-            BouwFirmas = bouwfirmas;
+            InfobordenOfWandeling = infoBordenOfWandeling;
+            BouwFirmas = bouwFirmas;
+            
         }
 
         public VergunningsStatus VergunningsStatus { get; set; } 
@@ -33,7 +34,7 @@ namespace ProjectBeheerBL.typeSoorten
             get => bouwFirmas;
             set
             {
-                if (bouwFirmas == null) throw new ProjectException("Bouwfirma's mag niet NULL zijn.");
+                if (value == null) throw new ProjectException("Bouwfirma's mag niet NULL zijn.");
                 bouwFirmas = value;
             }
         }

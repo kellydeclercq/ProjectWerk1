@@ -24,30 +24,34 @@ namespace ProjectBeheerWPF_UI
     /// </summary>
     public partial class NieuwProject : Window
     {
-        private GebruikersManager _gebruikersManager;
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory;
+        private Gebruiker ingelogdeGebruiker;
         private FileDialog fileDialog;
-
-        
+        private List<string> projectStatussen = Enum.GetNames(typeof(ProjectStatus)).ToList();
+        private List<string> vergunningsStatussen = Enum.GetNames(typeof(VergunningsStatus)).ToList();
+        private List<string> toegankelijkheden = Enum.GetNames(typeof(Toegankelijkheid)).ToList();
 
         public List<Partner> partners;
+        public List<string> bijlages;
 
         public NieuwProject(ExportManager exportManager, GebruikersManager gebruikersManager, 
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
 
-            StatusPlanningComboBoxItem.Content = ProjectStatus.Planning;
-            StatusUitvoeringComboBoxItem.Content = ProjectStatus.Uitvoering;
-            StatusAfgerondComboBoxItem.Content = ProjectStatus.Afgerond;
-            StatusGeannuleerdComboBoxItem.Content= ProjectStatus.Geannuleerd;
+            StatusComboBox.ItemsSource = projectStatussen;
+            VergunningsStatusComboBox.ItemsSource = vergunningsStatussen;
+            ToegankelijkheidComboBox.ItemsSource = toegankelijkheden;
+            
+            
         }
 
         //hier staan algemene methodes voor nieuwProject window
@@ -97,14 +101,20 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegPartnerToeButton_Click(object sender, RoutedEventArgs e)
         {
-            Partner partner = new(NaamPartnerTextBox.Text, EmailPartnerTextBox.Text, 
-                TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
-            partners.Add(partner);
-            PartnersListBox.Items.Add(partner.Naam);
+            VoegPartnerToeAanLijst();
+            
             NaamPartnerTextBox.Clear();
             EmailPartnerTextBox.Clear();
             TelefoonPartnerTextBox.Clear();
             PartnerRolTextBox.Clear();
+        }
+
+        private void VoegPartnerToeAanLijst()
+        {
+            Partner partner = new(NaamPartnerTextBox.Text, EmailPartnerTextBox.Text,
+                TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
+            partners.Add(partner);
+            PartnersListBox.Items.Add(partner.Naam);
         }
 
         private void GaVerderButtonTab1_Click(object sender, RoutedEventArgs e)
@@ -149,24 +159,64 @@ namespace ProjectBeheerWPF_UI
         {
             
 
-            //alle inputvariabelen:
+            //alle inputvariabelen algemene info
+
             string titel = TitelInputTextBox.Text;
             DateTime startDatum = StartDatumCalendarButton.SelectedDate.Value;
-            ProjectStatus projectStatus = StatusComboBox.SelectedItem;
+            ProjectStatus projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
+            bool IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
+            bool IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
+            bool IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
+            int postcode = int.Parse(PostcodeTextBox.Text);
+            Adres adres = new(StraatTextBox.Text, HuisnummerTextBox.Text, postcode, GemeenteTextBox.Text);
+            string beschrijving = BeschrijvingTextBox.Text;
+            foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
+            VoegPartnerToeAanLijst();   //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
-            //alle invoer + logica projectTypes adhv checkboxen types
-            bool IsStadsontwikkeling = false;
-            bool IsGroeneRuimte = false;
-            bool IsInnovatiefWonen = false;
+            //variabelen stadsontwikkeling
+            
+            string bouwfirma = BouwfirmaTextBox.Text;
+            string bouwfirmaGegevens = GegevensBouwfirmaTextBox.Text;
+            VergunningsStatus vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+            bool IsArchitecturaleWaarde;
+            if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
+            else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+            Toegankelijkheid toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+            bool IsToeristischeBezienswaardigheid;
+            if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
+            else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
+            bool IsUitlegbord = UitlegbordCheckBox.IsChecked == true;
+            bool IsInfowandeling = UitlegbordCheckBox.IsChecked == true;
+
+            //variabelen groene ruimte
+
+            double oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
+            int bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
+            int aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text); 
+            List<string> faciliteiten = new List<string>();
+            bool IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
+            if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
+            bool IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
+            if (IsPicknickZone) faciliteiten.Add("Picknickzone");
+            bool IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
+            if (IsInfoborden) faciliteiten.Add("Infoborden");
+            bool IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
+            if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
+            bool opgenomenInWandelroute;
+            if(ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
+            else if(ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
+            int bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
+
+                //alle invoer + logica projectTypes adhv checkboxen types
 
 
 
-            BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+                BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
         }
 
-        private void BepaalTypeProjectEnMaakAan(bool isStadsontwikkeling, bool isGroeneRuimte, bool isInnovatiefWonen)
+        private void BepaalTypeProjectEnMaakAan(bool IsStadsontwikkeling, bool IsGroeneRuimte, bool IsInnovatiefWonen)
         {
-            switch((isStadsontwikkeling, isGroeneRuimte, isInnovatiefWonen))
+            switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
             {
                 case (true, false, false):
                     projectManager.MaakStadsontwikkelingsProjectAan();

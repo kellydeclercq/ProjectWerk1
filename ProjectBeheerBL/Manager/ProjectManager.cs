@@ -24,7 +24,7 @@ namespace ProjectBeheerBL.Beheerder
             List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             // parameters aanmaak groeneRuimte
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker, Adres Adres)
+            int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker, Adres adres)
         {
             _repo.MaakGroeneruimteProjectAan(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
                 oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, 
@@ -46,7 +46,7 @@ namespace ProjectBeheerBL.Beheerder
             string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
             //parameters innovatief wonen
             int aantalWooneenheden, bool rondleidingMogelijk, int? innovatieScore, bool showwoningBeschikbaar, bool samenwerkingErfgoed,
-            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruike, Adres adresr)
+            bool samenwerkingToerisme, List<string> woonvormen, Gebruiker gebruiker, Adres adres)
         {
             _repo.MaakInnovatiefWonenProjectAan( projectTitel,  beschrijving, startDatum,  projectStatus,
              wijk,  fotos,  documenten,  partners, aantalWooneenheden, rondleidingMogelijk, innovatieScore, showwoningBeschikbaar, samenwerkingErfgoed,
@@ -67,14 +67,14 @@ namespace ProjectBeheerBL.Beheerder
         }
 
         public void MaakStadsOntwikkelingGroeneRuimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus,
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres, VergunningsStatus vergunningsStatus, bool architecturaleWaarde, Toegankelijkheid toegankelijkheid, bool beziensWaardigheidVoortoeristen,
             bool infoBordenOfWandeling, List<BouwFirma> bouwfirmas, double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
-            int? bezoekersScore, List<string> faciliteiten, Adres adres)
+            int? bezoekersScore, List<string> faciliteiten)
         {
             _repo.MaakStadsOntwikkelingGroeneRuimteProjectAan(projectTitel,  beschrijving,  startDatum,  projectStatus,
-             wijk,  fotos,  documenten,  partners,  projectEigenaar,  vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
+             wijk,  fotos,  documenten,  partners,  projectEigenaar, adres, vergunningsStatus,  architecturaleWaarde,  toegankelijkheid,  beziensWaardigheidVoortoeristen,
              infoBordenOfWandeling, bouwfirmas,  oppervlakteInVierkanteMeter,  bioDiversiteitsScore,  aantalWandelpaden,  opgenomenInWandelRoute,
-             bezoekersScore, faciliteiten, adres);
+             bezoekersScore, faciliteiten);
         }
 
         public void MaakGroeneRuimteInnovatiefWonenProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
@@ -108,14 +108,14 @@ namespace ProjectBeheerBL.Beheerder
             return _repo.GeefAlleProjecten();
         }
 
-        public List<Project> GeefProjectenGefilterdOpType(string type)
+        public List<Project> GeefProjectenGefilterdOpType(List<bool> types)
         {
-            return _repo.GeefProjectenGefilterdOpType(type);
+            return _repo.GeefProjectenGefilterdOpType(types);
         }
 
         public List<Project> GeefProjectenGefilterdOpPartners(string partners)
         {
-            return _repo.GeefProjectenGefilterdOpPartners();
+            return _repo.GeefProjectenGefilterdOpPartners(partners);
         }
 
         public List<Project> GeefProjectenGefilterdOpStatus(string status)

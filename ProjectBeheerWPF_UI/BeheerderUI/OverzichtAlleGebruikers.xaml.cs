@@ -27,15 +27,17 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
+        private Gebruiker ingelogdeGebruiker;
 
         private List<Gebruiker> gebruikers = new List<Gebruiker>();
         public OverzichtAlleGebruikers(ExportManager exportManager, GebruikersManager gebruikersManager,
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
             
             gebruikers = gebruikersManager.GeefAlleGebruikers();
             GebruikerOverzichtDatagrid.ItemsSource = gebruikers;

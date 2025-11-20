@@ -14,7 +14,7 @@ namespace ProjectBeheerBL.Domein.ProjectTypesSubklasses
     {
 
         public StadsontwikkelingProject(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, 
-            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres StadsOntwikkeling stadsOntwikkeling) 
+            string wijk, List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres, StadsOntwikkeling stadsOntwikkeling) 
             : base(projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, projectEigenaar, adres)
         {
             StadsOntwikkeling = stadsOntwikkeling;

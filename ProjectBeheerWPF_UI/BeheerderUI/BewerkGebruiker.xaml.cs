@@ -21,15 +21,17 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
     public partial class BewerkGebruiker : Window
     {
         private Gebruiker gebruiker;
+        private Gebruiker ingelogdeGebruiker;
 
         public BewerkGebruiker()
         {
             InitializeComponent();
         }
 
-        public BewerkGebruiker(Gebruiker gebruiker)
+        public BewerkGebruiker(Gebruiker gebruiker, Gebruiker ingelogdeGebruiker)
         {
             this.gebruiker = gebruiker;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
         }
     }
 }

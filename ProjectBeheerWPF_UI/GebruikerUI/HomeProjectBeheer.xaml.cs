@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
 using ProjectBeheerUtils;
 using ProjectBeheerWPF_UI.BeheerderUI;
 using ProjectBeheerWPF_UI.GebruikerUI;
@@ -27,26 +28,29 @@ namespace ProjectBeheerWPF_UI
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
         private BeheerMemoryFactory beheerMemoryFactory = new();
+        private Gebruiker ingelogdeGebruiker;
 
         public HomeProjectBeheer(ExportManager exportManager, GebruikersManager gebruikersManager, 
-            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory)
+            ProjectManager projectManager, BeheerMemoryFactory beheerMemoryFactory, Gebruiker ingelogdeGebruiker)
         {
             InitializeComponent();
             this.exportManager = exportManager;
             this.gebruikersManager = gebruikersManager;
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
+            this.ingelogdeGebruiker = ingelogdeGebruiker;
         }
 
         private void MaakNieuwProjectButton_Click(object sender, RoutedEventArgs e)
         {
-            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            NieuwProject nieuwProjectWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             nieuwProjectWindow.ShowDialog();
         }
 
         private void OverzichtJouwProjectenButton(object sender, RoutedEventArgs e)
         {
-            OverzichtEigenProjecten overzichtEigenProjectenWindow = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory);
+            OverzichtEigenProjecten overzichtEigenProjectenWindow 
+                = new(exportManager, gebruikersManager, projectManager, beheerMemoryFactory, ingelogdeGebruiker);
             overzichtEigenProjectenWindow.ShowDialog();
         }
     }
