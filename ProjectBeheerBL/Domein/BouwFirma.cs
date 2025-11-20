@@ -14,20 +14,26 @@ namespace ProjectBeheerBL.Domein
         const int MinLengteTel = 9;
         const int MaxLengteTel = 13;
 
-        public BouwFirma(string naam, string email, string telefoonNummer, string? website)
+        public BouwFirma(int id, string naam, string email, string telefoonNummer, string? website)
         {
+            Id = id;
             Naam = naam;
             Email = email;
             TelefoonNummer = telefoonNummer;
             Website = website;
         }
 
-        public BouwFirma(string naam, string email, string telefoonNummer)
+        public BouwFirma(int id, string naam, string email, string telefoonNummer)
         {
+            Id = id;
             Naam = naam;
             Email = email;
             TelefoonNummer = telefoonNummer;
         }
+
+
+        private int _id;
+        public int Id { get; private set; }
 
         private string _naam;
         public string Naam {

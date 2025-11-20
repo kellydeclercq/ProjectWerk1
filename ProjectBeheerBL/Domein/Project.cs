@@ -18,7 +18,7 @@ namespace ProjectBeheerBL.Domein
 
         const int MinWijkLengte = 2;
 
-        public Project(int? id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
+        public Project(int id, string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk, List<byte[]> fotos,
             List<byte[]> documenten, List<Partner> partners, Gebruiker projectEigenaar, Adres adres)
         {
             Id = id;
@@ -49,16 +49,8 @@ namespace ProjectBeheerBL.Domein
             this.Adres = adres;
         }
 
-        private int? _id;
-        public int? Id
-        {
-            get => _id;
-            set
-            {
-                if (value < 1) throw new ProjectException("Id moet minstens 1 zijn");
-                _id = value;
-            }
-        }
+        private int _id;
+        public int Id { get; private set; }
 
         private string _projectTitel;
         public string ProjectTitel

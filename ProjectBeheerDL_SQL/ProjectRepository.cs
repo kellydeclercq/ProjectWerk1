@@ -32,7 +32,6 @@ namespace ProjectBeheerDL_SQL
 
         //    projectLijst.Add(projectId, project);
         //    projectId++;
-
         //}
 
 
@@ -43,7 +42,6 @@ namespace ProjectBeheerDL_SQL
             double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
             int? bezoekersScore, List<string> faciliteiten, Gebruiker gebruiker, Adres adres) => throw new NotImplementedException();
         //{
-
         //    GroeneRuimteProject project = new GroeneRuimteProject(projectId, projectTitel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, gebruiker, adres,
         //        MaakGroeneRuimteAan(oppervlakteInVierkanteMeter, bioDiversiteitsScore, aantalWandelpaden, opgenomenInWandelRoute, bezoekersScore, faciliteiten));
 

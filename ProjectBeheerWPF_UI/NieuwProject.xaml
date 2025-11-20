@@ -71,7 +71,9 @@
                             <TextBlock Margin="5" VerticalAlignment="Center">Postcode</TextBlock>
                             <TextBox Width="150" Height="30" Margin="5" Name="PostcodeTextBox"/>
                             <TextBlock Margin="5" VerticalAlignment="Center">Gemeente</TextBlock>
-                            <TextBox Width="450" Height="30" Margin="5" Name="GemeenteTextBox"/>
+                            <TextBox Width="250" Height="30" Margin="5" Name="GemeenteTextBox"/>
+                            <TextBlock Margin="5" VerticalAlignment="Center">Wijk</TextBlock>
+                            <TextBox Width="150" Height="30" Margin="5" Name="WijkTextBox"/>
                         </StackPanel>
                         <TextBlock Grid.Column="0" Grid.Row="2" Margin="5">Beschrijving</TextBlock>
                         <TextBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="5" x:Name="BeschrijvingTextBox"/>
@@ -103,17 +105,29 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Betrokken bouwfirma"/></TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Betrokken bouwfirma naam"/></TextBlock>
                     <TextBox Grid.Column="2" Grid.Row="1" Margin="5" x:Name="BouwfirmaTextBox"/>
-                    <TextBlock Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Contactgegevens bouwfirma"/></TextBlock>
-                    <TextBox Grid.Column="2" Grid.Row="2" Margin="5" x:Name="GegevensBouwfirmaTextBox"/>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Margin="5" Orientation="Vertical">
+                        <TextBlock Height="50" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Email"/></TextBlock>
+                        <TextBlock Height="50" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center">Telefoon</TextBlock>
+                        <TextBlock Height="50" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center">Website</TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="2" Margin="5" Orientation="Vertical">
+                        <TextBox Height="50" Margin="5" x:Name="EmailBouwfirmaTextBox"/>
+                        <TextBox Height="50" Margin="5" x:Name="TelefoonBouwfirmaTextBox"/>
+                        <TextBox Height="50" Margin="5" x:Name="WebsiteBouwfirmaTextBox"/>
+                        <Button Margin="5" Content="Voeg toe" Name="VoegBouwfirmaToeButton" Click="VoegBouwfirmaToeButton_Click"/>
+                        <ListBox Name="BouwfirmasListBox" Height="100" Margin="5"/>
+                    </StackPanel>
+                    
                     <TextBlock Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Right" VerticalAlignment="center"><Run Text="Vergunningsstatus"/></TextBlock>
                     <ComboBox Grid.Column="2" Grid.Row="3" Margin="5" x:Name="VergunningsStatusComboBox">
                         <ComboBoxItem Name="VergunningsStatusInAanvraag"/>
@@ -133,11 +147,11 @@
                         <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToeristischeBezienswaardigheidNeeRadioButton" Content="nee" GroupName="ToeristischeBezRB"/>
                     </StackPanel>
                     <!-- de opties hieronder hangen NIET af van of ToeristischeBezienswaardigheidJaRadioButton "ja" is aangeduid -->
-                    <StackPanel Grid.Column="2" Grid.Row="7" Orientation="Vertical">
-                        <CheckBox Content="Uitlegbord" Name="UitlegbordCheckBox"/>
-                        <CheckBox Content="Infowandeling" Name="InfowandelingCheckBox"/>
+                    <StackPanel Grid.Column="2" Grid.Row="7" Margin="5" Orientation="Vertical" VerticalAlignment="center">
+                        <CheckBox Margin="5" Name="UitlegbordCheckBox" Content="Uitlegbord"/>
+                        <CheckBox Margin="5" Name="InfowandelingCheckBox" Content="Infowandeling"/>
                     </StackPanel>
-                    <Button Grid.Column="5" Grid.Row="7" Margin="5" Width="100" Height="50" x:Name="GaVerderButtonTab2" Content="Verder"/>
+                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="100" Height="50" HorizontalAlignment="Right" x:Name="GaVerderButtonTab2" Content="Verder"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Specifieke Info Groene ruimte">

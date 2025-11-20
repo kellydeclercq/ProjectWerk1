@@ -11,13 +11,16 @@ namespace ProjectBeheerBL.Domein
 {
     public class Gebruiker
     {
-        public Gebruiker(string naam, string email, GebruikersRol gebruikersRol)
+        public Gebruiker(int id, string naam, string email, GebruikersRol gebruikersRol)
         {
+            Id = id;
             Naam = naam;
             Email = email;
             GebruikersRol = gebruikersRol;
         }
 
+        private int _id;
+        public int Id { get; private set; }
 
         private string _naam;
         public string Naam {
