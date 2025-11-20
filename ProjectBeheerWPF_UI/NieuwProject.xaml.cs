@@ -388,16 +388,5 @@ namespace ProjectBeheerWPF_UI
 
             }
         }
-
-        private void BiodiversiteitSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void ArchitecturaleInnoScoreSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
-    
 }
