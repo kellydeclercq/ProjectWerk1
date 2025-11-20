@@ -40,11 +40,11 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             this.beheerMemoryFactory = beheerMemoryFactory;
             this.ingelogdeGebruiker = ingelogdeGebruiker;
 
-            if( ingelogdeGebruiker.GebruikersRol == ProjectBeheerBL.Enumeraties.GebruikersRol.GewoneGebruiker)
+            if (ingelogdeGebruiker.GebruikersRol == ProjectBeheerBL.Enumeraties.GebruikersRol.GewoneGebruiker)
             {
                 //knoppen specifiek admin verborgen zetten
-                OverzichtAlleProjectenButton.Visibility = Visibility.Hidden;
-                OverzichtGebruikersButton.Visibility = Visibility.Hidden;
+                OverzichtAlleProjectenButton.Visibility = Visibility.Collapsed;
+                OverzichtGebruikersButton.Visibility = Visibility.Collapsed;
             }
         }
 

@@ -44,6 +44,15 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             InitializeComponent();
 
             projecten = projectManager.GeefAlleProjecten();
+
+            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten.Where(x => x.ProjectEigenaar.GebruikersRol == GebruikersRol.GewoneGebruiker).ToList();
+
+            // TODO onderscheidt tussen admin en beheerder actief zetten eens methode
+            // projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder?  projectManager.GeefAlleProjecten() : projectManager.GeefProjectenGefilterdOpGebruiker(ingelogdeGebruiker);
+
+
+
+
             ProjectOverzichtDatagrid.ItemsSource = projecten;
             initFolderExport = "@C:\\Downloads";
 
@@ -52,6 +61,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             this.projectManager = projectManager;
             this.beheerMemoryFactory = beheerMemoryFactory;
             this.ingelogdeGebruiker = ingelogdeGebruiker;
+
 
             Status.ItemsSource = Enum.GetNames(typeof(ProjectStatus));
         }
@@ -76,7 +86,6 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                     //navigeer naar DetailsProject
                     ProjectFiche fiche = new ProjectFiche(project);
                     fiche.Show();
-
                 }
             }
         }
@@ -107,7 +116,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             if (ProjectOverzichtDatagrid.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Selecteer eerst een project om te kunnen exporteren.",
+                MessageBox.Show("Selecteer eerst minstens 1 project om te kunnen exporteren.",
                     "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
