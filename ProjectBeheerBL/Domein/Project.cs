@@ -150,8 +150,8 @@ namespace ProjectBeheerBL.Domein
 
         public override string? ToString()
         {
-            throw new NotImplementedException();
-            /*return $"{ProjectTitel}, {Type}, {GebruikersRol}";*/
+            // Output
+            return $"Titel: {ProjectTitel} | Status: {ProjectStatus} | Wijk: {Wijk} | Eigenaar: {ProjectEigenaar.GebruikersRol}";
         }
     }
 }
