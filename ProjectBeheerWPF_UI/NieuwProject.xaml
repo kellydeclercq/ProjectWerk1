@@ -97,10 +97,10 @@
                     <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
                     <TextBlock Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Overzicht partners</TextBlock>
                     <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox"></ListBox>
-                    <Button Grid.Column="5" Grid.Row="8" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder"/>
+                    <Button Grid.Column="4" Grid.Row="8" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder" Click="GaVerderButtonTab1_Click_1"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Stadsontwikkeling">
+            <TabItem Header="Specifieke Info Stadsontwikkeling" Name="StadsontwikkelingTab" Visibility="Collapsed" >
                 <Grid x:Name="infoStadsontwikkelingGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -157,10 +157,9 @@
                         <CheckBox Margin="5" Name="UitlegbordCheckBox" Content="Uitlegbord"/>
                         <CheckBox Margin="5" Name="InfowandelingCheckBox" Content="Infowandeling"/>
                     </StackPanel>
-                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="100" Height="50" HorizontalAlignment="Right" x:Name="GaVerderButtonTab2" Content="Verder"/>
-                </Grid>
+                    </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Groene ruimte">
+            <TabItem Header="Specifieke Info Groene ruimte" Name="GroeneRuimteTab" Visibility="Collapsed">
                 <Grid x:Name="InfoGroeneRuimteGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -209,10 +208,9 @@
                                 Value="0" Minimum="0" Maximum="5" TickFrequency="5" IsSnapToTickEnabled="True" Thumb.DragCompleted="BezoekersBeoordelingSlider_DragCompleted"/>
                         <TextBlock Margin="5" VerticalAlignment="Center"><Run Text="5"/></TextBlock>
                     </StackPanel>
-                    <Button Grid.Column="5" Grid.Row="7" Width="100" Height="50" x:Name="GaVerderButtonTab3" Content="Verder" Click="GaVerderButtonTab3_Click"/>
-                </Grid>
+                    </Grid>
             </TabItem>
-            <TabItem Header="Specifieke Info Innovatief Wonen">
+            <TabItem Header="Specifieke Info Innovatief Wonen" Name="InnovatiefWonenTab" Visibility="Collapsed">
                 <Grid Name="InnovatiefWonenGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -270,11 +268,11 @@
                         <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentJaRadioButton" Content="ja"/>
                         <RadioButton Margin="10" VerticalAlignment="center" x:Name="ToerismeGentNeeRadioButton" Content="nee"/>
                     </StackPanel>
-                    <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="150" Height="50" x:Name="VerderTab4Button" Content="Verder"/>
+                    <!-- <Button Grid.Column="2" Grid.Row="8" Margin="5" Width="150" Height="50" x:Name="VerderTab4Button" Content="Verder"/>-->
                     <!-- hierop kan eventueel een informatiescherm volgen: Bent u zeker dat u dit project wil aanmaken? weer bevestigen, dat leidt dan naar de projecfiche-->
                 </Grid>
             </TabItem>
-            <TabItem Header="Bevestigen">
+            <TabItem Header="Bevestigen" Name="BevestigenTab" Visibility="Collapsed">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
