@@ -312,7 +312,7 @@ namespace ProjectBeheerWPF_UI
             {
                 //alle inputvariabelen algemene info opvullen
 
-                titel = TitelInputTextBox.Text;
+                titel = (string.IsNullOrWhiteSpace(TitelInputTextBox.Text)) ? null : TitelInputTextBox.Text;
                 startDatum = StartDatumCalendarButton.SelectedDate.Value == null ? default : StartDatumCalendarButton.SelectedDate.Value;
                 projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
                 IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
