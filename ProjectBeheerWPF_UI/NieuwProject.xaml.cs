@@ -356,8 +356,19 @@ namespace ProjectBeheerWPF_UI
 
                 startDatum = StartDatumCalendarButton.SelectedDate ?? default;
 
-                if (StatusComboBox.SelectedItem == null) fouten.Add("Selecteer een projectstatus.");
-                else projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
+                if (StatusComboBox.SelectedItem == null)
+                {
+                    fouten.Add("Selecteer een projectstatus.");
+                }
+                else
+                {
+                    string selected = StatusComboBox.SelectedItem.ToString();
+
+                    projectStatus = Enum.GetNames(typeof(ProjectStatus))
+                                        .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                                        .Select(name => (ProjectStatus)Enum.Parse(typeof(ProjectStatus), name))
+                                        .FirstOrDefault();
+                }
 
                 IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == false; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
                 IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == false;
