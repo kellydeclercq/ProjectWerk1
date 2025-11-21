@@ -398,7 +398,7 @@ namespace ProjectBeheerWPF_UI
 
 
                 foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
-                VoegPartnerToeAanLijst();
+                //VoegPartnerToeAanLijst();
                 //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
                 //variabelen stadsontwikkeling
