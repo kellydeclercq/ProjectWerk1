@@ -18,6 +18,8 @@ using ProjectBeheerBL.Beheerder;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Enumeraties;
 using ProjectBeheerUtils;
+using System.Linq.Expressions;
+using ProjectBeheerBL.Domein.Exceptions;
 
 
 namespace ProjectBeheerWPF_UI
@@ -306,69 +308,77 @@ namespace ProjectBeheerWPF_UI
 
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
-            //alle inputvariabelen algemene info opvullen
+            try
+            {
+                //alle inputvariabelen algemene info opvullen
 
-            titel = TitelInputTextBox.Text;
-            startDatum = StartDatumCalendarButton.SelectedDate.Value;
-            projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
-            IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
-            IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
-            IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
-            postcode = int.Parse(PostcodeTextBox.Text);
-            adres = new(StraatTextBox.Text, HuisnummerTextBox.Text, postcode, GemeenteTextBox.Text);
-            wijk = WijkTextBox.Text;
-            beschrijving = BeschrijvingTextBox.Text;
-            foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
-            VoegPartnerToeAanLijst();   //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
+                titel = TitelInputTextBox.Text;
+                startDatum = StartDatumCalendarButton.SelectedDate.Value == null ? default : StartDatumCalendarButton.SelectedDate.Value;
+                projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
+                IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
+                IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
+                IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
+                postcode = int.Parse(PostcodeTextBox.Text);
+                adres = new(StraatTextBox.Text, HuisnummerTextBox.Text, postcode, GemeenteTextBox.Text);
+                wijk = WijkTextBox.Text;
+                beschrijving = BeschrijvingTextBox.Text;
+                foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
+                VoegPartnerToeAanLijst();   //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
-            //variabelen stadsontwikkeling
+                //variabelen stadsontwikkeling
 
-            bouwfirma = BouwfirmaTextBox.Text;
-            emailBouwfirma = EmailBouwfirmaTextBox.Text;
-            telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
-            websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
-            vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
-            if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
-            else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
-            toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
-            if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
-            else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
-            if (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true) IsUitlegbordOfWandeling = true;
+                bouwfirma = BouwfirmaTextBox.Text;
+                emailBouwfirma = EmailBouwfirmaTextBox.Text;
+                telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
+                websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
+                vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+                if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
+                else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+                toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+                if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
+                else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
+                if (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true) IsUitlegbordOfWandeling = true;
 
-            //variabelen groene ruimte
+                //variabelen groene ruimte
 
-            oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
-            bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
-            aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text);
-            IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
-            if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
-            IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
-            if (IsPicknickZone) faciliteiten.Add("Picknickzone");
-            IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
-            if (IsInfoborden) faciliteiten.Add("Infoborden");
-            IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
-            if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
-            if (ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
-            else if (ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
-            bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
+                oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
+                bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
+                aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text);
+                IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
+                if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
+                IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
+                if (IsPicknickZone) faciliteiten.Add("Picknickzone");
+                IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
+                if (IsInfoborden) faciliteiten.Add("Infoborden");
+                IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
+                if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
+                if (ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
+                else if (ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
+                bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
 
-            //variabelen innovatief wonen
+                //variabelen innovatief wonen
 
-            aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
-            isCohousing = CohousingCheckBox.IsChecked == true;
-            if (isCohousing) geselecteerdeWooneenheden.Add("Co-housing");
-            isModulairWonen = ModulairWonenCheckBox.IsChecked == true;
-            if (isModulairWonen) geselecteerdeWooneenheden.Add("Modulair wonen");
-            //de andere staan al in de lijst vanuit de methode VoegAndereWoonvormToeButton_Click onder innovatief wonen
-            if (RondleidingJaRadioButton.IsChecked == true) isRondleidingenMogelijk = true;
-            else if (RondeleidingNeeRadioButton.IsChecked == true) isRondleidingenMogelijk = false;
-            if (ShowwoningJaRadioButton.IsChecked == true) isShowWoningBeschikbaar = true;
-            else if (ShowwoningNeeRadioButton.IsChecked == true) isShowWoningBeschikbaar = false;
-            architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
-            if (ErfgoedJaRadioButton.IsChecked == true) isErfgoedSamenwerking = true;
-            else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
-            if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
-            else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+                aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
+                isCohousing = CohousingCheckBox.IsChecked == true;
+                if (isCohousing) geselecteerdeWooneenheden.Add("Co-housing");
+                isModulairWonen = ModulairWonenCheckBox.IsChecked == true;
+                if (isModulairWonen) geselecteerdeWooneenheden.Add("Modulair wonen");
+                //de andere staan al in de lijst vanuit de methode VoegAndereWoonvormToeButton_Click onder innovatief wonen
+                if (RondleidingJaRadioButton.IsChecked == true) isRondleidingenMogelijk = true;
+                else if (RondeleidingNeeRadioButton.IsChecked == true) isRondleidingenMogelijk = false;
+                if (ShowwoningJaRadioButton.IsChecked == true) isShowWoningBeschikbaar = true;
+                else if (ShowwoningNeeRadioButton.IsChecked == true) isShowWoningBeschikbaar = false;
+                architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
+                if (ErfgoedJaRadioButton.IsChecked == true) isErfgoedSamenwerking = true;
+                else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
+                if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
+                else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+
+            }
+            catch (Exception ex )
+            {
+
+            }
 
             //alle invoer + logica projectTypes adhv checkboxen types
 
@@ -377,70 +387,81 @@ namespace ProjectBeheerWPF_UI
 
         private void BepaalTypeProjectEnMaakAan(bool IsStadsontwikkeling, bool IsGroeneRuimte, bool IsInnovatiefWonen)
         {
-            switch ((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
+            try
             {
-                case (true, false, false):
-                    projectManager.MaakStadsontwikkelingsProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus, 
-                        IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, 
-                        bouwFirmas, ingelogdeGebruiker, adres);
-                    break;
 
-                case (false, true, false):
-                    projectManager.MaakGroeneruimteProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
-                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
-                        bezoekersScore, faciliteiten, ingelogdeGebruiker, adres);
-                    break;
+                switch ((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
+                {
+                    case (true, false, false):
+                        projectManager.MaakStadsontwikkelingsProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus,
+                            IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling,
+                            bouwFirmas, ingelogdeGebruiker, adres);
+                        break;
 
-                case (false, false, true):
-                    projectManager.MaakInnovatiefWonenProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
-                        aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar, 
-                        isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker, 
-                        adres);
-                    break;
+                    case (false, true, false):
+                        projectManager.MaakGroeneruimteProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
+                            oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                            bezoekersScore, faciliteiten, ingelogdeGebruiker, adres);
+                        break;
 
-                case (true, true, false):
-                    projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, ingelogdeGebruiker,
-                        adres, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid, 
-                        IsUitlegbordOfWandeling, bouwFirmas, oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, 
-                        opgenomenInWandelroute, bezoekersScore, faciliteiten);
-                    break;
+                    case (false, false, true):
+                        projectManager.MaakInnovatiefWonenProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
+                            aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar,
+                            isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker,
+                            adres);
+                        break;
 
-                case (true, false, true):
-                    projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus, 
-                        IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid,
-                        IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore, 
-                        isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, 
-                        ingelogdeGebruiker,
-                        adres);
-                    break;
+                    case (true, true, false):
+                        projectManager.MaakStadsOntwikkelingGroeneRuimteProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, ingelogdeGebruiker,
+                            adres, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid,
+                            IsUitlegbordOfWandeling, bouwFirmas, oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden,
+                            opgenomenInWandelroute, bezoekersScore, faciliteiten);
+                        break;
 
-                case (false, true, true):
-                    projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
-                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
-                        bezoekersScore, faciliteiten, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore,
-                        isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden, 
-                        ingelogdeGebruiker, adres);
-                    break;
+                    case (true, false, true):
+                        projectManager.MaakStadsOntwikkelingInnovatiefWonenProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, vergunningsStatus,
+                            IsArchitecturaleWaarde, toegankelijkheid, IsToeristischeBezienswaardigheid,
+                            IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore,
+                            isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden,
+                            ingelogdeGebruiker,
+                            adres);
+                        break;
 
-                case (true, true, true):
-                    projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject
-                        (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners, 
-                        oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
-                        bezoekersScore, faciliteiten, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid, 
-                        IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden, 
-                        isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar, isErfgoedSamenwerking, 
-                        isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker, adres);
-                    break;
+                    case (false, true, true):
+                        projectManager.MaakGroeneRuimteInnovatiefWonenProjectAan
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
+                            oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                            bezoekersScore, faciliteiten, aantalWooneenheden, isRondleidingenMogelijk, architecturaleInnoscore,
+                            isShowWoningBeschikbaar, isErfgoedSamenwerking, isToerismeSamenwerking, geselecteerdeWooneenheden,
+                            ingelogdeGebruiker, adres);
+                        break;
 
+                    case (true, true, true):
+                        projectManager.MaakStadsontwikkelingsGroeneRuimteinnovatiefWonenProject
+                            (titel, beschrijving, startDatum, projectStatus, wijk, fotos, documenten, partners,
+                            oppervlaktInVierkanteMeter, bioDiversiteitScore, aantalWandelpaden, opgenomenInWandelroute,
+                            bezoekersScore, faciliteiten, vergunningsStatus, IsArchitecturaleWaarde, toegankelijkheid,
+                            IsToeristischeBezienswaardigheid, IsUitlegbordOfWandeling, bouwFirmas, aantalWooneenheden,
+                            isRondleidingenMogelijk, architecturaleInnoscore, isShowWoningBeschikbaar, isErfgoedSamenwerking,
+                            isToerismeSamenwerking, geselecteerdeWooneenheden, ingelogdeGebruiker, adres);
+                        break;
+                }
             }
+            catch (ProjectException e)
+            {
+                MessageBox.Show(e.Message, "Ingevulde waarden foutief", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            catch (Exception e)
+            { 
+                Console.Error.WriteLine(e.Message);
+            }
+            
         }
-
-        
+      
     }
 }
