@@ -46,6 +46,8 @@ namespace ProjectBeheerWPF_UI
         private List<BouwFirma> bouwFirmas = new();
         private List<string> geselecteerdeWoonvormen = new();
 
+        List<string> fouten = new List<string>();
+
         //alle inputvariabelen algemene info
 
         private string titel;
@@ -177,7 +179,7 @@ namespace ProjectBeheerWPF_UI
               || string.IsNullOrWhiteSpace(TelefoonPartnerTextBox.Text)
               || string.IsNullOrWhiteSpace(PartnerRolTextBox.Text))
             {
-                MessageBox.Show("Alle gegevens van de partner moeten ingevuld zijn.");
+                fouten.Add("Alle gegevens van de partner moeten ingevuld zijn.");
             }
 
             VoegPartnerToeAanLijst();
@@ -197,7 +199,7 @@ namespace ProjectBeheerWPF_UI
                 partners.Add(partner);
                 PartnersListBox.Items.Add(partner.Naam);
             }
-            catch { MessageBox.Show("Er is iets misgelopen bij het aanmaken van de partner", "Aanmaak partner", MessageBoxButton.OK, MessageBoxImage.Error); }
+            catch { }
                     
         }
 
@@ -215,6 +217,9 @@ namespace ProjectBeheerWPF_UI
             IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true;
             IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
             IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
+
+            if (!IsStadsontwikkeling && !IsGroeneRuimte && !IsInnovatiefWonen) 
+                MessageBox.Show("Gelieven minstens 1 type project te kiezen.", "Type Project", MessageBoxButton.OK, MessageBoxImage.Stop); 
 
             switch((IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen))
             {
@@ -334,61 +339,74 @@ namespace ProjectBeheerWPF_UI
             ArchInnoScoreSliderValueTextBlock.Text = ArchitecturaleInnoScoreSlider.Value.ToString();
         }
 
+
+
         //laatste tab heeft geen verder, maar een bevestigen knop die het project gaat proberen aan te maken
 
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> fouten = new List<string>();
-
-            //alle inputvariabelen algemene info opvullen     
-            if (string.IsNullOrWhiteSpace(TitelInputTextBox.Text))
-                fouten.Add("Titel moet verplicht ingevuld worden en uit min 5 en max 50 tekens bestaan.");
-            else titel = TitelInputTextBox.Text;
-
-            startDatum = StartDatumCalendarButton.SelectedDate.Value == null ? default : StartDatumCalendarButton.SelectedDate.Value;
-            projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
-
-            IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == false; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
-            IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == false;
-            IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == false;
-
            
-            string straat = StraatTextBox.Text;
-            string huisnummer = HuisnummerTextBox.Text;
-            string gemeente = GemeenteTextBox.Text;
-            try { postcode = int.Parse(PostcodeTextBox.Text); } 
+
+            try
+            {
+                //alle inputvariabelen algemene info opvullen     
+                if (string.IsNullOrWhiteSpace(TitelInputTextBox.Text))
+                    fouten.Add("Titel moet verplicht ingevuld worden en uit min 5 en max 50 tekens bestaan.");
+                else titel = TitelInputTextBox.Text;
+
+                startDatum = StartDatumCalendarButton.SelectedDate ?? default;
+
+                if (StatusComboBox.SelectedItem == null) fouten.Add("Selecteer een projectstatus.");
+                else projectStatus = (ProjectStatus)StatusComboBox.SelectedItem;
+
+                IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == false; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
+                IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == false;
+                IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == false;
+
+
+                string straat = StraatTextBox.Text;
+                string huisnummer = HuisnummerTextBox.Text;
+                string gemeente = GemeenteTextBox.Text;
+                try { postcode = int.Parse(PostcodeTextBox.Text); }
                 catch { fouten.Add("Postcode moet uit 4 cijfers bestaan"); }
-            if (string.IsNullOrWhiteSpace(straat))
-                fouten.Add("Straat moet ingevuld zijn en minstens uit 2 tekens bestaan");
-            if (string.IsNullOrWhiteSpace(huisnummer))
-                fouten.Add("Huisnummer moet ingevuld zijn");
-            else if (!int.TryParse(huisnummer, out _))
-                fouten.Add("Huisnummer moet beginnen met een getal");
-            if (string.IsNullOrWhiteSpace(gemeente))
-                fouten.Add("Gemeente moet ingevuld zijn en minstens uit 2 tekens bestaan");
-            try { adres = new(straat, huisnummer, postcode, gemeente); } catch { fouten.Add("Adres is incorrect"); }
+                if (string.IsNullOrWhiteSpace(straat))
+                    fouten.Add("Straat moet ingevuld zijn en minstens uit 2 tekens bestaan");
+                if (string.IsNullOrWhiteSpace(huisnummer))
+                    fouten.Add("Huisnummer moet ingevuld zijn");
+                else if (!int.TryParse(huisnummer, out _))
+                    fouten.Add("Huisnummer moet beginnen met een getal");
+                if (string.IsNullOrWhiteSpace(gemeente))
+                    fouten.Add("Gemeente moet ingevuld zijn en minstens uit 2 tekens bestaan");
+                try { adres = new(straat, huisnummer, postcode, gemeente); } catch { fouten.Add("Adres is incorrect"); }
 
-            if (string.IsNullOrWhiteSpace(WijkTextBox.Text)) fouten.Add("Wijk moet ingevuld zijn en uit minstens 2 tekens bestaan.");
-            else wijk = WijkTextBox.Text;
+                if (string.IsNullOrWhiteSpace(WijkTextBox.Text)) fouten.Add("Wijk moet ingevuld zijn en uit minstens 2 tekens bestaan.");
+                else wijk = WijkTextBox.Text;
 
-            if (string.IsNullOrWhiteSpace(BeschrijvingTextBox.Text)) fouten.Add("Beschrijving moet ingevuld zijn en uit min 4 tekens max 10.000 bestaan.");
-            else beschrijving = BeschrijvingTextBox.Text;
+                if (string.IsNullOrWhiteSpace(BeschrijvingTextBox.Text)) fouten.Add("Beschrijving moet ingevuld zijn en uit min 4 tekens max 10.000 bestaan.");
+                else beschrijving = BeschrijvingTextBox.Text;
 
 
-            foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
-            VoegPartnerToeAanLijst();   
-            //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
+                foreach (string bijlage in BijlagesListBox.Items) bijlages.Add(bijlage);
+                VoegPartnerToeAanLijst();
+                //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
-            //variabelen stadsontwikkeling
+                //variabelen stadsontwikkeling
 
-            bouwfirma = BouwfirmaTextBox.Text;
-            emailBouwfirma = EmailBouwfirmaTextBox.Text;
-            telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
-            websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
-            vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+                bouwfirma = BouwfirmaTextBox.Text;
+                emailBouwfirma = EmailBouwfirmaTextBox.Text;
+                telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
+                websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
+
+                if (VergunningsStatusComboBox.SelectedItem == null) fouten.Add("Selecteer een vergunningsstatus");
+                else vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+
                 if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
                 else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
-                toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+
+                if (ToegankelijkheidComboBox.SelectedItem == null) fouten.Add("Selecteer een toegankelijkheid");
+                else toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+
+
                 if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
                 else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
                 if (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true) IsUitlegbordOfWandeling = true;
@@ -427,12 +445,14 @@ namespace ProjectBeheerWPF_UI
                 else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
                 if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
                 else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+            }
+            catch
+            {
+                MessageBox.Show("OEPS er liep iets mis. Zijn alle velden ingevuld?", "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
-            
+
            
-            
-
-            
 
             //alle invoer + logica projectTypes adhv checkboxen types
 

@@ -60,9 +60,7 @@ namespace ProjectBeheerDL_Memory
 
         public Gebruiker GeefGebruikeradhvEmail(string email)
         {
-            if (gebruikers.ContainsKey(email)) return gebruikers[email];
-            return null;
-
+            return gebruikers.Select(x => x.Value).Where(x => x.Email.Equals(email, StringComparison.OrdinalIgnoreCase)).First();          
         }
 
 
