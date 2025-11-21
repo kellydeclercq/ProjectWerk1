@@ -42,6 +42,7 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="1" Grid.Row="0">Test</TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" x:Name="TitelInputTextBox" Text="Titel project"/>
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
                         <TextBlock Margin="5">Startdatum</TextBlock> 
