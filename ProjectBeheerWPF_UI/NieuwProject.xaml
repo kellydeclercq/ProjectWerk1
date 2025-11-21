@@ -49,7 +49,7 @@
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Grid.ColumnSpan="2">
                         <TextBlock Margin="5">Startdatum</TextBlock> 
                         <DatePicker Margin="5" x:Name="StartDatumCalendarButton" Text="Startdatum"></DatePicker>
-                        <TextBlock Margin="5">Status</TextBlock>
+                        <TextBlock Margin="5">Status *</TextBlock>
                         <ComboBox Margin="5" Name="StatusComboBox" SelectedIndex="-1">
                         </ComboBox>
                     </StackPanel>
@@ -89,9 +89,10 @@
                         <TextBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="5" Height="250" x:Name="BeschrijvingTextBox"/>
                     </Grid>
                     <StackPanel Grid.Column="4" Grid.Row="3" Margin="5" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                        <Button Margin="5" x:Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="100" Click="VoegDocumentenToeButton_Click"/>
-                        <Button Margin="5" x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="100" Click="VoegFotosToeButton_Click"/>
-                        <ListBox Height="100" Width="200" Margin="10" Name="BijlagesListBox">Lijst bijlages</ListBox>
+                        <Button Margin="5" x:Name="VoegDocumentenToeButton" Content="Voeg documenten toe" Width="150" Click="VoegDocumentenToeButton_Click"/>
+                        <Button Margin="5" x:Name="VoegFotosToeButton" Content="Voeg foto's toe" Width="150" Click="VoegFotosToeButton_Click"/>
+                        <TextBlock Margin="5">Lijst bijlages</TextBlock>
+                        <ListBox Height="100" Width="200" Margin="5" Name="BijlagesListBox"></ListBox>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="5,5,5,5" Orientation="Vertical">
                         <TextBlock Margin="0,5,5,5">Naam partner</TextBlock>
@@ -109,12 +110,12 @@
                         <TextBlock Margin="0,5,5,5">Telefoon</TextBlock>
                         <TextBox Name="TelefoonPartnerTextBox" Height="30"/>
                     </StackPanel>
-                    
-                    
                     <Button Grid.Column="1" Grid.Row="8" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe" Click="VoegPartnerToeButton_Click"/>
-                    <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
+                    <StackPanel Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Margin="5">Toegevoegde partners</TextBlock>
+                        <ListBox Height="100" Width="200" Name="PartnersListBox" HorizontalAlignment="Left"/>
+                    </StackPanel>
                     
-                    <ListBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="PartnersListBox">Toegevoegde partners</ListBox>
                     <Button Grid.Column="4" Grid.Row="8" Width="100" Height="50" x:Name="GaVerderButtonTab1" Content="Verder" Click="GaVerderButtonTab1_Click"/>
                 </Grid>
             </TabItem>
