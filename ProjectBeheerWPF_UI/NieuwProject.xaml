@@ -37,9 +37,9 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,5,5" Orientation="Vertical">
@@ -97,10 +97,20 @@
                         <TextBlock Margin="0,5,5,5">Naam partner</TextBlock>
                         <TextBox  x:Name="NaamPartnerTextBox" Height="30"/>
                     </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" Grid.ColumnSpan="2" Orientation="Vertical">
+                        <TextBlock Margin="0,5,5,5">Rolomschrijving</TextBlock>
+                        <TextBox  x:Name="PartnerRolTextBox" Height="30"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" Grid.ColumnSpan="2" Orientation="Vertical">
+                        <TextBlock Margin="0,5,5,5">Email</TextBlock>
+                        <TextBox  x:Name="EmailPartnerTextBox" Height="30"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="7" Margin="5" Grid.ColumnSpan="2" Orientation="Vertical">
+                        <TextBlock Margin="0,5,5,5">Telefoon</TextBlock>
+                        <TextBox Name="TelefoonPartnerTextBox" Height="30"/>
+                    </StackPanel>
                     
-                    <TextBox Grid.Column="1" Grid.Row="5" Margin="5,5,5,5" x:Name="PartnerRolTextBox" Grid.ColumnSpan="2" Text="Rolomschrijving"/>
-                    <TextBox Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" x:Name="EmailPartnerTextBox" Grid.ColumnSpan="2" Text="Email"/>
-                    <TextBox Grid.Column="1" Grid.Row="7" Margin="5" Grid.ColumnSpan="2" Name="TelefoonPartnerTextBox" Text="Telefoon"/>
+                    
                     <Button Grid.Column="1" Grid.Row="8" Margin="5,5,5,5" x:Name="VoegPartnerToeButton" Content="Voeg partner toe" Click="VoegPartnerToeButton_Click"/>
                     <!-- listbox met partners naast invoervelden, zo maak je telkens nieuwe partner aan-->
                     
