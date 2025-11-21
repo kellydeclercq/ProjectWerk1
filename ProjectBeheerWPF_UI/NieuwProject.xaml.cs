@@ -415,8 +415,19 @@ namespace ProjectBeheerWPF_UI
                 if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
                 else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
 
-                if (ToegankelijkheidComboBox.SelectedItem == null) fouten.Add("Selecteer een toegankelijkheid");
-                else toegankelijkheid = (Toegankelijkheid)ToegankelijkheidComboBox.SelectedItem;
+                if (ToegankelijkheidComboBox.SelectedItem == null)
+                {
+                    fouten.Add("Selecteer een toegankelijkheid.");
+                }
+                else
+                {
+                    string selected = ToegankelijkheidComboBox.SelectedItem.ToString();
+
+                    toegankelijkheid = Enum.GetNames(typeof(Toegankelijkheid))
+                                            .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                                            .Select(name => (Toegankelijkheid)Enum.Parse(typeof(Toegankelijkheid), name))
+                                            .FirstOrDefault();
+                }
 
 
                 if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
