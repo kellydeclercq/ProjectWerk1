@@ -454,7 +454,7 @@ namespace ProjectBeheerWPF_UI
             }
             catch (ProjectException e)
             {
-                MessageBox.Show(e.Message, "Ingevulde waarden foutief", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Ingevulde waarden zijn foutief", "FOUT", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             catch (Exception e)
             { 
