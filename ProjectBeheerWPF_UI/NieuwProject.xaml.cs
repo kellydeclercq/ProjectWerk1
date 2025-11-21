@@ -174,14 +174,7 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegPartnerToeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(NaamPartnerTextBox.Text)
-              || string.IsNullOrWhiteSpace(EmailPartnerTextBox.Text)
-              || string.IsNullOrWhiteSpace(TelefoonPartnerTextBox.Text)
-              || string.IsNullOrWhiteSpace(PartnerRolTextBox.Text))
-            {
-                fouten.Add("Alle gegevens van de partner moeten ingevuld zijn.");
-            }
-
+            
             VoegPartnerToeAanLijst();
 
             NaamPartnerTextBox.Clear();
@@ -192,14 +185,12 @@ namespace ProjectBeheerWPF_UI
 
         private void VoegPartnerToeAanLijst()
         {
-            try
-            {
+            
                 Partner partner = new(null, NaamPartnerTextBox.Text, EmailPartnerTextBox.Text,
                 TelefoonPartnerTextBox.Text, PartnerRolTextBox.Text);
                 partners.Add(partner);
                 PartnersListBox.Items.Add(partner.Naam);
-            }
-            catch { }
+           
                     
         }
 
@@ -281,9 +272,8 @@ namespace ProjectBeheerWPF_UI
                 || string.IsNullOrWhiteSpace(EmailBouwfirmaTextBox.Text)
                 || string.IsNullOrWhiteSpace(TelefoonBouwfirmaTextBox.Text))
             {
-                MessageBox.Show("Naam, email en telefoon van de bouwfirma moeten ingevuld worden.");
-                return; 
-            }
+               fouten.Add("Naam, email en telefoon van de bouwfirma moeten ingevuld worden.");
+             }
 
             try
             {
@@ -456,10 +446,13 @@ namespace ProjectBeheerWPF_UI
                 else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
                 if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
                 else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+                BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("OEPS er liep iets mis. Zijn alle velden ingevuld?", "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
+
+               //MessageBox.Show("OEPS er liep iets mis. Zijn alle velden ingevuld?", "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
+               MessageBox.Show(ex.Message , "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
@@ -467,7 +460,7 @@ namespace ProjectBeheerWPF_UI
 
             //alle invoer + logica projectTypes adhv checkboxen types
 
-            BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+           
         }
 
         private void BepaalTypeProjectEnMaakAan(bool IsStadsontwikkeling, bool IsGroeneRuimte, bool IsInnovatiefWonen)
