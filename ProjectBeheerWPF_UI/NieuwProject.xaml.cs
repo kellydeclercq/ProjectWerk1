@@ -398,8 +398,19 @@ namespace ProjectBeheerWPF_UI
                 telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
                 websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
 
-                if (VergunningsStatusComboBox.SelectedItem == null) fouten.Add("Selecteer een vergunningsstatus");
-                else vergunningsStatus = (VergunningsStatus)VergunningsStatusComboBox.SelectedItem;
+                if (VergunningsStatusComboBox.SelectedItem == null)
+                {
+                    fouten.Add("Selecteer een vergunningsstatus.");
+                }
+                else
+                {
+                    string selected = VergunningsStatusComboBox.SelectedItem.ToString();
+
+                    vergunningsStatus = Enum.GetNames(typeof(VergunningsStatus))
+                                             .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                                             .Select(name => (VergunningsStatus)Enum.Parse(typeof(VergunningsStatus), name))
+                                             .FirstOrDefault();
+                }
 
                 if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
                 else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
