@@ -49,11 +49,11 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             if (GebruikerOverzichtDatagrid.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Selecteer eerst een project om details te kunnen bekijken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer eerst een gebruiker om details te kunnen bekijken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if (GebruikerOverzichtDatagrid.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer maximaal één gebruiker om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -71,11 +71,11 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
         {
             if (GebruikerOverzichtDatagrid.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Selecteer eerst een project om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer eerst een gebruiker om te kunnen bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else if (GebruikerOverzichtDatagrid.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer maximaal één gebruiker om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -105,13 +105,13 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
                 if (gebruiker != null)
                 {
                     //navigeer naar BewerkProject
-                 var result = MessageBox.Show("Bent u zeker dat u deze wilt verwijderen?.", "Waarschuwing",  MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                 var result = MessageBox.Show("Bent u zeker dat u deze gebruiker wilt verwijderen?.", "Waarschuwing",  MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                     if (result == MessageBoxResult.Yes)
                     {
                         //gebruikers.Remove(gebruiker);
                         //TODO: bij verwijderen gebruiker moet er een flag 'inactive' komen in de DB
-                        MessageBox.Show("Gebruiker is verwijdert.");
+                        MessageBox.Show("Gebruiker is verwijderd.");
                     }                   
                 }
 
