@@ -91,7 +91,7 @@ namespace ProjectBeheerWPF_UI
         private int aantalWooneenheden = 0;
         private bool isCohousing;
         private bool isModulairWonen;
-        private List<string> geselecteerdeWooneenheden;
+        private List<string> geselecteerdeWooneenheden = new();
         private bool isRondleidingenMogelijk;
         private bool isShowWoningBeschikbaar;
         private int architecturaleInnoscore;
@@ -118,19 +118,19 @@ namespace ProjectBeheerWPF_UI
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            // Vraag bevestiging aan de gebruiker
-            MessageBoxResult result = MessageBox.Show(
-                "De ingevulde gegevens zullen verloren gaan. Wilt u sluiten?",
-                "Bevestig sluiten",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning
-            );
+            //// Vraag bevestiging aan de gebruiker
+            //MessageBoxResult result = MessageBox.Show(
+            //    "De ingevulde gegevens zullen verloren gaan. Wilt u sluiten?",
+            //    "Bevestig sluiten",
+            //    MessageBoxButton.YesNo,
+            //    MessageBoxImage.Warning
+            //);
 
-            // Als gebruiker op Nee klikt → sluiten annuleren
-            if (result == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
+            //// Als gebruiker op Nee klikt → sluiten annuleren
+            //if (result == MessageBoxResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
         //hieronder alles ivm tab1: algemene info
@@ -469,6 +469,12 @@ namespace ProjectBeheerWPF_UI
                 if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
                 else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
                 BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
+                MessageBoxResult result = MessageBox.Show( "Project is aangemaakt", "Bevestiging", MessageBoxButton.OK);
+                if (result == MessageBoxResult.OK)
+                {
+                    // 3. Sluit het huidige venster
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
