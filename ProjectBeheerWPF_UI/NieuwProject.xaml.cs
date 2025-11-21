@@ -448,9 +448,11 @@ namespace ProjectBeheerWPF_UI
                 else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
                 BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("OEPS er liep iets mis. Zijn alle velden ingevuld?", "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
+
+               //MessageBox.Show("OEPS er liep iets mis. Zijn alle velden ingevuld?", "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
+               MessageBox.Show(ex.Message , "Foutieve aanmaak", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
 
