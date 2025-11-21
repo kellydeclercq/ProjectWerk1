@@ -46,7 +46,8 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
 
             projecten = projectManager.GeefAlleProjecten();
 
-            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten.Where(x => x.ProjectEigenaar.Email == ingelogdeGebruiker.Email).ToList();
+            projecten = ingelogdeGebruiker.GebruikersRol == GebruikersRol.Beheerder ? projecten : projecten
+                .Where(x => x.ProjectEigenaar.Email == ingelogdeGebruiker.Email).ToList();
 
         
 
@@ -73,7 +74,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             }
             else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer maximaal één project om details te bekijken", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -95,7 +96,7 @@ namespace ProjectBeheerWPF_UI.BeheerderUI
             }
             else if (ProjectOverzichtDatagrid.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Je kan geen meerdere projecten selecteren om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Selecteer maximaal één project om te bewerken.", "Waarschuwing", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
