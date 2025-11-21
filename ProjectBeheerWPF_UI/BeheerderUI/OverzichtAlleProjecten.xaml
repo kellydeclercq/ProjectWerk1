@@ -67,18 +67,6 @@
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="PartnersTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         
 
-
-        <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
-            <!--using tags to use in code-behind to decide what filters to apply-->
-            <!--default option combobox-->
-            <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Van oud naar nieuw" Tag="DatumOudnaarNieuw"/>
-            <ComboBoxItem Content="Van nieuw naar oud" Tag="DatumNieuwnaarOud"/>
-            <ComboBoxItem Content="Wijk" Tag="wijk"/>
-            <ComboBoxItem Content="Status" Tag="status"/>
-            <ComboBoxItem Content="Type project" Tag="TypeProject"/>
-        </ComboBox>
-
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="ProjectOverzichtDatagrid" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>

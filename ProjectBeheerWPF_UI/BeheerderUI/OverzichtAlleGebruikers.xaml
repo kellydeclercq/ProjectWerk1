@@ -34,14 +34,7 @@
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="EmailTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
         <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Width="200"  Name="RolTextBox" HorizontalAlignment="Left" Visibility="Collapsed"></TextBox>
 
-        <ComboBox Grid.Column="3" Grid.Row="1" Margin="5" Name="SortComboBox">
-            <!--using tags to use in code-behind to decide what filters to apply-->
-            <!--default option combobox-->
-            <ComboBoxItem Content="Sorteer:" Tag="None" IsSelected="True"/>
-            <ComboBoxItem Content="Naam" Tag="Naam"/>
-            <ComboBoxItem Content="Email" Tag="Email"/>
-            <ComboBoxItem Content="Rol" Tag="Rol"/>
-        </ComboBox>
+        <!-- sorteerknop verwijderd-->
 
         <DataGrid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" Name="GebruikerOverzichtDatagrid"
                   IsReadOnly="True">
