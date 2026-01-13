@@ -26,8 +26,9 @@ namespace ProjectBeheerDL_SQL
             const string sql = @"SELECT COUNT(*) FROM gebruiker WHERE email = @Email";
 
             using (var conn = new SqlConnection(_connectionString))
-            using (var cmd = new SqlCommand(sql, conn))
+            using (var cmd = conn.CreateCommand())
             {
+                cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@Email", email);
 
                 conn.Open();
@@ -44,8 +45,9 @@ namespace ProjectBeheerDL_SQL
             var lijst = new List<Gebruiker>();
 
             using (var conn = new SqlConnection(_connectionString))
-            using (var cmd = new SqlCommand(sql, conn))
+            using (var cmd = conn.CreateCommand())
             {
+                cmd.CommandText = sql;
                 conn.Open();
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -71,8 +73,10 @@ namespace ProjectBeheerDL_SQL
             const string sql = @"SELECT id, naam, email, gebruikersrol FROM gebruiker WHERE email = @Email;";
 
             using (var conn = new SqlConnection(_connectionString))
-            using (var cmd = new SqlCommand(sql, conn))
+            using (var cmd = conn.CreateCommand())
+
             {
+                cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@Email", email);
 
                 conn.Open();

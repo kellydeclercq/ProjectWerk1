@@ -13,7 +13,7 @@ namespace ProjectBeheerUtils
     {
         public static IGebruikerRepository GeefGebruikerRepo(string connectionString)
         {
-            return new GebruikerRepository(connectionString);
+            return null;
         }
 
         public static IProjectRepository GeefProjectRepo(string connectionString)
