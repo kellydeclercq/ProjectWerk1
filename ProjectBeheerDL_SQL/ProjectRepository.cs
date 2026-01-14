@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using CsvHelper.Configuration.Attributes;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using ProjectBeheerBL.Domein;
 using ProjectBeheerBL.Domein.ProjectTypesSubklasses;
 using ProjectBeheerBL.Enumeraties;
@@ -777,34 +779,167 @@ namespace ProjectBeheerDL_SQL
 
         public List<Project> GeefAlleProjecten()
         {
-            throw new NotImplementedException();
-            //var lijst = new List<Project>();
+            Dictionary<int, Project> data = new Dictionary<int, Project> ();
+            string sql = @"SELECT
+                            p.*,
+	                        g.id,
+                            g.naam AS eigenaar_naam,
+                            g.email AS eigenaar_email,
+	                        g.gebruikersrol,
+	                        b.id as bouw_id, 
+                            b.naam AS bouwfirma_naam,
+                            b.email AS bouwfirma_email,
+                            b.telefoonnummer AS bouwfirma_tel,
+	                        par.id as partner_id,
+                            par.naam AS partner_naam,
+	                        par.email as partner_email,
+	                        par.telefoonnummer as partner_tel,
+                            pp.rol_omschrijving AS partner_rol,
+                            d.filenaam AS document_naam,
+                            f.filenaam AS foto_naam
 
-            //using (var conn = new SqlConnection(_connectionString))
-            //using (var cmd = new SqlCommand(SqlSelectAll, conn))
-            //{
-            //    conn.Open();
-            //    using (var reader = cmd.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            lijst.Add(MapProject(reader));
-            //        }
-            //    }
-            //}
+                        FROM project p
+    
+                            LEFT JOIN gebruiker g ON p.project_eigenaar_id = g.id
+                            LEFT JOIN project_bouwfirma pb ON p.id = pb.project_id
+                            LEFT JOIN bouwfirma b ON pb.bouwfirma_id = b.id
+                            LEFT JOIN project_partner pp ON p.id = pp.project_id
+                            LEFT JOIN partner par ON pp.partner_id = par.id
+                            LEFT JOIN document d ON p.id = d.project_id
+                            LEFT JOIN foto f ON p.id = f.project_id";
 
-            //return lijst;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = sql;
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        //checken booleans
+                        int id = (int)rd["id"];
+
+                        bool isStadsontwikkeling = (bool)rd["is_stadsontwikkeling"];
+                        bool isGroeneRuimte = (bool)rd["is_groene_ruimte"];
+                        bool isInnovatiefWonen = (bool)rd["is_innovatief_wonen"];
+
+
+                        if (data.TryGetValue(id, out Project proj))
+                        {
+                            Partner p = new Partner((int)rd["partner_id"], (string)rd["partner_naam"], (string)rd["partner_email"], (string)rd["partner_tel"], (string)rd["partner_tel"], (string)rd["partner_rol"]);
+                            proj.Partners.Add(p);
+
+                            int bouwfirmaId = rd["bouw_id"] == DBNull.Value ? 0 : (int)rd["id"];
+                            if (proj is StadsontwikkelingsGroeneRuimteInnovatiefWonenProject p3)
+                            {
+                                p3.StadsOntwikkeling.BouwFirmas.Add(new(bouwfirmaId, (string)rd["bouwfirma_naam"], (string)rd["bouwfirma_email"], (string)rd["bouwfirma_tel"]));
+                            }
+                            else if (proj is StadsontwikkelingsGroeneRuimteProject p2)
+                            {
+                                p2.StadsOntwikkeling.BouwFirmas.Add(new(bouwfirmaId, (string)rd["bouwfirma_naam"], (string)rd["bouwfirma_email"], (string)rd["bouwfirma_tel"]));
+                            }
+                            else if (proj is StadsontwikkelingProject p1)
+                            {
+                                p1.StadsOntwikkeling.BouwFirmas.Add(new(bouwfirmaId, (string)rd["bouwfirma_naam"], (string)rd["bouwfirma_email"], (string)rd["bouwfirma_tel"]));
+                            }
+                        }
+                        else
+                        {
+
+                            string titel = (string)rd["project_titel"];
+                            string beschrijving = (string)rd["beschrijving"];
+                            DateTime date = (DateTime)rd["startdatum"];
+                            ProjectStatus status = Enum.Parse<ProjectStatus>((string)rd["project_status"]);
+                            Adres adres = new Adres((string)rd["straat"], (string)rd["huisnummer"], (int)rd["postcode"], (string)rd["gemeente"]);
+                            GebruikersRol rol = Enum.Parse<GebruikersRol>((string)rd["gebruikersrol"]);
+                            Gebruiker g = new Gebruiker((int)rd["id"], (string)rd["eigenaar_naam"], (string)rd["eigenaar_email"], rol);
+                            List<byte[]> fotos = new List<byte[]>();
+                            List<byte[]> documenten = new List<byte[]>();
+                            List<Partner> partners = new List<Partner>();
+                            if (rd["partner_id"] != DBNull.Value) partners.Add(new Partner((int)rd["partner_id"], (string)rd["partner_naam"], (string)rd["partner_email"], (string)rd["partner_tel"], (string)rd["partner_tel"], (string)rd["partner_rol"]));
+                            
+                            string wijk = (string)rd["wijk"];
+
+                            StadsOntwikkeling stadsOntwikkeling = null;
+                            GroeneRuimte groeneRuimte = null;
+                            InnovatiefWonen innovatiefWonen = null;
+
+                            if (isStadsontwikkeling)
+                            {
+                                VergunningsStatus vergStatus = Enum.Parse<VergunningsStatus>((string)rd["vergunningstatus"]);
+                                bool archWaarde = (rd["architecturale_waarde"] == DBNull.Value) ? false : ((bool)rd["architecturale_waarde"]);
+                                Toegankelijkheid toegankelijkheid = Enum.Parse<Toegankelijkheid>((string)rd["toegankelijkheid"]);
+                                bool bezienswaardigheid = (rd["bezienswaardigheid_voor_toeristen"] == DBNull.Value) ? false : ((bool)rd["bezienswaardigheid_voor_toeristen"]);
+                                bool infoborden = (rd["infoborden_of_wandeling"] == DBNull.Value) ? false : ((bool)rd["infoborden_of_wandeling"]);
+                                int bouwfirmaId = (rd["bouw_id"] == DBNull.Value) ? 0 : (int)rd["id"];
+                                List<BouwFirma> bouwFirmas = new List<BouwFirma>();
+
+                                if (bouwfirmaId != 0) bouwFirmas.Add(new(bouwfirmaId, (string)rd["bouwfirma_naam"], (string)rd["bouwfirma_email"], (string)rd["bouwfirma_tel"]));                             
+                                stadsOntwikkeling = new(vergStatus, archWaarde, toegankelijkheid, bezienswaardigheid, infoborden, bouwFirmas);
+                            }
+
+                            if (isGroeneRuimte)
+                            {
+                                int? biodiverScore = (rd["biodiversiteitsscore"] == DBNull.Value) ? null : (int)rd["biodiversiteitsscore"];
+                                int? aantalWandelPaden = (rd["aantal_wandelpaden"] == DBNull.Value) ? null : (int)rd["aantal_wandelpaden"];
+                                bool opgenomenInWandelroute = (rd["opgenomen_in_wandelroute"] == DBNull.Value) ? false : (bool)rd["opgenomen_in_wandelroute"];
+                                int? bezoekersScore = (rd["bezoekersscore"] == DBNull.Value) ? null : (int)rd["bezoekersscore"];
+                                List<string> faciliteiten = ((string)rd["faciliteiten"]).Split(',').ToList();
+
+                                groeneRuimte = new((double)rd["oppervlakte_in_vierkante_meter"], biodiverScore, aantalWandelPaden, opgenomenInWandelroute, bezoekersScore, faciliteiten);
+                            }
+
+                            if (isInnovatiefWonen)
+                            {
+                                int aantalWooneenheden = (int)rd["aantal_wooneenheden"];
+                                bool rondleiding = (rd["rondleiding_mogelijk"] == DBNull.Value) ? false : (bool)rd["rondleiding_mogelijk"];
+                                int? innovatieScore = (rd["innovatie_score"] == DBNull.Value) ? null : (int)rd["innovatie_score"];
+                                bool showWoning = (rd["showwoning_beschikbaar"] == DBNull.Value )? false : (bool)rd["showwoning_beschikbaar"];
+                                bool samenWerkingErfgoed = (rd["samenwerking_erfgoed"] == DBNull.Value) ? false : (bool)rd["samenwerking_erfgoed"];
+                                bool samenWerkingToerisme = (rd["samenwerking_toerisme"] == DBNull.Value) ? false : (bool)rd["samenwerking_toerisme"];
+                                List<string> woonvormen = ((string)rd["woonvormen"]).Split(',').ToList();
+                                innovatiefWonen = new(aantalWooneenheden, rondleiding, innovatieScore, showWoning, samenWerkingErfgoed, samenWerkingToerisme, woonvormen);
+                            }
+
+                            Project project = null;
+                            if (isStadsontwikkeling)
+                                project = new StadsontwikkelingProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, stadsOntwikkeling);
+                            if (isGroeneRuimte)
+                                project = new GroeneRuimteProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, groeneRuimte);
+                            if (isInnovatiefWonen)
+                                project = new InnovatiefWonenProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, innovatiefWonen);
+                            if (isStadsontwikkeling && isGroeneRuimte)
+                                project = new StadsontwikkelingsGroeneRuimteProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, stadsOntwikkeling, groeneRuimte);
+                            if (isStadsontwikkeling && isInnovatiefWonen)
+                                project = new StadsontwikkelingsInnovatiefWonenProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, stadsOntwikkeling, innovatiefWonen);
+                            if (isGroeneRuimte && isInnovatiefWonen)
+                                project = new GroeneRuimteInnovatiefWonenProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, groeneRuimte, innovatiefWonen);
+                            if (isGroeneRuimte && isInnovatiefWonen && isStadsontwikkeling)
+                                project = new StadsontwikkelingsGroeneRuimteInnovatiefWonenProject(id, titel, beschrijving, date, status, wijk, fotos, documenten, partners, g, adres, stadsOntwikkeling, groeneRuimte, innovatiefWonen);
+
+                            data.Add(id, project);
+                        }
+                    }
+                }
+            }
+            return data.Values.ToList();
         }
+    
 
         public List<Project> GeefProjectenGefilterd(string projectnaam, string wijk, ProjectStatus status, string eigenaar, List<bool> typeChecks, DateTime start, DateTime eind)
-         => throw new NotImplementedException();
-
-       
-
-        public List<Project> GeefProjectenGefilterdOpType(List<bool> types)
         {
+
+            //groen: 0
+            //innov: 1
+            //stadsont: 2
+
             throw new NotImplementedException();
         }
+
+
+     
 
         public List<Project> GeefProjectenGefilterdOpPartners(string partners)
         {

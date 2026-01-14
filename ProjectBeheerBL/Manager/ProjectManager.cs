@@ -108,11 +108,7 @@ namespace ProjectBeheerBL.Beheerder
         {
             return _repo.GeefAlleProjecten();
         }
-
-        public List<Project> GeefProjectenGefilterdOpType(List<bool> types)
-        {
-            return _repo.GeefProjectenGefilterdOpType(types);
-        }
+      
 
         public List<Project> GeefProjectenGefilterdOpPartners(string partners)
         {

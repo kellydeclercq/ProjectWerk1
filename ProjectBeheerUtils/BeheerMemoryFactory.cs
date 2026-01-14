@@ -11,7 +11,7 @@ namespace ProjectBeheerUtils
 {
     public class BeheerMemoryFactory
     {
-        private string connectionstring = @"Data Source=MANALOLAPTOP\\SQLEXPRESS;Initial Catalog=ProjectBeheerStadGent;Integrated Security=True;Trust Server Certificate=True";
+        private string connectionstring = @"Data Source=HPKelly\SQLEXPRESS;Initial Catalog=ProjectBeheerStadGent;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 
         public IGebruikerRepository GeefGebruikerRepo()
         {
@@ -20,7 +20,7 @@ namespace ProjectBeheerUtils
 
         public IProjectRepository GeefProjectRepo()
         {
-            return new ProjectRepositoryMemory(GeefGebruikerRepo());
+            return new ProjectRepository(connectionstring);
         }
     }
 }
