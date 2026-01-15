@@ -11,16 +11,21 @@ namespace ProjectBeheerUtils
 {
     public class BeheerMemoryFactory
     {
-        private string connectionstring = @"Data Source=HPKelly\SQLEXPRESS;Initial Catalog=ProjectBeheerStadGent;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private readonly string _connectionString;
+
+        public BeheerMemoryFactory(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public IGebruikerRepository GeefGebruikerRepo()
         {
-            return new GebruikerRepository(connectionstring);
+            return new GebruikerRepository(_connectionString);
         }
 
         public IProjectRepository GeefProjectRepo()
         {
-            return new ProjectRepository(connectionstring);
+            return new ProjectRepository(_connectionString);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace ProjectBeheerWPF_UI
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
-        private BeheerMemoryFactory beheerMemoryFactory = new();
+        private BeheerMemoryFactory beheerMemoryFactory;
         private Gebruiker ingelogdeGebruiker;
 
         public HomeProjectBeheer(ExportManager exportManager, GebruikersManager gebruikersManager, 

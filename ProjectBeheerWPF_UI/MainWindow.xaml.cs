@@ -1,4 +1,13 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.Extensions.Configuration;
+using ProjectBeheerBL.Beheerder;
+using ProjectBeheerBL.Domein;
+using ProjectBeheerBL.Domein.Exceptions;
+using ProjectBeheerBL.Enumeraties;
+using ProjectBeheerDL_SQL;
+using ProjectBeheerUtils;
+using ProjectBeheerWPF_UI.BeheerderUI;
+using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,12 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ProjectBeheerBL.Beheerder;
-using ProjectBeheerBL.Domein;
-using ProjectBeheerBL.Domein.Exceptions;
-using ProjectBeheerBL.Enumeraties;
-using ProjectBeheerUtils;
-using ProjectBeheerWPF_UI.BeheerderUI;
 
 namespace ProjectBeheerWPF_UI
 {
@@ -26,17 +29,29 @@ namespace ProjectBeheerWPF_UI
         private ExportManager exportManager;
         private GebruikersManager gebruikersManager;
         private ProjectManager projectManager;
-        private BeheerMemoryFactory beheerMemoryFactory = new();
+        private BeheerMemoryFactory beheerMemoryFactory;
         private Gebruiker ingelogdeGebruiker;
 
         public MainWindow()
         {
             InitializeComponent();
 
+            IConfigurationRoot config = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+             .Build();
+
+            string connectionString = config.GetConnectionString("SQLserver");
+
+
+            beheerMemoryFactory = new BeheerMemoryFactory(connectionString);
+
             //nieuwe managers aanmaken
             exportManager = new ExportManager();
             gebruikersManager = new GebruikersManager(beheerMemoryFactory.GeefGebruikerRepo());
             projectManager = new ProjectManager(beheerMemoryFactory.GeefProjectRepo());
+
+        
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)

@@ -9,17 +9,24 @@ using ProjectBeheerDL_SQL;
 
 namespace ProjectBeheerUtils
 {
-    public static class ProjectSQLFactory
+    public class ProjectSQLFactory
     {
-        public static IGebruikerRepository GeefGebruikerRepo(string connectionString)
+        private readonly string _connectionString;
+
+        public ProjectSQLFactory(string connectionString)
         {
-            return null;
+            _connectionString = connectionString;
         }
 
-        public static IProjectRepository GeefProjectRepo(string connectionString)
+        public IGebruikerRepository GeefGebruikerRepo()
         {
-            return null;
-            //return new ProjectRepository(connectionString);
+            return new GebruikerRepository(_connectionString);
+        }
+
+        public IProjectRepository GeefProjectRepo()
+        {
+            return new ProjectRepository(_connectionString);
         }
     }
+
 }

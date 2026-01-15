@@ -846,7 +846,7 @@ namespace ProjectBeheerDL_SQL
 
                             if (isStads)
                             {
-                                string vergStr = rd["vergunningstatus"] as string;
+                                string vergStr = rd["vergunningsstatus"] as string;
                                 var verg = !string.IsNullOrEmpty(vergStr) ? (VergunningsStatus)Enum.Parse(typeof(VergunningsStatus), vergStr) : VergunningsStatus.InAanvraag;
                                 bool arch = rd["architecturale_waarde"] as bool? ?? false;
                                 string toegStr = rd["toegankelijkheid"] as string;

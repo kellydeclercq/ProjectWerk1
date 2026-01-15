@@ -335,7 +335,7 @@ namespace ProjectBeheerWPF_UI
 
         private void MaakProjectAanButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            fouten.Clear();
 
             try
             {
@@ -360,9 +360,14 @@ namespace ProjectBeheerWPF_UI
                                         .FirstOrDefault();
                 }
 
-                IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == false; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
-                IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == false;
-                IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == false;
+                //IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == false; //door dit zo te schrijven cancel je de optie null-waarde voor de bool
+                //IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == false;
+                //IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == false;
+
+                //aanpassing carmen hieronder
+                IsStadsontwikkeling = StadsontwikkelingCheckBox.IsChecked == true;
+                IsGroeneRuimte = GroeneRuimteCheckBox.IsChecked == true;
+                IsInnovatiefWonen = InnovatiefWonenCheckBox.IsChecked == true;
 
 
                 string straat = StraatTextBox.Text;
@@ -391,83 +396,158 @@ namespace ProjectBeheerWPF_UI
                 //VoegPartnerToeAanLijst();
                 //voeg partner uit de inputvelden ook toe aan de lijst van partners en geef die lijst hier dan mee
 
+
+
                 //variabelen stadsontwikkeling
 
-                bouwfirma = BouwfirmaTextBox.Text;
-                emailBouwfirma = EmailBouwfirmaTextBox.Text;
-                telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
-                websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
-
-                if (VergunningsStatusComboBox.SelectedItem == null)
+                if (IsStadsontwikkeling)
                 {
-                    fouten.Add("Selecteer een vergunningsstatus.");
-                }
-                else
-                {
-                    string selected = VergunningsStatusComboBox.SelectedItem.ToString();
+                    if (VergunningsStatusComboBox.SelectedItem == null)
+                        fouten.Add("Selecteer een vergunningsstatus.");
+                    else
+                    {
+                        string selected = VergunningsStatusComboBox.SelectedItem.ToString();
+                        vergunningsStatus = Enum.GetNames(typeof(VergunningsStatus))
+                                                 .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                                                 .Select(name => (VergunningsStatus)Enum.Parse(typeof(VergunningsStatus), name))
+                                                 .FirstOrDefault();
+                    }
 
-                    vergunningsStatus = Enum.GetNames(typeof(VergunningsStatus))
-                                             .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
-                                             .Select(name => (VergunningsStatus)Enum.Parse(typeof(VergunningsStatus), name))
-                                             .FirstOrDefault();
-                }
+                    if (ToegankelijkheidComboBox.SelectedItem == null)
+                        fouten.Add("Selecteer een toegankelijkheid.");
+                    else
+                    {
+                        string selected = ToegankelijkheidComboBox.SelectedItem.ToString();
+                        toegankelijkheid = Enum.GetNames(typeof(Toegankelijkheid))
+                                                .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                                                .Select(name => (Toegankelijkheid)Enum.Parse(typeof(Toegankelijkheid), name))
+                                                .FirstOrDefault();
+                    }
 
-                if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
-                else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+                    IsArchitecturaleWaarde = ArchitecturaleWaardeJaRadioButton.IsChecked == true;
+                    IsToeristischeBezienswaardigheid = ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true;
+                    IsUitlegbordOfWandeling = (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true);
 
-                if (ToegankelijkheidComboBox.SelectedItem == null)
-                {
-                    fouten.Add("Selecteer een toegankelijkheid.");
-                }
-                else
-                {
-                    string selected = ToegankelijkheidComboBox.SelectedItem.ToString();
-
-                    toegankelijkheid = Enum.GetNames(typeof(Toegankelijkheid))
-                                            .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
-                                            .Select(name => (Toegankelijkheid)Enum.Parse(typeof(Toegankelijkheid), name))
-                                            .FirstOrDefault();
+                  
+                    if (bouwFirmas == null || bouwFirmas.Count == 0)
+                        fouten.Add("Voeg minstens 1 bouwfirma toe.");
                 }
 
+                //bouwfirma = BouwfirmaTextBox.Text;
+                //emailBouwfirma = EmailBouwfirmaTextBox.Text;
+                //telefoonBouwfirma = TelefoonBouwfirmaTextBox.Text;
+                //websiteBouwfirma = WebsiteBouwfirmaTextBox.Text;
 
-                if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
-                else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
-                if (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true) IsUitlegbordOfWandeling = true;
+                //if (VergunningsStatusComboBox.SelectedItem == null)
+                //{
+                //    fouten.Add("Selecteer een vergunningsstatus.");
+                //}
+                //else
+                //{
+                //    string selected = VergunningsStatusComboBox.SelectedItem.ToString();
+
+                //    vergunningsStatus = Enum.GetNames(typeof(VergunningsStatus))
+                //                             .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                //                             .Select(name => (VergunningsStatus)Enum.Parse(typeof(VergunningsStatus), name))
+                //                             .FirstOrDefault();
+                //}
+
+                //if (ArchitecturaleWaardeJaRadioButton.IsChecked == true) IsArchitecturaleWaarde = true;
+                //else if (ArchitecturaleWaardeNeeRadioButton.IsChecked == true) IsArchitecturaleWaarde = false;
+
+                //if (ToegankelijkheidComboBox.SelectedItem == null)
+                //{
+                //    fouten.Add("Selecteer een toegankelijkheid.");
+                //}
+                //else
+                //{
+                //    string selected = ToegankelijkheidComboBox.SelectedItem.ToString();
+
+                //    toegankelijkheid = Enum.GetNames(typeof(Toegankelijkheid))
+                //                            .Where(name => name.Equals(selected, StringComparison.OrdinalIgnoreCase))
+                //                            .Select(name => (Toegankelijkheid)Enum.Parse(typeof(Toegankelijkheid), name))
+                //                            .FirstOrDefault();
+                //}
+
+
+                //if (ToeristischeBezienswaardigheidJaRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = true;
+                //else if (ToeristischeBezienswaardigheidNeeRadioButton.IsChecked == true) IsToeristischeBezienswaardigheid = false;
+                //if (UitlegbordCheckBox.IsChecked == true || InfowandelingCheckBox.IsChecked == true) IsUitlegbordOfWandeling = true;
 
                 //variabelen groene ruimte
+                //aanpassing Carmen
+                if (IsGroeneRuimte)
+                {
+                    oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
+                    bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
+                    aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text);
 
-                oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
-                bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
-                aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text);
-                IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
-                if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
-                IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
-                if (IsPicknickZone) faciliteiten.Add("Picknickzone");
-                IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
-                if (IsInfoborden) faciliteiten.Add("Infoborden");
-                IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
-                if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
-                if (ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
-                else if (ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
-                bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
+                    faciliteiten.Clear(); 
+                    if (SpeeltuinFaciliteitCheckBox.IsChecked == true) faciliteiten.Add("Speeltuin");
+                    if (PicknickZoneFaciliteitCheckBox.IsChecked == true) faciliteiten.Add("Picknickzone");
+                    if (InfobordenFaciliteitCheckBox.IsChecked == true) faciliteiten.Add("Infoborden");
+                    if (AndereFaciliteitCheckBox.IsChecked == true) faciliteiten.Add(AndereFaciliteitTextBox.Text);
+
+                    opgenomenInWandelroute = ToeristischeWandelroutesJaRadioButton.IsChecked == true;
+                    bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
+                }
+                //oppervlaktInVierkanteMeter = double.Parse(OppervlakteTextBox.Text);
+                //bioDiversiteitScore = (int)BiodiversiteitSlider.Value;
+                //aantalWandelpaden = int.Parse(AantalWandelpadenTextBox.Text);
+                //IsSpeeltuin = SpeeltuinFaciliteitCheckBox.IsChecked == true;
+                //if (IsSpeeltuin) faciliteiten.Add("Speeltuin");
+                //IsPicknickZone = PicknickZoneFaciliteitCheckBox.IsChecked == true;
+                //if (IsPicknickZone) faciliteiten.Add("Picknickzone");
+                //IsInfoborden = InfobordenFaciliteitCheckBox.IsChecked == true;
+                //if (IsInfoborden) faciliteiten.Add("Infoborden");
+                //IsAndereFaciliteit = AndereFaciliteitCheckBox.IsChecked == true;
+                //if (IsAndereFaciliteit) faciliteiten.Add(AndereFaciliteitTextBox.Text);
+                //if (ToeristischeWandelroutesJaRadioButton.IsChecked == true) opgenomenInWandelroute = true;
+                //else if (ToeristischeWandelroutesNeeRadioButton.IsChecked == true) opgenomenInWandelroute = false;
+                //bezoekersScore = (int)BezoekersBeoordelingSlider.Value;
 
                 //variabelen innovatief wonen
 
-                aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
-                isCohousing = CohousingCheckBox.IsChecked == true;
-                if (isCohousing) geselecteerdeWooneenheden.Add("Co-housing");
-                isModulairWonen = ModulairWonenCheckBox.IsChecked == true;
-                if (isModulairWonen) geselecteerdeWooneenheden.Add("Modulair wonen");
-                //de andere staan al in de lijst vanuit de methode VoegAndereWoonvormToeButton_Click onder innovatief wonen
-                if (RondleidingJaRadioButton.IsChecked == true) isRondleidingenMogelijk = true;
-                else if (RondeleidingNeeRadioButton.IsChecked == true) isRondleidingenMogelijk = false;
-                if (ShowwoningJaRadioButton.IsChecked == true) isShowWoningBeschikbaar = true;
-                else if (ShowwoningNeeRadioButton.IsChecked == true) isShowWoningBeschikbaar = false;
-                architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
-                if (ErfgoedJaRadioButton.IsChecked == true) isErfgoedSamenwerking = true;
-                else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
-                if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
-                else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+                if (IsInnovatiefWonen)
+                {
+                    aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
+
+                    geselecteerdeWooneenheden.Clear(); // ook belangrijk bij opnieuw proberen
+                    if (CohousingCheckBox.IsChecked == true) geselecteerdeWooneenheden.Add("Co-housing");
+                    if (ModulairWonenCheckBox.IsChecked == true) geselecteerdeWooneenheden.Add("Modulair wonen");
+
+                    isRondleidingenMogelijk = RondleidingJaRadioButton.IsChecked == true;
+                    isShowWoningBeschikbaar = ShowwoningJaRadioButton.IsChecked == true;
+
+                    architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
+
+                    isErfgoedSamenwerking = ErfgoedJaRadioButton.IsChecked == true;
+                    isToerismeSamenwerking = ToerismeGentJaRadioButton.IsChecked == true;
+                    // geselecteerdeWoonvormen komen uit VoegAndereWoonvormToeButton_Click
+
+                }
+                //aantalWooneenheden = int.Parse(AantalWooneenhedenTextBox.Text);
+                //isCohousing = CohousingCheckBox.IsChecked == true;
+                //if (isCohousing) geselecteerdeWooneenheden.Add("Co-housing");
+                //isModulairWonen = ModulairWonenCheckBox.IsChecked == true;
+                //if (isModulairWonen) geselecteerdeWooneenheden.Add("Modulair wonen");
+                ////de andere staan al in de lijst vanuit de methode VoegAndereWoonvormToeButton_Click onder innovatief wonen
+                //if (RondleidingJaRadioButton.IsChecked == true) isRondleidingenMogelijk = true;
+                //else if (RondeleidingNeeRadioButton.IsChecked == true) isRondleidingenMogelijk = false;
+                //if (ShowwoningJaRadioButton.IsChecked == true) isShowWoningBeschikbaar = true;
+                //else if (ShowwoningNeeRadioButton.IsChecked == true) isShowWoningBeschikbaar = false;
+                //architecturaleInnoscore = (int)ArchitecturaleInnoScoreSlider.Value;
+                //if (ErfgoedJaRadioButton.IsChecked == true) isErfgoedSamenwerking = true;
+                //else if (ErfgoedNeeRadioButton.IsChecked == true) isErfgoedSamenwerking = false;
+                //if (ToerismeGentJaRadioButton.IsChecked == true) isToerismeSamenwerking = true;
+                //else if (ToerismeGentNeeRadioButton.IsChecked == true) isToerismeSamenwerking = false;
+
+                if (fouten.Count > 0)
+                {
+                    MessageBox.Show(string.Join("\n", fouten), "Controleer je invoer", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return; 
+                }
+
                 BepaalTypeProjectEnMaakAan(IsStadsontwikkeling, IsGroeneRuimte, IsInnovatiefWonen);
                 MessageBoxResult result = MessageBox.Show( "Project is aangemaakt", "Bevestiging", MessageBoxButton.OK);
                 if (result == MessageBoxResult.OK)
