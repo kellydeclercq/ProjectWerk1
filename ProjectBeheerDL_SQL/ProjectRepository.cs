@@ -85,12 +85,16 @@ namespace ProjectBeheerDL_SQL
             using (SqlCommand cmd = conn.CreateCommand())
             {
                 conn.Open();
+                // Transaction: alles of niets (als er iets fout gaat => rollback)
                 SqlTransaction transaction = conn.BeginTransaction();
                 cmd.Transaction = transaction;
                 cmd.CommandText = sql;
 
                 try
                 {
+                    //hier alle sql parameters
+                    //als iets neit bestaat voor projecttype => DBNull.Value
+
                     // Algemeen project
                     cmd.Parameters.AddWithValue("@project_titel", projectTitel);
                     cmd.Parameters.AddWithValue("@beschrijving", beschrijving);
@@ -104,10 +108,14 @@ namespace ProjectBeheerDL_SQL
                     cmd.Parameters.AddWithValue("@wijk", wijk);
                     cmd.Parameters.AddWithValue("@project_eigenaar_id", eigenaar.Id);
 
+                    //checks om te bewaren in db welk type het is
                     cmd.Parameters.AddWithValue("@is_stadsontwikkeling", isStadsontwikkeling);
                     cmd.Parameters.AddWithValue("@is_groene_ruimte", isGroeneRuimte);
                     cmd.Parameters.AddWithValue("@is_innovatief_wonen", isInnovatiefWonen);
 
+
+                    // TYPE-SPECIFIEKE velden:
+                    // als null => DBNull.Value, anders waarde
                     // Stadsontwikkeling
                     cmd.Parameters.AddWithValue("@vergunningsstatus",
                         vergunningsStatus == null ? (object)DBNull.Value : vergunningsStatus.ToString());
@@ -131,7 +139,7 @@ namespace ProjectBeheerDL_SQL
                         opgenomenInWandelRoute ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@bezoekersscore",
                         bezoekersScore ?? (object)DBNull.Value);
-
+                    //faciliteitne om zetten naar 1 string
                     cmd.Parameters.AddWithValue("@faciliteiten",
                         faciliteiten == null ? (object)DBNull.Value : VoegLijstSamenInDb(faciliteiten));
 
@@ -148,7 +156,7 @@ namespace ProjectBeheerDL_SQL
                         samenwerkingErfgoed ?? (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@samenwerking_toerisme",
                         samenwerkingToerisme ?? (object)DBNull.Value);
-
+                    //omzetten naar 1 string
                     cmd.Parameters.AddWithValue("@woonvormen",
                         woonvormen == null ? (object)DBNull.Value : VoegLijstSamenInDb(woonvormen));
 
@@ -166,6 +174,10 @@ namespace ProjectBeheerDL_SQL
 
         //maak enkele projecten
 
+        //// geef alleen parameters die logisch zijn voor een GroeneRuimteProject
+
+        // Daarna roep SchrijfProjectNaarDb methode op
+        // en zet checks juist + zet de andere types op null
         public void MaakGroeneruimteProjectAan(string projectTitel, string beschrijving, DateTime? startDatum, ProjectStatus projectStatus, string wijk,
                                                List<byte[]>? fotos, List<byte[]>? documenten, List<Partner> partners,
                                                double oppervlakteInVierkanteMeter, int? bioDiversiteitsScore, int? aantalWandelpaden, bool opgenomenInWandelRoute,
@@ -777,7 +789,8 @@ namespace ProjectBeheerDL_SQL
         #endregion
 
         // FILTEREN en SORTEREN en OPVRAGEN
-
+        // Dictionary zodat elk project maar 1 keer aanmaak
+        //  door LEFT JOIN krijg ik meerdere rijen per project
         private List<Project> GeefProjecten(string sqlQuery, List<SqlParameter> parameters)
         {
             Dictionary<int, Project> data = new Dictionary<int, Project>();
@@ -787,7 +800,7 @@ namespace ProjectBeheerDL_SQL
             {
                 conn.Open();
                 cmd.CommandText = sqlQuery;
-
+                // Parameters toevoegen als de query filters heeft
                 if (parameters != null)
                 {
                     cmd.Parameters.AddRange(parameters.ToArray());

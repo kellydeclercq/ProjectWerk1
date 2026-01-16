@@ -24,14 +24,18 @@ namespace ProjectBeheerBL.Beheerder
             if (string.IsNullOrWhiteSpace(pad))
                 throw new ProjectException("Ongeldig pad voor export.");
 
+            //plaats om alle rijen te verzamelen voor csv
             var records = new List<object>();
 
             foreach (var p in projecten)
             {
+                //per project checken welke interface dit project implementeert. 
+                // zo bepalen welk type het is en of welke combo
                 bool heeftGR = p is IGroeneRuimte;
                 bool heeftSO = p is IStadsontwikkeling; 
                 bool heeftIW = p is IInnovatiefWonen;
 
+                //als project de interface implementeer haal extra data op anders null
                 GroeneRuimte? groeneRuimte = heeftGR ?
                     ((IGroeneRuimte)p).GroeneRuimte : null;
                 StadsOntwikkeling? stadsOntwikkeling = heeftSO ?
@@ -40,21 +44,25 @@ namespace ProjectBeheerBL.Beheerder
                     ((IInnovatiefWonen)p).InnovatiefWonen : null;
 
                 var record = new {
+                    //anoniem object, dat 1 rij voorstel in csv met alle gegeven
 
+                    //algemene gegevens voor elk project
                     ProjectId = p.Id,
                     Titel = p.ProjectTitel,
-                    Beschrijving = p.Beschrijving, //TODO wat hiermee doen??
+                    Beschrijving = p.Beschrijving, 
                     StartDatum = p.StartDatum,
                     ProjectStatus = p.ProjectStatus.ToString(),
                     Adres = p.Adres.ToString(),
                     Wijk = p.Wijk,
                     Fotos = p.Fotos.Count,
                     Documenten = p.Documenten.Count,
+                    //partnes samen voegen in 1 veld
                     Partners = p.Partners != null && p.Partners.Any()
                     ? string.Join(" | ", p.Partners.Select(partner => partner.Naam))
                     : string.Empty,
                     ProjectEigenaar = p.ProjectEigenaar.Naam,
 
+                    //checks om in csv te tonen welk type project het is
                     IsStadOntwikkeling = heeftSO ? "ja" : "neen",
                     IsGroeneRuimte = heeftGR ? "ja" : "neen",
                     IsInnovatiefWonen = heeftIW ? "ja" : "neen",
@@ -125,12 +133,13 @@ namespace ProjectBeheerBL.Beheerder
                 records.Add(record);
 
             }
+            //csv config met puntkomma als scheiding , alles quoten ""
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture) {
                 Delimiter = ";",
                 ShouldQuote = args => true
             };
 
-
+            //basis bestandsnaam
             string basisNaam = "MyProjectExport";
             string extension = ".csv";
             string volledigPad = Path.Combine(pad, basisNaam + extension);
@@ -143,13 +152,15 @@ namespace ProjectBeheerBL.Beheerder
                 counter++;
             }
 
-            
+            //hier csv bestand effectie wegschrijven
             using var writer = new StreamWriter(volledigPad);
             using var csv = new CsvWriter(writer, config);
 
+            // Formatteren van doubles (geen onnodige decimalen)
             csv.Context.TypeConverterOptionsCache.GetOptions<double>().Formats = new[] { "0.##" };
             csv.Context.TypeConverterOptionsCache.GetOptions<double?>().Formats = new[] { "0.##" };
 
+            //alle records in 1 x naar csv schrijven
             csv.WriteRecords(records);
 
 
